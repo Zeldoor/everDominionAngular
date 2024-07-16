@@ -10,6 +10,8 @@ export class AuthService {
 
   login(username:string,password:string)
   {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
     let body = {'username':username,'password':password};
     return this.http.post<any>("/api/auth/login",body);
   }
@@ -21,5 +23,24 @@ export class AuthService {
   logout()
   {
     localStorage.removeItem("token");
+    localStorage.removeItem("role");
+  }
+
+  isLogged():boolean
+  {
+    if(localStorage.getItem("token"))
+      return true;
+
+    return false;
+  }
+
+  getUserRole()
+  {
+    return localStorage.getItem("role");
+  }
+
+  userHasRole(role:string)
+  {
+    return this.isLogged() && this.getUserRole()==role;
   }
 }

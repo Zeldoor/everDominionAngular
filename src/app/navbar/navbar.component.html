@@ -1,0 +1,14 @@
+<nav class="bg-gray-800 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <div>
+        <button class="text-white hover:text-gray-400 mx-2" routerLink="/">Per Tutti</button>
+        <button [ngClass]="{'text-gray-600': !auth.isLogged(),'text-white hover:text-gray-400':auth.isLogged()}" class="mx-2" [disabled]="!auth.isLogged()" routerLink="/logged">UTENTI LOGGATI</button>
+        <button [ngClass]="{'hidden': !auth.userHasRole('ADMIN'),}" class=" text-white hover:text-gray-400 mx-2" [disabled]="!auth.userHasRole('ADMIN')" routerLink="/admin">ADMIN</button>
+      </div>
+      <div>
+        <app-login></app-login>
+      </div>
+    </div>
+  </nav>
+
+  

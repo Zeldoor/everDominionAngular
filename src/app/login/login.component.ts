@@ -10,11 +10,15 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent 
 {
-  constructor(private authService:AuthService){}
+  constructor(public authService:AuthService){}
 
   requestFasulla()
   {
     this.authService.requestFauslla().subscribe();
+  }
+  logout()
+  {
+    this.authService.logout();
   }
 
   login()
@@ -28,10 +32,11 @@ export class LoginComponent
         next: data=>
         {
           localStorage.setItem("token",data.accessToken);
+          localStorage.setItem("role",data.role);
         },
         error: err=>
         {
-
+          
         }
 
       }
