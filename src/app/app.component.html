@@ -1,7 +1,22 @@
-<form>
-    <h1>Inserisci danno e difesa</h1>
-    <input type="number" name="damage" [(ngModel)]="damage" placeholder="damage">
-    <input type="number" name="defence" [(ngModel)]="defence" placeholder="defence">
-    <button type="submit" (click)="fight()">Invia</button>
-</form>
-<h1>{{result}}</h1>
+<html>
+    <app-navbar></app-navbar>
+        <body class="bg-[url(https://cdn.discordapp.com/attachments/1232283256586502144/1264943651587620934/4f08eaf50169b025d120e9f0b27ae04d23c0cba6_s2_n2_y1.png?ex=669fb614&is=669e6494&hm=da6bbcb0a0ca63b2867b4b2498ed513a086734b7f29dba618885c92bf4636fb8&)] bg-no-repeat bg-center h-screen w-full bg-full bg-cover" >
+            <div>
+                <app-leaderboard-menu></app-leaderboard-menu>
+                <app-map></app-map>
+            </div>    
+        <br>
+        <br>
+        <app-troop-menu></app-troop-menu>
+            <form>
+                <div style="">
+                    <h1>Inserisci danno e difesa</h1>
+                    <input type="number" name="damage" [(ngModel)]="damage" placeholder="damage">
+                    <input type="number" name="defence" [(ngModel)]="defence" placeholder="defence">
+                    <button type="submit" (click)="fight()">Invia</button>
+                </div>  
+            </form>
+            <h1>{{result}}</h1>
+        </body>
+</html>
+    

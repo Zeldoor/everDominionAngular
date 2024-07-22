@@ -1,0 +1,21 @@
+.card
+{
+    float: left;
+    width: 400px;
+    height: 100px;
+    margin-left: 20px;
+    border-radius: 15px;
+    border-style: double;
+    border-width: 10px;
+    border-color: black;
+    background-color: #EDC785;
+}
+
+.scritte
+{
+    padding-top: 15px;
+    text-align: center;
+    text-shadow: black;
+    font-size: xx-large;
+    font-weight: 800;
+}
