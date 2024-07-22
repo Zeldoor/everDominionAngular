@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class TryService 
+export class PlayerService 
 {
 
   constructor(private http: HttpClient){}
@@ -13,6 +13,6 @@ export class TryService
   {
     let body = {'damage':damage,'defence':defence};
 
-    return this.http.post<any>("/api/auth/fight", body);
+    return this.http.post<any>("/api/player/fight", body);
   }
 }

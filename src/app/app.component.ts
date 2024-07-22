@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TryService } from './services/try.service';
+import { PlayerService } from './services/player.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ import { TryService } from './services/try.service';
 export class AppComponent 
 {
   title = 'EverDominion';
-  constructor(private service: TryService){}
+  constructor(private service: PlayerService){}
 
   
 
