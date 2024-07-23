@@ -6,11 +6,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MapComponent } from "./map/map.component";
 import { TroopMenuComponent } from "./troop-menu/troop-menu.component";
 import { LeaderboardMenuComponent } from "./leaderboard-menu/leaderboard-menu.component";
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, NavbarComponent, MapComponent, TroopMenuComponent, LeaderboardMenuComponent],
+  imports: [CommonModule, FormsModule, NavbarComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
   templateUrl: './leaderboard-menu.component.html',
   styleUrl: './leaderboard-menu.component.css'
 })
-export class LeaderboardMenuComponent {
-
+export class LeaderboardMenuComponent 
+{
+  
 }

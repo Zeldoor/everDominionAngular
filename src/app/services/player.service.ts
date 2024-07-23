@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Troop } from '../model/Troop';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class PlayerService
   
   fight(damage:number, defence:number)
   {
-    let body = {'damage':damage,'defence':defence};
+    let body: Troop = {'className': 'Tank', 'damage':damage, 'defence':defence};
 
     return this.http.post<any>("/api/player/fight", body);
   }
