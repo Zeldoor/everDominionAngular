@@ -1,21 +1,65 @@
-<div class="max-w-screen-xl mx-auto p-16">
+<div class="max-w-xl mx-auto p-16" >
+        <!-- fare due card una per attacco che cambia in un colore se in attacco
+             o in un altro se si è in difesa se hoverato -->
     <div
-        class="hover:bg-gray-900 bg-cyan-300 hover:text-white transition duration-300 max-w-sm rounded overflow-hidden shadow-lg">
-        <div class="py-4 px-8 bg-gray-900">
-            <img src="https://tailwindcss.com/img/jonathan.jpg" class="rounded-full h-12 w-12 mb-4">
-        </div>
-        <div class="py-4 px-8">
-            <a href="#">
-                <h4 class="text-lg mb-3 font-semibold">{{player.nick}}</h4>
+        class="  z-0 bg-gray-600 hover:text-white transition-all ease delay-100 duration-1000 hover:-translate-y-1 hover:scale-110 hover:bg-gradient-to-b from-gray-600 to-slate-400 max-w-sm rounded overflow-hidden shadow-lg" 
+        style=" border-width: 5px; border-color: #07031b; border-radius: 10px; border-style: solid;">
+        <div class="py-4 px-8 bg-[url(https://i.imgur.com/Nt1kyYc.png)] bg-repeat min-h-20" style="border-bottom-width: 3px; border-bottom-color: darkgoldenrod;">
+            
+                    <!-- icon -->
+            <img src="https://i.imgur.com/S4Vs91H.png" 
+                class="rounded-full h-12 w-12 float-right transition-all ease delay-100 duration-150 hover:-translate-y-0.5 hover:scale-110">
+            <div *ngIf="player.onDefence">                                      <!-- da implementare Attacco/Difesa-->
+                    <!-- shield -->
+                <img src="https://imgs.search.brave.com/u3ADKELIckQYTkzD6r6AYzjhWvJhDYWJ2P9nJDktNfM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG40/Lmljb25maW5kZXIu/Y29tL2RhdGEvaWNv/bnMvZmxhdC1kZXNp/Z24tc2VjdXJpdHkt/c2V0LW9uZS8yNC9z/aGllbGQtZ3JheS1j/b250b3VyLTEyOC5w/bmc" 
+                    class=" float-right size-11 mr-8 mt-1">
+            </div>
+            <div *ngIf="player.onAttack">
+                    <!-- sword -->
+                <img src="https://i.imgur.com/vigJPAb.png" class=" float-right size-14 mr-8" style=" transform: rotate(180deg);">
+            </div>
+                    <!-- nick -->
+            <a class="text-4xl font mb-3 font-extrabold text-amber-600 text-left" >
+                <h1 style="font-family: sans-serif ;padding-top: 5px">{{player.nick}}</h1>
             </a>
-            <p class="mb-2 text-sm text-gray-600">Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+        </div>
+                    <!-- 2° paragrafo -->
+        <div class="text-2xl min-h-40 font mb-3 font-extrabold text-amber-600 text-left pl-7" style="padding-top: 5px">
 
-            <img src="https://images.pexels.com/photos/461077/pexels-photo-461077.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500" class="w-100">
+            <div class="float-left" style="margin-left: 90px;">
+                <img src="https://cdn.discordapp.com/attachments/1263758838343929956/1265281060338532363/sword.png?ex=66a0f050&is=669f9ed0&hm=5502f4c5e858bdfcfef47c6e55c9727f73739572ec8f1488944c74b3b0a27f6e&" 
+                        class=" size-10 mt-2 mr-0.5">
+                <img src="https://media.discordapp.net/attachments/1240649000085098497/1265280763423752283/pngwing.com.png?ex=66a0f009&is=669f9e89&hm=dc3c0e57f0c029fe05b236e033dadf17c33ba612d23044011449b2ce5b1d35bb&=&format=webp&quality=lossless&width=460&height=460" 
+                        class=" size-10  mr-1">
+            </div>
 
-            <hr class="mt-4">
-            <span class="text-xs">ARTICLE</span>
-            &nbsp;<span class="text-xs text-gray-500">PROCESS</span>
+
+            <div class="float left" style="text-shadow: 0 0 3px black, 0 0 5px black; font-weight: 600;">
+                <h4 class="mt-3" style="font-family: cursive, sans-serif; margin-left: 190px;"> <i style="color: rgb(138, 47, 47);">{{player.attack}}</i> </h4>     <!--  DA IMPLEMENTARE FONT PIU' DECENTI-->
+                <h4 class="mt-2 ml-3" style="font-family: cursive; margin-left: 190px;"> <i style="color: rgb(23, 139, 0);">{{player.health}}</i></h4>
+            </div>   
+        </div>
+        <div class="  ">
+            <div *ngFor="let troop of player.troops" class="container  transition-all ease delay-100 duration-1000  hover:scale-y-110 hover:border-6 border-4 bg-transparent  w-1/4 h-25 float-left border-black hover:border-amber-600 z-0 hover:z-50 border-solid " style="border-radius: 5px; border-style: solid;">
+                <div class="">
+                    <img src="https://i.imgur.com/FWV8Aa0.png" 
+                        class="image rounded-full h-24 w-24 float-left">
+                    <!-- text -->
+                    <div class="float-right mt-6 mr-5" style="font-family: cursive; font-weight: 600;"> {{troop.damage}}
+                        <br style="background-color: transparent;color: black;font-weight: bold;font-size: 16px;"> 
+                          {{troop.health}}
+                    </div>
+                    <!-- imgs -->
+                    <div class="float-right">
+                        <img src="https://cdn.discordapp.com/attachments/1263758838343929956/1265281060338532363/sword.png?ex=66a0f050&is=669f9ed0&hm=5502f4c5e858bdfcfef47c6e55c9727f73739572ec8f1488944c74b3b0a27f6e&" 
+                                class=" size-5 mt-7 mr-0.5">
+                        <img src="https://media.discordapp.net/attachments/1240649000085098497/1265280763423752283/pngwing.com.png?ex=66a0f009&is=669f9e89&hm=dc3c0e57f0c029fe05b236e033dadf17c33ba612d23044011449b2ce5b1d35bb&=&format=webp&quality=lossless&width=460&height=460" 
+                                class=" size-6  mr-1">
+                    </div>
+                    
+                </div>
+                    
+            </div>
         </div>
     </div>
 </div>
