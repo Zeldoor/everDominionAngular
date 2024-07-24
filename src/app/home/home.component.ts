@@ -4,12 +4,6 @@ import { LeaderboardMenuComponent } from '../leaderboard-menu/leaderboard-menu.c
 import { MapComponent } from '../map/map.component';
 import { TroopMenuComponent } from '../troop-menu/troop-menu.component';
 
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
-}
 
 /**
  * @title Dynamic grid-list
@@ -22,8 +16,4 @@ export interface Tile {
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  tiles: Tile[] = [
-    {text: 'One', cols: 7, rows: 2, color: 'lightblue'},
-    {text: 'Two', cols: 3, rows: 1, color: 'lightgreen'},
-  ];
 }

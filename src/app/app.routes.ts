@@ -6,5 +6,6 @@ import { FightPageComponent } from './fight-page/fight-page.component';
 export const routes: Routes = 
 [
     {path: "", component: HomeComponent},
+    {path: "player", component: PlayerCardComponent},
     {path: "fight", component: FightPageComponent},
 ];

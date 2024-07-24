@@ -3,11 +3,12 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { PlayerCardComponent } from '../player-card/player-card.component';
 import { Troop } from '../model/Troop';
 import { Player } from '../model/Player';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-fight-page',
   standalone: true,
-  imports: [MatGridListModule, PlayerCardComponent],
+  imports: [MatGridListModule, PlayerCardComponent, CommonModule],
   templateUrl: './fight-page.component.html',
   styleUrl: './fight-page.component.css'
 })
@@ -16,15 +17,18 @@ export class FightPageComponent
   printString: string = "hjfbgasfabfabh";
   classNames: string[] = ["Tank", "Fighter", "Healer", "Bard"]
   players: Player[] = [];
-
+  messages: string[] = [];
+  
   constructor()
   {
     this.players[0] = {nick: "Cesare", score: 10, troops: this.randomTroop(), damage:0, health:0, onAttack:false, maxTroops:6}
     this.players[1] = {nick: "Mattia", score: 10, troops: this.randomTroop(), damage:0, health:0, onAttack:true, maxTroops:6}
-
+    this.messages = [this.players[0].nick+" dealt 8 dmg to "+this.players[1].nick, this.players[1].nick+" dealt 5 dmg to "+this.players[0].nick, this.players[0].nick+" dealt 6 dmg to "+this.players[1].nick, this.players[1].nick+" dealt 8 dmg to "+this.players[0].nick]
+    
     this.getPlayerStats()
   }
-
+  
+  
   
   randomTroop(): Troop[]
   {

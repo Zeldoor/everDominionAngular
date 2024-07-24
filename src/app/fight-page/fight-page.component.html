@@ -4,7 +4,13 @@
     </mat-grid-tile>
 
     <mat-grid-tile>
-        <div><span class="bg-white text-gray-950">{{printString}}</span></div>
+        <div class="message-box">
+            <div *ngFor="let message of messages">                 <!--   DA AGGIUNGERE MAPPA DI MESSAGGI PER POTERLI INCOLONNARE E TENERE LA CRONOLOGIA   -->
+                <div><span class="bg-white text-gray-950">{{message}}</span></div>
+
+            </div>
+
+        </div>
     </mat-grid-tile>
 
     <mat-grid-tile>
