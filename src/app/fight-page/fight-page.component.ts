@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { PlayerCardComponent } from '../player-card/player-card.component';
-import { Troop } from '../model/Troop';
 import { Player } from '../model/Player';
 import { CommonModule } from '@angular/common';
 import { PlayerService } from '../services/player.service';
