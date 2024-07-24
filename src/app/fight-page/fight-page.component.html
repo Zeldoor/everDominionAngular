@@ -4,7 +4,13 @@
     </mat-grid-tile>
 
     <mat-grid-tile>
-        <div><span class="bg-white text-gray-950">{{printString}}</span></div>
+        <div class="message-box">
+            <div *ngFor="let message of messages; let i = index; let isLast = last" [ngStyle]="{'order': -i}">
+              <div class="message">
+                <span class="bg-white text-gray-950">{{ message }}</span>
+              </div>
+            </div>
+          </div>
     </mat-grid-tile>
 
     <mat-grid-tile>

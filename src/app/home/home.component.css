@@ -1,13 +1,37 @@
-.map-troop-container {
-    display: flex;
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.map-container {
+  flex: 1;
+  height: 600px;
+  width: 1300px;
+  margin-right: 16px;
+}
+
+.leaderboard-container {
+padding-left: 10%;
+    width: 30%;
+}
+
+.troop-menu-container {
+  margin-top: 16px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .main-content {
     flex-direction: column;
-    height: 100%;
   }
-  
-  .map-container {
-    flex: 1 1 auto;
+
+  .leaderboard-container {
+    width: 100%;
+    margin-top: 16px;
   }
-  
-  .troop-menu-container {
-    flex: 0 0 auto;
-  }
+}
