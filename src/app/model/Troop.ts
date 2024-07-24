@@ -1,6 +1,8 @@
 export interface Troop
 {
     className: string;
-    damage: number;
+    minDamage: number;
+    maxDamage: number;
     health: number;
+    playerId: number;
 }

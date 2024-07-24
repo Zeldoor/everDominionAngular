@@ -2,12 +2,13 @@ import { Troop } from "./Troop";
 
 export interface Player
 {
+    id:number;
     nick: String;
-    score: number;
-    // position: {x: number, y: number};
+    playerMinDmg: number;
+    playerMaxDmg: number;
+    playerHealth: number;
+    lifeEnergy: number;
+    gold: number;
+
     troops: Troop[];
-    damage: number;
-    health: number;
-    onAttack: boolean;
-    maxTroops: 6;
 }

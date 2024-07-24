@@ -26,11 +26,4 @@ export class AppComponent
   defence : number = 0;
   result : string = "Match"
   
-
-  fight()
-  {
-    this.service.fightTEST(this.damage, this.defence).subscribe(
-      res => this.result = res.result
-    );
-  }
 }
