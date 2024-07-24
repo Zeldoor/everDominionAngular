@@ -14,15 +14,15 @@ import { Player } from '../model/Player';
 export class FightPageComponent 
 {
   printString: string = "hjfbgasfabfabh";
-  classNames: string[] = ["Tank", "Fighter", "Healer", "Bard"]
+  classNames: string[] = ["Tank", "Fighter", "Healer", "Bard"];
   players: Player[] = [];
 
   constructor()
   {
-    this.players[0] = {nick: "Cesare", score: 10, troops: this.randomTroop(), damage:0, health:0, onAttack:false, maxTroops:6}
-    this.players[1] = {nick: "Mattia", score: 10, troops: this.randomTroop(), damage:0, health:0, onAttack:true, maxTroops:6}
+    this.players[0] = {nick: "Cesare", score: 10, troops: this.randomTroop(), damage:0, health:0, onAttack:false, maxTroops:6};
+    this.players[1] = {nick: "Mattia", score: 10, troops: this.randomTroop(), damage:0, health:0, onAttack:true, maxTroops:6};
 
-    this.getPlayerStats()
+    this.getPlayerStats();
   }
 
   

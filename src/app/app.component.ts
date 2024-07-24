@@ -29,7 +29,7 @@ export class AppComponent
 
   fight()
   {
-    this.service.fight(this.damage, this.defence).subscribe(
+    this.service.fightTEST(this.damage, this.defence).subscribe(
       res => this.result = res.result
     );
   }
