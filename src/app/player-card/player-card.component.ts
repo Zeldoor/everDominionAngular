@@ -1,11 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { Player } from '../model/Player';
 import { CommonModule } from '@angular/common';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { TroopCardComponent } from '../troop-card/troop-card.component';
 
 @Component({
   selector: 'app-player-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatGridListModule, TroopCardComponent],
   templateUrl: './player-card.component.html',
   styleUrl: './player-card.component.css'
 })
