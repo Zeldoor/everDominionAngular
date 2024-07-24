@@ -1,0 +1,13 @@
+.map-troop-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .map-container {
+    flex: 1 1 auto;
+  }
+  
+  .troop-menu-container {
+    flex: 0 0 auto;
+  }
