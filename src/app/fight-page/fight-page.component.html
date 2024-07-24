@@ -5,12 +5,12 @@
 
     <mat-grid-tile>
         <div class="message-box">
-            <div *ngFor="let message of messages">                 <!--   DA AGGIUNGERE MAPPA DI MESSAGGI PER POTERLI INCOLONNARE E TENERE LA CRONOLOGIA   -->
-                <div><span class="bg-white text-gray-950">{{message}}</span></div>
-
+            <div *ngFor="let message of messages; let i = index; let isLast = last" [ngStyle]="{'order': -i}">
+              <div class="message">
+                <span class="bg-white text-gray-950">{{ message }}</span>
+              </div>
             </div>
-
-        </div>
+          </div>
     </mat-grid-tile>
 
     <mat-grid-tile>
