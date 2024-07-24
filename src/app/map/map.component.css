@@ -1,15 +1,25 @@
-.map
-{
+.map-container {
     width: 100%;
-    height: auto;
-    transform-origin: top left;
+    max-width: 100%;
+    overflow: hidden; /* Ensures the container doesn't overflow its parent */
+    box-sizing: border-box;
 }
 
-.map-container {
-    width: 1000px;
-    height: 600px;
-    margin-left:10%;
-    padding-top:1%;
-    overflow: hidden;
-    position: relative;
+.map {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    border: 5px solid darkgoldenrod;
+    display: block; /* Ensures the image doesn't have extra space around it */
+    object-fit: cover; /* Ensures the image covers the space while maintaining aspect ratio */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .map-container {
+        padding: 0; /* Optional: Adjust padding or margins for smaller screens */
+    }
+
+    .map {
+        border-width: 3px; /* Optional: Adjust border width for smaller screens */
+    }
 }
