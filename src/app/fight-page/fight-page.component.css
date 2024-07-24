@@ -1,37 +1,35 @@
-/* .message-box
+ .message-box
 {
-    margin-top:  70%;
-    margin-left: 5%;
+    margin-top:  20%;
+    margin-left: 0%;
     background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
+    width: 26%;
+    height:35%;
     background-image: url("https://i.imgur.com/iswiR59.png");
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    position: fixed;
 }
 
-.message
+.messages
 {
-    float: right;
-    
-} */
+margin-bottom: 3%;
+}
 
-
-
-.message-box {
-    position: fixed;
-    bottom: 16px;
-    right: 16px;
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: flex-end;
-    max-width: 300px;
-    z-index: 1000;
-  }
-  
-  .message {
-    margin: 8px 0;
-    padding: 10px;
-    background-color: #ffffff;
-    color: #333;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+.message {
+padding-right: 200px;
+margin-bottom: 1%;
+padding: 10px;
+max-width: 25rem;
+width: fit-content;
+min-width: 20rem;
+text-align: center;
+margin-top: 1%;
+border-style: solid;
+border-color: darkgoldenrod;
+border-width: 2px;
+border-radius: 5px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+background-color: rgba(46, 33, 22, 0.8) ;
+}
