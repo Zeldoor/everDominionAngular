@@ -1,0 +1,13 @@
+<mat-grid-list cols="3" rowHeight="45rem">
+    <mat-grid-tile>
+        <app-player-card [player]="players[0]"></app-player-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+        <div><span class="bg-white text-gray-950">{{printString}}</span></div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+        <app-player-card [player]="players[1]"></app-player-card>
+    </mat-grid-tile>
+  </mat-grid-list>

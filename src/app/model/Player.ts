@@ -6,10 +6,8 @@ export interface Player
     score: number;
     // position: {x: number, y: number};
     troops: Troop[];
-    attack: number;
+    damage: number;
     health: number;
     onAttack: boolean;
-    onDefence: boolean;
     maxTroops: 6;
-    
 }
