@@ -1,27 +1,16 @@
-.card
-{
-    float: center;
-    width: 65%;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 5px;
-    border-radius: 15px;
-    border-style: double;
-    border-width: 10px;
-    border-color: black;
-    background-color: #EDC785;
-}
-
-.scritte
-{
-    text-align: center;
-    text-shadow: black;
-    font-size: x-large;
-    font-weight: 800;
-}
-
 .leaderboard
+{
+    width: fit-content;
+    min-height: 675px;
+    border-width: 5px;
+    border-color: darkgoldenrod;
+    margin-right: 10%;
+    margin-top: 10%;
+    float: right;
+    background-repeat: no-repeat;
+
+}
+.titolo
 {
     float: center;
     width: 300px;
@@ -36,3 +25,26 @@
     border-color: black;
     background-color: #EDC785;
 }
+.card
+{
+    float: center;
+    width: 65%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    border-radius: 15px;
+    border-style: double;
+    border-width: 10px;
+    border-color: black;
+    background-color: #EDC785;
+}
+.scritte
+{
+    text-align: center;
+    text-shadow: black;
+    font-size: x-large;
+    font-weight: 800;
+}
+
+
