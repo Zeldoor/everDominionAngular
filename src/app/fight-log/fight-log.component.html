@@ -2,8 +2,8 @@
     <div class="messages">
         @for (message of results; track $index) 
         {
-            <div class="message" [style.align-self]="messageAlign(message) ">
-                <span style="color: #000000; opacity: 1;">{{message}}</span>
+            <div class="message" [class]="cssClass(message)" [style.align-self]="messageAlign(message)">
+                <span class="textstyle">{{message}}</span>
             </div>
         }
     </div>
