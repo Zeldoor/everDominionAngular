@@ -21,7 +21,7 @@ export class FightLogComponent
 
   messageAlign(message: string) : string
   {
-    return message.includes("You dealt") ? "flex-end" : "flex-start";
+    return message.includes("You dealt") ? "flex-start" : "flex-end";
   }
 
   cssClass(message: string)

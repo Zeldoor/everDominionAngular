@@ -13,30 +13,40 @@
     overflow: hidden;
 }
 
-.messages 
-{
+.messages {
     margin-bottom: 75%;
     margin-left: 15%;
     padding-right: 4%;
-    margin-right: 4%;
+    margin-right: 8%;
     margin-top: 85%;
     width: 100%;
     height: 61%;
-    overflow-y: auto;
+    overflow-y: scroll; /* Allows scrolling */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
     display: flex;
     flex-direction: column-reverse;
+    scrollbar-width: none; /* For Firefox */
+}
+
+/* For Webkit browsers like Chrome and Safari */
+.messages::-webkit-scrollbar {
+    display: none;
 }
 
 .attackerStyle
 {
-    color:aqua;
-    opacity: 1
+    
+    border-width: 3px;
+    border-color: darkcyan;
+    border-style: solid;
 }
 
 .defenderStyle
 {
-    color:crimson;
-    opacity: 1
+    opacity: 1;
+    border-width: 3px;
+    border-color: rgb(175, 35, 35);
+    border-style: solid;
 }
 
 .message {
@@ -46,13 +56,19 @@
     min-height: 2.8rem;
     min-width: 20rem;
     text-align: center;
-    margin: 1% 0;
+    margin: 2% 0;
     background-image:url("https://i.imgur.com/1B4UMTQ.png") ;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: rgba(46, 33, 22, 0.8);
 }
 
+.textstyle
+{
+    color: black;
+    opacity: 1;
+    font-weight: 500;
+}
 
 .bottone {
     position: fixed;
