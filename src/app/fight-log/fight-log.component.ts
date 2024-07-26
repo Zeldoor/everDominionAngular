@@ -23,4 +23,9 @@ export class FightLogComponent
   {
     return message.includes("You dealt") ? "flex-end" : "flex-start";
   }
+
+  cssClass(message: string)
+  {
+    return message.includes("You dealt") ? "attackerStyle" : "defenderStyle";
+  }
 }

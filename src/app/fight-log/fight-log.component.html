@@ -3,7 +3,7 @@
         @for (message of results; track $index) 
         {
             <div class="message" [style.align-self]="messageAlign(message)">
-                <span style="color: #000000; opacity: 1;">{{message}}</span>
+                <span [class]="cssClass(message)">{{message}}</span>
             </div>
         }
     </div>

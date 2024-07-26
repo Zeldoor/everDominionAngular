@@ -26,6 +26,18 @@
     flex-direction: column-reverse;
 }
 
+.attackerStyle
+{
+    color:aqua;
+    opacity: 1
+}
+
+.defenderStyle
+{
+    color:crimson;
+    opacity: 1
+}
+
 .message {
     padding: 10px;
     max-width: 25rem;
