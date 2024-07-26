@@ -7,7 +7,7 @@ export interface Player
     playerMinDmg: number;
     playerMaxDmg: number;
     playerHealth: number;
-    lifeEnergy: number;
+    stamina: number;
     gold: number;
 
     troops: Troop[];
