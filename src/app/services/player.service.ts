@@ -12,12 +12,12 @@ export class PlayerService
 
   constructor(private http: HttpClient){}
   
-  fight(body: Fight)
+  fight(body: Fight): Observable<Fight>
   {
-    return this.http.post<any>("/api/player/fight", body); //deve mandare un FightDTO
+    return this.http.post<Fight>("/api/player/fight", body); 
   }
 
-  getAll():Observable<Player[]>
+  getAll(): Observable<Player[]>
   {
     return this.http.get<Player[]>("/api/player");
   }
@@ -27,8 +27,8 @@ export class PlayerService
     return this.http.get<Player>(`/api/player/${id}`);
   }
 
-  insert(student:Player):Observable<Player>
+  insert(body:Player): Observable<Player>
   {
-    return this.http.post<Player>("/api/player", student);
+    return this.http.post<Player>("/api/player", body);
   }
 }

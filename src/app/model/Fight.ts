@@ -2,6 +2,7 @@ import { Player } from "./Player";
 
 export interface Fight
 {
-    Attacker: Player;
-    Defender: Player;
+    attacker: Player;
+    defender: Player;
+    results: string[];
 }

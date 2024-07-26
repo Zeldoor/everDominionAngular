@@ -5,11 +5,12 @@
 
     <mat-grid-tile>
         <div class="message-box">
+            <button (click)="beginFight()">FIGHT</button>
             <div class="messages">
                 <div *ngFor="let message of messages; let i = index; let isLast = last">
-                <div class="message">
-                    <span style="color: #d3ae5e; opacity: 1;">{{ message }}</span>
-                </div>
+                    <div class="message">
+                        <span style="color: #d3ae5e; opacity: 1;">{{ message }}</span>
+                    </div>
                 </div>
             </div>
           </div>

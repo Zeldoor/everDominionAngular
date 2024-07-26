@@ -1,4 +1,4 @@
-<div class="max-w-xl mx-auto p-16" >
+<div class="container" >
         <!-- fare due card una per attacco che cambia in un colore se in attacco
             o in un altro se si è in difesa se hoverato -->
     <div
@@ -19,49 +19,58 @@
             </a>
         </div>
                     <!-- 2° paragrafo -->
-        <div class="text-2xl min-h-40 font mb-3 font-extrabold text-amber-600 text-left pl-7" style="padding-top: 5px">
+        <div class="text-2xl min-h-40 font mb-3 font-extrabold text-amber-600 text-left w-96">
+            <mat-grid-list cols="4" rowHeight="3rem">
 
-            <div class="float-left" style="margin-left: 90px;">
-                <img src="https://i.imgur.com/Rj6SLYh.png" 
-                        class=" size-10 mt-2 mr-0.5">
-                <img src="https://i.imgur.com/Rj6SLYh.png" 
-                        class=" size-10 mt-2 mr-0.5">
-                <img src="https://i.imgur.com/gHJqR9t.png" 
-                        class=" size-10  mr-1">
-            </div>
+                <mat-grid-tile></mat-grid-tile>    <!--  RIGA VUOTA -->
 
+                <mat-grid-tile colspan="1" rowspan="1">
+                    <img src="https://i.imgur.com/Rj6SLYh.png" class=" size-10 mt-2 mr-0.5">
+                </mat-grid-tile>
 
-            <div class="float left" style="text-shadow: 0 0 3px black, 0 0 5px black; font-weight: 600;">
-                <h4 class="mt-3" style="font-family: cursive, sans-serif; margin-left: 190px;"> <i style="color: rgb(138, 47, 47);">{{player.playerMinDmg}}</i> </h4>     <!--  DA IMPLEMENTARE FONT PIU' DECENTI-->
-                <h4 class="mt-3" style="font-family: cursive, sans-serif; margin-left: 190px;"> <i style="color: rgb(138, 47, 47);">{{player.playerMaxDmg}}</i> </h4>     <!--  DA IMPLEMENTARE FONT PIU' DECENTI-->
-                <h4 class="mt-2 ml-3" style="font-family: cursive; margin-left: 190px;"> <i style="color: rgb(23, 139, 0);">{{player.playerHealth}}</i></h4>
-            </div>   
+                <mat-grid-tile colspan="1" rowspan="1">
+                    <h4 style="font-family: cursive, sans-serif;"> 
+                        <i style="color: rgb(255, 136, 0);">{{player.playerMinDmg}}</i> 
+                    </h4>  
+                </mat-grid-tile>
+
+                <mat-grid-tile></mat-grid-tile>  <!--  RIGA VUOTA -->
+                <mat-grid-tile></mat-grid-tile>  <!--  RIGA VUOTA -->
+                
+                <mat-grid-tile colspan="1" rowspan="1">
+                    <img src="https://i.imgur.com/Rj6SLYh.png" class=" size-10 mt-2 mr-0.5">
+                </mat-grid-tile>
+
+                <mat-grid-tile colspan="1" rowspan="1">
+                    <h4 style="font-family: cursive, sans-serif;"> 
+                        <i style="color: rgb(255, 36, 36);">{{player.playerMaxDmg}}</i> 
+                    </h4>  
+                </mat-grid-tile>
+
+                <mat-grid-tile></mat-grid-tile>  <!--  RIGA VUOTA -->
+                <mat-grid-tile></mat-grid-tile>  <!--  RIGA VUOTA -->
+
+                <mat-grid-tile colspan="1" rowspan="1">
+                    <img src="https://i.imgur.com/gHJqR9t.png" class=" size-10  mr-1">
+                </mat-grid-tile>
+
+                <mat-grid-tile colspan="1" rowspan="1">
+                    <h4 style="font-family: cursive, sans-serif;;"> 
+                        <i style="color: rgb(75, 209, 49);">{{player.playerHealth}}</i>
+                    </h4> 
+                </mat-grid-tile>
+            </mat-grid-list>
         </div>
 
         <div>
-            @for (troop of player.troops; track troop) 
-            {
-            <div class="container  transition-all ease delay-100 duration-500  hover:scale-y-110 hover:border-6 border-4 bg-transparent  w-1/4 h-25 float-left border-black hover:border-amber-600 z-0 hover:z-50 border-solid " style="border-radius: 5px; border-style: solid;">
-                <div class="">
-                    <img src="https://i.imgur.com/FWV8Aa0.png" 
-                        class="image rounded-full h-24 w-24 float-left">
-                    <!-- text -->
-                    <div class="float-right mt-6 mr-5" style="font-family: cursive; font-weight: 600;"> {{troop.minDamage}}
-                        <br style="background-color: transparent;color: black;font-weight: bold;font-size: 16px;"> 
-                        {{troop.health}}
-                    </div>
-                    <!-- imgs -->
-                    <div class="float-right">
-                        <img src="https://i.imgur.com/Rj6SLYh.png" 
-                                class=" size-5 mt-7 mr-0.5">
-                        <img src="https://i.imgur.com/gHJqR9t.png" 
-                                class=" size-6  mr-1">
-                    </div>
-                    
-                </div>
-                    
-            </div>
-            }
+            <mat-grid-list cols="2" rowHeight="7rem">
+                @for (troop of player.troops; track troop) 
+                {
+                    <mat-grid-tile>
+                        <app-troop-card [troop]="troop"></app-troop-card>
+                    </mat-grid-tile>
+                }
+            </mat-grid-list>
         </div>
     </div>
 </div>
