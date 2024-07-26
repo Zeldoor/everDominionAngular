@@ -17,6 +17,7 @@
 {
     margin-bottom: 75%;
     margin-left: 15%;
+    padding-right: 4%;
     margin-right: 4%;
     margin-top: 85%;
     width: 100%;
@@ -40,13 +41,7 @@
     background-color: rgba(46, 33, 22, 0.8);
 }
 
-.message.player {
-    align-self: flex-end;
-}
 
-.message.enemy {
-    align-self: flex-start;
-}
 .bottone {
     position: fixed;
     background-image: url("https://i.imgur.com/twgm68c.png");

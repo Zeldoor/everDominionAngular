@@ -14,13 +14,15 @@ export class FightLogComponent
 
   @Output() fightStart : EventEmitter<void> = new EventEmitter;
 
-  fightButtonClicked()
+  fightButtonClicked(): void
   {
       this.fightStart.emit();
   }
 
-  messageAlign(message: string)
+  messageAlign(message: string) : string
   {
     return message.includes("You dealt") ? "flex-end" : "flex-start";
   }
+
+
 }
