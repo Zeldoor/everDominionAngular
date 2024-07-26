@@ -1,12 +1,12 @@
 .map-container {
-    width: 100%;
+    width: 1100%;
     max-width: 100%;
     overflow: hidden; /* Ensures the container doesn't overflow its parent */
     box-sizing: border-box;
 }
 
 .map {
-    width: 100%;
+    width: 1100px;
     height: auto; /* Maintain aspect ratio */
     border: 5px solid darkgoldenrod;
     display: block; /* Ensures the image doesn't have extra space around it */

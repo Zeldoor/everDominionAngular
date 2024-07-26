@@ -1,0 +1,11 @@
+<div class="message-box">
+    <div class="messages">
+        @for (message of results; track $index) 
+        {
+            <div class="message @(message.includes('You dealt') ? 'player' : 'enemy')">
+                <span style="color: #000000; opacity: 1;">{{message}} </span>
+            </div>
+        }
+    </div>
+</div>
+<button class="bottone hover:bg-[url(https://i.imgur.com/WB1cXhE.png)]" (click)="fightButtonClicked()">FIGHT</button>
