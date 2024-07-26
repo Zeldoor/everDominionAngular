@@ -10,16 +10,17 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class FightLogComponent 
 {
-  
+  @Input() results !: string[];
 
-@Input() results !: string[];
+  @Output() fightStart : EventEmitter<void> = new EventEmitter;
 
-@Output() fightStart : EventEmitter<void> = new EventEmitter;
+  fightButtonClicked()
+  {
+      this.fightStart.emit();
+  }
 
-fightButtonClicked()
-{
-    this.fightStart.emit();
-}
-
-
+  messageAlign(message: string)
+  {
+    return message.includes("You dealt") ? "flex-end" : "flex-start";
+  }
 }
