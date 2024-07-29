@@ -21,11 +21,11 @@ export class FightLogComponent
 
   messageAlign(message: string) : string
   {
-    return message.includes("You dealt") ? "flex-start" : "flex-end";
+    return message.includes("cesare ha") ? "flex-start" : "flex-end";
   }
 
   cssClass(message: string)
   {
-    return message.includes("You dealt") ? "attackerStyle" : "defenderStyle";
+    return message.includes("cesare ha") ? "attackerStyle" : "defenderStyle";
   }
 }
