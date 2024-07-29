@@ -1,62 +1,57 @@
 <div class="container" >
         <!-- fare due card una per attacco che cambia in un colore se in attacco
             o in un altro se si è in difesa se hoverato -->
-    <div
-        class="  z-0 bg-gray-600 hover:text-white transition-all ease delay-100 duration-500 hover:-translate-y-1 hover:scale-110 hover:bg-gradient-to-b from-gray-600 to-slate-400 max-w-sm rounded overflow-hidden shadow-lg" 
+    <div class="  z-0 bg-[url(https://i.imgur.com/4y7qkIV.png)] hover:text-white transition-all ease delay-100 duration-500 hover:-translate-y-1 hover:scale-110  max-w-sm rounded overflow-hidden shadow-lg" 
         style=" border-width: 5px; border-color: #07031b; border-radius: 10px; border-style: solid;">
-        <div class="py-4 px-8 bg-[url(https://i.imgur.com/Nt1kyYc.png)] bg-repeat min-h-20" style="border-bottom-width: 3px; border-bottom-color: darkgoldenrod;">
+        <div class="py-4 px-8 bg-[url(https://i.imgur.com/UjN01WZ.png)] bg-repeat min-h-20" style="border-bottom-width: 3px; border-bottom-color: goldenrod;">
             
-                    <!-- icon -->
-            <img src="https://i.imgur.com/S4Vs91H.png" 
-                class="rounded-full h-12 w-12 float-right transition-all ease delay-100 duration-150 hover:-translate-y-0.5 hover:scale-110">
+                    
                     <!-- <div>
                         Combat Icon
                         <img [src]="setCombatIcon(player.onAttack)" class=" float-right size-14 mr-8" style=" transform: rotate(180deg);"> 
                     </div> -->
+            
                     <!-- nick -->
-            <a class="text-4xl font mb-3 font-extrabold text-amber-600 text-left" >
-                <h1 style="font-family: sans-serif ;padding-top: 5px">{{player.nick}}</h1>
-            </a>
+            <div class="bg-[url(https://i.imgur.com/Qxom8K0.png)] bg-no-repeat bg-cover w-80   z-10  " style="transform: translateX(-35px); min-height: 4.0625rem;" >
+                    <a class="nome text-4xl font mb-3 font-extrabold text-amber-500 text-center">
+                    <h1 style="font-family: Georgia, 'Times New Roman', Times, serif ;padding-top: 10px">   &nbsp;   {{player.nick}}</h1>
+                </a>
+                <!-- icon -->
+            <img src="https://i.imgur.com/S4Vs91H.png" 
+            class="rounded-full  h-14 w-14 float-right transition-all ease delay-100 duration-150 hover:-translate-y-0.5 hover:scale-110 z-50" style="transform: translate(50px, -43px); border-color: darkgoldenrod; border-width: 3px; border-style: groove;" >
+            </div>
+            
         </div>
                     <!-- 2° paragrafo -->
         <div class="text-2xl min-h-40 font mb-3 font-extrabold text-amber-600 text-left w-96">
-            <mat-grid-list cols="4" rowHeight="3rem">
+            <mat-grid-list cols="4" rowHeight="3rem" class="bg-[url(https://i.imgur.com/hDQMJY2.png)] bg-no-repeat ">
 
                 <mat-grid-tile></mat-grid-tile>    <!--  RIGA VUOTA -->
 
+
+                <!-- DAMAGE -->
                 <mat-grid-tile colspan="1" rowspan="1">
                     <img src="https://i.imgur.com/Rj6SLYh.png" class=" size-10 mt-2 mr-0.5">
                 </mat-grid-tile>
 
                 <mat-grid-tile colspan="1" rowspan="1">
-                    <h4 style="font-family: cursive, sans-serif;"> 
-                        <i style="color: rgb(255, 136, 0);">{{player.playerMinDmg}}</i> 
-                    </h4>  
-                </mat-grid-tile>
-
-                <mat-grid-tile></mat-grid-tile>  <!--  RIGA VUOTA -->
-                <mat-grid-tile></mat-grid-tile>  <!--  RIGA VUOTA -->
-                
-                <mat-grid-tile colspan="1" rowspan="1">
-                    <img src="https://i.imgur.com/Rj6SLYh.png" class=" size-10 mt-2 mr-0.5">
-                </mat-grid-tile>
-
-                <mat-grid-tile colspan="1" rowspan="1">
-                    <h4 style="font-family: cursive, sans-serif;"> 
-                        <i style="color: rgb(255, 36, 36);">{{player.playerMaxDmg}}</i> 
+                    <h4 style="font-family: cursive, sans-serif; transform: translate(0px,5px);"> 
+                        <i class="nome" style="color: rgb(170, 30, 30);">{{player.playerMinDmg}}-{{player.playerMaxDmg}}</i> 
                     </h4>  
                 </mat-grid-tile>
 
                 <mat-grid-tile></mat-grid-tile>  <!--  RIGA VUOTA -->
                 <mat-grid-tile></mat-grid-tile>  <!--  RIGA VUOTA -->
 
+
+                <!--  HEALTH -->
                 <mat-grid-tile colspan="1" rowspan="1">
                     <img src="https://i.imgur.com/gHJqR9t.png" class=" size-10  mr-1">
                 </mat-grid-tile>
 
                 <mat-grid-tile colspan="1" rowspan="1">
-                    <h4 style="font-family: cursive, sans-serif;;"> 
-                        <i style="color: rgb(75, 209, 49);">{{player.playerHealth}}</i>
+                    <h4 style="font-family: cursive, sans-serif;transform: translate(-10px,2px);"> 
+                        <i class="nome" style="color: rgb(31, 170, 84);">{{player.playerHealth}}</i>
                     </h4> 
                 </mat-grid-tile>
             </mat-grid-list>

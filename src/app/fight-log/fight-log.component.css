@@ -24,7 +24,7 @@
     overflow-y: scroll; /* Allows scrolling */
     overflow-x: hidden; /* Prevents horizontal scrolling */
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     scrollbar-width: none; /* For Firefox */
 }
 
