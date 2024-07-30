@@ -17,10 +17,10 @@ import { FightLogComponent } from '../fight-log/fight-log.component';
 export class FightPageComponent 
 {
   printString: string = "";
-  players: Player[] = [];
   results: string[] = [];
   fightRes !: Fight;
   buttonOn = true;
+  players: Player[] = [];
   
   
   constructor(private playerServ: PlayerService)

@@ -1,6 +1,19 @@
-export interface User
-{
-    email: string;
-    password: string;
-    roles: string[];
+import { Player } from "./Player";
+
+
+export interface User{
+
+    id:number;
+    username:string;
+    password:string;
+    role:string;
+    email:string;
+    player_id:number;
+
+
+
+
+
+
+
 }
