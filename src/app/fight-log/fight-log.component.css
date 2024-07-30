@@ -14,7 +14,7 @@
 }
 
 .messages {
-    margin-bottom: 90%;
+    margin-bottom: 96%;
     margin-left: 12%;
     padding-right: 4%;
     margin-right: 10%;
@@ -109,7 +109,7 @@
 {
     position: fixed;
     width: 1000px;
-    transform: translate(-10px, -203px);
+    transform: translate(-10px, -210px);
     font-family: Georgia, 'Times New Roman', Times, serif ;
     font-size: xx-large;
     font-weight: 800;
