@@ -11,4 +11,5 @@ export interface Player
     gold: number;
 
     troops: Troop[];
+    // troops_bought:Troop[];
 }

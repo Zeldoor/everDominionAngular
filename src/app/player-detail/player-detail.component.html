@@ -1,0 +1,128 @@
+<body class="container">
+    <div class="b1">
+
+        <!-- IMG -->
+        <img src="https://i.imgur.com/S4Vs91H.png" 
+            class="rounded-full  h-14 w-14 float-right transition-all ease delay-100 duration-150 hover:-translate-y-0.5 hover:scale-110 z-50" style="transform: translate(-240px, 70px) scale(2); border-color: darkgoldenrod; border-width: 3px; border-style: groove;" >
+            
+            
+            <!-- DATI USER DX -->
+            <a class="scatola ombra text-4xl font mb-3 font-extrabold text-center fixed" >
+                <h1 class="nome">    {{user.username}}</h1>
+                <h2 class="ruolo">{{user.role}}</h2>
+                <h2 class="email"> {{user.email}}</h2>
+            </a>
+
+            <div class="statistiche-player-box">
+                <!-- STAMINA -->
+                    <mat-grid-list cols="3" rowHeight="90px" class="stamina">
+                    <!-- 1 -->
+                        @if (player.stamina>=1) {
+                        <mat-grid-tile>
+                            <img class="stamina-icon" src="https://i.imgur.com/zwujaFN.png" alt="">
+                        </mat-grid-tile>
+                        }
+                        @else {
+                            <mat-grid-tile>
+                                <img class="stamina-icon" src="https://i.imgur.com/iIOAN0d.png" alt="">
+                            </mat-grid-tile>
+                        }
+                    <!-- 2 -->
+                        @if (player.stamina>=2) {
+                            <mat-grid-tile>
+                                <img class="stamina-icon" src="https://i.imgur.com/zwujaFN.png" alt="">
+                            </mat-grid-tile>
+                            }
+                        @else {
+                            <mat-grid-tile>
+                                <img class="stamina-icon" src="https://i.imgur.com/iIOAN0d.png" alt="">
+                            </mat-grid-tile>
+                            }
+                    <!-- 3 -->
+                        @if (player.stamina==3) {
+                            <mat-grid-tile>
+                                <img class="stamina-icon" src="https://i.imgur.com/zwujaFN.png" alt="">
+                            </mat-grid-tile>
+                            }
+                        @else {
+                            <mat-grid-tile>
+                                <img class="stamina-icon" src="https://i.imgur.com/iIOAN0d.png" alt="">
+                            </mat-grid-tile>
+                        }
+                    </mat-grid-list>
+
+                <div class="fine-stamina">
+                        <img class="img-gold" src="https://i.imgur.com/pdcKGOO.png" alt="">
+                        <h1 class="gold ombra"> {{player.gold}} </h1>
+                </div>
+
+                <div>
+                    <img src="https://i.imgur.com/Rj6SLYh.png" class="spada size-14 mt-2 mr-0.5" alt="">
+                    <h2 class=" ombra mindmg"> {{player.playerMinDmg}}</h2>
+                    <h2 class="ombra maxdmg"> {{player.playerMaxDmg}}</h2>
+                </div>
+                <div>
+                    <img src="https://i.imgur.com/gHJqR9t.png" class="cuore size-10  mr-1" alt="">
+                    <h2 class="ombra vita"> {{player.playerHealth}}</h2>
+                </div>
+
+
+            </div>
+    </div >
+
+
+
+
+    <!-- SEZIONE UNITA' ED EQUIP EQUIPAGGIATI -->
+    <div class="b2">
+        <div class="equip-equip-container">
+            <div class="equip-equip">
+                
+            </div>
+            <div class="equip-equip">
+                
+            </div>
+            <div class="equip-equip">
+                
+            </div>
+
+        </div>
+
+        <mat-grid-list class="equip-unita" cols="2" rowHeight="9.9rem">
+            @for (troop of player.troops; track troop) 
+            {
+                <mat-grid-tile>
+                    <app-troop-card [troop]="troop"></app-troop-card>
+                </mat-grid-tile>
+            }
+        </mat-grid-list>
+
+    </div>
+
+    <div class="b3">
+        <mat-grid-list cols="2" rowHeight="95px" class="inventory-equips">
+            <mat-grid-tile class="inventory-equip">
+                
+            </mat-grid-tile>
+            <mat-grid-tile class="inventory-equip">
+                
+            </mat-grid-tile>
+                
+        </mat-grid-list>
+
+        <mat-grid-list cols="3" rowHeight="95px" class="inventory-units">
+                @for (troop of mock_inventory_troops; track $index) 
+                {
+                    <mat-grid-tile>
+                        <app-troop-card [troop]="troop"></app-troop-card>
+                    </mat-grid-tile> 
+
+                }
+        </mat-grid-list>
+
+    </div>
+</body>
+
+
+
+
