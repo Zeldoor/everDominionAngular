@@ -59,7 +59,63 @@ export class PlayerDetailComponent {
       maxDamage: 35,
       health: 80,
       playerId: 2
-  }
+  },
+  {
+    className: "Knight",
+    minDamage: 20,
+    maxDamage: 30,
+    health: 150,
+    playerId: 1
+},
+{
+    className: "Mage",
+    minDamage: 25,
+    maxDamage: 35,
+    health: 80,
+    playerId: 2
+},
+{
+  className: "Knight",
+  minDamage: 20,
+  maxDamage: 30,
+  health: 150,
+  playerId: 1
+},
+{
+  className: "Mage",
+  minDamage: 25,
+  maxDamage: 35,
+  health: 80,
+  playerId: 2
+},
+{
+  className: "Knight",
+  minDamage: 20,
+  maxDamage: 30,
+  health: 150,
+  playerId: 1
+},
+{
+  className: "Mage",
+  minDamage: 25,
+  maxDamage: 35,
+  health: 80,
+  playerId: 2
+},
+{
+  className: "Knight",
+  minDamage: 20,
+  maxDamage: 30,
+  health: 150,
+  playerId: 1
+},
+{
+  className: "Mage",
+  minDamage: 25,
+  maxDamage: 35,
+  health: 80,
+  playerId: 2
+}
 ];
   
   

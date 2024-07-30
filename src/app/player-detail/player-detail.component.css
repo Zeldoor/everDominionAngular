@@ -30,16 +30,7 @@
     margin-top: 4%;
 }
 
-.b3
-{
-    float: left;
-    background-image: url(https://i.imgur.com/91l9BVX.png);
-    width: 1000px;
-    height: 200px;
-    margin-top: -30px ;
-    margin-left: 32px;
-    margin-right: auto;
-}
+
 
 .scatola
 {
@@ -187,12 +178,29 @@
     height: 500px;
 }
 
+.b3
+{
+    float: left;
+    background-image: url(https://i.imgur.com/91l9BVX.png);
+    width: 1000px;
+    height: 200px;
+    margin-top: -30px ;
+    margin-left: 32px;
+    margin-right: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
 .inventory-equips
 {
-position: fixed;
-width: 250px;
-height: 200px;
-transform: translate(0px,50px);
+    position: fixed;
+    width: 300px;
+    height: 200px;
+    margin-left: -15px;
+    transform: translate(0px,50px);
+    overflow-y: scroll;
+    scrollbar-width: none;
+    
 }
 
 .inventory-equip
@@ -204,7 +212,8 @@ transform: translate(0px,50px);
     border-radius: 100px;
     border-width: 3px;
     border-color: rgb(179, 127, 60);
-    margin-left: 50px;
+    padding-left: 25px;
+    transform: translate(50px,0px);
 }
 
 .inventory-units
@@ -216,4 +225,10 @@ transform: translate(0px,50px);
     border-left: rgb(82, 41, 8);
     border-style: solid;
     border-left-width: 4px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
