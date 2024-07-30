@@ -59,7 +59,7 @@
 
         <div>
             <mat-grid-list cols="2" rowHeight="7rem">
-                @for (troop of player.troops; track troop) 
+                @for (troop of player.activeTroops; track troop) 
                 {
                     <mat-grid-tile>
                         <app-troop-card [troop]="troop"></app-troop-card>

@@ -10,6 +10,6 @@ export interface Player
     stamina: number;
     gold: number;
 
-    troops: Troop[];
+    activeTroops: Troop[];
     // troops_bought:Troop[];
 }

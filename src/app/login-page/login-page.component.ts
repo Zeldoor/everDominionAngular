@@ -17,7 +17,6 @@ export class LoginPageComponent
 
   loginState: boolean = true;
   player !: Player;
-  user: User = {email: "", password: "", roles: ["GUEST"]};
 
   registerForm()
   {
