@@ -17,42 +17,42 @@ export class PlayerDetailComponent {
 
   user!: User;
   player!: Player;
-  
+
   mock_inventory_troops: Troop[] = [
-    {
-        className: "Archer",
-        minDamage: 15,
-        maxDamage: 25,
-        health: 100,
-        playerId: 1
-    },
-    {
-        className: "Knight",
-        minDamage: 20,
-        maxDamage: 30,
-        health: 150,
-        playerId: 1
-    },
-    {
-        className: "Mage",
-        minDamage: 25,
-        maxDamage: 35,
-        health: 80,
-        playerId: 2
-    },
-    {
-        className: "Spearman",
-        minDamage: 10,
-        maxDamage: 20,
-        health: 120,
-        playerId: 2
-    },
-    {
+  {
+      className: "Archer",
+      minDamage: 15,
+      maxDamage: 25,
+      health: 100,
+      playerId: 1
+  },
+  {
       className: "Knight",
       minDamage: 20,
       maxDamage: 30,
       health: 150,
       playerId: 1
+  },
+  {
+      className: "Mage",
+      minDamage: 25,
+      maxDamage: 35,
+      health: 80,
+      playerId: 2
+  },
+  {
+      className: "Spearman",
+      minDamage: 10,
+      maxDamage: 20,
+      health: 120,
+      playerId: 2
+  },
+  {
+    className: "Knight",
+    minDamage: 20,
+    maxDamage: 30,
+    health: 150,
+    playerId: 1
   },
   {
       className: "Mage",
