@@ -17,6 +17,7 @@ export class PlayerDetailComponent {
 
   user!: User;
   player!: Player;
+  
   mock_inventory_troops: Troop[] = [
     {
         className: "Archer",

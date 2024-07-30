@@ -89,7 +89,7 @@
         </div>
 
         <mat-grid-list class="equip-unita" cols="2" rowHeight="9.9rem">
-            @for (troop of player.troops; track troop) 
+            @for (troop of player.activeTroops; track troop) 
             {
                 <mat-grid-tile>
                     <app-troop-card [troop]="troop"></app-troop-card>

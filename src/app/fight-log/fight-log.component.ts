@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Player } from '../model/Player';
 
 @Component({
   selector: 'app-fight-log',
@@ -11,8 +12,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class FightLogComponent 
 {
   @Input() results !: string[];
-
+  @Input() players!: Player[];
   @Output() fightStart : EventEmitter<void> = new EventEmitter;
+
+  constructor()
+  {
+  }
 
   fightButtonClicked(): void
   {
@@ -21,16 +26,11 @@ export class FightLogComponent
 
   messageAlign(message: string) : string
   {
-    return message.includes("Cesare ha") ? "flex-start" : "flex-end";
+    return message.includes(this.players[0].nick + " ha") ? "flex-start" : "flex-end";
   }
 
   cssClass(message: string)
   {
-    return message.includes("Cesare ha") ? "attackerStyle" : "defenderStyle";
+    return message.includes(this.players[0].nick + " ha") ? "attackerStyle" : "defenderStyle";
   }
-
-
-
-
-
 }

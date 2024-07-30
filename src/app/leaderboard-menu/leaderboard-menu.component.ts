@@ -28,7 +28,7 @@ export class LeaderboardMenuComponent
           playerHealth: 100,
           stamina: 50,
           gold: 1000,
-          troops: [],
+          activeTroops: [],
           // troops_bought: []
       },
       {
@@ -39,7 +39,7 @@ export class LeaderboardMenuComponent
           playerHealth: 110,
           stamina: 52,
           gold: 1100,
-          troops: [],
+          activeTroops: [],
           // troops_bought: []
       },
       {
@@ -50,7 +50,7 @@ export class LeaderboardMenuComponent
           playerHealth: 120,
           stamina: 54,
           gold: 1200,
-          troops: [],
+          activeTroops: [],
           // troops_bought: []
       },
       {
@@ -61,7 +61,7 @@ export class LeaderboardMenuComponent
           playerHealth: 130,
           stamina: 56,
           gold: 1300,
-          troops: [],
+          activeTroops: [],
           // troops_bought: []
       },
       {
@@ -72,7 +72,7 @@ export class LeaderboardMenuComponent
           playerHealth: 140,
           stamina: 58,
           gold: 1400,
-          troops: [],
+          activeTroops: [],
           // troops_bought: []
       },
       {
@@ -83,7 +83,7 @@ export class LeaderboardMenuComponent
           playerHealth: 150,
           stamina: 60,
           gold: 1500,
-          troops: [],
+          activeTroops: [],
           // troops_bought: []
       },
       {
@@ -94,7 +94,7 @@ export class LeaderboardMenuComponent
           playerHealth: 160,
           stamina: 62,
           gold: 1600,
-          troops: [],
+          activeTroops: [],
           // troops_bought: []
       },
       {
@@ -105,7 +105,7 @@ export class LeaderboardMenuComponent
           playerHealth: 170,
           stamina: 64,
           gold: 1700,
-          troops: [],
+          activeTroops: [],
           // troops_bought: []
       },
       {
@@ -116,7 +116,7 @@ export class LeaderboardMenuComponent
           playerHealth: 180,
           stamina: 66,
           gold: 1800,
-          troops: [],
+          activeTroops: [],
           // troops_bought: []
       },
       {
@@ -127,7 +127,7 @@ export class LeaderboardMenuComponent
           playerHealth: 190,
           stamina: 68,
           gold: 1900,
-          troops: [],
+          activeTroops: [],
           // troops_bought: []
       }
   ];
