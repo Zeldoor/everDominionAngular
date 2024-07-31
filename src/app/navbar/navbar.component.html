@@ -32,7 +32,7 @@
             <div class="flex space-x-4">
               <!-- Left-aligned navigation -->
               <a href="" class="scritte rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Home</a>
-              <a href="player" class="scritte rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Player</a>
+              <a href="shop" class="scritte rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Shop</a>
               <a href="fight" class="scritte rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Fight</a>
             </div>
             <div class="flex space-x-4">
@@ -54,7 +54,7 @@
           <!-- Profile dropdown -->
           <div class="relative ml-3">
             <div>
-              <button type="button" class="group relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+              <button type="button" [routerLink]="['/player']" routerLinkActive="router-link-active"  class="group relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                 <span class="absolute -inset-1.5"></span>
                 <span class="sr-only">Open user menu</span>
                 <img class="eddai meow h-10 w-10 rounded-full" src="https://i.imgur.com/S4Vs91H.png" alt="">

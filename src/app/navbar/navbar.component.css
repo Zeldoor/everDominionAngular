@@ -15,3 +15,11 @@
     font-weight: 800;
 }
 
+.icona-immagine
+{
+    height: 2.5rem;
+    width: 2.5rem;
+    background-image: url(https://i.imgur.com/S4Vs91H.png);
+    border-radius: 9999px;
+    
+}

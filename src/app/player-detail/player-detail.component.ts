@@ -5,11 +5,12 @@ import { User } from '../model/User';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { TroopCardComponent } from '../troop-card/troop-card.component';
 import { Troop } from '../model/Troop';
+import { TroopCardIdleComponent } from '../troop-card-idle/troop-card-idle.component';
 
 @Component({
   selector: 'app-player-detail',
   standalone: true,
-  imports: [MatGridListModule, TroopCardComponent],
+  imports: [MatGridListModule, TroopCardComponent,TroopCardIdleComponent],
   templateUrl: './player-detail.component.html',
   styleUrl: './player-detail.component.css'
 })
