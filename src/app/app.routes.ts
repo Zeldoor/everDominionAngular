@@ -12,5 +12,6 @@ export const routes: Routes =
     {path: "player", component: PlayerDetailComponent},
     {path: "fight", component: FightPageComponent},
     {path: "geartest", component: GearCardComponent},
+    {path: "logout", component: LoginPageComponent},
     {path: "", component: LoginPageComponent},
 ];

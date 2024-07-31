@@ -1,10 +1,9 @@
-import { Component, inject, Inject } from '@angular/core';
-import { User } from '../model/User';
+import { Component, inject} from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Player } from '../model/Player';
-import { SharedService } from '../services/shared.service';
 import { Router } from '@angular/router';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Component({
   selector: 'app-login-page',
@@ -15,8 +14,15 @@ import { Router } from '@angular/router';
 })
 export class LoginPageComponent 
 {
-  constructor(private authService:AuthService, private router: Router){}
-  sharedServ = inject(SharedService);
+  constructor(private authService:AuthService, private router: Router)
+  {
+    if(localStorage.getItem("token"))
+      this.router.navigate(["home"])
+    else
+      localStorage.clear();
+  }
+
+  webStorage = inject(LocalStorageService);
 
   loginState: boolean = true;
   player !: Player;
@@ -45,19 +51,19 @@ export class LoginPageComponent
       {
         next: data =>
         {
-          localStorage.setItem("token", data.accessToken);
-          localStorage.setItem("role", data.user.role);
-          
-          this.sharedServ.putData("user", data.user);
-          this.sharedServ.putData("player", data.playerDto);
-          
+          data.user.role = data.role;
           this.player = data.playerDto;
-          this.router.navigate(["player"])
+
+          this.webStorage.setItem("token", data.accessToken);
+          this.webStorage.setItem("role", data.role);
+          this.webStorage.setItem("user", data.user);
+          this.webStorage.setItem("player", data.playerDto);
+
+          this.router.navigate(["home"])
         },
         error: err=>
         {
-          localStorage.removeItem("token");
-          localStorage.removeItem("role");
+          localStorage.clear();
         }
       }
     )
@@ -66,8 +72,6 @@ export class LoginPageComponent
   logout()
   {
     this.authService.logout();
-    this.sharedServ.putData("user", null);
-    this.sharedServ.putData("player", null);
   }
 
   register()
@@ -83,8 +87,7 @@ export class LoginPageComponent
         },
         error: err=>
         {
-          localStorage.removeItem("token");
-          localStorage.removeItem("role");
+          localStorage.clear();
         }
       }
     )

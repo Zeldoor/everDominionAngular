@@ -5,7 +5,8 @@ import { User } from '../model/User';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { TroopCardComponent } from '../troop-card/troop-card.component';
 import { Troop } from '../model/Troop';
-import { SharedService } from '../services/shared.service';
+import { ActivatedRoute } from '@angular/router';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Component({
   selector: 'app-player-detail',
@@ -19,13 +20,11 @@ export class PlayerDetailComponent {
   user!: User;
   player!: Player;
 
-  constructor(private sharedServ: SharedService)
+  constructor(private webStorage: LocalStorageService, private route:ActivatedRoute)
   {
-    this.user = this.sharedServ.getData("user");
-    this.player = this.sharedServ.getData("player");
-
-    console.log(this.player);
-    console.log(this.user);
+    // this.route.params.subscribe(params => {this.player = player})  da vedere dopo
+    this.user = this.webStorage.getItem("user");
+    this.player = this.webStorage.getItem("player");
   }
 
   mock_inventory_troops: Troop[] = 
