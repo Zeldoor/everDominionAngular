@@ -62,19 +62,19 @@ export class FightPageComponent
   activateButtonAfterFight()
   {
     setTimeout(() => 
-      {
-        this.buttonOn = true;
-      }, this.fightRes.results.length * 1500); // 1000 ms = 1 secondo
+    {
+      this.buttonOn = true;
+    }, this.fightRes.results.length * 1500); // 1000 ms = 1 secondo
   }
 
   cycleFightMessage()
   {
     this.fightRes.results.forEach((result, index) => 
-      {
-          setTimeout(() => 
-          {
-            this.results.unshift(result);
-          }, index * 1500); // 1000 ms = 1 secondo
-      });
+    {
+        setTimeout(() => 
+        {
+          this.results.unshift(result);
+        }, index * 1500); // 1000 ms = 1 secondo
+    });
   }
 }

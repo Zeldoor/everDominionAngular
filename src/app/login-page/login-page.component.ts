@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
 import { User } from '../model/User';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Player } from '../model/Player';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-login-page',
@@ -14,6 +15,7 @@ import { Player } from '../model/Player';
 export class LoginPageComponent 
 {
   constructor(private authService:AuthService){}
+  sharedServ = inject(SharedService);
 
   loginState: boolean = true;
   player !: Player;
@@ -41,8 +43,11 @@ export class LoginPageComponent
         next: data =>
         {
           localStorage.setItem("token", data.accessToken);
-          localStorage.setItem("role", data.role);
+          localStorage.setItem("role", data.user.role);
           this.player = data.playerDto;
+
+          this.sharedServ.putData("user", data.user);
+          this.sharedServ.putData("player", data.playerDto);
 
           console.log(this.player);
         },
@@ -70,7 +75,6 @@ export class LoginPageComponent
         next: data=>
         {
           this.login();
-          console.log(this.player);
         },
         error: err=>
         {
