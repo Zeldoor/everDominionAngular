@@ -13,13 +13,16 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent 
 {
-  constructor(private webStorage:LocalStorageService, private authService: AuthService, private route: Router){}
+  constructor(private webStorage:LocalStorageService, private authService: AuthService, private route: Router)
+  {
+
+  }
 
   player: Player = this.webStorage.getItem("player");
 
   logout()
   {
     this.authService.logout();
-    this.route.navigate(["login"]);
+    this.player = this.webStorage.getItem("player");
   }
 }

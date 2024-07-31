@@ -36,9 +36,9 @@
             </div>
             <div class="flex space-x-4">
               <!-- Right-aligned navigation -->
-               @if (player) 
+               @if (player != null) 
                {
-                 <button (click)="logout()"  class="scritte rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Logout</button>
+                 <a href="login" (click)="logout()"  class="scritte rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Logout</a>
                }
               <!-- Additional right-aligned icons -->
             </div>
