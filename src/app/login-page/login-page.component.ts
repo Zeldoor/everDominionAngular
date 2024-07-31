@@ -28,8 +28,10 @@ export class LoginPageComponent
 
   userForm = new FormGroup(
     {
+      email: new FormControl(""),
       username: new FormControl(""),
       password: new FormControl(""),
+      dob: new FormControl(""),
     }
   )
   
@@ -50,7 +52,7 @@ export class LoginPageComponent
           this.sharedServ.putData("player", data.playerDto);
           
           this.player = data.playerDto;
-          this.router.navigate(["home"])
+          this.router.navigate(["player"])
         },
         error: err=>
         {

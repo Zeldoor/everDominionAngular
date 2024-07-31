@@ -7,7 +7,7 @@ export class SharedService
 {
   constructor(){}
 
-  private data:{ name: string, value: any }[] = [];
+  private data:{name: string, value: any}[] = [];
 
   getData(name: string): any | null 
   {

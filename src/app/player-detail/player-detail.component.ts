@@ -5,6 +5,7 @@ import { User } from '../model/User';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { TroopCardComponent } from '../troop-card/troop-card.component';
 import { Troop } from '../model/Troop';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-player-detail',
@@ -18,116 +19,114 @@ export class PlayerDetailComponent {
   user!: User;
   player!: Player;
 
-  mock_inventory_troops: Troop[] = [
+  constructor(private sharedServ: SharedService)
   {
-      className: "Archer",
-      minDamage: 15,
-      maxDamage: 25,
-      health: 100,
-      playerId: 1
-  },
-  {
+    this.user = this.sharedServ.getData("user");
+    this.player = this.sharedServ.getData("player");
+
+    console.log(this.player);
+    console.log(this.user);
+  }
+
+  mock_inventory_troops: Troop[] = 
+  [
+    {
+        className: "Archer",
+        minDamage: 15,
+        maxDamage: 25,
+        health: 100,
+        playerId: 1
+    },
+    {
+        className: "Knight",
+        minDamage: 20,
+        maxDamage: 30,
+        health: 150,
+        playerId: 1
+    },
+    {
+        className: "Mage",
+        minDamage: 25,
+        maxDamage: 35,
+        health: 80,
+        playerId: 2
+    },
+    {
+        className: "Spearman",
+        minDamage: 10,
+        maxDamage: 20,
+        health: 120,
+        playerId: 2
+    },
+    {
       className: "Knight",
       minDamage: 20,
       maxDamage: 30,
       health: 150,
       playerId: 1
-  },
-  {
+    },
+    {
+        className: "Mage",
+        minDamage: 25,
+        maxDamage: 35,
+        health: 80,
+        playerId: 2
+    },
+    {
+      className: "Knight",
+      minDamage: 20,
+      maxDamage: 30,
+      health: 150,
+      playerId: 1
+    },
+    {
+        className: "Mage",
+        minDamage: 25,
+        maxDamage: 35,
+        health: 80,
+        playerId: 2
+    },
+    {
+      className: "Knight",
+      minDamage: 20,
+      maxDamage: 30,
+      health: 150,
+      playerId: 1
+    },
+    {
       className: "Mage",
       minDamage: 25,
       maxDamage: 35,
       health: 80,
       playerId: 2
-  },
-  {
-      className: "Spearman",
-      minDamage: 10,
-      maxDamage: 20,
-      health: 120,
-      playerId: 2
-  },
-  {
-    className: "Knight",
-    minDamage: 20,
-    maxDamage: 30,
-    health: 150,
-    playerId: 1
-  },
-  {
+    },
+    {
+      className: "Knight",
+      minDamage: 20,
+      maxDamage: 30,
+      health: 150,
+      playerId: 1
+    },
+    {
       className: "Mage",
       minDamage: 25,
       maxDamage: 35,
       health: 80,
       playerId: 2
-  },
-  {
-    className: "Knight",
-    minDamage: 20,
-    maxDamage: 30,
-    health: 150,
-    playerId: 1
-},
-{
-    className: "Mage",
-    minDamage: 25,
-    maxDamage: 35,
-    health: 80,
-    playerId: 2
-},
-{
-  className: "Knight",
-  minDamage: 20,
-  maxDamage: 30,
-  health: 150,
-  playerId: 1
-},
-{
-  className: "Mage",
-  minDamage: 25,
-  maxDamage: 35,
-  health: 80,
-  playerId: 2
-},
-{
-  className: "Knight",
-  minDamage: 20,
-  maxDamage: 30,
-  health: 150,
-  playerId: 1
-},
-{
-  className: "Mage",
-  minDamage: 25,
-  maxDamage: 35,
-  health: 80,
-  playerId: 2
-},
-{
-  className: "Knight",
-  minDamage: 20,
-  maxDamage: 30,
-  health: 150,
-  playerId: 1
-},
-{
-  className: "Mage",
-  minDamage: 25,
-  maxDamage: 35,
-  health: 80,
-  playerId: 2
-}
-];
-  
-  
-  constructor(private playerServ: PlayerService)
-  {
-    this.user = {id:1,username:'Cesare',email:'ciccio@puzzo.com' ,password:'password',role:'Admin',player_id:1}
-    playerServ.getOne(this.user.player_id).subscribe(res => this.player = res);
-
-  }
-
-
-
-
+    },
+    {
+      className: "Knight",
+      minDamage: 20,
+      maxDamage: 30,
+      health: 150,
+      playerId: 1
+    },
+    {
+      className: "Mage",
+      minDamage: 25,
+      maxDamage: 35,
+      health: 80,
+      playerId: 2
+    }
+  ];
 }
