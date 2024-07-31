@@ -12,4 +12,18 @@ import { MatGridListModule } from '@angular/material/grid-list';
 export class TroopCardIdleComponent {
 
   @Input() troop!:Troop;
+
+
+
+  getBackground():string
+  {
+    if(this.troop.className=="knight")
+    {
+      return "https://i.imgur.com/JKzHY0e.png";
+    }
+    else
+    {
+      return "https://i.imgur.com/t7A4csn.png";
+    }
+  }
 }
