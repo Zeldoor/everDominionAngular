@@ -12,5 +12,4 @@ import { MatGridListModule } from '@angular/material/grid-list';
 export class TroopCardIdleComponent {
 
   @Input() troop!:Troop;
-
 }

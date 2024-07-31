@@ -28,7 +28,7 @@ export class PlayerDetailComponent {
       playerId: 1
   },
   {
-      className: "Knight",
+      className: "knight",
       minDamage: 20,
       maxDamage: 30,
       health: 150,
@@ -49,7 +49,7 @@ export class PlayerDetailComponent {
       playerId: 2
   },
   {
-    className: "Knight",
+    className: "knight",
     minDamage: 20,
     maxDamage: 30,
     health: 150,
@@ -63,7 +63,7 @@ export class PlayerDetailComponent {
       playerId: 2
   },
   {
-    className: "Knight",
+    className: "knight",
     minDamage: 20,
     maxDamage: 30,
     health: 150,
@@ -77,7 +77,7 @@ export class PlayerDetailComponent {
     playerId: 2
 },
 {
-  className: "Knight",
+  className: "knight",
   minDamage: 20,
   maxDamage: 30,
   health: 150,
