@@ -100,7 +100,20 @@
     </div>
 
     <div class="b3">
-        <mat-grid-list cols="2" rowHeight="95px" class="inventory-equips">
+        <mat-grid-list cols="2" rowHeight="100px" class="inventory-equips">
+            <!-- MOCK INVENTORY SLOTS -->
+            <mat-grid-tile class="inventory-equip">
+                
+            </mat-grid-tile>
+            <mat-grid-tile class="inventory-equip">
+                
+            </mat-grid-tile>
+            <mat-grid-tile class="inventory-equip">
+                
+            </mat-grid-tile>
+            <mat-grid-tile class="inventory-equip">
+                
+            </mat-grid-tile>
             <mat-grid-tile class="inventory-equip">
                 
             </mat-grid-tile>
@@ -110,7 +123,7 @@
                 
         </mat-grid-list>
 
-        <mat-grid-list cols="3" rowHeight="95px" class="inventory-units">
+        <mat-grid-list cols="3" rowHeight="100px" class="inventory-units">
                 @for (troop of mock_inventory_troops; track $index) 
                 {
                     <mat-grid-tile>

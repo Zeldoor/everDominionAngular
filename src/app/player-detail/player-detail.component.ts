@@ -126,8 +126,6 @@ export class PlayerDetailComponent {
     playerServ.getOne(this.user.player_id).subscribe(res => this.player = res);
 
   }
-
-
-
-
 }
+
+
