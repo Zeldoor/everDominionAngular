@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.map-container {
+  flex: 1;
+  height: 600px;
+  width: 1100px;
+  margin-right: 11%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 11%;
+}
+
+.map-troop-container
+{
+margin-left: 5%;
+
+}
+
+
+.leaderboard-container {
+margin-left: 10%;
+    width: 30%;
+}
+
+.troop-menu-container {
+  margin-top: 16px;
+  margin-left: 2%;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .leaderboard-container {
+    width: 100%;
+    margin-top: 16px;
+  }
+}

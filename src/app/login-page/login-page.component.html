@@ -1,0 +1,36 @@
+<main class="mx-auto flex min-h-screen w-full items-center justify-center text-white">
+    <form class="flex w-[30rem] flex-col space-y-10" [formGroup]="userForm">
+        <div class="text-center text-4xl font-medium">{{loginState?"Log In":"Register"}}</div>
+
+        <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
+            <input type="text" placeholder="Email" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="username" required>
+        </div>
+
+        <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
+            <input type="password" min="6" placeholder="Password" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="password" required>
+        </div>
+
+        @if (!loginState) 
+        {
+            <button (click)="register()" class="transform rounded-sm bg-indigo-600 py-2 font-bold duration-300 hover:bg-indigo-400">Register</button>
+
+            <p class="text-center text-lg">
+                <button  (click)="registerForm()" class="font-medium text-indigo-500 underline-offset-4 hover:underline">Login</button>
+            </p>
+        }
+        @else
+        {
+            <button (click)="login()" class="transform rounded-sm bg-indigo-600 py-2 font-bold duration-300 hover:bg-indigo-400">LOG IN</button>
+
+            <button  class="transform text-center font-semibold text-gray-500 duration-300 hover:text-gray-300">FORGOT PASSWORD?</button>
+
+            <p class="text-center text-lg">
+                No account?
+                <button (click)="registerForm()" class="font-medium text-indigo-500 underline-offset-4 hover:underline">Create One</button>
+            </p>
+        }
+        <p class="text-center text-lg">
+            <button  (click)="logout()" class="font-medium text-indigo-500 underline-offset-4 hover:underline">Logout</button>
+        </p>
+    </form>
+</main>

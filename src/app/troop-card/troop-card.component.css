@@ -1,0 +1,18 @@
+.container
+{
+    background-image: url("https://i.imgur.com/JKzHY0e.png");
+    
+     height: 6rem;
+    width: 10.5rem;
+}
+
+.icon
+{
+    position: fixed;
+    margin-left: -1.5rem;
+}
+
+.statistiche
+{
+    text-align: center;
+}

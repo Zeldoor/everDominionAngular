@@ -1,0 +1,31 @@
+<div class="bg-[url(https://i.imgur.com/2f27mSU.png)] leaderboard">
+
+    
+    <div class="titolo ombra text-4xl font mb-3 font-extrabold text-amber-400 text-cente">
+        <h1 class="scritte" style="margin-top: -25px;">LEADERBOARD</h1>
+    </div>
+    
+    <div class="leaderboard-list">
+        @for (player of players; track $index) {
+
+        <div class="card pt-1">
+            <h1 class="scritte ombra text-amber-500" style="display: inline;"> {{player.nick}}</h1><h2 class="scritte ombra text-amber-500" style="display: inline; margin-left: 10px;">  -  {{player.gold}}</h2>
+        </div>
+        }
+    </div>
+    <!-- <div class="card">
+        <h1 class="scritte">PLAYER 1 <br> SCORE</h1>
+    </div>
+    <div class="card">
+        <h1 class="scritte">PLAYER 2 <br> SCORE</h1>
+    </div>
+    <div class="card">
+        <h1 class="scritte">PLAYER 3 <br> SCORE</h1>
+    </div>
+    <div class="card">
+        <h1 class="scritte">PLAYER 4 <br> SCORE</h1>
+    </div>
+    <div class="card">
+        <h1 class="scritte">PLAYER 5 <br> SCORE</h1>
+    </div> -->
+</div>
