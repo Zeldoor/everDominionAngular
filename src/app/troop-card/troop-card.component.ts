@@ -15,7 +15,7 @@ export class TroopCardComponent
 
   setSprite(): string
   {
-    return this.troop.className.toLowerCase().includes("knight") ? "https://i.imgur.com/VBFGI4n.gif" : "https://i.imgur.com/NjK1mQq.gif";
+    return this.troop.className.toLowerCase().includes("knight") ? "https://i.imgur.com/MJ2k2r9.gif" : "https://i.imgur.com/DAnhjge.gif";
   }
 
   setBackground(): string

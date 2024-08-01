@@ -5,6 +5,7 @@ import { GearCardComponent } from './gear-card/gear-card.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { PlayerDetailComponent } from './player-detail/player-detail.component';
 import { LoggedGuardService } from './services/guards/logged-guard.service';
+import { ShopPageComponent } from './shop-page/shop-page.component';
 
 export const routes: Routes = 
 [
