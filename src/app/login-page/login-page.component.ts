@@ -35,27 +35,23 @@ export class LoginPageComponent
     this.loginState = !this.loginState
   }
 
+  // userForm = new FormGroup(
+  //   {
+  //     email: new FormControl("", [Validators.required]),
+  //     username: new FormControl("", [Validators.required]),
+  //     password: new FormControl("", [Validators.required, hasValidPassword()]),
+  //     dob: new FormControl("", [Validators.required]),
+  //   }
+  // )
+
   userForm = new FormGroup(
     {
-      email: new FormControl("", [Validators.required]),
-      username: new FormControl("", [Validators.required]),
-      password: new FormControl("", [Validators.required, hasValidPassword()]),
-      dob: new FormControl("", [Validators.required]),
+      email: new FormControl(""),
+      username: new FormControl(""),
+      password: new FormControl(""),
+      dob: new FormControl(""),
     }
   )
-
-  // FORM DI ESEMPIO SU COME USARE I VALIDATORI
-  
-  // gradeForm:FormGroup = new FormGroup(
-  //   {
-  //     day: new FormControl('',[Validators.required,notFutureDateValidation()]),
-  //     subject: new FormControl('',[Validators.required,Validators.minLength(3)]),
-  //     teacherName: new FormControl('',[Validators.required]),
-  //     teacherSurname: new FormControl('',[Validators.required]),
-  //     value: new FormControl(6,[Validators.required])
-  //   }
-  // );
-  
 
   login()
   {

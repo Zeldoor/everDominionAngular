@@ -11,7 +11,7 @@
                 <input type="text" placeholder="Nick" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="username" required>
 
                 <div *ngIf="userForm.get('password')?.getError('passwordLenghtStrength') && userForm.get('password')?.touched" class="mt-2 text-sm text-red-600">
-                    {{formPasswordError}}
+                    {{userForm.get('password')?.getError('passwordLenghtStrength').value}}
                 </div> 
                 
             </div>
@@ -21,7 +21,7 @@
             <input type="password" min="6" placeholder="Password" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="password" required>
         </div>
 
-        <button [disabled]="userForm.invalid" (click)="loginState ? login() : register()" class="transform rounded-sm bg-indigo-600 py-2 font-bold duration-300 hover:bg-indigo-400">{{loginState ? "Login" : "Register"}}</button>
+        <button (click)="loginState ? login() : register()" class="transform rounded-sm bg-indigo-600 py-2 font-bold duration-300 hover:bg-indigo-400">{{loginState ? "Login" : "Register"}}</button>
         
         @if (!loginState) 
         {

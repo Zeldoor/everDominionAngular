@@ -17,4 +17,9 @@ export class TroopCardIdleComponent
   {
     return this.troop.className.includes("Knight") ? "https://i.imgur.com/fA62hrl.gif" : "https://i.imgur.com/RP0AmLf.gif";
   }
+
+  setBackground(): string
+  {
+    return this.troop.className.includes("Knight") ?  'url("https://i.imgur.com/JKzHY0e.png")' : 'url("https://i.imgur.com/QxuxL0Y.png")';
+  }
 }

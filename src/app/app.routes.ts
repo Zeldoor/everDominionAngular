@@ -10,9 +10,9 @@ export const routes: Routes =
 [
     {path: "", component: LoginPageComponent},
     {path: "login", component: LoginPageComponent},
-    {path: "home", component: HomeComponent, canActivate: [LoggedGuardService]},
-    {path: "player", component: PlayerDetailComponent, canActivate: [LoggedGuardService]},
-    {path: "fight", component: FightPageComponent, canActivate: [LoggedGuardService]},
+    {path: "home", component: HomeComponent},
+    {path: "player", component: PlayerDetailComponent},
+    {path: "fight", component: FightPageComponent},
     
     {path: "geartest", component: GearCardComponent},
 ];
