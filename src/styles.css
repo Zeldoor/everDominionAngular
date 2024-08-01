@@ -14,6 +14,12 @@ body
 {
     margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
     background-color: floralwhite;
+    cursor: url('https://i.imgur.com/KUIo2VB.png'), auto;
+}
+
+button, a, div
+{
+    cursor:  url('https://i.imgur.com/KUIo2VB.png'), auto;
 }
 
 @tailwind base;

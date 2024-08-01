@@ -1,79 +1,98 @@
-import { Component, inject, Inject } from '@angular/core';
-import { User } from '../model/User';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject} from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Player } from '../model/Player';
-import { SharedService } from '../services/shared.service';
 import { Router } from '@angular/router';
+import { LocalStorageService } from '../services/local-storage.service';
+import { hasValidPassword } from '../services/validators/hasValidPassword';
+import { CommonModule } from '@angular/common';
+import { profanityFilter } from '../services/validators/profanityFilter';
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
 export class LoginPageComponent 
 {
-  constructor(private authService:AuthService, private router: Router){}
-  sharedServ = inject(SharedService);
+  constructor(private authService:AuthService, private router: Router)
+  {
+    if(localStorage.getItem("token"))
+      this.router.navigate(["home"])
+    else
+      localStorage.clear();
+  }
+
+  webStorage = inject(LocalStorageService);
 
   loginState: boolean = true;
   player !: Player;
+  usernameTakenMessage: string = "";
 
   registerForm()
   {
     this.loginState = !this.loginState
+    this.loginState ? this.newUserForm.get('email')?.setValue("") : this.newUserForm.get('email')?.setValue(null)
   }
 
-  userForm = new FormGroup(
+  newUserForm = new FormGroup(
     {
-      username: new FormControl(""),
-      password: new FormControl(""),
+      email: new FormControl("", [Validators.required]),
+      username: new FormControl("", [Validators.required, profanityFilter()]),
+      password: new FormControl("", [Validators.required, hasValidPassword()]),
     }
   )
-  
+
+  oldUserForm = new FormGroup(
+    {
+      username: new FormControl("", [Validators.required]),
+      password: new FormControl("", [Validators.required]),
+    }
+  )
+
 
   login()
   {
-    let username = this.userForm.get('username')?.value;
-    let password = this.userForm.get('password')?.value;
+    let username = this.oldUserForm.get('username')?.value;
+    let password = this.oldUserForm.get('password')?.value;
 
     this.authService.login(username!, password!).subscribe(
       {
         next: data =>
         {
-          localStorage.setItem("token", data.accessToken);
-          localStorage.setItem("role", data.user.role);
-          
-          this.sharedServ.putData("user", data.user);
-          this.sharedServ.putData("player", data.playerDto);
-          
+          data.user.role = data.role;
           this.player = data.playerDto;
+
+          this.webStorage.setItem("token", data.accessToken);
+          this.webStorage.setItem("user", data.user);
+          this.webStorage.setItem("player", data.playerDto);
+
           this.router.navigate(["home"])
         },
         error: err=>
         {
-          localStorage.removeItem("token");
-          localStorage.removeItem("role");
+          localStorage.clear();
         }
       }
     )
   }
 
+
   logout()
   {
     this.authService.logout();
-    this.sharedServ.putData("user", null);
-    this.sharedServ.putData("player", null);
   }
+
 
   register()
   {
-    let username = this.userForm.get('username')?.value;
-    let password = this.userForm.get('password')?.value;
+    let username = this.newUserForm.get('username')?.value;
+    let email = this.newUserForm.get('email')?.value;
+    let password = this.newUserForm.get('password')?.value;
 
-    this.authService.register(username!, password!).subscribe(
+    this.authService.register(username!, password!, email!).subscribe(
       {
         next: data=>
         {
@@ -81,8 +100,14 @@ export class LoginPageComponent
         },
         error: err=>
         {
-          localStorage.removeItem("token");
-          localStorage.removeItem("role");
+          localStorage.clear();
+
+          console.log(err)
+
+          if(err.error.includes("Email"))
+            this.newUserForm.get('email')?.setErrors({emailTaken: err.error});
+          else
+            this.newUserForm.get('username')?.setErrors({usernameTaken: err.error});
         }
       }
     )

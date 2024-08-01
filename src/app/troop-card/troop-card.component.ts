@@ -12,4 +12,14 @@ import { MatGridListModule } from '@angular/material/grid-list';
 export class TroopCardComponent 
 {
   @Input() troop!:Troop;
+
+  setSprite(): string
+  {
+    return this.troop.className.toLowerCase().includes("knight") ? "https://i.imgur.com/MJ2k2r9.gif" : "https://i.imgur.com/DAnhjge.gif";
+  }
+
+  setBackground(): string
+  {
+    return this.troop.className.toLowerCase().includes("knight") ?  'url("https://i.imgur.com/JKzHY0e.png")' : 'url("https://i.imgur.com/QxuxL0Y.png")';
+  }
 }

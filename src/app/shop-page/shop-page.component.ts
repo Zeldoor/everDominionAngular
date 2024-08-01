@@ -1,22 +1,21 @@
-import { Component, Input } from '@angular/core';
-import { Player } from '../model/Player';
-import { PlayerService } from '../services/player.service';
-import { User } from '../model/User';
+import { Component } from '@angular/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { TroopCardComponent } from '../troop-card/troop-card.component';
-import { Troop } from '../model/Troop';
-import { ActivatedRoute } from '@angular/router';
-import { LocalStorageService } from '../services/local-storage.service';
 import { TroopCardIdleComponent } from '../troop-card-idle/troop-card-idle.component';
+import { User } from '../model/User';
+import { Player } from '../model/Player';
+import { LocalStorageService } from '../services/local-storage.service';
+import { ActivatedRoute } from '@angular/router';
+import { Troop } from '../model/Troop';
 
 @Component({
-  selector: 'app-player-detail',
+  selector: 'app-shop-page',
   standalone: true,
   imports: [MatGridListModule, TroopCardComponent,TroopCardIdleComponent],
-  templateUrl: './player-detail.component.html',
-  styleUrl: './player-detail.component.css'
+  templateUrl: './shop-page.component.html',
+  styleUrl: './shop-page.component.css'
 })
-export class PlayerDetailComponent {
+export class ShopPageComponent {
 
   user!: User;
   player!: Player;
@@ -129,4 +128,13 @@ export class PlayerDetailComponent {
       playerId: 2
     }
   ];
+
+
+
+
+
+
+
+
+
 }

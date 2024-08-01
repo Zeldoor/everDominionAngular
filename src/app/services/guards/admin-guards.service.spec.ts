@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SharedService } from './shared.service';
+import { AdminGuardService } from './admin-guards.service';
 
-describe('SharedService', () => {
-  let service: SharedService;
+describe('AdminGuardsService', () => {
+  let service: AdminGuardService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SharedService);
+    service = TestBed.inject(AdminGuardService);
   });
 
   it('should be created', () => {
