@@ -13,7 +13,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class NavbarComponent 
 {
-  constructor(private webStorage:LocalStorageService, private authService: AuthService, private route: Router)
+  constructor(private webStorage:LocalStorageService, public authService: AuthService, private route: Router)
   {
 
   }

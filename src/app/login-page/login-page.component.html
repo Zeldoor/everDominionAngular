@@ -1,47 +1,93 @@
 <main class="mx-auto flex min-h-screen w-full items-center justify-center text-white">
-    <form class="flex w-[30rem] flex-col space-y-10" [formGroup]="userForm">
-        <div class="text-center text-4xl font-medium">{{loginState?"Log In":"Register"}}</div>
+    
 
-        <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
-            <input type="email" placeholder="Email" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="email" required>
-        </div>
-        @if (!loginState) 
+        @if (loginState) 
         {
-            <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
-                <input type="text" placeholder="Nick" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="username" required>
+            <form class="flex w-[30rem] flex-col space-y-10" [formGroup]="oldUserForm">
+                <div class="text-center text-4xl font-medium">
+                    Login
+                </div>
 
-                <div *ngIf="userForm.get('password')?.getError('passwordLenghtStrength') && userForm.get('password')?.touched" class="mt-2 text-sm text-red-600">
-                    {{userForm.get('password')?.getError('passwordLenghtStrength').value}}
-                </div> 
+            <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
+                <input type="text" placeholder="Username" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="username" required>
                 
             </div>
-        }
+            <div *ngIf="oldUserForm.get('username')?.getError('usernameTaken') && oldUserForm.get('username')?.touched" class="mt-2 text-sm text-red-600">
+                {{usernameTakenMessage}}
+            </div> 
+            
+            <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
+                <input type="password" min="6" placeholder="Password" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="password" required>
+            </div>
 
-        <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
-            <input type="password" min="6" placeholder="Password" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="password" required>
-        </div>
-
-        <button (click)="loginState ? login() : register()" class="transform rounded-sm bg-indigo-600 py-2 font-bold duration-300 hover:bg-indigo-400">{{loginState ? "Login" : "Register"}}</button>
-        
-        @if (!loginState) 
-        {
-            <p class="text-center text-lg">
-                Already have an account?
-                <button  (click)="registerForm()" class="font-medium text-indigo-500 underline-offset-4 hover:underline">Login</button>
-            </p>
-        }
-        @else
-        {
+            <button [disabled]="oldUserForm.invalid" (click)="login()" class="transform rounded-sm bg-indigo-600 py-2 font-bold duration-300 hover:bg-indigo-400">Login</button>
             <button  class="transform text-center font-semibold text-gray-500 duration-300 hover:text-gray-300">FORGOT PASSWORD?</button>
 
             <p class="text-center text-lg">
                 No account?
                 <button (click)="registerForm()" class="font-medium text-indigo-500 underline-offset-4 hover:underline">Create One</button>
             </p>
+        </form>
         }
+        @else 
+        {
+            <form class="flex w-[30rem] flex-col space-y-10" [formGroup]="newUserForm">
+                <div class="text-center text-4xl font-medium">
+                    Register
+                </div>
 
-        <p class="text-center text-lg">
-            <button  (click)="logout()" class="font-medium text-indigo-500 underline-offset-4 hover:underline">Logout</button>
-        </p>
-    </form>
+                <!-- EMAIL -->
+
+                <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
+                    <input type="email" placeholder="Email" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="email" required>
+                </div>
+
+                <!-- EMAIL ERROR -->
+
+                <div *ngIf="newUserForm.get('email')?.getError('emailTaken') && newUserForm.get('email')?.dirty" class="mt-2 text-sm text-red-600">
+                    {{newUserForm.get('email')?.getError('emailTaken')}}
+                </div> 
+
+                <!-- USERNAME -->
+
+                <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
+                    <input type="text" placeholder="Username" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="username" required>
+                </div>
+
+                <!-- USERNAME ERRORS -->
+
+                <div *ngIf="newUserForm.get('username')?.getError('usernameTaken') && newUserForm.get('username')?.dirty" class="mt-2 text-sm text-red-600">
+                    {{newUserForm.get('username')?.getError('usernameTaken')}}
+                </div> 
+
+                <div class="text-[#ff1d1d]" *ngIf="newUserForm.get('username')?.getError('bannedWord')">
+                    {{newUserForm.get('username')?.getError('bannedWord')}}
+                </div>
+
+                <!-- PASSWORD -->
+                
+                <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
+                    <input type="password" min="6" placeholder="Password" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="password" required>
+                </div>
+
+                <!-- PASSWORD ERROR-->
+                    
+                <div class="text-[#ff1d1d]" *ngIf="newUserForm.get('password')?.hasError && newUserForm.get('password')?.dirty">
+                    {{newUserForm.get('password')?.getError('passwordErr')}}
+                </div>
+                
+
+                <button [disabled]="newUserForm.invalid" (click)="register()" class="transform rounded-sm bg-indigo-600 py-2 font-bold duration-300 hover:bg-indigo-400">Register</button>
+                
+                <p class="text-center text-lg">
+                    Already have an account?
+                    <button  (click)="registerForm()" class="font-medium text-indigo-500 underline-offset-4 hover:underline">Login</button>
+                </p>
+        </form>
+        }
+        <div>
+            <p class="text-center text-lg">
+                <button  (click)="logout()" class="font-medium text-indigo-500 underline-offset-4 hover:underline">Logout</button>
+            </p>
+        </div>
 </main>

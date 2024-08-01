@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage.service';
 import { hasValidPassword } from '../services/validators/hasValidPassword';
 import { CommonModule } from '@angular/common';
+import { profanityFilter } from '../services/validators/profanityFilter';
 
 @Component({
   selector: 'app-login-page',
@@ -28,37 +29,36 @@ export class LoginPageComponent
 
   loginState: boolean = true;
   player !: Player;
-  formPasswordError: string = "";
+  usernameTakenMessage: string = "";
 
   registerForm()
   {
     this.loginState = !this.loginState
+    this.loginState ? this.newUserForm.get('email')?.setValue("") : this.newUserForm.get('email')?.setValue(null)
   }
 
-  // userForm = new FormGroup(
-  //   {
-  //     email: new FormControl("", [Validators.required]),
-  //     username: new FormControl("", [Validators.required]),
-  //     password: new FormControl("", [Validators.required, hasValidPassword()]),
-  //     dob: new FormControl("", [Validators.required]),
-  //   }
-  // )
-
-  userForm = new FormGroup(
+  newUserForm = new FormGroup(
     {
-      email: new FormControl(""),
-      username: new FormControl(""),
-      password: new FormControl(""),
-      dob: new FormControl(""),
+      email: new FormControl("", [Validators.required]),
+      username: new FormControl("", [Validators.required, profanityFilter()]),
+      password: new FormControl("", [Validators.required, hasValidPassword()]),
     }
   )
 
+  oldUserForm = new FormGroup(
+    {
+      username: new FormControl("", [Validators.required]),
+      password: new FormControl("", [Validators.required]),
+    }
+  )
+
+
   login()
   {
-    let email = this.userForm.get('email')?.value;
-    let password = this.userForm.get('password')?.value;
+    let username = this.oldUserForm.get('username')?.value;
+    let password = this.oldUserForm.get('password')?.value;
 
-    this.authService.login(email!, password!).subscribe(
+    this.authService.login(username!, password!).subscribe(
       {
         next: data =>
         {
@@ -79,16 +79,18 @@ export class LoginPageComponent
     )
   }
 
+
   logout()
   {
     this.authService.logout();
   }
 
+
   register()
   {
-    let username = this.userForm.get('username')?.value;
-    let email = this.userForm.get('email')?.value;
-    let password = this.userForm.get('password')?.value;
+    let username = this.newUserForm.get('username')?.value;
+    let email = this.newUserForm.get('email')?.value;
+    let password = this.newUserForm.get('password')?.value;
 
     this.authService.register(username!, password!, email!).subscribe(
       {
@@ -99,6 +101,13 @@ export class LoginPageComponent
         error: err=>
         {
           localStorage.clear();
+
+          console.log(err)
+
+          if(err.error.includes("Email"))
+            this.newUserForm.get('email')?.setErrors({emailTaken: err.error});
+          else
+            this.newUserForm.get('username')?.setErrors({usernameTaken: err.error});
         }
       }
     )

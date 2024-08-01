@@ -22,7 +22,7 @@ export class AuthService
     localStorage.removeItem("token");
     localStorage.removeItem("role");
 
-    let body = {'username':username,'password':password,'nick': email};
+    let body = {'username':username,'password':password,'email': email};
     return this.http.post("/api/auth/register", body, {responseType: "text"}); //se un metodo rilascia testo non si mettono le angolari (.post<any>) ma si mette {responseType: "text"}
   }
 
