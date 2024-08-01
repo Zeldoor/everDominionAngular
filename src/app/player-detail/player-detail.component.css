@@ -65,9 +65,9 @@
 .nome
 {
     font-family: Georgia, 'Times New Roman', Times, serif ;
+    color: rgb(251 191 36);
     padding-top: 10px;
     transform: translate(200px, 5px) scale(1.2);
-    color: rgb(251 191 36);
 
 }
 .name_ribbon

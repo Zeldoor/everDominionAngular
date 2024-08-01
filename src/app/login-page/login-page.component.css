@@ -1,4 +1,113 @@
 button, a, div
 {
     cursor:  url('https://i.imgur.com/KUIo2VB.png'), auto;
+
+
+}
+
+.pergamena
+{
+    background-image: url(https://i.imgur.com/f8NDNVt.png);
+    position: fixed;
+    transform: translate(650px, 80px);
+    height:600px ;
+    width: 577px;
+}
+
+.form_pos
+{
+    position: fixed;
+    transform: translate(50px, 100px);
+}
+.form-pos
+{
+    position: fixed;
+    transform: translate(50px, 120px);
+}
+.ombra
+{
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
+    font-family: Georgia, 'Times New Roman', Times, serif ;
+}
+
+.scritte
+{
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
+    font-family: Georgia, 'Times New Roman', Times, serif ;
+    color: rgb(251 191 36);
+}
+
+.ribbon-login
+{
+    position: fixed;
+    transform: translate(185px, 68px);
+}
+.ribbon-register
+{
+    position: fixed;
+    transform: translate(185px, 68px);
+}
+
+.bg-form
+{
+    position: fixed;
+    transform: translate(33px, 165px);
+}
+.bg-form-register
+{
+    position: fixed;
+    transform: translate(33px, 165px) scaleY(1.1);
+}
+
+::placeholder
+{
+    color: rgb(255, 240, 174);
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
+    text-align: center;
+}
+
+.login-button
+{
+    background-image: url(https://i.imgur.com/5ORdA0r.png);
+    background-repeat: no-repeat;
+    height: 55px;
+    width: 200px;
+    transform: translate(140px,20px);
+    font-size: x-large;
+    padding-right: 8px;
+    padding-bottom: 5px;
+}
+.login-button:active {
+    background-image: url("https://i.imgur.com/gSyHUBf.png");
+    transform: translate(140px,25px);
+}
+.register-button
+{
+    background-image: url(https://i.imgur.com/5ORdA0r.png);
+    background-repeat: no-repeat;
+    height: 55px;
+    width: 200px;
+    transform: translate(140px,20px);
+    font-size: x-large;
+    padding-right: 8px;
+    padding-bottom: 10px;
+}
+.register-button:active
+{
+    background-image: url("https://i.imgur.com/gSyHUBf.png");
+    transform: translate(140px,25px);
+}
+
+
+.form-input
+{
+margin-left: 110px;
+
+max-width: 250px;
+text-align: center;
+}
+
+.errore
+{
+    margin-top: -100px;
 }
