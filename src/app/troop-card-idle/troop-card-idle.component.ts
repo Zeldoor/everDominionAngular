@@ -9,8 +9,12 @@ import { MatGridListModule } from '@angular/material/grid-list';
   templateUrl: './troop-card-idle.component.html',
   styleUrl: './troop-card-idle.component.css'
 })
-export class TroopCardIdleComponent {
-
+export class TroopCardIdleComponent 
+{
   @Input() troop!:Troop;
 
+  setSprite(): string
+  {
+    return this.troop.className.includes("Knight") ? "https://i.imgur.com/fA62hrl.gif" : "https://i.imgur.com/RP0AmLf.gif";
+  }
 }

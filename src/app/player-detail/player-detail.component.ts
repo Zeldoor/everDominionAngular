@@ -7,6 +7,7 @@ import { TroopCardComponent } from '../troop-card/troop-card.component';
 import { Troop } from '../model/Troop';
 import { ActivatedRoute } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage.service';
+import { TroopCardIdleComponent } from '../troop-card-idle/troop-card-idle.component';
 
 @Component({
   selector: 'app-player-detail',

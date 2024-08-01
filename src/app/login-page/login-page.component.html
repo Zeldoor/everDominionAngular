@@ -3,25 +3,35 @@
         <div class="text-center text-4xl font-medium">{{loginState?"Log In":"Register"}}</div>
 
         <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
-            <input type="text" placeholder="Email" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="username" required>
+            <input type="email" placeholder="Email" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="email" required>
         </div>
+        @if (!loginState) 
+        {
+            <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
+                <input type="text" placeholder="Nick" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="username" required>
+
+                <div *ngIf="userForm.get('password')?.getError('passwordLenghtStrength') && userForm.get('password')?.touched" class="mt-2 text-sm text-red-600">
+                    {{formPasswordError}}
+                </div> 
+                
+            </div>
+        }
 
         <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
             <input type="password" min="6" placeholder="Password" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="password" required>
         </div>
 
+        <button [disabled]="userForm.invalid" (click)="loginState ? login() : register()" class="transform rounded-sm bg-indigo-600 py-2 font-bold duration-300 hover:bg-indigo-400">{{loginState ? "Login" : "Register"}}</button>
+        
         @if (!loginState) 
         {
-            <button (click)="register()" class="transform rounded-sm bg-indigo-600 py-2 font-bold duration-300 hover:bg-indigo-400">Register</button>
-
             <p class="text-center text-lg">
+                Already have an account?
                 <button  (click)="registerForm()" class="font-medium text-indigo-500 underline-offset-4 hover:underline">Login</button>
             </p>
         }
         @else
         {
-            <button (click)="login()" class="transform rounded-sm bg-indigo-600 py-2 font-bold duration-300 hover:bg-indigo-400">LOG IN</button>
-
             <button  class="transform text-center font-semibold text-gray-500 duration-300 hover:text-gray-300">FORGOT PASSWORD?</button>
 
             <p class="text-center text-lg">
@@ -29,6 +39,7 @@
                 <button (click)="registerForm()" class="font-medium text-indigo-500 underline-offset-4 hover:underline">Create One</button>
             </p>
         }
+
         <p class="text-center text-lg">
             <button  (click)="logout()" class="font-medium text-indigo-500 underline-offset-4 hover:underline">Logout</button>
         </p>

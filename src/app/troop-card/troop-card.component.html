@@ -1,13 +1,7 @@
 <div class="container  transition-all ease delay-100 duration-500  hover:scale-y-110 hover:border-6 border-4 bg-transparent h-25 float-left border-black hover:border-amber-600 z-0 hover:z-50 border-solid " style="border-radius: 15px; border-style: solid;">
                 <div class="">
-                    @if (troop.className=="fighter") {
-                        <img src="https://i.imgur.com/VBFGI4n.gif" 
+                        <img [src]="setSprite()" 
                         class="image rounded-full h-24 w-24 float-left">
-                    }@else 
-                    {
-                        <img src="https://i.imgur.com/NjK1mQq.gif" 
-                        class="image rounded-full h-24 w-24 float-left">  
-                    }
                     <!-- text -->
                     <div class="float-right mt-9 mr-2" style="font-family: cursive; font-weight: 600;"> {{troop.minDamage}}-{{troop.maxDamage}}
                         <br style="background-color: transparent;color: black;font-weight: bold;font-size: 16px;"> 

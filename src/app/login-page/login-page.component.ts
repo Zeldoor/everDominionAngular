@@ -1,14 +1,16 @@
 import { Component, inject} from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Player } from '../model/Player';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage.service';
+import { hasValidPassword } from '../services/validators/hasValidPassword';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
@@ -26,6 +28,7 @@ export class LoginPageComponent
 
   loginState: boolean = true;
   player !: Player;
+  formPasswordError: string = "";
 
   registerForm()
   {
@@ -34,20 +37,32 @@ export class LoginPageComponent
 
   userForm = new FormGroup(
     {
-      email: new FormControl(""),
-      username: new FormControl(""),
-      password: new FormControl(""),
-      dob: new FormControl(""),
+      email: new FormControl("", [Validators.required]),
+      username: new FormControl("", [Validators.required]),
+      password: new FormControl("", [Validators.required, hasValidPassword()]),
+      dob: new FormControl("", [Validators.required]),
     }
   )
+
+  // FORM DI ESEMPIO SU COME USARE I VALIDATORI
+  
+  // gradeForm:FormGroup = new FormGroup(
+  //   {
+  //     day: new FormControl('',[Validators.required,notFutureDateValidation()]),
+  //     subject: new FormControl('',[Validators.required,Validators.minLength(3)]),
+  //     teacherName: new FormControl('',[Validators.required]),
+  //     teacherSurname: new FormControl('',[Validators.required]),
+  //     value: new FormControl(6,[Validators.required])
+  //   }
+  // );
   
 
   login()
   {
-    let username = this.userForm.get('username')?.value;
+    let email = this.userForm.get('email')?.value;
     let password = this.userForm.get('password')?.value;
 
-    this.authService.login(username!, password!).subscribe(
+    this.authService.login(email!, password!).subscribe(
       {
         next: data =>
         {
@@ -55,7 +70,6 @@ export class LoginPageComponent
           this.player = data.playerDto;
 
           this.webStorage.setItem("token", data.accessToken);
-          this.webStorage.setItem("role", data.role);
           this.webStorage.setItem("user", data.user);
           this.webStorage.setItem("player", data.playerDto);
 
@@ -77,9 +91,10 @@ export class LoginPageComponent
   register()
   {
     let username = this.userForm.get('username')?.value;
+    let email = this.userForm.get('email')?.value;
     let password = this.userForm.get('password')?.value;
 
-    this.authService.register(username!, password!).subscribe(
+    this.authService.register(username!, password!, email!).subscribe(
       {
         next: data=>
         {
