@@ -90,10 +90,10 @@
             </div>
 
             <mat-grid-list class="equip-unita" cols="2" rowHeight="9.9rem">
-                @for (troop of player.activeTroops; track troop) 
+                @for (troopInShop of troopsInShop; track troopInShop) 
                 {
                     <mat-grid-tile>
-                        <app-troop-card [troop]="troop"></app-troop-card>
+                        <app-troop-card-idle [troopInShop]="troopInShop"></app-troop-card-idle>
                     </mat-grid-tile>
                 }
             </mat-grid-list>
@@ -102,6 +102,7 @@
 
         <div class="b3">
             <mat-grid-list cols="2" rowHeight="95px" class="inventory-equips">
+
                 <!-- MOCK GEAR INVENTORY -->
                 <mat-grid-tile class="inventory-equip">
                     

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Troop } from '../model/Troop';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { TroopInShop } from '../model/TroopInShop';
 
 @Component({
   selector: 'app-troop-card',
@@ -12,6 +13,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 export class TroopCardComponent 
 {
   @Input() troop!:Troop;
+  
 
   setSprite(): string
   {

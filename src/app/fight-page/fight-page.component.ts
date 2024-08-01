@@ -22,15 +22,12 @@ export class FightPageComponent
   buttonOn = true;
   players: Player[] = [];
   
-  
   constructor(private playerServ: PlayerService)
   {
     playerServ.getAll().subscribe(res => 
     {
       this.players = res;
     });
-    
-    // this.results = ["You dealt 8 dmg to Mattia","Mattia dealt 5 dmg to you", "You dealt 8 dmg to Mattia","Mattia dealt 5 dmg to you", "You dealt 8 dmg to Mattia","Mattia dealt 5 dmg to you", "You dealt 8 dmg to Mattia","Mattia dealt 5 dmg to you", "You dealt 8 dmg to Mattia"]
   }
   
 

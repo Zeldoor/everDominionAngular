@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
 })
 export class PlayerService 
 {
-
   constructor(private http: HttpClient){}
   
   fight(body: Fight): Observable<Fight>

@@ -8,7 +8,6 @@ export const AuthInterceptor:HttpInterceptorFn = (req: HttpRequest<any>, next: H
 
         if(token)
         {
-
             req = req.clone({
                 setHeaders:{Authorization: 'Bearer '+token}
             });

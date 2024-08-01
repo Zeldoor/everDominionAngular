@@ -5,24 +5,30 @@ import { TroopCardIdleComponent } from '../troop-card-idle/troop-card-idle.compo
 import { User } from '../model/User';
 import { Player } from '../model/Player';
 import { LocalStorageService } from '../services/local-storage.service';
-import { ActivatedRoute } from '@angular/router';
 import { Troop } from '../model/Troop';
+import { TroopInShop } from '../model/TroopInShop';
+import { Gear } from '../model/Gear';
+import { ShopService } from '../services/shop.service';
 
 @Component({
   selector: 'app-shop-page',
   standalone: true,
-  imports: [MatGridListModule, TroopCardComponent,TroopCardIdleComponent],
+  imports: [MatGridListModule, TroopCardIdleComponent],
   templateUrl: './shop-page.component.html',
   styleUrl: './shop-page.component.css'
 })
 export class ShopPageComponent {
 
-  user!: User;
-  player!: Player;
+  user: User;
+  player: Player;
+  troopsInShop: TroopInShop[] = [];
+  gears: Gear[] = [];
 
-  constructor(private webStorage: LocalStorageService, private route:ActivatedRoute)
+  constructor(private webStorage: LocalStorageService, private shopServ: ShopService)
   {
-    // this.route.params.subscribe(params => {this.player = player})  da vedere dopo
+    shopServ.getShopTroop().subscribe(data => this.troopsInShop = data);
+    shopServ.getShopGear().subscribe(data => this.gears = data);
+
     this.user = this.webStorage.getItem("user");
     this.player = this.webStorage.getItem("player");
   }

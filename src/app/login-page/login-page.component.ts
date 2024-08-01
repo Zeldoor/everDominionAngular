@@ -66,6 +66,7 @@ export class LoginPageComponent
           this.player = data.playerDto;
 
           this.webStorage.setItem("token", data.accessToken);
+          this.webStorage.setItem("role", data.role);
           this.webStorage.setItem("user", data.user);
           this.webStorage.setItem("player", data.playerDto);
 
