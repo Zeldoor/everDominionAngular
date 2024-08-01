@@ -1,9 +1,9 @@
 <body class="container">
     <div class="b1">
-
+        
         <!-- IMG -->
         <img src="https://i.imgur.com/S4Vs91H.png" 
-            class="rounded-full  h-14 w-14 float-right transition-all ease delay-100 duration-150 hover:-translate-y-0.5 hover:scale-110 z-50" style="transform: translate(-240px, 70px) scale(2); border-color: darkgoldenrod; border-width: 3px; border-style: groove;" >
+            class="rounded-full  h-14 w-14 float-right transition-all ease delay-100 duration-150 hover:-translate-y-0.5 hover:scale-110 z-50" style="transform: translate(-240px, 45px) scale(2); border-color: darkgoldenrod; border-width: 3px; border-style: groove;" >
             
             
             <!-- DATI USER DX -->
@@ -100,8 +100,32 @@
     </div>
 
     <div class="b3">
-        <mat-grid-list cols="2" rowHeight="100px" class="inventory-equips">
-            <!-- MOCK INVENTORY SLOTS -->
+        <mat-grid-list cols="2" rowHeight="95px" class="inventory-equips">
+            <!-- MOCK GEAR INVENTORY -->
+            <mat-grid-tile class="inventory-equip">
+                
+            </mat-grid-tile>
+            <mat-grid-tile class="inventory-equip">
+                
+            </mat-grid-tile>
+            <mat-grid-tile class="inventory-equip">
+                
+            </mat-grid-tile>
+            <mat-grid-tile class="inventory-equip">
+                
+            </mat-grid-tile>
+            <mat-grid-tile class="inventory-equip">
+                
+            </mat-grid-tile>
+            <mat-grid-tile class="inventory-equip">
+                
+            </mat-grid-tile>
+            <mat-grid-tile class="inventory-equip">
+                
+            </mat-grid-tile>
+            <mat-grid-tile class="inventory-equip">
+                
+            </mat-grid-tile>
             <mat-grid-tile class="inventory-equip">
                 
             </mat-grid-tile>
@@ -127,7 +151,7 @@
                 @for (troop of mock_inventory_troops; track $index) 
                 {
                     <mat-grid-tile>
-                        <app-troop-card [troop]="troop"></app-troop-card>
+                        <app-troop-card-idle [troop]="troop"></app-troop-card-idle>
                     </mat-grid-tile> 
 
                 }

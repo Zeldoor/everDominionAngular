@@ -11,7 +11,7 @@ import { LocalStorageService } from '../services/local-storage.service';
 @Component({
   selector: 'app-player-detail',
   standalone: true,
-  imports: [MatGridListModule, TroopCardComponent],
+  imports: [MatGridListModule, TroopCardComponent,TroopCardIdleComponent],
   templateUrl: './player-detail.component.html',
   styleUrl: './player-detail.component.css'
 })
