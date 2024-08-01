@@ -15,11 +15,11 @@ export class TroopCardComponent
 
   setSprite(): string
   {
-    return this.troop.className.includes("Knight") ? "https://i.imgur.com/VBFGI4n.gif" : "https://i.imgur.com/NjK1mQq.gif";
+    return this.troop.className.toLocaleLowerCase().includes("knight") ? "https://i.imgur.com/VBFGI4n.gif" : "https://i.imgur.com/NjK1mQq.gif";
   }
 
   setBackground(): string
   {
-    return this.troop.className.includes("Knight") ?  'url("https://i.imgur.com/JKzHY0e.png")' : 'url("https://i.imgur.com/QxuxL0Y.png")';
+    return this.troop.className.toLocaleLowerCase().includes("knight") ?  'url("https://i.imgur.com/JKzHY0e.png")' : 'url("https://i.imgur.com/QxuxL0Y.png")';
   }
 }
