@@ -27,20 +27,22 @@
         style="border-radius: 15px; border-style: solid;"
         [style.background-image]="setBackgroundShop()">
         <div class="">
-                <img [src]="setSpriteShop()"
-                class="image rounded-full h-24 w-24 float-left">
-            <!-- text -->
-                <div style="transform: translate(-15px);">
-                    <div class="numeri float-right mt-9 mr-2" style="font-family: cursive; font-weight: 600;"> {{troopInShop.damage}}
-                        <br class="numeri" style="background-color: transparent;color: black;font-weight: bold;font-size: 16px;"> 
-                        {{troopInShop.health}}
-                    </div>
-                    <!-- imgs -->
-                    <div class=" float-right">
-                        <img src="https://i.imgur.com/Rj6SLYh.png" 
-                                class="icon size-6  mr-0.5" style="margin-top: 2.2rem;">
-                        <img src="https://i.imgur.com/gHJqR9t.png" 
-                                class="icon size-6  mr-1" style="margin-top: 3.7rem;">
+            <img [src]="setSpriteShop()"
+            class="image rounded-full h-24 w-24 float-left">
+             
+                <!-- text -->
+            <div style="transform: translate(-15px);">
+                <div class="numeri float-right mt-9 mr-2" style="font-family: cursive; font-weight: 600;"> {{troopInShop.damage}}
+                    <br class="numeri" style="background-color: transparent;color: black;font-weight: bold;font-size: 16px;"> 
+                    {{troopInShop.health}}
+                </div>
+
+                <!-- imgs -->
+                <div class=" float-right">
+                    <img src="https://i.imgur.com/Rj6SLYh.png" 
+                            class="icon size-6  mr-0.5" style="margin-top: 2.2rem;">
+                    <img src="https://i.imgur.com/gHJqR9t.png" 
+                            class="icon size-6  mr-1" style="margin-top: 3.7rem;">
                 </div>
             </div>
         </div>

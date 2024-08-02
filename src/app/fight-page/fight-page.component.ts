@@ -16,18 +16,20 @@ import { FightLogComponent } from '../fight-log/fight-log.component';
 })
 export class FightPageComponent 
 {
-  printString: string = "";
-  results: string[] = [];
   fightRes !: Fight;
-  buttonOn = true;
+  player!: Player;
   players: Player[] = [];
+  results: string[] = [];
+  buttonOn = true;
   
   constructor(private playerServ: PlayerService)
   {
-    playerServ.getAll().subscribe(res => 
-    {
-      this.players = res;
-    });
+    playerServ.getAll().subscribe(
+      res => 
+      {
+        this.players = res.filter( p => p != this.player);
+        this.player = res.filter( p => p.id == parseInt(localStorage.getItem("id")!))[0];
+      });
   }
   
 

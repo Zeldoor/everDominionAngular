@@ -35,6 +35,10 @@ export class LoginPageComponent
   {
     this.loginState = !this.loginState
     this.loginState ? this.newUserForm.get('email')?.setValue("") : this.newUserForm.get('email')?.setValue(null)
+    
+    if(this.loginState)
+    {
+    }
   }
 
   newUserForm = new FormGroup(
@@ -68,7 +72,8 @@ export class LoginPageComponent
           this.webStorage.setItem("token", data.accessToken);
           this.webStorage.setItem("role", data.role);
           this.webStorage.setItem("user", data.user);
-          this.webStorage.setItem("player", data.playerDto);
+          this.webStorage.setItem("username", data.user.username);
+          this.webStorage.setItem("id", data.playerDto.id);
 
           this.router.navigate(["home"])
         },
@@ -103,12 +108,7 @@ export class LoginPageComponent
         {
           localStorage.clear();
 
-          console.log(err)
-
-          if(err.error.includes("Email"))
-            this.newUserForm.get('email')?.setErrors({emailTaken: err.error});
-          else
-            this.newUserForm.get('username')?.setErrors({usernameTaken: err.error});
+          this.newUserForm.setErrors({backendError: err.error});
         }
       }
     )

@@ -6,10 +6,11 @@ export const AuthInterceptor:HttpInterceptorFn = (req: HttpRequest<any>, next: H
     {
         let token = localStorage.getItem("token");
 
+
         if(token)
         {
             req = req.clone({
-                setHeaders:{Authorization: 'Bearer '+token}
+                setHeaders:{Authorization: 'Bearer '+token.replace('"', '')}
             });
         }
 

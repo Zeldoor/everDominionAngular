@@ -1,11 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Player } from '../model/Player';
 import { PlayerService } from '../services/player.service';
 import { User } from '../model/User';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { TroopCardComponent } from '../troop-card/troop-card.component';
 import { Troop } from '../model/Troop';
-import { ActivatedRoute } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage.service';
 import { TroopCardIdleComponent } from '../troop-card-idle/troop-card-idle.component';
 
@@ -20,113 +19,36 @@ export class PlayerDetailComponent {
 
   user!: User;
   player!: Player;
+  activeTroops: Troop[] = [];
+  storageTroops: Troop[] = [];
 
-  constructor(private webStorage: LocalStorageService, private route:ActivatedRoute)
+  constructor(private webStorage: LocalStorageService, private playerServ:PlayerService)
   {
-    // this.route.params.subscribe(params => {this.player = player})  da vedere dopo
     this.user = this.webStorage.getItem("user");
-    this.player = this.webStorage.getItem("player");
+    this.playerServ.getOne(parseInt(localStorage.getItem("id")!)).subscribe(
+      data =>
+      {
+        this.player = data;
+        this.activeTroops = this.player.activeTroops;
+        this.storageTroops = this.player.storageTroops;
+      }
+    );
   }
 
-  mock_inventory_troops: Troop[] = 
-  [
+  switchTroopState(troop: Troop, active: boolean)
+  {
+    if(active)
     {
-        className: "Archer",
-        minDamage: 15,
-        maxDamage: 25,
-        health: 100,
-        playerId: 1
-    },
-    {
-        className: "Knight",
-        minDamage: 20,
-        maxDamage: 30,
-        health: 150,
-        playerId: 1
-    },
-    {
-        className: "Mage",
-        minDamage: 25,
-        maxDamage: 35,
-        health: 80,
-        playerId: 2
-    },
-    {
-        className: "Spearman",
-        minDamage: 10,
-        maxDamage: 20,
-        health: 120,
-        playerId: 2
-    },
-    {
-      className: "Knight",
-      minDamage: 20,
-      maxDamage: 30,
-      health: 150,
-      playerId: 1
-    },
-    {
-        className: "Mage",
-        minDamage: 25,
-        maxDamage: 35,
-        health: 80,
-        playerId: 2
-    },
-    {
-      className: "Knight",
-      minDamage: 20,
-      maxDamage: 30,
-      health: 150,
-      playerId: 1
-    },
-    {
-        className: "Mage",
-        minDamage: 25,
-        maxDamage: 35,
-        health: 80,
-        playerId: 2
-    },
-    {
-      className: "Knight",
-      minDamage: 20,
-      maxDamage: 30,
-      health: 150,
-      playerId: 1
-    },
-    {
-      className: "Mage",
-      minDamage: 25,
-      maxDamage: 35,
-      health: 80,
-      playerId: 2
-    },
-    {
-      className: "Knight",
-      minDamage: 20,
-      maxDamage: 30,
-      health: 150,
-      playerId: 1
-    },
-    {
-      className: "Mage",
-      minDamage: 25,
-      maxDamage: 35,
-      health: 80,
-      playerId: 2
-    },
-    {
-      className: "Knight",
-      minDamage: 20,
-      maxDamage: 30,
-      health: 150,
-      playerId: 1
-    },
-    {
-      className: "Mage",
-      minDamage: 25,
-      maxDamage: 35,
-      health: 80,
-      playerId: 2
+      this.activeTroops = this.activeTroops.filter(t => t.id !== troop.id);
+      this.storageTroops.unshift(troop);
+      this.playerServ.switchTroopState(troop.id).subscribe(data => this.player = data)
     }
-  ];
+    else
+      if(this.activeTroops.length < 6)
+      {
+        this.storageTroops = this.storageTroops.filter(t => t.id !== troop.id);
+        this.activeTroops.push(troop);
+        this.playerServ.switchTroopState(troop.id).subscribe(data => this.player = data)
+      }
+  }
 }

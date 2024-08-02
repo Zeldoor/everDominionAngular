@@ -1,6 +1,5 @@
-<div class="user-icon"><img src="" alt=""></div>
-<div></div>
-<div></div>
+@if (player) 
+{
 <body class="container">
     <div class="pergamena">
         <div class="b1">
@@ -93,10 +92,12 @@
             </div>
 
             <mat-grid-list class="equip-unita" cols="2" rowHeight="9.9rem">
-                @for (troop of player.activeTroops; track troop) 
+                @for (troop of activeTroops; track troop) 
                 {
                     <mat-grid-tile>
-                        <app-troop-card [troop]="troop"></app-troop-card>
+                        <button (click)="switchTroopState(troop, true)">
+                            <app-troop-card [troop]="troop"></app-troop-card>
+                        </button>
                     </mat-grid-tile>
                 }
             </mat-grid-list>
@@ -152,18 +153,20 @@
             </mat-grid-list>
 
             <mat-grid-list cols="3" rowHeight="115px" class="inventory-units">
-                    @for (troop of mock_inventory_troops; track $index) 
+                    @for (troop of storageTroops; track $index) 
                     {
                         <mat-grid-tile>
-                            <app-troop-card-idle [troop]="troop"></app-troop-card-idle>
+                            <button (click)="switchTroopState(troop, false)">
+                                <app-troop-card-idle [troop]="troop"></app-troop-card-idle>
+                            </button>    
                         </mat-grid-tile> 
-
                     }
             </mat-grid-list>
 
         </div>
     </div>
 </body>
+}
 
 
 
