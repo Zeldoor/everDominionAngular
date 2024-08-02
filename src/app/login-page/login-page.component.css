@@ -66,6 +66,8 @@ button, a, div
     text-align: center;
 }
 
+
+
 .login-button
 {
     background-image: url(https://i.imgur.com/5ORdA0r.png);
@@ -104,8 +106,10 @@ button, a, div
 margin-left: 110px;
 max-width: 250px;
 text-align: center;
+font: italic;
+/* text-shadow: 1px 1px 0 #FFF0AE, -1px -1px 0 #FFF0AE, 1px -1px 0 #FFF0AE, -1px 1px 0 #FFF0AE, 1px 0 0 #FFF0AE, -1px 0 0 #FFF0AE, 0 1px 0 #FFF0AE, 0 -1px 0 #FFF0AE; */
 color: rgb(0, 0, 0);
-text-shadow: 1px 1px 0 #FFF0AE, -1px -1px 0 #FFF0AE, 1px -1px 0 #FFF0AE, -1px 1px 0 #FFF0AE, 1px 0 0 #FFF0AE, -1px 0 0 #FFF0AE, 0 1px 0 #FFF0AE, 0 -1px 0 #FFF0AE;
+
 }
 
 

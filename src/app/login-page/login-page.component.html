@@ -9,7 +9,7 @@
                 </div>
                 <!--  USERNAME -->
                 <div class="form-input w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-blue-300">
-                    <input type="text" placeholder="Username" style="text-align: center;" class="w-full border-none bg-transparent outline-none placeholder:italic placeholder:color focus:outline-none" formControlName="username" required>
+                    <input type="text" placeholder="Username" style="text-align: center;" class=" w-full border-none bg-transparent outline-none placeholder:italic placeholder:color focus:outline-none" formControlName="username" required>
                     
                 </div>
                 <div *ngIf="oldUserForm.get('username')?.getError('usernameTaken') && oldUserForm.get('username')?.touched" class="mt-2 text-sm text-red-600">
@@ -17,7 +17,7 @@
                 </div> 
                 <!-- PASSWORD -->
                 <div class="form-input w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-blue-300">
-                    <input type="password" min="6" placeholder="Password" style="text-align: center;" class=" border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="password" required>
+                    <input type="password" min="6" placeholder="Password" style=" text-align: center;" class=" border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="password" required>
                 </div>
 
                 <button [disabled]="oldUserForm.invalid" (click)="login()" class="scritte login-button transform rounded-smpy-2 font-bold duration-300 hover:bg-[url(https://i.imgur.com/WB1cXhE.png)]">Login</button>
