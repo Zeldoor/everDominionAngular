@@ -9,7 +9,7 @@
             
             <!-- IMG -->
             <img src="https://i.imgur.com/S4Vs91H.png" 
-                class="rounded-full  h-14 w-14 float-right transition-all ease delay-100 duration-150 hover:-translate-y-0.5 hover:scale-110 z-50" style="transform: translate(-240px, 45px) scale(1.8); border-color: darkgoldenrod; border-width: 3px; border-style: groove;" >
+                class="rounded-full  h-14 w-14 float-right transition-all ease delay-100 duration-150 hover:-translate-y-0.5 hover:scale-110 z-50" style="transform: translate(-250px, 45px) scale(1.8); border-color: darkgoldenrod; border-width: 3px; border-style: groove;" >
             <img src="https://i.imgur.com/HVdsWFS.png" class="name_ribbon">
                 
                 <!-- DATI USER DX -->
@@ -63,7 +63,7 @@
                     </div>
 
                     <div>
-                        <img src="https://i.imgur.com/Rj6SLYh.png" class="spada size-14 mt-2 mr-0.5" alt="">
+                        <img src="https://i.imgur.com/cSCc6ul.png" class="spada size-14 mt-2 mr-0.5" alt="">
                         <h2 class=" ombra mindmg"> {{player.playerMinDmg}}</h2>
                         <h2 class="ombra maxdmg"> {{player.playerMaxDmg}}</h2>
                     </div>
@@ -95,12 +95,10 @@
             </div>
 
             <mat-grid-list class="equip-unita" cols="2" rowHeight="9.9rem">
-                @for (troop of activeTroops; track troop) 
+                @for (troop of player.activeTroops; track troop) 
                 {
                     <mat-grid-tile>
-                        <button (click)="switchTroopState(troop, true)">
-                            <app-troop-card [troop]="troop"></app-troop-card>
-                        </button>
+                        <app-troop-card [troop]="troop"></app-troop-card>
                     </mat-grid-tile>
                 }
             </mat-grid-list>
@@ -159,17 +157,15 @@
                     @for (troop of storageTroops; track $index) 
                     {
                         <mat-grid-tile>
-                            <button (click)="switchTroopState(troop, false)">
-                                <app-troop-card-idle [troop]="troop"></app-troop-card-idle>
-                            </button>    
+                            <app-troop-card-idle [troop]="troop"></app-troop-card-idle>
                         </mat-grid-tile> 
+
                     }
             </mat-grid-list>
 
         </div>
     </div>
 </body>
-}
 
 
 
