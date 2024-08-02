@@ -33,7 +33,6 @@
 {
     position: fixed;
     transform: translate(420px,5px) scale(1);
-    float: left;
     background-image: url(https://i.imgur.com/e7h467C.png);
     width: 670px;
     height: 500px;
@@ -203,13 +202,19 @@
 .equip-unita
 {
     position: fixed;
-    transform: translate(155px, -510px);
+    width: 475px;
+    height: 475px;
+    min-height: 474px;
+    max-height: 475px;
+    transform: translate(160px, -510px);
     border-left: rgb(82, 41, 8);
     border-style: solid;
     border-left-width: 4px;
-    width: 475px;
-    height: 500px;
     margin-left: 25px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+
 }   
 
 .inventory-equips

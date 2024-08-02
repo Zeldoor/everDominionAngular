@@ -262,8 +262,6 @@
     overflow-x: hidden;
     scrollbar-width: none;
     background-repeat: no-repeat;
-    overflow-x: hidden;
-    overflow-y: scroll;
 }
 
 .spade-icon-bg
