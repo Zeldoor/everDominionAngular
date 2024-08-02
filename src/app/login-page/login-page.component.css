@@ -51,7 +51,7 @@ button, a, div
 .bg-form
 {
     position: fixed;
-    transform: translate(33px, 165px);
+    transform: translate(33px, 160px);
 }
 .bg-form-register
 {
@@ -102,12 +102,41 @@ button, a, div
 .form-input
 {
 margin-left: 110px;
-
 max-width: 250px;
 text-align: center;
+color: rgb(0, 0, 0);
+text-shadow: 1px 1px 0 #FFF0AE, -1px -1px 0 #FFF0AE, 1px -1px 0 #FFF0AE, -1px 1px 0 #FFF0AE, 1px 0 0 #FFF0AE, -1px 0 0 #FFF0AE, 0 1px 0 #FFF0AE, 0 -1px 0 #FFF0AE;
 }
 
-.errore
+
+.error1
 {
-    margin-top: -100px;
+    position: fixed;
+    transform: translate(613px,490px);
+    width: 450px;
+    height: 40px;
+
+}
+
+
+.error2
+{
+    position: fixed;
+    transform: translate(613px,520px);
+    width: 450px;
+    height: 40px;
+}
+
+
+.error3
+{
+    position: fixed;
+    transform: translate(613px,550px);
+    width: 450px;
+    height: 40px;
+}
+
+.input
+{
+    text-shadow: 1px 1px 0 #FFF0AE, -1px -1px 0 #FFF0AE, 1px -1px 0 #FFF0AE, -1px 1px 0 #FFF0AE, 1px 0 0 #FFF0AE, -1px 0 0 #FFF0AE, 0 1px 0 #FFF0AE, 0 -1px 0 #FFF0AE;
 }
