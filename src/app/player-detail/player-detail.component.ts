@@ -7,11 +7,13 @@ import { TroopCardComponent } from '../troop-card/troop-card.component';
 import { Troop } from '../model/Troop';
 import { LocalStorageService } from '../services/local-storage.service';
 import { TroopCardIdleComponent } from '../troop-card-idle/troop-card-idle.component';
+import { ProfileCardComponent } from '../profile-card/profile-card.component';
+import { InventoryCardComponent } from '../inventory-card/inventory-card.component';
 
 @Component({
   selector: 'app-player-detail',
   standalone: true,
-  imports: [MatGridListModule, TroopCardComponent,TroopCardIdleComponent],
+  imports: [MatGridListModule,InventoryCardComponent, TroopCardComponent,TroopCardIdleComponent, ProfileCardComponent],
   templateUrl: './player-detail.component.html',
   styleUrl: './player-detail.component.css'
 })

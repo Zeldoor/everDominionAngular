@@ -9,7 +9,7 @@
     background-color: transparent;
     background-repeat: no-repeat;
     overflow: auto;
-    
+    z-index: 49;
 }
 .pergamena
 {
@@ -33,6 +33,7 @@
 {
     position: fixed;
     transform: translate(420px,5px) scale(1);
+    float: left;
     background-image: url(https://i.imgur.com/e7h467C.png);
     width: 670px;
     height: 500px;
@@ -64,9 +65,9 @@
 .nome
 {
     font-family: Georgia, 'Times New Roman', Times, serif ;
+    color: rgb(251 191 36);
     padding-top: 10px;
     transform: translate(200px, 5px) scale(1.2);
-    color: rgb(251 191 36);
 
 }
 .name_ribbon
@@ -117,7 +118,12 @@
 
 .stamina-icon
 {
-    transform: scale(0.6);
+    transform: scale(1);
+    z-index: 100;
+}
+.stamina-icon-bw
+{
+    transform: translate(0px, 12px) scale(0.8);
     z-index: 100;
 }
 
@@ -202,19 +208,13 @@
 .equip-unita
 {
     position: fixed;
-    width: 475px;
-    height: 475px;
-    min-height: 474px;
-    max-height: 475px;
-    transform: translate(160px, -510px);
+    transform: translate(155px, -510px);
     border-left: rgb(82, 41, 8);
     border-style: solid;
     border-left-width: 4px;
+    width: 475px;
+    height: 500px;
     margin-left: 25px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    scrollbar-width: none;
-
 }   
 
 .inventory-equips
@@ -238,6 +238,7 @@
     width: 100px;
     max-width: 100px;
     height: 100px;
+    max-height: 100px;
     border-radius: 100px;
     border-width: 3px;
     border-color: rgb(179, 127, 60);
@@ -264,7 +265,7 @@
     overflow-y: scroll;
 }
 
-.shop-icon-bg
+.spade-icon-bg
 {
     position: fixed;
     background-image: url(https://i.imgur.com/uHrN03f.png);
@@ -275,41 +276,64 @@
     background-repeat: no-repeat ;
 }
 
-.shop-icon
+.spade-icon
 {
     transform: translate(-3px, -6px) scale(0.50);
 }
 
+.baule-icon-bg
+{
+    position: fixed;
+    background-image: url(https://i.imgur.com/uHrN03f.png);
+    height: 4rem ;
+    width: 4rem;
+    transform: translate(1407px, 545px) scale(1.08);
+    z-index: 500;
+    background-repeat: no-repeat ;
+}
+
+.baule-icon{
+    transform: translate(-3px, -2px) scale(0.58);
+}
 
 
 
-.truppe
-{
-    transform: translate(60px,10px);
-}
-.bottoneBuy
-{
-    background-image: url(https://i.imgur.com/O2rrsXz.png);
-    justify-content: center;
-    width: 50px;
-    height: 58px;
-    background-repeat:no-repeat;
-    transform: translate(0px,0px);
-    z-index: 1000;
-}
-.bottoneBuy:active
-{
-    background-image: url(https://i.imgur.com/xTrHJlu.png);
-    transform: translate(0, 5px);
-}
-.goldCost
-{
-    transform: translate(-25px,45px) scale(0.8);
-}
-.goldCostNumber
-{
-    transform: translate(-150px,55px) scale(1.5);
-    color: rgb(255, 235, 184);
-    font-family: Georgia, 'Times New Roman', Times, serif ;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
