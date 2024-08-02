@@ -34,11 +34,11 @@ export class LoginPageComponent
   registerForm()
   {
     this.loginState = !this.loginState
+    this.clearFormErrors()
     this.loginState ? this.newUserForm.get('email')?.setValue("") : this.newUserForm.get('email')?.setValue(null)
-    
-    if(this.loginState)
-    {
-    }
+    this.loginState ? this.newUserForm.get('username')?.setValue("") : this.newUserForm.get('username')?.setValue(null)
+    this.loginState ? this.newUserForm.get('password')?.setValue("") : this.newUserForm.get('password')?.setValue(null)
+
   }
 
   newUserForm = new FormGroup(
@@ -112,5 +112,20 @@ export class LoginPageComponent
         }
       }
     )
+  }
+
+  clearFormErrors() {
+    Object.keys(this.newUserForm.controls).forEach(
+    key => 
+    {
+      let control = this.newUserForm.get(key);
+      
+      if(control != null)
+      {
+        control.setErrors(null);
+        control.markAsPristine();
+        control.markAsUntouched();
+      }
+    });
   }
 }
