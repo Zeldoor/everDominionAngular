@@ -13,13 +13,13 @@ export function hasValidPassword(): ValidatorFn
         let minLength = value.length >= 8;
 
         if (!minLength)
-            return { passwordErr: "Password must contain at least 8 characters" };
+            return { passwordErr: "La password deve contenere almeno 8 caratteri" };
 
         if (!hasUpperCase || !hasLowerCase) 
-            return { passwordErr: "Password must contain at least one upper case and one lower case" };
+            return { passwordErr: "La password deve contenere una maiuscola e una minuscola" };
 
         if (!hasNumber) 
-            return { passwordErr: "Password must contain at least one number" };
+            return { passwordErr: "La password deve contenere almeno un numero" };
 
         return null;
     }

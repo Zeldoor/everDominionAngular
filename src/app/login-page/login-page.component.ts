@@ -35,6 +35,10 @@ export class LoginPageComponent
   {
     this.loginState = !this.loginState
     this.loginState ? this.newUserForm.get('email')?.setValue("") : this.newUserForm.get('email')?.setValue(null)
+    
+    if(this.loginState)
+    {
+    }
   }
 
   newUserForm = new FormGroup(
@@ -104,12 +108,7 @@ export class LoginPageComponent
         {
           localStorage.clear();
 
-          console.log(err)
-
-          if(err.error.includes("Email"))
-            this.newUserForm.get('email')?.setErrors({emailTaken: err.error});
-          else
-            this.newUserForm.get('username')?.setErrors({usernameTaken: err.error});
+          this.newUserForm.setErrors({backendError: err.error});
         }
       }
     )
