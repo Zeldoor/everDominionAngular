@@ -24,7 +24,7 @@
                         <mat-grid-list cols="3" rowHeight="90px" class="stamina">
                         <!-- 1 -->
                             @if (player.stamina>=1) {
-                            <mat-grid-tile>
+                            <mat-grid-tile>                                                             
                                 <img class="stamina-icon" src="https://i.imgur.com/ZYi4hIb.png" alt="">
                             </mat-grid-tile>
                             }
@@ -98,7 +98,9 @@
                 @for (troop of player.activeTroops; track troop) 
                 {
                     <mat-grid-tile>
-                        <app-troop-card [troop]="troop"></app-troop-card>
+                        <button (click)="switchTroopState(troop, true)">
+                            <app-troop-card [troop]="troop"></app-troop-card>
+                        </button>
                     </mat-grid-tile>
                 }
             </mat-grid-list>
@@ -157,9 +159,10 @@
                     @for (troop of storageTroops; track $index) 
                     {
                         <mat-grid-tile>
-                            <app-troop-card-idle [troop]="troop"></app-troop-card-idle>
+                            <button (click)="switchTroopState(troop, false)">
+                                <app-troop-card-idle [troop]="troop"></app-troop-card-idle>
+                            </button>
                         </mat-grid-tile> 
-
                     }
             </mat-grid-list>
 
