@@ -11,13 +11,23 @@ export class ShopService {
 
   constructor(private http: HttpClient){}
 
-  getShopTroop(): Observable<TroopInShop[]>
+  getShopTroops(): Observable<TroopInShop[]>
   {
     return this.http.get<TroopInShop[]>("/api/shop/troops");
   }
 
-  getShopGear(): Observable<Gear[]>
+  getShopGears(): Observable<Gear[]>
   {
     return this.http.get<Gear[]>("/api/shop/gears");
+  }
+
+  buyTroop(playerId: number): Observable<TroopInShop[]>
+  {
+    return this.http.post<TroopInShop[]>("/api/shop/troop", playerId);
+  }
+
+  buyGear(): Observable<Gear[]>
+  {
+    return this.http.get<Gear[]>("/api/shop/gear");
   }
 }
