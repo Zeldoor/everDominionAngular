@@ -260,7 +260,33 @@
     overflow-y: scroll;
 }
 
-.user-icon
+.spade-icon-bg
 {
+    position: fixed;
+    background-image: url(https://i.imgur.com/uHrN03f.png);
+    height: 4rem ;
+    width: 4rem;
+    transform: translate(1409px, 80px) scale(1.05);
+    z-index: 500;
+    background-repeat: no-repeat ;
+}
 
+.spade-icon
+{
+    transform: translate(-3px, -6px) scale(0.50);
+}
+
+.baule-icon-bg
+{
+    position: fixed;
+    background-image: url(https://i.imgur.com/uHrN03f.png);
+    height: 4rem ;
+    width: 4rem;
+    transform: translate(1407px, 545px) scale(1.08);
+    z-index: 500;
+    background-repeat: no-repeat ;
+}
+
+.baule-icon{
+    transform: translate(-3px, -2px) scale(0.58);
 }
