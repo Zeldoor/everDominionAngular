@@ -214,6 +214,7 @@
     border-left-width: 4px;
     width: 475px;
     height: 500px;
+    min-height: 475px;
     margin-left: 25px;
 }   
 
