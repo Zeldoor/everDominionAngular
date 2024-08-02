@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { User } from '../model/User';
 import { Player } from '../model/Player';
@@ -14,23 +14,16 @@ import { TroopCardIdleComponent } from '../troop-card-idle/troop-card-idle.compo
   templateUrl: './inventory-card.component.html',
   styleUrl: './inventory-card.component.css'
 })
-export class InventoryCardComponent {
+export class InventoryCardComponent 
+{
+  troop!: Troop;
+  @Input() storageTroops!: Troop[];
+  @Output() switchTroopEvent: EventEmitter<Troop> = new EventEmitter<Troop>();
 
-  user!: User;
-  player!: Player;
-  activeTroops: Troop[] = [];
-  storageTroops: Troop[] = [];
+  constructor(){}
 
-  constructor(private webStorage: LocalStorageService, private playerServ:PlayerService)
+  callFatherEvent(troop: Troop)
   {
-    this.user = this.webStorage.getItem("user");
-    this.playerServ.getOne(parseInt(localStorage.getItem("id")!)).subscribe(
-      data =>
-      {
-        this.player = data;
-        this.activeTroops = this.player.activeTroops;
-        this.storageTroops = this.player.storageTroops;
-      }
-    );
+    this.switchTroopEvent.emit(troop);
   }
 }

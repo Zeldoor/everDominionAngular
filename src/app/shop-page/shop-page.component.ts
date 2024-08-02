@@ -27,7 +27,6 @@ export class ShopPageComponent {
   troopsInShop: TroopInShop[] = [];
   storageTroops: Troop[] = [];
   gears: Gear[] = [];
-  @Output() buy : EventEmitter<void> = new EventEmitter;
 
 
   
@@ -41,14 +40,18 @@ export class ShopPageComponent {
       data =>
       {
         this.player = data;
-        this.storageTroops = this.player.storageTroops;
+        this.storageTroops = this.player.storageTroops.reverse();
       }
     );
   }
 
-
-  buyButtonClicked(): void
+  buyButtonClicked(troopId: number): void
   {
-      this.buy.emit();
+    this.shopServ.buyTroop(troopId, this.player).subscribe(
+      data =>
+      {
+        this.player = data;
+        this.storageTroops = this.player.storageTroops.reverse();
+      });
   }
 }

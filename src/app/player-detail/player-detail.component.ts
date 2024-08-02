@@ -32,7 +32,7 @@ export class PlayerDetailComponent {
       {
         this.player = data;
         this.activeTroops = this.player.activeTroops;
-        this.storageTroops = this.player.storageTroops;
+        this.storageTroops = this.player.storageTroops.reverse();
       }
     );
   }
@@ -42,15 +42,15 @@ export class PlayerDetailComponent {
     if(active)
     {
       this.activeTroops = this.activeTroops.filter(t => t.id !== troop.id);
-      this.storageTroops.unshift(troop);
-      this.playerServ.switchTroopState(troop.id).subscribe(data => this.player = data)
+      this.storageTroops.push(troop);
+      this.playerServ.switchTroopState(troop.id).subscribe(data => this.player = data);
     }
     else
       if(this.activeTroops.length < 6)
       {
         this.storageTroops = this.storageTroops.filter(t => t.id !== troop.id);
         this.activeTroops.push(troop);
-        this.playerServ.switchTroopState(troop.id).subscribe(data => this.player = data)
+        this.playerServ.switchTroopState(troop.id).subscribe(data => this.player = data);
       }
   }
 }

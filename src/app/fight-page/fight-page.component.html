@@ -1,15 +1,15 @@
 <div class="scatola">
     <mat-grid-list cols="3" rowHeight="45rem">
         <mat-grid-tile>
-            <app-player-card [player]="players[0]"></app-player-card>
+            <app-player-card [player]="player"></app-player-card>
         </mat-grid-tile>
 
         <mat-grid-tile>
-            <app-fight-log [results]="results" [players]="players" (fightStart)="beginFight()"></app-fight-log>
+            <app-fight-log [results]="results" [player]="player" (fightStart)="beginFight()"></app-fight-log>
         </mat-grid-tile>
 
         <mat-grid-tile>
-            <app-player-card [player]="players[1]"></app-player-card>
+            <app-player-card [player]="enemy"></app-player-card>
         </mat-grid-tile>
     </mat-grid-list>
 </div>

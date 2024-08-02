@@ -12,7 +12,7 @@ import { Player } from '../model/Player';
 export class FightLogComponent 
 {
   @Input() results !: string[];
-  @Input() players!: Player[];
+  @Input() player!: Player;
   @Output() fightStart : EventEmitter<void> = new EventEmitter;
 
   constructor()
@@ -26,11 +26,11 @@ export class FightLogComponent
 
   messageAlign(message: string) : string
   {
-    return message.includes(this.players[0].nick + " ha") ? "flex-start" : "flex-end";
+    return message.includes(this.player.nick + " ha") ? "flex-start" : "flex-end";
   }
 
   cssClass(message: string)
   {
-    return message.includes(this.players[0].nick + " ha") ? "attackerStyle" : "defenderStyle";
+    return message.includes(this.player.nick + " ha") ? "attackerStyle" : "defenderStyle";
   }
 }

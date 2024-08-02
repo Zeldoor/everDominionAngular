@@ -6,7 +6,7 @@
 <body class="container">
     <div class="pergamena">
         
-        <app-profile-card></app-profile-card>
+        <app-profile-card [player]="player"></app-profile-card>
 
 
 
@@ -26,7 +26,7 @@
             </div>
 
             <mat-grid-list class="equip-unita" cols="2" rowHeight="9.9rem">
-                @for (troop of player.activeTroops; track troop) 
+                @for (troop of player.activeTroops; track troop.id) 
                 {
                     <mat-grid-tile>
                         <button (click)="switchTroopState(troop, true)">
@@ -38,7 +38,7 @@
 
         </div>
 
-        <app-inventory-card></app-inventory-card>
+        <app-inventory-card [storageTroops]="storageTroops" (switchTroopEvent)="switchTroopState($event, false)"></app-inventory-card>
         
     </div>
 </body>

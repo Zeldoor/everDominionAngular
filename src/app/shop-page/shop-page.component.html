@@ -1,8 +1,10 @@
+@if(player)
+{
 <div class="shop-icon-bg"><img class="shop-icon" src="https://i.imgur.com/VhuikVs.png" alt=""></div>
 <body class="container">
     <div class="pergamena">
         
-        <app-profile-card></app-profile-card>
+        <app-profile-card [player]="player"></app-profile-card>
 
 
 
@@ -20,23 +22,21 @@
                 </div>
 
             </div>
-
             <mat-grid-list class="equip-unita" cols="2" rowHeight="9.9rem">
-                @for (troopInShop of troopsInShop; track troopInShop) 
+                @for (troopInShop of troopsInShop; track troopInShop.id) 
                 {
                     <mat-grid-tile>
                         <div class="truppe">
                             <app-troop-card-idle [troopInShop]="troopInShop"></app-troop-card-idle>
-                            <button class="bottoneBuy" (click)="buyButtonClicked()" ></button>             <!-- da aggiungere funzione click-->
+                            <button class="bottoneBuy" (click)="buyButtonClicked(troopInShop.id)" ></button>             <!-- da aggiungere funzione click-->
                         </div>
                         <img class="goldCost" src="https://i.imgur.com/pdcKGOO.png" alt="">
-                        <h2 class="goldCostNumber"> 100</h2>
+                        <h2 class="goldCostNumber"> {{troopInShop.price}} </h2>
                     </mat-grid-tile>
                 }
             </mat-grid-list>
-
         </div>
-
-        <app-inventory-card></app-inventory-card>
+        <app-inventory-card [storageTroops]="storageTroops"></app-inventory-card>
     </div>
 </body>
+}

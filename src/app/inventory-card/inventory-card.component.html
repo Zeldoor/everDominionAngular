@@ -51,9 +51,10 @@
             @for (troop of storageTroops; track $index) 
             {
                 <mat-grid-tile>
-                    <app-troop-card-idle [troop]="troop"></app-troop-card-idle>
+                    <button (click)="callFatherEvent(troop)">
+                        <app-troop-card-idle [troop]="troop"></app-troop-card-idle>
+                    </button>
                 </mat-grid-tile> 
-
             }
     </mat-grid-list>
 

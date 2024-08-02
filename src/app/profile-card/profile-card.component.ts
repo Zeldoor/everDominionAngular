@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatGridListModule, MatGridTile } from '@angular/material/grid-list';
 import { TroopCardComponent } from '../troop-card/troop-card.component';
 import { User } from '../model/User';
@@ -15,16 +15,10 @@ import { PlayerService } from '../services/player.service';
 })
 export class ProfileCardComponent {
   user!: User;
-  player!: Player;
+  @Input() player!: Player;
 
   constructor(private webStorage: LocalStorageService, private playerServ:PlayerService)
   {
     this.user = this.webStorage.getItem("user");
-    this.playerServ.getOne(parseInt(localStorage.getItem("id")!)).subscribe(
-      data =>
-      {
-        this.player = data;
-      }
-    );
   }
 }

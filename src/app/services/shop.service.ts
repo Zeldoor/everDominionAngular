@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { TroopInShop } from '../model/TroopInShop';
 import { Observable } from 'rxjs';
 import { Gear } from '../model/Gear';
+import { Troop } from '../model/Troop';
+import { Player } from '../model/Player';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +23,9 @@ export class ShopService {
     return this.http.get<Gear[]>("/api/shop/gears");
   }
 
-  buyTroop(playerId: number): Observable<TroopInShop[]>
+  buyTroop(playerId: number, player: Player): Observable<Player>
   {
-    return this.http.post<TroopInShop[]>("/api/shop/troop", playerId);
+    return this.http.post<Player>(`/api/shop/troop/${playerId}`, player);
   }
 
   buyGear(): Observable<Gear[]>
