@@ -30,4 +30,9 @@ export class PlayerService
   {
     return this.http.post<Player>("/api/player", body);
   }
+
+  switchTroopState(troopId:number): Observable<Player>
+  {
+    return this.http.post<Player>(`/api/player/switch`, troopId);
+  }
 }

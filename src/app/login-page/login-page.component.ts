@@ -68,7 +68,8 @@ export class LoginPageComponent
           this.webStorage.setItem("token", data.accessToken);
           this.webStorage.setItem("role", data.role);
           this.webStorage.setItem("user", data.user);
-          this.webStorage.setItem("player", data.playerDto);
+          this.webStorage.setItem("username", data.user.username);
+          this.webStorage.setItem("id", data.playerDto.id);
 
           this.router.navigate(["home"])
         },
