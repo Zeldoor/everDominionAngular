@@ -9,7 +9,7 @@
                 </div>
                 <!--  USERNAME -->
                 <div class="form-input w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-blue-300">
-                    <input type="text" placeholder="Username" class="w-full border-none bg-transparent outline-none placeholder:italic placeholder:color focus:outline-none" formControlName="username" required>
+                    <input type="text" placeholder="Username" style="text-align: center;" class="w-full border-none bg-transparent outline-none placeholder:italic placeholder:color focus:outline-none" formControlName="username" required>
                     
                 </div>
                 <div *ngIf="oldUserForm.get('username')?.getError('usernameTaken') && oldUserForm.get('username')?.touched" class="mt-2 text-sm text-red-600">
@@ -17,7 +17,7 @@
                 </div> 
                 <!-- PASSWORD -->
                 <div class="form-input w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-blue-300">
-                    <input type="password" min="6" placeholder="Password" class=" border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="password" required>
+                    <input type="password" min="6" placeholder="Password" style="text-align: center;" class=" border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="password" required>
                 </div>
 
                 <button [disabled]="oldUserForm.invalid" (click)="login()" class="scritte login-button transform rounded-smpy-2 font-bold duration-300 hover:bg-[url(https://i.imgur.com/WB1cXhE.png)]">Login</button>
@@ -40,43 +40,24 @@
                 <!-- EMAIL -->
 
                 <div class="form-input w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
-                    <input type="email" placeholder="Email" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="email" required>
+                    <input type="email" placeholder="Email" style="text-align: center;" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="email" required>
                 </div>
 
-                <!-- EMAIL ERROR -->
-
-                <div *ngIf="newUserForm.get('email')?.getError('emailTaken') && newUserForm.get('email')?.dirty" class="errore text-sm text-red-600">
-                    
-                    {{newUserForm.get('email')?.getError('emailTaken')}}
-                </div> 
 
                 <!-- USERNAME -->
 
                 <div class="form-input w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
-                    <input type="text" placeholder="Username" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="username" required>
+                    <input type="text" placeholder="Username" style="text-align: center;" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="username" required>
                 </div>
 
-                <!-- USERNAME ERRORS -->
-
-                <div *ngIf="newUserForm.get('username')?.getError('usernameTaken') && newUserForm.get('username')?.dirty" class="errore text-sm text-red-600">
-                    {{newUserForm.get('username')?.getError('usernameTaken')}}
-                </div> 
-
-                <div class="errore text-[#ff1d1d]" *ngIf="newUserForm.get('username')?.getError('bannedWord')">
-                    {{newUserForm.get('username')?.getError('bannedWord')}}
-                </div>
 
                 <!-- PASSWORD -->
                 
                 <div class="form-input w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
-                    <input type="password" min="6" placeholder="Password" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="password" required>
+                    <input type="password" min="6" placeholder="Password" style="text-align: center;" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="password" required>
                 </div>
 
-                <!-- PASSWORD ERROR-->
                     
-                <div class= "errore text-[#ff1d1d]" *ngIf="newUserForm.get('password')?.hasError && newUserForm.get('password')?.dirty">
-                    {{newUserForm.get('password')?.getError('passwordErr')}}
-                </div>
                 
 
                 <button [disabled]="newUserForm.invalid" (click)="register()" class="scritte register-button transform rounded-sm  py-2 font-bold duration-300">Register</button>
@@ -92,3 +73,36 @@
             </p>
         </div> -->
     </div>
+
+
+<div>
+        <!-- ERROR MAIL -->
+    <div>
+        <div *ngIf="newUserForm.get('email')?.getError('emailTaken') && newUserForm.get('email')?.dirty" class="error1">
+            
+            <img class="" src="https://i.imgur.com/xH5LYCp.png" alt="">
+            <div class="text-white">
+                <h2 style="transform: translate(680px,495px);">{{newUserForm.get('email')?.getError('emailTaken')}}</h2>
+            </div>
+        </div>  
+    </div>
+    <!-- ERROR USERNAME -->
+    <div>
+        <div *ngIf="newUserForm.get('username')?.getError('usernameTaken') && newUserForm.get('username')?.dirty" class="text-white">
+            <img class="error2" src="https://i.imgur.com/eY2D0t3.png" alt="">
+            <h2 style="transform: translate(680px,525px);">{{newUserForm.get('username')?.getError('usernameTaken')}}</h2>
+        </div> 
+
+        <div class=" text-white" *ngIf="newUserForm.get('username')?.getError('bannedWord')">
+            <img class="error2" src="https://i.imgur.com/eY2D0t3.png" alt="">
+            <h2 style="transform: translate(680px,525px);"> {{newUserForm.get('username')?.getError('bannedWord')}} </h2>
+        </div>
+    </div>
+    <!-- ERROR PSW -->
+    <div>
+        <div class= "text-white" *ngIf="newUserForm.get('password')?.hasError && newUserForm.get('password')?.dirty">
+            <img class="error3" src="https://i.imgur.com/eY2D0t3.png" alt="">
+            <h2 style="transform: translate(680px,555px);">{{newUserForm.get('password')?.getError('passwordErr')}} </h2>
+        </div>
+    </div>
+</div>
