@@ -8,16 +8,13 @@
     <div class="leaderboard-list">
         @for (player of players; track player.id) 
         {
-            <button [routerLink]="['/fight', player.id]">
-                <div class="card pt-1">
-                    <h1 class="scritte ombra text-amber-500" style="display: inline;"> 
-                        {{player.nick}}
+            <div class="card pt-1">
+                <button [routerLink]="['/fight', player.id]">
+                    <h1 class="scritte ombra text-amber-500 float-start" style="display: inline;"> 
+                        {{player.nick}} -- {{player.gold}}
                     </h1>
-                    <h2 class="scritte ombra text-amber-500" style="display: inline; margin-left: 10px;">
-                        {{player.gold}}
-                    </h2>
-                </div>
-            </button>
+                </button>
+            </div>
         }
     </div>
 </div>

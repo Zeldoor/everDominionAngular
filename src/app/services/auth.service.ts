@@ -26,7 +26,7 @@ export class AuthService
     return this.http.post("/api/auth/register", body, {responseType: "text"}); //se un metodo rilascia testo non si mettono le angolari (.post<any>) ma si mette {responseType: "text"}
   }
 
-  logout()
+  logout(): void
   {
     localStorage.clear();
   }
@@ -39,12 +39,12 @@ export class AuthService
     return false;
   }
 
-  getUserRole()
+  getUserRole(): string | null
   {
     return localStorage.getItem("role");
   }
 
-  userHasRole(role: string)
+  userHasRole(role: string): boolean
   {
     return this.isLogged() && this.getUserRole() == role;
   }

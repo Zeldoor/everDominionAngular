@@ -22,6 +22,9 @@ export class FightPageComponent
   enemy!: Player;
   results: string[] = [];
   buttonOn = true;
+
+  playerHealthPos = 0;
+  enemyHealthPos = 0;
   
   constructor(private playerServ: PlayerService, private route: ActivatedRoute)
   {
@@ -39,13 +42,16 @@ export class FightPageComponent
 
   beginFight()
   {
-    let fight: Fight = {attacker: this.player, defender: this.enemy, results: []};
+    let fight: Fight = {attacker: this.player, defender: this.enemy, results: [], playerHealth: [], enemyHealth: []};
 
     this.playerServ.fight(fight).subscribe(
       dto => 
       {
         this.results = [];
         this.fightRes = dto;
+
+        console.log(this.fightRes.enemyHealth)
+        console.log(this.fightRes.playerHealth)
 
         this.deActivateButtonAfterFight()
 
@@ -55,7 +61,6 @@ export class FightPageComponent
       }
     );
   }
-
 
   deActivateButtonAfterFight()
   {
@@ -77,6 +82,33 @@ export class FightPageComponent
         setTimeout(() => 
         {
           this.results.unshift(result);
+          
+
+          if(result.includes("danni"))
+            switch (result.split(" ")[0]) 
+            {
+              case this.player.nick:
+
+                console.log(this.fightRes.enemyHealth[this.enemyHealthPos])
+                this.enemy.playerHealth = this.fightRes.enemyHealth[this.enemyHealthPos] < 0 ? 0 : this.fightRes.enemyHealth[this.enemyHealthPos];
+
+                this.enemyHealthPos++
+                
+                break;
+
+              case this.enemy.nick:
+
+                console.log(this.fightRes.playerHealth[this.playerHealthPos])
+                this.player.playerHealth = this.fightRes.playerHealth[this.playerHealthPos] < 0 ? 0 : this.fightRes.playerHealth[this.playerHealthPos];
+                this.playerHealthPos++
+
+                break;
+            
+              default:
+
+                console.log("questo non dovrebbe apparire")
+                break;
+            }
         }, index * 1500); // 1000 ms = 1 secondo
     });
   }
