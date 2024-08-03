@@ -7,6 +7,9 @@ import { MapComponent } from "./map/map.component";
 import { TroopMenuComponent } from "./troop-menu/troop-menu.component";
 import { LeaderboardMenuComponent } from "./leaderboard-menu/leaderboard-menu.component";
 import { RouterOutlet } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { GameDataService } from './services/game-data.service';
+import { Player } from './model/Player';
 
 @Component({
   selector: 'app-root',
@@ -18,12 +21,4 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent 
 {
   title = 'EverDominion';
-  constructor(private service: PlayerService){}
-
-  
-
-  damage : number = 0;
-  defence : number = 0;
-  result : string = "Match"
-  
 }
