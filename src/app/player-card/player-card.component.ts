@@ -3,11 +3,12 @@ import { Player } from '../model/Player';
 import { CommonModule } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { TroopCardComponent } from '../troop-card/troop-card.component';
+import { FightPageComponent } from '../fight-page/fight-page.component';
 
 @Component({
   selector: 'app-player-card',
   standalone: true,
-  imports: [CommonModule, MatGridListModule, TroopCardComponent],
+  imports: [CommonModule, MatGridListModule, TroopCardComponent,FightPageComponent],
   templateUrl: './player-card.component.html',
   styleUrl: './player-card.component.css'
 })

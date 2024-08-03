@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { PlayerService } from '../services/player.service';
 import { Fight } from '../model/Fight';
 import { FightLogComponent } from '../fight-log/fight-log.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-fight-page',
@@ -18,24 +19,27 @@ export class FightPageComponent
 {
   fightRes !: Fight;
   player!: Player;
-  players: Player[] = [];
+  enemy!: Player;
   results: string[] = [];
   buttonOn = true;
   
-  constructor(private playerServ: PlayerService)
+  constructor(private playerServ: PlayerService, private route: ActivatedRoute)
   {
-    playerServ.getAll().subscribe(
-      res => 
+      this.playerServ.getOne(parseInt(localStorage.getItem("id")!)).subscribe(data => this.player = data);
+  }
+
+  ngOnInit(): void 
+  {
+    this.route.paramMap.subscribe(
+      params => 
       {
-        this.players = res.filter( p => p != this.player);
-        this.player = res.filter( p => p.id == parseInt(localStorage.getItem("id")!))[0];
+        this.playerServ.getOne(parseInt(params.get('id')!)).subscribe(data => this.enemy = data);
       });
   }
-  
 
   beginFight()
   {
-    let fight: Fight = {attacker: this.players[0], defender: this.players[1], results: []};
+    let fight: Fight = {attacker: this.player, defender: this.enemy, results: []};
 
     this.playerServ.fight(fight).subscribe(
       dto => 

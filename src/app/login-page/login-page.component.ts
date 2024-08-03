@@ -57,10 +57,10 @@ export class LoginPageComponent
   )
 
 
-  login()
+  login(username1?: string, password1?: string)
   {
-    let username = this.oldUserForm.get('username')?.value;
-    let password = this.oldUserForm.get('password')?.value;
+    let username = username1 ? username1 : this.oldUserForm.get('username')?.value;
+    let password = password1 ? password1 : this.oldUserForm.get('password')?.value;
 
     this.authService.login(username!, password!).subscribe(
       {
@@ -94,15 +94,15 @@ export class LoginPageComponent
 
   register()
   {
-    let username = this.newUserForm.get('username')?.value;
-    let email = this.newUserForm.get('email')?.value;
-    let password = this.newUserForm.get('password')?.value;
+    let username = this.newUserForm.get('username')!.value!;
+    let email = this.newUserForm.get('email')!.value!;
+    let password = this.newUserForm.get('password')!.value!;
 
-    this.authService.register(username!, password!, email!).subscribe(
+    this.authService.register(username, password, email).subscribe(
       {
         next: data=>
         {
-          this.login();
+          this.login(username, password);
         },
         error: err=>
         {

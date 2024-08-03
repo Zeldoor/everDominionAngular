@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { TroopCardComponent } from '../troop-card/troop-card.component';
 import { TroopCardIdleComponent } from '../troop-card-idle/troop-card-idle.component';
 import { User } from '../model/User';
 import { Player } from '../model/Player';
@@ -9,138 +8,50 @@ import { Troop } from '../model/Troop';
 import { TroopInShop } from '../model/TroopInShop';
 import { Gear } from '../model/Gear';
 import { ShopService } from '../services/shop.service';
+import { PlayerService } from '../services/player.service';
+import { ProfileCardComponent } from "../profile-card/profile-card.component";
+import { InventoryCardComponent } from '../inventory-card/inventory-card.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-shop-page',
   standalone: true,
-  imports: [MatGridListModule, TroopCardIdleComponent],
+  imports: [MatGridListModule,ProfileCardComponent, InventoryCardComponent, TroopCardIdleComponent, ProfileCardComponent,CommonModule],
   templateUrl: './shop-page.component.html',
   styleUrl: './shop-page.component.css'
 })
 export class ShopPageComponent {
 
   user: User;
-  player: Player;
+  player!: Player;
   troopsInShop: TroopInShop[] = [];
+  storageTroops: Troop[] = [];
   gears: Gear[] = [];
 
-  constructor(private webStorage: LocalStorageService, private shopServ: ShopService)
+
+  
+  constructor(private webStorage: LocalStorageService, private shopServ: ShopService, private playerServ: PlayerService)
   {
-    shopServ.getShopTroop().subscribe(data => this.troopsInShop = data);
-    shopServ.getShopGear().subscribe(data => this.gears = data);
+    shopServ.getShopTroops().subscribe(data => this.troopsInShop = data);
+    shopServ.getShopGears().subscribe(data => this.gears = data);
 
     this.user = this.webStorage.getItem("user");
-    this.player = this.webStorage.getItem("player");
+    this.playerServ.getOne(parseInt(localStorage.getItem("id")!)).subscribe(
+      data =>
+      {
+        this.player = data;
+        this.storageTroops = this.player.storageTroops.reverse();
+      }
+    );
   }
 
-  mock_inventory_troops: Troop[] = [];
-  // [
-  //   {
-  //       className: "Archer",
-  //       minDamage: 15,
-  //       maxDamage: 25,
-  //       health: 100,
-  //       playerId: 1
-  //   },
-  //   {
-  //       className: "Knight",
-  //       minDamage: 20,
-  //       maxDamage: 30,
-  //       health: 150,
-  //       playerId: 1
-  //   },
-  //   {
-  //       className: "Mage",
-  //       minDamage: 25,
-  //       maxDamage: 35,
-  //       health: 80,
-  //       playerId: 2
-  //   },
-  //   {
-  //       className: "Spearman",
-  //       minDamage: 10,
-  //       maxDamage: 20,
-  //       health: 120,
-  //       playerId: 2
-  //   },
-  //   {
-  //     className: "Knight",
-  //     minDamage: 20,
-  //     maxDamage: 30,
-  //     health: 150,
-  //     playerId: 1
-  //   },
-  //   {
-  //       className: "Mage",
-  //       minDamage: 25,
-  //       maxDamage: 35,
-  //       health: 80,
-  //       playerId: 2
-  //   },
-  //   {
-  //     className: "Knight",
-  //     minDamage: 20,
-  //     maxDamage: 30,
-  //     health: 150,
-  //     playerId: 1
-  //   },
-  //   {
-  //       className: "Mage",
-  //       minDamage: 25,
-  //       maxDamage: 35,
-  //       health: 80,
-  //       playerId: 2
-  //   },
-  //   {
-  //     className: "Knight",
-  //     minDamage: 20,
-  //     maxDamage: 30,
-  //     health: 150,
-  //     playerId: 1
-  //   },
-  //   {
-  //     className: "Mage",
-  //     minDamage: 25,
-  //     maxDamage: 35,
-  //     health: 80,
-  //     playerId: 2
-  //   },
-  //   {
-  //     className: "Knight",
-  //     minDamage: 20,
-  //     maxDamage: 30,
-  //     health: 150,
-  //     playerId: 1
-  //   },
-  //   {
-  //     className: "Mage",
-  //     minDamage: 25,
-  //     maxDamage: 35,
-  //     health: 80,
-  //     playerId: 2
-  //   },
-  //   {
-  //     className: "Knight",
-  //     minDamage: 20,
-  //     maxDamage: 30,
-  //     health: 150,
-  //     playerId: 1
-  //   },
-  //   {
-  //     className: "Mage",
-  //     minDamage: 25,
-  //     maxDamage: 35,
-  //     health: 80,
-  //     playerId: 2
-  //   }
-  // ];
-
-
-
-
-
-
-
-
-
+  buyButtonClicked(troopId: number): void
+  {
+    this.shopServ.buyTroop(troopId, this.player).subscribe(
+      data =>
+      {
+        this.player = data;
+        this.storageTroops = this.player.storageTroops.reverse();
+      });
+  }
 }
