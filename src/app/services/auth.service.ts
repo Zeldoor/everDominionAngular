@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { PlayerService } from './player.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService 
 {
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private playerService: PlayerService){}
 
   login(username:string,password:string)
   {
@@ -28,6 +29,7 @@ export class AuthService
 
   logout(): void
   {
+    this.playerService.stopHeartbeat(parseInt(localStorage.getItem("id")!));
     localStorage.clear();
   }
 

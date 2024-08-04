@@ -3,6 +3,7 @@ import { Player } from '../model/Player';
 import { LocalStorageService } from '../services/local-storage.service';
 import { AuthService } from '../services/auth.service';
 import { Router, RouterModule } from '@angular/router';
+import { PlayerService } from '../services/player.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +14,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class NavbarComponent 
 {
-  constructor(private webStorage:LocalStorageService, public authService: AuthService, private route: Router)
+  constructor(private webStorage:LocalStorageService, public authService: AuthService, private route: Router, private playerService: PlayerService)
   {
 
   }
@@ -22,6 +23,7 @@ export class NavbarComponent
 
   logout()
   {
+    this.playerService.sendPlayerOffline(parseInt(localStorage.getItem("id")!));
     this.authService.logout();
     this.player = this.webStorage.getItem("player");
   }
