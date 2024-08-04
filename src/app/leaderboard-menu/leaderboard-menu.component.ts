@@ -15,13 +15,17 @@ import { Subscription } from 'rxjs';
 export class LeaderboardMenuComponent 
 {
   private dataSubscription!: Subscription;
-  
   players: Player[] = [];
   
 
   constructor(private playerServ: PlayerService, private gameDataService: GameDataService)
   {
     playerServ.getAll().subscribe(data => this.players = data.filter(p => p.id != parseInt(localStorage.getItem("id")!)))
+  }
+
+  addFriend(id: number)
+  {
+    this.playerServ.addFriend(id, parseInt(localStorage.getItem("id")!)).subscribe(data => console.log(data));
   }
 
   ngOnInit() 
@@ -31,8 +35,6 @@ export class LeaderboardMenuComponent
       {
         let playersData = data as Player[];
         this.players = playersData.filter(p => p.id != parseInt(localStorage.getItem("id")!));
-
-        console.log(this.players)
       });
   }
 

@@ -7,6 +7,7 @@ import { LocalStorageService } from '../services/local-storage.service';
 import { hasValidPassword } from '../services/validators/hasValidPassword';
 import { CommonModule } from '@angular/common';
 import { profanityFilter } from '../services/validators/profanityFilter';
+import { PlayerService } from '../services/player.service';
 
 @Component({
   selector: 'app-login-page',
@@ -17,7 +18,7 @@ import { profanityFilter } from '../services/validators/profanityFilter';
 })
 export class LoginPageComponent 
 {
-  constructor(private authService:AuthService, private router: Router)
+  constructor(private authService:AuthService, private router: Router, private playerService: PlayerService)
   {
     if(localStorage.getItem("token"))
       this.router.navigate(["home"])
@@ -68,12 +69,17 @@ export class LoginPageComponent
         {
           data.user.role = data.role;
           this.player = data.playerDto;
+          
 
           this.webStorage.setItem("token", data.accessToken);
           this.webStorage.setItem("role", data.role);
           this.webStorage.setItem("user", data.user);
           this.webStorage.setItem("username", data.user.username);
           this.webStorage.setItem("id", data.playerDto.id);
+
+          this.playerService.playerId = parseInt(localStorage.getItem("id")!);
+          this.playerService.startHeartbeat();
+          this.playerService.sendHeartbeat(data.playerDto.id).subscribe();
 
           this.router.navigate(["home"])
         },
@@ -83,12 +89,6 @@ export class LoginPageComponent
         }
       }
     )
-  }
-
-
-  logout()
-  {
-    this.authService.logout();
   }
 
 
@@ -107,7 +107,6 @@ export class LoginPageComponent
         error: err=>
         {
           localStorage.clear();
-
           this.newUserForm.setErrors({backendError: err.error});
         }
       }

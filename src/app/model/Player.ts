@@ -1,3 +1,4 @@
+import { Friend } from "./Friend";
 import { Troop } from "./Troop";
 
 export interface Player
@@ -12,4 +13,5 @@ export interface Player
 
     activeTroops: Troop[];
     storageTroops: Troop[];
+    friends: Friend[];
 }
