@@ -39,6 +39,14 @@ export class PlayerService
     return this.http.post<Player>(`/api/player/switch`, troopId);
   }
 
+  isLogged(): boolean
+  {
+    if(localStorage.getItem("token"))
+      return true;
+
+    return false;
+  }
+
   addFriend(id:number, playerId:number): Observable<Player>
   {
     return this.http.post<Player>(`/api/player/add/${id}`, playerId);
@@ -59,23 +67,18 @@ export class PlayerService
     return this.http.post<void>(`api/player/${playerId}/heartbeat`, {});
   }
 
-  sendPlayerOffline(playerId: number): void 
+  sendPlayerOffline(playerId: number): Observable<void>  
   {
-    console.log(playerId);
-    this.http.get(`api/player/${playerId}/offline`);
+    return this.http.post<void>(`api/player/${playerId}/offline`, {});
   }
 
   startHeartbeat(): void 
   {
-    if(this.playerId)
+    if(parseInt(localStorage.getItem("id")!))
       this.heartbeatSubscription = interval(2000).subscribe(() =>  // 3 mins
       {
         this.sendHeartbeat(this.playerId).subscribe();
-        console.log("PLAYER ONLINE");
       });
-    // else
-    //   this.sendPlayerOffline(this.playerId)
-
   }
 
   stopHeartbeat(playerId: number): void 
@@ -83,8 +86,7 @@ export class PlayerService
     if (this.heartbeatSubscription)
     {
       this.heartbeatSubscription.unsubscribe();
-      this.sendPlayerOffline(playerId)
-      console.log("PLAYER OFFLINE")
+      this.sendPlayerOffline(playerId).subscribe
     }
   }
 }

@@ -16,15 +16,15 @@ export class NavbarComponent
 {
   constructor(private webStorage:LocalStorageService, public authService: AuthService, private route: Router, private playerService: PlayerService)
   {
-
+    if(localStorage.getItem("id")!)
+      playerService.getOne(parseInt(localStorage.getItem("id")!)).subscribe(data => this.player = data);
   }
 
-  player: Player = this.webStorage.getItem("player");
+  player!: Player;
 
   logout()
   {
     this.playerService.sendPlayerOffline(parseInt(localStorage.getItem("id")!));
     this.authService.logout();
-    this.player = this.webStorage.getItem("player");
   }
 }

@@ -18,6 +18,12 @@ export class GameDataService implements OnDestroy
   {
     this.uri = uri;
 
+    // Esegui immediatamente fetchGameData e aggiorna il BehaviorSubject
+    this.fetchGameData().subscribe(data => {
+      this.gameDataSubject.next(data);
+    });
+
+    // Inizia il polling regolare con intervalli di 5 secondi
     if (!this.subscription) 
         this.subscription = interval(5000).pipe(
         switchMap(() => this.fetchGameData())

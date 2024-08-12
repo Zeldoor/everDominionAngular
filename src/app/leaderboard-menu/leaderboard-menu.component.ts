@@ -34,7 +34,7 @@ export class LeaderboardMenuComponent
       .subscribe(data => 
       {
         let playersData = data as Player[];
-        this.players = playersData.filter(p => p.id != parseInt(localStorage.getItem("id")!));
+        this.players = playersData ? playersData.filter(p => p.id != parseInt(localStorage.getItem("id")!)) : this.players;
       });
   }
 
