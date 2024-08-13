@@ -50,9 +50,6 @@ export class FightPageComponent
         this.results = [];
         this.fightRes = dto;
 
-        console.log(this.fightRes.enemyHealth)
-        console.log(this.fightRes.playerHealth)
-
         this.deActivateButtonAfterFight()
 
         this.cycleFightMessage()
@@ -89,7 +86,6 @@ export class FightPageComponent
             {
               case this.player.nick:
 
-                console.log(this.fightRes.enemyHealth[this.enemyHealthPos])
                 this.enemy.playerHealth = this.fightRes.enemyHealth[this.enemyHealthPos] < 0 ? 0 : this.fightRes.enemyHealth[this.enemyHealthPos];
 
                 this.enemyHealthPos++
@@ -98,15 +94,12 @@ export class FightPageComponent
 
               case this.enemy.nick:
 
-                console.log(this.fightRes.playerHealth[this.playerHealthPos])
                 this.player.playerHealth = this.fightRes.playerHealth[this.playerHealthPos] < 0 ? 0 : this.fightRes.playerHealth[this.playerHealthPos];
                 this.playerHealthPos++
 
                 break;
             
               default:
-
-                console.log("questo non dovrebbe apparire")
                 break;
             }
         }, index * 1500); // 1000 ms = 1 secondo

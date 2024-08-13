@@ -30,6 +30,7 @@ export class AuthService
   logout(): void
   {
     this.playerService.stopHeartbeat(parseInt(localStorage.getItem("id")!));
+    this.playerService.sendPlayerOffline(parseInt(localStorage.getItem("id")!));
     localStorage.clear();
   }
 

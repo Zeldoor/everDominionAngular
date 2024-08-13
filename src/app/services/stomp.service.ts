@@ -38,7 +38,7 @@ export class StompService {
 
   private subscribeToTopic(topic: string, callback: (message: any) => void): void {
     this.stompClient.subscribe(topic, (message: any) => {
-      console.log('Received message: ' + message.body);
+      // console.log('Received message: ' + message.body);
       callback(message.body);
     });
   }

@@ -2,50 +2,55 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { interval, Subscription, BehaviorSubject, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { StompService } from './stomp.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GameDataService implements OnDestroy 
+export class GameDataService
 {
-  private subscription!: Subscription;
-  private uri!: string;
-  private gameDataSubject = new BehaviorSubject<any>(null);
+  constructor(private stomp : StompService){}
 
-  constructor(private http: HttpClient) {}
+  
+  
+  // private subscription!: Subscription;
+  // private uri!: string;
+  // private gameDataSubject = new BehaviorSubject<any>(null);
 
-  startPolling(uri: string): Observable<any> 
-  {
-    this.uri = uri;
+  // constructor(private http: HttpClient) {}
 
-    // Esegui immediatamente fetchGameData e aggiorna il BehaviorSubject
-    this.fetchGameData().subscribe(data => {
-      this.gameDataSubject.next(data);
-    });
+  // startPolling(uri: string): Observable<any> 
+  // {
+  //   this.uri = uri;
 
-    // Inizia il polling regolare con intervalli di 5 secondi
-    if (!this.subscription) 
-        this.subscription = interval(5000).pipe(
-        switchMap(() => this.fetchGameData())
-        ).subscribe(data => 
-        {
-          this.gameDataSubject.next(data);
-        });
+  //   // Esegui immediatamente fetchGameData e aggiorna il BehaviorSubject
+  //   this.fetchGameData().subscribe(data => {
+  //     this.gameDataSubject.next(data);
+  //   });
 
-    return this.gameDataSubject.asObservable();
-  }
+  //   // Inizia il polling regolare con intervalli di 5 secondi
+  //   if (!this.subscription) 
+  //       this.subscription = interval(5000).pipe(
+  //       switchMap(() => this.fetchGameData())
+  //       ).subscribe(data => 
+  //       {
+  //         this.gameDataSubject.next(data);
+  //       });
 
-  fetchGameData(): Observable<any> 
-  {
-    if (this.uri) 
-      return this.http.get<any>('/api/'+this.uri);
+  //   return this.gameDataSubject.asObservable();
+  // }
 
-    return new Observable<any>(); // Ritorna un Observable vuoto se URI non è definito
-  }
+  // fetchGameData(): Observable<any> 
+  // {
+  //   if (this.uri) 
+  //     return this.http.get<any>('/api/'+this.uri);
 
-  ngOnDestroy() 
-  {
-    if (this.subscription) 
-      this.subscription.unsubscribe();
-  }
+  //   return new Observable<any>(); // Ritorna un Observable vuoto se URI non è definito
+  // }
+
+  // ngOnDestroy() 
+  // {
+  //   if (this.subscription) 
+  //     this.subscription.unsubscribe();
+  // }
 }

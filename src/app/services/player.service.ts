@@ -67,15 +67,15 @@ export class PlayerService
     return this.http.post<void>(`api/player/${playerId}/heartbeat`, {});
   }
 
-  sendPlayerOffline(playerId: number): Observable<void>  
+  sendPlayerOffline(playerId: number): void  
   {
-    return this.http.post<void>(`api/player/${playerId}/offline`, {});
+    this.http.post(`api/player/${playerId}/offline`, {}, {responseType: "text"}).subscribe();
   }
 
   startHeartbeat(): void 
   {
     if(parseInt(localStorage.getItem("id")!))
-      this.heartbeatSubscription = interval(2000).subscribe(() =>  // 3 mins
+      this.heartbeatSubscription = interval(60000).subscribe(() =>
       {
         this.sendHeartbeat(this.playerId).subscribe();
       });
@@ -84,9 +84,6 @@ export class PlayerService
   stopHeartbeat(playerId: number): void 
   {
     if (this.heartbeatSubscription)
-    {
       this.heartbeatSubscription.unsubscribe();
-      this.sendPlayerOffline(playerId).subscribe
-    }
   }
 }

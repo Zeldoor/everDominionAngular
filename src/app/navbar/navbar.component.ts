@@ -24,7 +24,6 @@ export class NavbarComponent
 
   logout()
   {
-    this.playerService.sendPlayerOffline(parseInt(localStorage.getItem("id")!));
     this.authService.logout();
   }
 }

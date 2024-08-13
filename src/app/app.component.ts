@@ -3,11 +3,10 @@ import { PlayerService } from './services/player.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterOutlet } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
-import { WebSocketComponent } from './web-socket/web-socket.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavbarComponent, RouterOutlet, WebSocketComponent],
+  imports: [NavbarComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -33,6 +32,4 @@ export class AppComponent
   {
     this.playerService.stopHeartbeat(this.playerId!);
   }
-
- 
 }
