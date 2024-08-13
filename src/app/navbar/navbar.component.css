@@ -27,3 +27,12 @@ button, a, div
 {
     cursor:  url('https://i.imgur.com/KUIo2VB.png'), auto;
 }
+
+.logo
+{
+    transform: translate(0px,5px) scale(1.15);
+    width: 200px;
+     height: 80px;
+    z-index: 100000;
+    /* background-image: url(https://i.imgur.com/8hax0qg.png); */
+}

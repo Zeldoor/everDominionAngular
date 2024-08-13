@@ -10,6 +10,7 @@ export interface Player
     playerHealth: number;
     stamina: number;
     gold: number;
+    online: String;
 
     activeTroops: Troop[];
     storageTroops: Troop[];

@@ -11,6 +11,7 @@
     border: 5px solid darkgoldenrod;
     display: block; /* Ensures the image doesn't have extra space around it */
     object-fit: cover; /* Ensures the image covers the space while maintaining aspect ratio */
+filter: hue-rotate(320deg) invert(0.9) brightness(0.1);
 }
 
 /* Responsive Adjustments */
