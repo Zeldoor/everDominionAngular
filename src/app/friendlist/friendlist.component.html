@@ -20,9 +20,9 @@
     <div class="friendlist">
         <div class="friendContainer">
             @for (friend of friends; track player.id) 
-        {
-            <app-friend-card [friend]="filterFriend(friend.id)"></app-friend-card>
-        }
+            {
+                <app-friend-card [friend]="filterFriend(friend.id)"></app-friend-card>
+            }
         </div>
 
 

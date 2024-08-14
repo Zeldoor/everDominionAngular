@@ -10,6 +10,7 @@ import { FriendCardComponent } from "../friend-card/friend-card.component";
 import { GameDataService } from '../services/game-data.service';
 import { Subscription } from 'rxjs';
 import { Friend } from '../model/Friend';
+import { StompService } from '../services/stomp.service';
 
 @Component({
   selector: 'app-friendlist',
@@ -25,37 +26,38 @@ export class FriendlistComponent {
   friends: Player[] = [];
   dataSubscription!: Subscription;
 
-  constructor(private webStorage: LocalStorageService, private playerServ:PlayerService, private gameDataService:GameDataService)
+  constructor(private webStorage: LocalStorageService, private playerServ:PlayerService, private stomp: StompService, private gameDataService:GameDataService)
   {
     this.user = this.webStorage.getItem("user");
     this.playerServ.getOne(parseInt(localStorage.getItem("id")!)).subscribe(
       data =>
       {
         this.player = data;
-        this.pollo();
+        this.getFriends();
       }
     );
   }
 
-
-  pollo() 
+  getFriends() 
   {
-    this.dataSubscription = this.gameDataService.startPolling(`player/${this.player.id}/friends`)
-      .subscribe(data => 
-      {
-        this.friends = data as Player[];
-      });
+    this.dataSubscription = this.gameDataService.startPolling('player')
+    .subscribe(data => 
+    {
+      let playersData = data as Player[];
+      this.friends = playersData ? playersData.filter(p => p.id != parseInt(localStorage.getItem("id")!)) : this.friends;
+    });
   }
-
-  ngOnDestroy() 
-  {
-    if (this.dataSubscription) 
-      this.dataSubscription.unsubscribe();
-  }
+  
 
   filterFriend(id:number):Player
   {
     return this.friends.filter(f => f.id == id).at(0)!;
   }
 
+  
+  ngOnDestroy() 
+  {
+    if (this.dataSubscription) 
+      this.dataSubscription.unsubscribe();
+  }
 }

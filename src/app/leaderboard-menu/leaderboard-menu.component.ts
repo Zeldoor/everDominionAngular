@@ -18,7 +18,7 @@ export class LeaderboardMenuComponent
   private dataSubscription!: Subscription;
   players: Player[] = [];
   
-  constructor(private playerServ: PlayerService, private gameDataService: GameDataService, private stomp: StompService)
+  constructor(private playerServ: PlayerService, private stomp: StompService)
   {
     this.stomp.subscribe("/topic/lead", message => 
       {
@@ -35,13 +35,6 @@ export class LeaderboardMenuComponent
 
   ngOnInit() 
   {
-    // this.stomp.subscribe("/topic/lead", message => 
-    //   {
-    //     let playersData = JSON.parse(message) as Player[];
-    //     this.players = playersData ? playersData.filter(p => p.id != parseInt(localStorage.getItem("id")!)) : this.players;
-    //   })
-
-
     // this.dataSubscription = this.gameDataService.startPolling('player')
     //   .subscribe(data => 
     //   {
