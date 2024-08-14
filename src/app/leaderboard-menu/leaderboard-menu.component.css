@@ -78,3 +78,12 @@
 
 }
 
+.addFriend
+{
+    width: 20px;
+    height: 20px;
+    transform: scale(1.1) translate(225px, -45px);
+    position: fixed;
+    filter: brightness(0) invert(1);
+    z-index: 1000;
+}
