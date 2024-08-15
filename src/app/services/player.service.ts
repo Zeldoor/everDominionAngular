@@ -41,7 +41,7 @@ export class PlayerService
 
   switchGearState(gearId:number, playerId: number): Observable<Player>
   {
-    return this.http.post<Player>(`/api/player/${gearId}/switch`, gearId);
+    return this.http.post<Player>(`/api/player/${playerId}/switch`, gearId);
   }
 
   isLogged(): boolean

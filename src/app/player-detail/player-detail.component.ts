@@ -70,7 +70,7 @@ export class PlayerDetailComponent {
       this.playerServ.switchGearState(gear.id, this.player.id).subscribe(data => this.player = data);
     }
     else
-      if(this.activeTroops.length < 6)
+      if(this.activeGears.length < 3)
       {
         this.storageGears = this.storageGears.filter(t => t.id !== gear.id);
         this.activeGears.push(gear);
