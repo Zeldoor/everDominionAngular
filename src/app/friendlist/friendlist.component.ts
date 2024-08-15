@@ -29,6 +29,7 @@ export class FriendlistComponent {
   constructor(private webStorage: LocalStorageService, private playerServ:PlayerService, private stomp: StompService, private gameDataService:GameDataService)
   {
     this.user = this.webStorage.getItem("user");
+    
     this.playerServ.getOne(parseInt(localStorage.getItem("id")!)).subscribe(
       data =>
       {
@@ -43,11 +44,13 @@ export class FriendlistComponent {
     this.dataSubscription = this.gameDataService.startPolling('player')
     .subscribe(data => 
     {
+      this.friends = []
       let playersData = data as Player[];
-      this.friends = playersData ? playersData.filter(p => p.id != parseInt(localStorage.getItem("id")!)) : this.friends;
+      let players = playersData ? playersData.filter(p => p.id != parseInt(localStorage.getItem("id")!)) : this.friends;
+      this.player.friends.forEach(f => {players.filter(p => p.id == f.id).at(0) ? this.friends.push(players.filter(p => p.id == f.id).at(0)!) : null})
     });
   }
-  
+
 
   filterFriend(id:number):Player
   {

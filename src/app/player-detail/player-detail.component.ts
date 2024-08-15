@@ -9,6 +9,7 @@ import { LocalStorageService } from '../services/local-storage.service';
 import { TroopCardIdleComponent } from '../troop-card-idle/troop-card-idle.component';
 import { ProfileCardComponent } from '../profile-card/profile-card.component';
 import { InventoryCardComponent } from '../inventory-card/inventory-card.component';
+import { Gear } from '../model/Gear';
 
 @Component({
   selector: 'app-player-detail',
@@ -23,6 +24,8 @@ export class PlayerDetailComponent {
   player!: Player;
   activeTroops: Troop[] = [];
   storageTroops: Troop[] = [];
+  activeGears: Gear[] = [];
+  storageGears: Gear[] = [];
 
   constructor(private webStorage: LocalStorageService, private playerServ:PlayerService)
   {
@@ -31,8 +34,12 @@ export class PlayerDetailComponent {
       data =>
       {
         this.player = data;
+
         this.activeTroops = this.player.activeTroops;
         this.storageTroops = this.player.storageTroops.reverse();
+
+        this.activeGears = this.player.activeGears
+        this.storageGears = this.player.storageGears.reverse();
       }
     );
   }
@@ -42,7 +49,7 @@ export class PlayerDetailComponent {
     if(active)
     {
       this.activeTroops = this.activeTroops.filter(t => t.id !== troop.id);
-      this.storageTroops.push(troop);
+      this.storageTroops.unshift(troop);
       this.playerServ.switchTroopState(troop.id).subscribe(data => this.player = data);
     }
     else
@@ -51,6 +58,23 @@ export class PlayerDetailComponent {
         this.storageTroops = this.storageTroops.filter(t => t.id !== troop.id);
         this.activeTroops.push(troop);
         this.playerServ.switchTroopState(troop.id).subscribe(data => this.player = data);
+      }
+  }
+
+  switchGearState(gear: Gear, active: boolean)
+  {
+    if(active)
+    {
+      this.activeGears = this.activeGears.filter(t => t.id !== gear.id);
+      this.storageGears.unshift(gear);
+      this.playerServ.switchGearState(gear.id, this.player.id).subscribe(data => this.player = data);
+    }
+    else
+      if(this.activeTroops.length < 6)
+      {
+        this.storageGears = this.storageGears.filter(t => t.id !== gear.id);
+        this.activeGears.push(gear);
+        this.playerServ.switchGearState(gear.id, this.player.id).subscribe(data => this.player = data);
       }
   }
 }

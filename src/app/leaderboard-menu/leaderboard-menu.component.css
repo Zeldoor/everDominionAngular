@@ -21,7 +21,6 @@
     text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
 }
 
-
 .titolo
 {
     position: fixed;
@@ -41,8 +40,8 @@
     font-size: 20%;
     text-align: center;
     text-shadow: black;
-    
 }
+
 .card
 {
     width: 360px;
@@ -55,6 +54,7 @@
     overflow-x: visible;
     overflow-y: hidden;
 }
+
 .scritte
 {
     text-align: left;
@@ -75,7 +75,6 @@
     margin-bottom: 50px;
     overflow-y: scroll;
     scrollbar-width: none;
-
 }
 
 .addFriend

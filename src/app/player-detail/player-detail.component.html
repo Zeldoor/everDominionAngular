@@ -13,16 +13,14 @@
         <!-- SEZIONE UNITA' ED EQUIP EQUIPAGGIATI -->
         <div class="b2">
             <div class="equip-equip-container">
-                <div class="equip-equip">
-                    
-                </div>
-                <div class="equip-equip">
-                    
-                </div>
-                <div class="equip-equip">
-                    
-                </div>
-
+                @for (gear of player.activeGears; track gear.id)
+                {
+                    <div class="equip-equip">
+                        <button (click)="switchGearState(gear, true)">
+                            {{gear.name}}
+                        </button>
+                    </div>
+                }
             </div>
 
             <mat-grid-list class="equip-unita" cols="2" rowHeight="9.9rem">
@@ -38,7 +36,12 @@
 
         </div>
 
-        <app-inventory-card [storageTroops]="storageTroops" (switchTroopEvent)="switchTroopState($event, false)"></app-inventory-card>
+        <app-inventory-card 
+            [storageTroops]="storageTroops" 
+            [storageGears]="storageGears" 
+            (switchTroopEvent)="switchTroopState($event, false)"
+            (switchGearEvent)="switchGearState($event, false)">
+        </app-inventory-card>
         
     </div>
 </body>

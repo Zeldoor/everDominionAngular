@@ -39,6 +39,11 @@ export class PlayerService
     return this.http.post<Player>(`/api/player/switch`, troopId);
   }
 
+  switchGearState(gearId:number, playerId: number): Observable<Player>
+  {
+    return this.http.post<Player>(`/api/player/${gearId}/switch`, gearId);
+  }
+
   isLogged(): boolean
   {
     if(localStorage.getItem("token"))
@@ -85,5 +90,7 @@ export class PlayerService
   {
     if (this.heartbeatSubscription)
       this.heartbeatSubscription.unsubscribe();
+    
+    this.sendPlayerOffline(playerId);
   }
 }

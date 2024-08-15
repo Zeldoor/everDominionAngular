@@ -8,14 +8,14 @@
             <h2 class="scritte vita"> {{friend.playerHealth}}</h2>
             <img src="https://i.imgur.com/SrkMwdB.png" class="spada" alt="">
             <img src="https://i.imgur.com/gHJqR9t.png" class="cuore" alt="">
-                @if (friend)
+                @if (isOnline())
                 { 
-                    <div class="status-circle-online"></div>
+                    <div class="status status-circle-online"></div>
                     <span class="status-text-online">Online</span>
                 }
-                @if (!friend) 
+                @else
                 {
-                    <div class="status-circle-offline"></div>
+                    <div class="status status-circle-offline"></div>
                     <span class="status-text-offline">Offline</span>
                 } 
             </div>

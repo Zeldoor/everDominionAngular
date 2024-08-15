@@ -14,6 +14,10 @@ import { Friend } from '../model/Friend';
 })
 export class FriendCardComponent 
 {
-  @Input() player!: Player;
   @Input() friend!: Player;
+
+  isOnline(): boolean
+  {
+    return this.friend.online == "ONLINE";
+  }
 }
