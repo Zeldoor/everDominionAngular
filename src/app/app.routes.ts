@@ -15,9 +15,9 @@ export const routes: Routes =
     {path: "home", component: HomeComponent, canActivate: [LoggedGuardService]},
     {path: "player", component: PlayerDetailComponent, canActivate: [LoggedGuardService]},
     {path: 'fight/:id', component: FightPageComponent, canActivate: [LoggedGuardService]},
-    {path: "shop", component: ShopPageComponent},
-    {path: "friendlist", component: FriendlistComponent},
+    {path: "shop", component: ShopPageComponent, canActivate: [LoggedGuardService]},
+    {path: "friendlist", component: FriendlistComponent, canActivate: [LoggedGuardService]},
 
     
-    {path: "geartest", component: GearCardComponent},
+    {path: "geartest", component: GearCardComponent, canActivate: [LoggedGuardService]},
 ];

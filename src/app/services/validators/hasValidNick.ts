@@ -6,10 +6,16 @@ export function profanityFilter(): ValidatorFn
     {
         let bannedWords = ["scemo", "cesare"];
 
-        let username = control.value || null;
-        
+        let username = control.value;
+
+        username as String
+
         if(!username)
             return null;
+
+        if(username.lenght)
+            return {bannedWord: "Lungezza massima 8 caratteri"}
+
 
         for(let word of bannedWords)
         {

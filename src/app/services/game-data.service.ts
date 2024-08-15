@@ -2,11 +2,12 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { interval, Subscription, BehaviorSubject, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { StompService } from './stomp.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GameDataService implements OnDestroy 
+export class GameDataService
 {
   private subscription!: Subscription;
   private uri!: string;

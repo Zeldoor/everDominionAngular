@@ -12,20 +12,8 @@ import { Friend } from '../model/Friend';
   templateUrl: './friend-card.component.html',
   styleUrl: './friend-card.component.css'
 })
-export class FriendCardComponent {
-
-
-  user!: User;
+export class FriendCardComponent 
+{
   @Input() player!: Player;
   @Input() friend!: Player;
-  
-
-
-  constructor(private webStorage: LocalStorageService, private playerServ:PlayerService,)
-  {
-    this.user = this.webStorage.getItem("user");
-  }
-
-  
-
 }

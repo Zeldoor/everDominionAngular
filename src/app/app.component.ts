@@ -21,14 +21,15 @@ export class AppComponent
 
   ngOnInit(): void 
   {
+    if(this.playerService.isLogged())
+    {
       this.playerService.startHeartbeat(); 
       this.playerService.sendHeartbeat(this.playerId!).subscribe();
+    }
   }
 
   ngOnDestroy(): void 
   {
     this.playerService.stopHeartbeat(this.playerId!);
   }
-
- 
 }
