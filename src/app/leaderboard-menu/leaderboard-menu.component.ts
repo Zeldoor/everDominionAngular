@@ -1,15 +1,14 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Player } from '../model/Player';
 import { PlayerService } from '../services/player.service';
-import { RouterLink } from '@angular/router';
-import { GameDataService } from '../services/game-data.service';
 import { Subscription } from 'rxjs';
 import { StompService } from '../services/stomp.service';
+import { LeaderboardPlayerCardComponent } from "../leaderboard-player-card/leaderboard-player-card.component";
 
 @Component({
   selector: 'app-leaderboard-menu',
   standalone: true,
-  imports: [RouterLink],
+  imports: [LeaderboardPlayerCardComponent],
   templateUrl: './leaderboard-menu.component.html',
   styleUrl: './leaderboard-menu.component.css'
 })
@@ -25,12 +24,6 @@ export class LeaderboardMenuComponent
         let playersData = JSON.parse(message) as Player[];
         this.players = playersData ? playersData.filter(p => p.id != parseInt(localStorage.getItem("id")!)) : this.players;
       })
-  }
-
-
-  addFriend(id: number)
-  {
-    this.playerServ.addFriend(id, parseInt(localStorage.getItem("id")!)).subscribe();
   }
 
   ngOnInit() 

@@ -26,6 +26,7 @@ export class ShopPageComponent {
   player!: Player;
   troopsInShop: TroopInShop[] = [];
   storageTroops: Troop[] = [];
+  storageGears: Gear[] = [];
   gears: Gear[] = [];
 
 
@@ -41,6 +42,7 @@ export class ShopPageComponent {
       {
         this.player = data;
         this.storageTroops = this.player.storageTroops.reverse();
+        this.storageGears = this.player.storageGears.reverse();
       }
     );
   }

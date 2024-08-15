@@ -6,24 +6,34 @@ import { Troop } from '../model/Troop';
 import { LocalStorageService } from '../services/local-storage.service';
 import { PlayerService } from '../services/player.service';
 import { TroopCardIdleComponent } from '../troop-card-idle/troop-card-idle.component';
+import { Gear } from '../model/Gear';
+import { GearCardComponent } from "../gear-card/gear-card.component";
 
 @Component({
   selector: 'app-inventory-card',
   standalone: true,
-  imports: [MatGridListModule, TroopCardIdleComponent],
+  imports: [MatGridListModule, TroopCardIdleComponent, GearCardComponent],
   templateUrl: './inventory-card.component.html',
   styleUrl: './inventory-card.component.css'
 })
 export class InventoryCardComponent 
 {
-  troop!: Troop;
-  @Input() storageTroops!: Troop[];
-  @Output() switchTroopEvent: EventEmitter<Troop> = new EventEmitter<Troop>();
-
   constructor(){}
 
-  callFatherEvent(troop: Troop)
+
+  @Input() storageTroops!: Troop[];
+  @Input() storageGears!: Gear[];
+  @Output() switchTroopEvent: EventEmitter<Troop> = new EventEmitter<Troop>();
+  @Output() switchGearEvent: EventEmitter<Gear> = new EventEmitter<Gear>();
+
+
+  callTroopEvent(troop: Troop)
   {
     this.switchTroopEvent.emit(troop);
+  }
+
+  callGearEvent(gear: Gear)
+  {
+    this.switchGearEvent.emit(gear);
   }
 }

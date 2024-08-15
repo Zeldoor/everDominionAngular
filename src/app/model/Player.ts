@@ -1,4 +1,5 @@
 import { Friend } from "./Friend";
+import { Gear } from "./Gear";
 import { Troop } from "./Troop";
 
 export interface Player
@@ -12,7 +13,11 @@ export interface Player
     gold: number;
     online: String;
 
+    activeGears: Gear[];
+    storageGears: Gear[];
+
     activeTroops: Troop[];
     storageTroops: Troop[];
+
     friends: Friend[];
 }

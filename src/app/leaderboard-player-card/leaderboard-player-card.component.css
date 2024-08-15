@@ -1,0 +1,31 @@
+.card
+{
+    width: 360px;
+    height: 62px;
+    margin-left: 10px;
+    margin-right: 20px;
+    margin-top: 15px;
+    background-image: url(https://i.imgur.com/GhF6XMf.png);
+    background-repeat: no-repeat;
+    overflow-x: visible;
+    overflow-y: hidden;
+}
+
+.scritte
+{
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
+    text-align: left;
+    padding-left: 30px;
+    text-shadow: black;
+    font-size: x-large;
+    font-weight: 800;
+}
+
+.addFriend
+{
+    width: 20px;
+    height: 20px;
+    transform: scale(1.1) translate(225px, -45px);
+    filter: brightness(0) invert(1);
+    z-index: 1000;
+}
