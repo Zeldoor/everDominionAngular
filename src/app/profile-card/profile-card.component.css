@@ -62,13 +62,27 @@
     transform: translate(-100px);
 }
 
-.nome
+.bottone_icona
 {
-    font-family: Georgia, 'Times New Roman', Times, serif ;
-    color: rgb(251 191 36);
-    padding-top: 10px;
-    transform: translate(230px, 10px) scale(0.85);
-
+    position: fixed;
+    transform: translate(40px, 45px) scale(1.8);
+    min-height: 65px;
+    max-height: 65px;
+    min-width: 65px;
+    max-width: 65px;
+    border-color: darkgoldenrod; border-width: 3px;
+    border-style: groove;
+    background-color: transparent;
+    overflow: hidden;
+}
+.bg_icona
+{
+    border-radius: 9999px;
+    min-height: 65px;
+    max-height: 65px;
+    min-width: 65px;
+    max-width: 65px;
+    transform: translate(-5px,0px) scale(1);
 }
 .name_ribbon
 {
@@ -77,21 +91,35 @@
     transform: translate(28px,15px);
 
 }
+.nome
+{
+    position: fixed;
+    font-family: Georgia, 'Times New Roman', Times, serif ;
+    min-width: 200px;
+    max-width: 200px;
+    color: rgb(251 191 36);
+    padding-top: 10px;
+    transform: translate(230px, 10px) scale(0.85);
+    text-align: center;
+}
 .ruolo
 {
+    position: fixed;
     font-family: Georgia, 'Times New Roman', Times, serif ;
-    padding-top: 0px;
-    transform: translate(200px, 20px) scale(0.6);
+    transform: translate(285px, 70px) scale(0.6);
     color: rgb(255, 219, 129);
-
+    text-align: center;
+    
 }
 .email
 {
+    position: fixed;
     font-family: Georgia, 'Times New Roman', Times, serif ;
-    padding-top: 0px;
-    transform: translate(160px, 30px) scale(0.6);
+    min-width: 370px;
+    max-width: 370px;
+    transform: translate(140px, 120px) scale(0.6);
     color: rgb(255, 235, 184);
-
+    text-align: center;
 }
 
 .statistiche-player-box
