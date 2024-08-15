@@ -1,6 +1,5 @@
 @if (player) 
 {
-<div class="spade-icon-bg"><img class="spade-icon" src="https://i.imgur.com/ednuChZ.png" alt=""></div>
 
 
 <body class="container">
@@ -12,16 +11,16 @@
 
         <!-- SEZIONE UNITA' ED EQUIP EQUIPAGGIATI -->
         <div class="b2">
-            <div class="equip-equip-container">
+            <mat-grid-list class="equip-equip-container" cols="1" rowHeight="9.9rem">
                 @for (gear of player.activeGears; track gear.id)
                 {
-                    <div class="equip-equip">
+                    <mat-grid-tile class="equip-equip">
                         <button (click)="switchGearState(gear, true)">
                             {{gear.name}}
                         </button>
-                    </div>
+                    </mat-grid-tile>
                 }
-            </div>
+            </mat-grid-list>
 
             <mat-grid-list class="equip-unita" cols="2" rowHeight="9.9rem">
                 @for (troop of player.activeTroops; track troop.id) 
@@ -33,7 +32,7 @@
                     </mat-grid-tile>
                 }
             </mat-grid-list>
-
+            <div class="spade-icon-bg"><img class="spade-icon" src="https://i.imgur.com/ednuChZ.png" alt=""></div>
         </div>
 
         <app-inventory-card 

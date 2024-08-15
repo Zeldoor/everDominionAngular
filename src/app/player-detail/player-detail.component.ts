@@ -10,11 +10,12 @@ import { TroopCardIdleComponent } from '../troop-card-idle/troop-card-idle.compo
 import { ProfileCardComponent } from '../profile-card/profile-card.component';
 import { InventoryCardComponent } from '../inventory-card/inventory-card.component';
 import { Gear } from '../model/Gear';
+import { GearCardComponent } from "../gear-card/gear-card.component";
 
 @Component({
   selector: 'app-player-detail',
   standalone: true,
-  imports: [MatGridListModule,InventoryCardComponent, TroopCardComponent,TroopCardIdleComponent, ProfileCardComponent],
+  imports: [MatGridListModule, InventoryCardComponent, TroopCardComponent, TroopCardIdleComponent, ProfileCardComponent, GearCardComponent],
   templateUrl: './player-detail.component.html',
   styleUrl: './player-detail.component.css'
 })
@@ -70,7 +71,7 @@ export class PlayerDetailComponent {
       this.playerServ.switchGearState(gear.id, this.player.id).subscribe(data => this.player = data);
     }
     else
-      if(this.activeTroops.length < 6)
+      if(this.activeGears.length < 3)
       {
         this.storageGears = this.storageGears.filter(t => t.id !== gear.id);
         this.activeGears.push(gear);
