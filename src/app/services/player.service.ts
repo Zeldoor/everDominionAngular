@@ -77,6 +77,11 @@ export class PlayerService
     this.http.post(`api/player/${playerId}/offline`, {}, {responseType: "text"}).subscribe();
   }
 
+  switchIcon(playerId: number, newIcon: String): Observable<Player>  
+  {
+    return this.http.post<Player>(`api/player/${playerId}/icon`, newIcon);
+  }
+
   startHeartbeat(): void 
   {
     if(parseInt(localStorage.getItem("id")!))
