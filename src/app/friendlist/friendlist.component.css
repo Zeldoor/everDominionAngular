@@ -60,9 +60,9 @@
 .friendlist
 {
     position: fixed;
-    transform: translate(600px, 160px);
+    transform: translate(600px, 170px);
     width: 800px;
-    height: 555px;
+    height: 545px;
     z-index: 1000;
     overflow-y: scroll;
     overflow-x: hidden;
