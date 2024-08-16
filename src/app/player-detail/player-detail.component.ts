@@ -10,11 +10,12 @@ import { TroopCardIdleComponent } from '../troop-card-idle/troop-card-idle.compo
 import { ProfileCardComponent } from '../profile-card/profile-card.component';
 import { InventoryCardComponent } from '../inventory-card/inventory-card.component';
 import { Gear } from '../model/Gear';
+import { GearCardComponent } from "../gear-card/gear-card.component";
 
 @Component({
   selector: 'app-player-detail',
   standalone: true,
-  imports: [MatGridListModule,InventoryCardComponent, TroopCardComponent,TroopCardIdleComponent, ProfileCardComponent],
+  imports: [MatGridListModule, InventoryCardComponent, TroopCardComponent, TroopCardIdleComponent, ProfileCardComponent, GearCardComponent],
   templateUrl: './player-detail.component.html',
   styleUrl: './player-detail.component.css'
 })
