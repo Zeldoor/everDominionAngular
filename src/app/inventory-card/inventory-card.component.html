@@ -11,8 +11,8 @@
         @for (gear of storageGears; track $index) 
         {
             <mat-grid-tile class="inventory-equip">
-                <button (click)="callGearEvent(gear)">
-                    <app-gear-card [gear]="gear"></app-gear-card>
+                <button (click)="callGearEvent(gear)" (mouseover)="callOverGear(gear)" (mouseout)="callUnoverGear()">
+                    <img [src]="gear.icon" style="transform: scale(0.8);">
                 </button>
             </mat-grid-tile>
         }

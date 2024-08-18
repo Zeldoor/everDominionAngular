@@ -4,4 +4,5 @@ export interface Gear
     name: String;
     description: String;
     price: number;
+    icon: String;
 }

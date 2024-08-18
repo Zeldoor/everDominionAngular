@@ -11,7 +11,8 @@
                     {
                         <mat-grid-tile class="equip-equip">
                             <button (mouseover)="mouseOveredGear(gear)" (mouseout)="mouseUnoverGear()" (click)="switchGearState(gear, true)">
-                                <img src="https://i.imgur.com/KTfpOrq.png">
+                                <img [src]="gear.icon" style="transform: scale(0.8); z-index: 1000;">
+                                <!-- <img src="https://i.imgur.com/E75AIJ7.png" class="sfondo-gear"> -->
                             </button>
                         </mat-grid-tile>
                     }
@@ -41,14 +42,13 @@
                 [storageTroops]="storageTroops" 
                 [storageGears]="storageGears" 
                 (switchTroopEvent)="switchTroopState($event, false)"
-                (switchGearEvent)="switchGearState($event, false)">
+                (switchGearEvent)="switchGearState($event, false)"
+                (customOverMouse)="mouseOveredGear($event)"
+                (customUnoverMouse)="mouseUnoverGear()">
             </app-inventory-card>
             
         </div>
-        @if (overedGear)
-        {
-            <app-gear-card [gear]="overedGear!"></app-gear-card>
-        }
+            <app-gear-card [style.visibility]="overedGear ? 'visible' : 'hidden'" [gear]="overedGear!"></app-gear-card>
     </body>
 }
 
