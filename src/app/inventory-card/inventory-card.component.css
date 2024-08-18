@@ -308,3 +308,22 @@
 .baule-icon{
     transform: translate(-3px, -2px) scale(0.58);
 }
+
+.plus-troop
+{
+    min-width: 168px;
+    min-height: 96px;
+    height: 96px;
+    width: 168px;
+    border-radius: 15px;
+    border-style: solid;
+    overflow: hidden;
+}
+.plus-troop-bg
+{
+    background-image: url(https://i.imgur.com/7UwK06H.png);
+    min-width: 168px;
+    min-height: 96px;
+    height: 96px;
+    width: 168px;
+}
