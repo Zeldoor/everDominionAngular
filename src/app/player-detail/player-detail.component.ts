@@ -24,6 +24,7 @@ export class PlayerDetailComponent {
   user!: User;
   player!: Player;
   overedGear!: Gear | null;
+  
   activeTroops: Troop[] = [];
   storageTroops: Troop[] = [];
   activeGears: Gear[] = [];

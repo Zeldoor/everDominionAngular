@@ -33,6 +33,7 @@
             </div>
 
             <app-inventory-card 
+                [inventory]="true"
                 [storageTroops]="storageTroops" 
                 [storageGears]="storageGears" 
                 (switchTroopEvent)="switchTroopState($event, false)"
@@ -42,7 +43,7 @@
             </app-inventory-card>
             
         </div>
-            <app-gear-card [style.visibility]="overedGear ? 'visible' : 'hidden'" [gear]="overedGear!"></app-gear-card>
+        <app-gear-card [style.visibility]="overedGear ? 'visible' : 'hidden'" [gear]="overedGear!"></app-gear-card>
     </body>
 }
 

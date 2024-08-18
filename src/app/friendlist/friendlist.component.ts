@@ -12,11 +12,12 @@ import { Subscription } from 'rxjs';
 import { Friend } from '../model/Friend';
 import { StompService } from '../services/stomp.service';
 import { CommonModule } from '@angular/common';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @Component({
   selector: 'app-friendlist',
   standalone: true,
-  imports: [ProfileCardComponent, TroopCardComponent, FriendCardComponent, CommonModule],
+  imports: [ProfileCardComponent, TroopCardComponent, FriendCardComponent, CommonModule, MatGridListModule],
   templateUrl: './friendlist.component.html',
   styleUrl: './friendlist.component.css'
 })

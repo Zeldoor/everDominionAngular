@@ -12,11 +12,12 @@ import { PlayerService } from '../services/player.service';
 import { ProfileCardComponent } from "../profile-card/profile-card.component";
 import { InventoryCardComponent } from '../inventory-card/inventory-card.component';
 import { CommonModule } from '@angular/common';
+import { GearCardComponent } from "../gear-card/gear-card.component";
 
 @Component({
   selector: 'app-shop-page',
   standalone: true,
-  imports: [MatGridListModule,ProfileCardComponent, InventoryCardComponent, TroopCardIdleComponent, ProfileCardComponent,CommonModule],
+  imports: [MatGridListModule, ProfileCardComponent, InventoryCardComponent, TroopCardIdleComponent, ProfileCardComponent, CommonModule, GearCardComponent],
   templateUrl: './shop-page.component.html',
   styleUrl: './shop-page.component.css'
 })
@@ -24,17 +25,19 @@ export class ShopPageComponent {
 
   user: User;
   player!: Player;
+  overedGear!: Gear | null;
+
   troopsInShop: TroopInShop[] = [];
+  gearsInShop: Gear[] = [];
   storageTroops: Troop[] = [];
   storageGears: Gear[] = [];
-  gears: Gear[] = [];
 
 
   
   constructor(private webStorage: LocalStorageService, private shopServ: ShopService, private playerServ: PlayerService)
   {
     shopServ.getShopTroops().subscribe(data => this.troopsInShop = data);
-    shopServ.getShopGears().subscribe(data => this.gears = data);
+    shopServ.getShopGears().subscribe(data => this.gearsInShop = data);
 
     this.user = this.webStorage.getItem("user");
     this.playerServ.getOne(parseInt(localStorage.getItem("id")!)).subscribe(
@@ -47,7 +50,7 @@ export class ShopPageComponent {
     );
   }
 
-  buyButtonClicked(troopId: number): void
+  buyTroop(troopId: number): void
   {
     this.shopServ.buyTroop(troopId, this.player).subscribe(
       data =>
@@ -55,5 +58,25 @@ export class ShopPageComponent {
         this.player = data;
         this.storageTroops = this.player.storageTroops.reverse();
       });
+  }
+
+  buyGear(gearId: number): void
+  {
+    this.shopServ.buyGear(gearId, this.player).subscribe(
+      data =>
+      {
+        this.player = data;
+        this.storageGears = this.player.storageGears.reverse();
+      });
+  }
+
+  mouseOveredGear(gear: Gear): Gear
+  {
+    return this.overedGear = gear;
+  }
+
+  mouseUnoverGear()
+  {
+    this.overedGear = null;
   }
 }

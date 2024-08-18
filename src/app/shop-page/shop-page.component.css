@@ -235,12 +235,14 @@
     
 }
 
+
 .inventory-equip
 {
-    background-color: rgb(36, 36, 36);
+    background-color: #e2c18e;
     width: 100px;
     max-width: 100px;
     height: 100px;
+    max-height: 100px;
     border-radius: 100px;
     border-width: 3px;
     border-color: rgb(179, 127, 60);
