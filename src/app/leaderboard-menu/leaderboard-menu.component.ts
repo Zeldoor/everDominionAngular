@@ -16,6 +16,7 @@ export class LeaderboardMenuComponent
 {
   private dataSubscription!: Subscription;
   players: Player[] = [];
+  playerId: number = parseInt(localStorage.getItem("id")!);
   
   constructor(private playerServ: PlayerService, private stomp: StompService)
   {

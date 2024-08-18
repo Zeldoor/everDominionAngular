@@ -13,10 +13,19 @@ import { PlayerService } from '../services/player.service';
 export class LeaderboardPlayerCardComponent 
 {
   playerServ = inject(PlayerService);
-  @Input() player!: Player;
+  @Input() leadPlayer!: Player;
+  @Input() playerId!: number;
+
 
   addFriend(id: number)
   {
     this.playerServ.addFriend(id, parseInt(localStorage.getItem("id")!)).subscribe();
+  }
+
+  checkIfAlreadyFriend(): boolean
+  {
+    
+
+    return true;
   }
 }

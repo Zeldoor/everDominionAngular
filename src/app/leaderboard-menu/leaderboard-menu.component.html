@@ -6,9 +6,9 @@
     </div>
     
     <div class="leaderboard-list">
-        @for (player of players; track player.id) 
+        @for (leadPlayer of players; track leadPlayer.id) 
         {
-            <app-leaderboard-player-card [player]="player"></app-leaderboard-player-card>
+            <app-leaderboard-player-card [leadPlayer]="leadPlayer"></app-leaderboard-player-card>
         }
     </div>
 </div>

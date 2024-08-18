@@ -22,6 +22,7 @@ export class FightPageComponent
   enemy!: Player;
   results: string[] = [];
   buttonOn = true;
+  backendErr!: String;
 
   playerHealthPos = 0;
   enemyHealthPos = 0;
@@ -45,16 +46,22 @@ export class FightPageComponent
     let fight: Fight = {attacker: this.player, defender: this.enemy, results: [], playerHealth: [], enemyHealth: []};
 
     this.playerServ.fight(fight).subscribe(
-      dto => 
       {
-        this.results = [];
-        this.fightRes = dto;
+        next: dto => 
+        {
+          this.results = [];
+          this.fightRes = dto;
 
-        this.deActivateButtonAfterFight()
+          this.deActivateButtonAfterFight()
 
-        this.cycleFightMessage()
+          this.cycleFightMessage()
 
-        this.activateButtonAfterFight()
+          this.activateButtonAfterFight()
+        },
+        error: err=>
+        {
+          this.backendErr = err.error;
+        }
       }
     );
   }

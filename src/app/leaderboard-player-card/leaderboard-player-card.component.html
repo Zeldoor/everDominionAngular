@@ -1,10 +1,13 @@
 <div> 
     <div class="card pt-1">
-        <button [routerLink]="['/fight', player.id]">
+        <button [routerLink]="['/fight', leadPlayer.id]">
             <h1 class="scritte ombra text-amber-500 float-start" style="display: inline;"> 
-                {{player.nick}} -- {{player.gold}}
+                {{leadPlayer.nick}} -- {{leadPlayer.gold}}
             </h1>
         </button>
     </div>
-    <button class="addFriend" (click)="addFriend(player.id)"><img src="https://i.imgur.com/0blzH1i.png" alt=""></button>
+    @if(checkIfAlreadyFriend())
+    {
+        <button class="addFriend" (click)="addFriend(leadPlayer .id)"><img src="https://i.imgur.com/0blzH1i.png" alt=""></button>
+    }
 </div>
