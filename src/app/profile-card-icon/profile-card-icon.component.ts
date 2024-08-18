@@ -15,12 +15,12 @@ export class ProfileCardIconComponent
 
   constructor()
   {
-    this.icons.push("https://i.imgur.com/9SosBgT.png")
-    this.icons.push("https://i.imgur.com/Zt90JBD.png")
-    this.icons.push("https://i.imgur.com/a3cD05e.png")
     this.icons.push("https://i.imgur.com/ezI6Q1G.png")
+    this.icons.push("https://i.imgur.com/9SosBgT.png")
     this.icons.push("https://i.imgur.com/8XwnPsO.png")
+    this.icons.push("https://i.imgur.com/Zt90JBD.png")
     this.icons.push("https://i.imgur.com/jhU6ZL7.png")
+    this.icons.push("https://i.imgur.com/a3cD05e.png")
   }
 
   callFatherEvent(newIcon: String)

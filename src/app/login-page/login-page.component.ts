@@ -86,6 +86,7 @@ export class LoginPageComponent
         error: err=>
         {
           localStorage.clear();
+          this.oldUserForm.setErrors({backendError: err.error});
         }
       }
     )

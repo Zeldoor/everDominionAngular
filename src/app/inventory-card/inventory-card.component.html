@@ -1,6 +1,13 @@
 <div class="baule-icon-bg"><img class="baule-icon" src="https://i.imgur.com/k8VYYOR.png" alt=""></div>    
 <div class="b3">
     <mat-grid-list cols="2" rowHeight="115px" class="inventory-equips">
+
+        <!-- <mat-grid-tile class="inventory-equip-plus">
+            <button>
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="plus"></mat-icon>
+            </button>
+        </mat-grid-tile> -->
+
         @for (gear of storageGears; track $index) 
         {
             <mat-grid-tile class="inventory-equip">
@@ -12,14 +19,20 @@
     </mat-grid-list>
 
     <mat-grid-list cols="3" rowHeight="115px" class="inventory-units">
-            @for (troop of storageTroops; track $index) 
-            {
-                <mat-grid-tile>
-                    <button (click)="callTroopEvent(troop)">
-                        <app-troop-card-idle [troop]="troop"></app-troop-card-idle>
-                    </button>
-                </mat-grid-tile> 
-            }
-    </mat-grid-list>
 
+        <!-- <mat-grid-tile>
+            <button>
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="plus"></mat-icon>
+            </button>
+        </mat-grid-tile>  -->
+
+        @for (troop of storageTroops; track $index) 
+        {
+            <mat-grid-tile>
+                <button (click)="callTroopEvent(troop)">
+                    <app-troop-card-idle [troop]="troop"></app-troop-card-idle>
+                </button>
+            </mat-grid-tile> 
+        }
+    </mat-grid-list>
 </div>

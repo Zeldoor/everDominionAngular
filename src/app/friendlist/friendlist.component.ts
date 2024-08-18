@@ -41,7 +41,7 @@ export class FriendlistComponent {
 
   getFriends() 
   {
-    this.dataSubscription = this.gameDataService.startPolling('player')
+    this.dataSubscription = this.gameDataService.startPolling('player', 2000)
     .subscribe(data => 
     {
       this.friends = []

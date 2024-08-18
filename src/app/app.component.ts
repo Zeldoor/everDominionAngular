@@ -5,10 +5,11 @@ import { RouterOutlet } from '@angular/router';
 import { StompService } from './services/stomp.service';
 import { Player } from './model/Player';
 import { HttpClient } from '@angular/common/http';
+import { GearCardComponent } from "./gear-card/gear-card.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavbarComponent, RouterOutlet],
+  imports: [NavbarComponent, RouterOutlet, GearCardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
