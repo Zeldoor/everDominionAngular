@@ -1,4 +1,7 @@
 <div class="square" [ngStyle]="{'top.px': mouseY, 'left.px': mouseX}">
-    <h1>{{gear.name}}</h1>
-    <h2>{{gear.description}}</h2>
+    <h1 class="nome">{{gear.name}}</h1>
+    <div style="max-width: 400px; overflow-wrap: break-word;">
+
+        <h2 class="desc">{{gear.description}}</h2>
+    </div>
 </div>
