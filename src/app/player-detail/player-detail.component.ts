@@ -23,10 +23,13 @@ export class PlayerDetailComponent {
 
   user!: User;
   player!: Player;
+  overedGear!: Gear | null;
   activeTroops: Troop[] = [];
   storageTroops: Troop[] = [];
   activeGears: Gear[] = [];
   storageGears: Gear[] = [];
+
+  
 
   constructor(private webStorage: LocalStorageService, private playerServ:PlayerService)
   {
@@ -77,5 +80,15 @@ export class PlayerDetailComponent {
         this.activeGears.push(gear);
         this.playerServ.switchGearState(gear.id, this.player.id).subscribe(data => this.player = data);
       }
+  }
+
+  mouseOveredGear(gear: Gear): Gear
+  {
+    return this.overedGear = gear;
+  }
+
+  mouseUnoverGear()
+  {
+    this.overedGear = null;
   }
 }

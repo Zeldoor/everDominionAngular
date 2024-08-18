@@ -12,6 +12,7 @@ export interface Player
     stamina: number;
     gold: number;
     online: String;
+    icon: String;
 
     activeGears: Gear[];
     storageGears: Gear[];

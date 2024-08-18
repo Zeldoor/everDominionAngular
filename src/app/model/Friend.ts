@@ -5,4 +5,5 @@ export interface Friend
     stamina: number;
     gold: number;
     online: String;
+    icon: String;
 }

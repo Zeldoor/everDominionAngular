@@ -15,7 +15,7 @@ export class GameDataService
 
   constructor(private http: HttpClient) {}
 
-  startPolling(uri: string): Observable<any> 
+  startPolling(uri: string, delay: number): Observable<any> 
   {
     this.uri = uri;
 
@@ -26,7 +26,7 @@ export class GameDataService
 
     // Inizia il polling regolare con intervalli di 5 secondi
     if (!this.subscription) 
-        this.subscription = interval(5000).pipe(
+        this.subscription = interval(delay).pipe(
         switchMap(() => this.fetchGameData())
         ).subscribe(data => 
         {

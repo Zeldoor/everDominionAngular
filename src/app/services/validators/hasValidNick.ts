@@ -2,29 +2,48 @@ import { AbstractControl, ValidatorFn } from "@angular/forms";
 
 export function profanityFilter(): ValidatorFn
 {
-    return (control:AbstractControl):{[key:string]:any} | null =>
+    return (control: AbstractControl): { [key: string]: any } | null => 
     {
-        let bannedWords = ["scemo", "cesare"];
+        let bannedWords = [
+            "scemo",
+            "gay",
+            "idiota",
+            "hitler",
+            "fascio",
+            "dio",
+            "stupido",
+            "cretino",
+            "imbecille",
+            "merda",
+            "cacca",
+            "porco",
+            "frocio",
+            "lesbica",
+            "cattivo",
+            "deforme",
+            "madonna",
+            "brutto",
+            "fallito",
+        ];
 
         let username = control.value;
 
-        username as String
+        if (!username) return null;
 
-        if(!username)
-            return null;
+        if (username.length > 8) 
+            return { nickErr: "Lunghezza massima nick: 8 caratteri" };
 
-        if(username.lenght)
-            return {bannedWord: "Lungezza massima 8 caratteri"}
+        let alphanumericRegex = /^[a-zA-Z0-9]+$/;
 
+        if (!alphanumericRegex.test(username))
+            return { nickErr: "Caratteri speciali non permessi" };
+        
 
-        for(let word of bannedWords)
-        {
-            if(username.toLowerCase().includes(word))
-            {    
-                return {bannedWord: "Parola proibita: "+word}
-            }
-        }
+        for (let word of bannedWords) 
+            if (username.toLowerCase().includes(word)) 
+                return { nickErr: "Parola proibita: " + word };
+
 
         return null;
-    }
+    };
 }
