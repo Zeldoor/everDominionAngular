@@ -194,9 +194,12 @@
 
 .equip-equip-container
 {
+    min-height: 470px;
+    max-height: 175px;
     width: 175px;
     height: 470px;
     margin-left: 10px;
+    transform: translate(-22px, -38px);
 }
 
 .equip-unita
@@ -206,7 +209,7 @@
     height: 475px;
     min-height: 474px;
     max-height: 475px;
-    transform: translate(160px, -510px);
+    transform: translate(160px, -460px);
     border-left: rgb(82, 41, 8);
     border-style: solid;
     border-left-width: 4px;
