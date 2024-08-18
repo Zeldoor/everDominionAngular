@@ -20,8 +20,12 @@ export class InventoryCardComponent
 
   @Input() storageTroops!: Troop[];
   @Input() storageGears!: Gear[];
+
   @Output() switchTroopEvent: EventEmitter<Troop> = new EventEmitter<Troop>();
   @Output() switchGearEvent: EventEmitter<Gear> = new EventEmitter<Gear>();
+
+  @Output() customOverMouse: EventEmitter<Gear> = new EventEmitter<Gear>();
+  @Output() customUnoverMouse: EventEmitter<void> = new EventEmitter();
 
 
   callTroopEvent(troop: Troop)
@@ -32,5 +36,15 @@ export class InventoryCardComponent
   callGearEvent(gear: Gear)
   {
     this.switchGearEvent.emit(gear);
+  }
+
+  callOverGear(gear: Gear)
+  {
+    this.customOverMouse.emit(gear);
+  }
+
+  callUnoverGear()
+  {
+    this.customOverMouse.emit();
   }
 }

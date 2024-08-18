@@ -67,6 +67,8 @@ export class PlayerDetailComponent {
 
   switchGearState(gear: Gear, active: boolean)
   {
+    this.mouseUnoverGear()
+
     if(active)
     {
       this.activeGears = this.activeGears.filter(t => t.id !== gear.id);
