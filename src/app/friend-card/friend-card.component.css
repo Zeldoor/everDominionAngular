@@ -1,6 +1,6 @@
 .container
 {
-    transform: translate(20px,20px);
+    transform: translate(20px,5px);
     width: 800px ;
     height: 115px ;
     background-repeat: no-repeat ;

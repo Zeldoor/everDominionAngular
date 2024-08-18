@@ -68,6 +68,16 @@
     overflow-x: hidden;
     scrollbar-width: none;
 }
+.friendlist_noscroll
+{
+    position: fixed;
+    transform: translate(600px, 170px);
+    width: 800px;
+    height: 545px;
+    z-index: 1000;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
 
 .friendlistBg
 {

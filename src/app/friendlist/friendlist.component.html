@@ -17,16 +17,24 @@
         <div class="searchbarBg"></div>
     </div>
     <!-- LISTA AMICI  -->
-    <div class="friendlist">
+    
+
+
+    <div *ngIf="player.friends.length<5" class="friendlist_noscroll">
         <div class="friendContainer">
             @for (friend of friends; track player.id) 
             {
                 <app-friend-card [friend]="filterFriend(friend.id)"></app-friend-card>
             }
         </div>
-
-
-        
+    </div>
+    <div *ngIf="player.friends.length>=5" class="friendlist">
+        <div class="friendContainer">
+            @for (friend of friends; track player.id) 
+            {
+                <app-friend-card [friend]="filterFriend(friend.id)"></app-friend-card>
+            }
+        </div>
     </div>
     <!-- BACKGROUND PERGAMENA -->
     <div class="pergamena">

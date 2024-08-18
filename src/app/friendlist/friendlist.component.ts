@@ -11,11 +11,12 @@ import { GameDataService } from '../services/game-data.service';
 import { Subscription } from 'rxjs';
 import { Friend } from '../model/Friend';
 import { StompService } from '../services/stomp.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-friendlist',
   standalone: true,
-  imports: [ProfileCardComponent, TroopCardComponent, FriendCardComponent],
+  imports: [ProfileCardComponent, TroopCardComponent, FriendCardComponent, CommonModule],
   templateUrl: './friendlist.component.html',
   styleUrl: './friendlist.component.css'
 })
