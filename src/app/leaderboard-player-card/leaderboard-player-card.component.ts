@@ -14,7 +14,7 @@ export class LeaderboardPlayerCardComponent
 {
   playerServ = inject(PlayerService);
   @Input() leadPlayer!: Player;
-  @Input() playerId!: number;
+  playerId: number = parseInt(localStorage.getItem("id")!);
 
 
   addFriend(id: number)
@@ -22,8 +22,12 @@ export class LeaderboardPlayerCardComponent
     this.playerServ.addFriend(id, parseInt(localStorage.getItem("id")!)).subscribe();
   }
 
-  checkIfAlreadyFriend(): boolean
+  checkIfNotFriend(): boolean
   {
+    for(let friend of this.leadPlayer.friends)
+      if(friend.id == this.playerId)
+        return false;
+
     return true;
   }
 }
