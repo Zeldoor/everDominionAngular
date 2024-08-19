@@ -4,7 +4,7 @@
     height: 62px;
     margin-left: 10px;
     margin-right: 20px;
-    margin-top: 15px;
+    /* margin-top: 15px; */
     background-image: url(https://i.imgur.com/GhF6XMf.png);
     background-repeat: no-repeat;
     overflow-x: visible;
@@ -23,6 +23,7 @@
 
 .addFriend
 {
+    position: absolute;
     width: 20px;
     height: 20px;
     transform: scale(1.1) translate(225px, -45px);
