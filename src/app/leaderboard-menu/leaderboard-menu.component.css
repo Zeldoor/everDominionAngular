@@ -75,6 +75,7 @@
     margin-bottom: 50px;
     overflow-y: scroll;
     scrollbar-width: none;
+    transform: translate(0px, 10px);
 }
 
 .addFriend
