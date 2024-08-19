@@ -16,24 +16,18 @@ import { GameDataService } from '../services/game-data.service';
 })
 export class NavbarComponent 
 {
-  @Input() player!: Player;
-  icon: String = this.player ? this.player.icon : 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png';
+  player!: Player;
+  icon: String = 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png';
 
 
   constructor(public authService: AuthService, private stomp: StompService, private polling: GameDataService)
   {
-
-    console.log(this.player)
-
-      // this.stomp.subscribe("/topic/players", message => 
-      //   {
-      //     if(localStorage.getItem("id")!)
-      //     {
-      //       let playersData = JSON.parse(message) as Player[];
-      //       this.player = playersData ? playersData.filter(p => p.id == parseInt(localStorage.getItem("id")!)).at(0)! : this.player;
-      //       console.log(this.player)
-      //     }
-      //   })
+    this.stomp.subscribe("/topic/players", message => 
+      {
+        let playersData = JSON.parse(message) as Player[];
+        this.player = playersData ? playersData.filter(p => p.id == parseInt(localStorage.getItem("id")!)).at(0)! : this.player;
+        this.icon = this.player ? this.player.icon : 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png';
+      })
   } 
 
   logout()

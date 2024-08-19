@@ -49,6 +49,6 @@ export class AuthService
 
   userHasRole(role: string): boolean
   {
-    return this.isLogged() && this.getUserRole() == role;
+    return this.isLogged() && this.getUserRole()?.toLocaleLowerCase() == role.toLowerCase();
   }
 }

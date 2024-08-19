@@ -20,6 +20,8 @@ export class LeaderboardMenuComponent
   
   constructor(private playerServ: PlayerService, private stomp: StompService)
   {
+    this.playerServ.getPlayersNoShield().subscribe(data => this.players = data.filter(p => p.id != parseInt(localStorage.getItem("id")!)));
+
     this.stomp.subscribe("/topic/lead", message => 
       {
         let playersData = JSON.parse(message) as Player[];
@@ -27,15 +29,15 @@ export class LeaderboardMenuComponent
       })
   }
 
-  ngOnInit() 
-  {
+  // ngOnInit() 
+  // {
     // this.dataSubscription = this.gameDataService.startPolling('player')
     //   .subscribe(data => 
     //   {
     //     let playersData = data as Player[];
     //     this.players = playersData ? playersData.filter(p => p.id != parseInt(localStorage.getItem("id")!)) : this.players;
     //   });
-  }
+  // }
 
   // ngOnDestroy() 
   // {

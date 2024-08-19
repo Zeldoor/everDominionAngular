@@ -19,15 +19,6 @@
     width: 1500px;
     height: 910px;  
 }
-.b1
-{
-    position: fixed;
-    transform: translate(75px,65px) scale(1);
-    background-image: url(https://i.imgur.com/o79Sivr.png);
-    width: 350px;
-    height: 500px;
-    
-}
 
 .b2
 {
@@ -38,146 +29,6 @@
     height: 500px;
     margin: 2%;
     margin-top: 4%;
-}
-.b3
-{
-    position: fixed;
-    transform: translate(58px,620px) scale(1.03 );
-    background-image: url(https://i.imgur.com/gNgoUFo.png);
-    background-repeat: no-repeat;
-    width: 1010px;
-    height: 249px;
-    margin-top: -30px ;
-    margin-left: 32px;
-    margin-right: auto;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    background-color: rgba(255, 0, 0, 0.185);   
-}
-
-
-.scatola
-{
-    transform: translate(-100px);
-}
-
-.nome
-{
-    font-family: Georgia, 'Times New Roman', Times, serif ;
-    padding-top: 10px;
-    transform: translate(200px, 5px) scale(1.2);
-    color: rgb(251 191 36);
-
-}
-.name_ribbon
-{
-    position: fixed;
-    margin-left: 100px;
-    transform: translate(28px,15px);
-
-}
-.ruolo
-{
-    font-family: Georgia, 'Times New Roman', Times, serif ;
-    padding-top: 0px;
-    transform: translate(200px, 20px) scale(0.6);
-    color: rgb(255, 219, 129);
-
-}
-.email
-{
-    font-family: Georgia, 'Times New Roman', Times, serif ;
-    padding-top: 0px;
-    transform: translate(160px, 30px) scale(0.6);
-    color: rgb(255, 235, 184);
-
-}
-
-.statistiche-player-box
-{
-    position: fixed ;
-    transform: translate(20px, 160px);
-    width: 314px;
-    height: 325px;
-    border-style: solid;
-    border-top-width: 5px ;
-    border-color: rgb(114, 68, 23);
-}
-
-.ombra
-{
-    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
-}
-
-.stamina
-{
-    width: 314px;
-    height: 30px;
-}
-
-.stamina-icon
-{
-    transform: scale(0.6);
-    z-index: 100;
-}
-
-.fine-stamina
-{
-    position: fixed ;
-    width: 314px;
-    height: 235px;
-    border-style: solid;
-    border-top-width: 5px ;
-    border-color: rgb(114, 68, 23);
-}
-
-.img-gold
-{
-    position: fixed;
-    transform: translate(50px,-10px);
-}
-
-.gold{
-    position: fixed;
-    transform: translate(180px,55px) scale(2);
-    color: rgb(255, 235, 184);
-    font-family: Georgia, 'Times New Roman', Times, serif ;
-
-}
-.spada
-{
-    position: fixed;
-    transform: translate(20px,120px);
-}
-
-.cuore
-{
-    position: fixed;
-    transform: translate(170px,136px) scale(1.7);
-}
-
-.mindmg
-{
-    position: fixed;
-    transform: translate(105px,125px) scale(2);
-    color: rgb(255, 170, 155);
-    font-family: Georgia, 'Times New Roman', Times, serif ;
-}
-
-.maxdmg
-{
-    position: fixed;
-    transform: translate(100px,160px) scale(2);
-    color: rgb(255, 131, 109);
-    font-family: Georgia, 'Times New Roman', Times, serif ;
-}
-
-.vita
-{
-    position: fixed;
-    transform: translate(250px,138px) scale(2);
-    color: rgb(207, 253, 146);
-    font-family: Georgia, 'Times New Roman', Times, serif ;
 }
 
 .equip-equip
@@ -198,7 +49,7 @@
     max-height: 175px;
     width: 175px;
     height: 470px;
-    margin-left: 10px;
+    margin-left: 12px;
     transform: translate(-22px, 15px);
     overflow-y: scroll;
     scrollbar-width: none;
@@ -220,23 +71,7 @@
     overflow-x: hidden;
     scrollbar-width: none;
 
-}   
-
-.inventory-equips
-{
-    position: fixed;
-    width: 300px;
-    height: 225px;
-    max-height: 225px;
-    margin-left: -15px;
-    margin-top: -35px;
-    margin-top: -35px;
-    transform: translate(0px,47px);
-    overflow-y: scroll;
-    scrollbar-width: none;
-    
 }
-
 
 .inventory-equip
 {
@@ -248,25 +83,6 @@
     border-radius: 100px;
     padding-left: 25px;
     transform: translate(50px,0px);
-}
-
-.inventory-units
-{
-    position: fixed;
-    width: 700px;
-    height: 225px;
-    max-height: 225px;
-    margin: 10px;
-    transform: translate(300px,2px);
-    border-left: rgb(82, 41, 8);
-    border-style: solid;
-    border-left-width: 4px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    scrollbar-width: none;
-    background-repeat: no-repeat;
-    overflow-x: hidden;
-    overflow-y: scroll;
 }
 
 .shop-icon-bg

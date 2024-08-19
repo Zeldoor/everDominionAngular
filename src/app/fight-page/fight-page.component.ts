@@ -52,15 +52,16 @@ export class FightPageComponent
           this.results = [];
           this.fightRes = dto;
 
-          this.deActivateButtonAfterFight()
+          this.deActivateButtonAfterFight();
 
-          this.cycleFightMessage()
+          this.cycleFightMessage();
 
-          this.activateButtonAfterFight()
+          this.activateButtonAfterFight();
         },
         error: err=>
         {
           this.backendErr = err.error;
+          alert(this.backendErr);
         }
       }
     );

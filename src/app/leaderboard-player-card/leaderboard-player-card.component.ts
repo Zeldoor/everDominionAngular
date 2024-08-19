@@ -24,8 +24,6 @@ export class LeaderboardPlayerCardComponent
 
   checkIfAlreadyFriend(): boolean
   {
-    
-
     return true;
   }
 }

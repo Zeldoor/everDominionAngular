@@ -98,4 +98,9 @@ export class PlayerService
     
     this.sendPlayerOffline(playerId);
   }
+
+  getPlayersNoShield(): Observable<Player[]>
+  {
+    return this.http.get<Player[]>(`api/player/noShield`);
+  }
 }
