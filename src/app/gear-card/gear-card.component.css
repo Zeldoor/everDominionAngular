@@ -1,0 +1,38 @@
+.square 
+{
+    color: azure;
+    position: fixed;
+    width: 10rem;
+    max-width: 10rem;
+    background-color: rgba(7, 7, 6, 0.8);
+    pointer-events: none;
+    border-radius: 20px;
+    z-index: 1000;
+    border-width: 3px;
+    border-style: solid;
+    border-color: goldenrod; 
+    overflow-y: hidden;
+    scrollbar-width: none;
+    
+}
+
+.nome
+{
+    font-family: Georgia, 'Times New Roman', Times, serif ;
+    font-weight: 600;
+    color: rgb(251 191 36);
+    padding-top: 3px;
+    transform: scale(1.15);
+    text-align: center;
+}
+
+.desc
+{
+    font-family: Georgia, 'Times New Roman', Times, serif ;
+    font-weight: 200;
+    max-width: 200px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: rgb(251 191 36);
+    padding-top: 3px;
+}

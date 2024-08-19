@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage.service';
 import { hasValidPassword } from '../services/validators/hasValidPassword';
 import { CommonModule } from '@angular/common';
-import { profanityFilter } from '../services/validators/profanityFilter';
+import { profanityFilter } from '../services/validators/hasValidNick';
 import { PlayerService } from '../services/player.service';
 
 @Component({
@@ -78,14 +78,15 @@ export class LoginPageComponent
           this.webStorage.setItem("id", data.playerDto.id);
 
           this.playerService.playerId = parseInt(localStorage.getItem("id")!);
-          this.playerService.startHeartbeat();
           this.playerService.sendHeartbeat(data.playerDto.id).subscribe();
+          this.playerService.startHeartbeat();
 
           this.router.navigate(["home"])
         },
         error: err=>
         {
           localStorage.clear();
+          this.oldUserForm.setErrors({backendError: err.error});
         }
       }
     )

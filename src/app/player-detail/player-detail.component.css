@@ -33,7 +33,6 @@
 {
     position: fixed;
     transform: translate(420px,5px) scale(1);
-    float: left;
     background-image: url(https://i.imgur.com/e7h467C.png);
     width: 670px;
     height: 500px;
@@ -188,33 +187,42 @@
 
 .equip-equip
 {
-    background-color: rgb(36, 36, 36);
+    background-color: #e2c18e;
     width: 100px;
+    max-width: 100px;
     height: 100px;
+    max-height: 100px;
     border-radius: 100px;
-    border-width: 3px;
-    border-color: rgb(179, 127, 60);
     margin-top: 50px;
     margin-left: 45px;
 }
 
+.sfondo-gear
+{
+    position: relative;
+    transform: translate(0px, -40px) scale(1.1);
+    overflow: hidden;
+}
+
 .equip-equip-container
 {
+    position: fixed;
     width: 175px;
     height: 470px;
     margin-left: 10px;
+    transform: translate(0px,-12px);
 }
 
 .equip-unita
 {
     position: fixed;
-    transform: translate(155px, -510px);
+    transform: translate(155px, 8px);
     border-left: rgb(82, 41, 8);
     border-style: solid;
     border-left-width: 4px;
     width: 475px;
     height: 500px;
-    min-height: 475px;
+    min-height: 480px;
     margin-left: 25px;
 }   
 
@@ -272,13 +280,14 @@
     background-image: url(https://i.imgur.com/uHrN03f.png);
     height: 4rem ;
     width: 4rem;
-    transform: translate(1409px, 80px) scale(1.05);
+    transform: translate(670px, 25px) scale(1.05);
     z-index: 500;
     background-repeat: no-repeat ;
 }
 
 .spade-icon
 {
+    position: fixed;
     transform: translate(-3px, -6px) scale(0.50);
 }
 
@@ -293,6 +302,8 @@
     background-repeat: no-repeat ;
 }
 
-.baule-icon{
+.baule-icon
+{
     transform: translate(-3px, -2px) scale(0.58);
 }
+

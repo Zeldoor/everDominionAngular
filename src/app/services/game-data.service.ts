@@ -2,11 +2,12 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { interval, Subscription, BehaviorSubject, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { StompService } from './stomp.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GameDataService implements OnDestroy 
+export class GameDataService
 {
   private subscription!: Subscription;
   private uri!: string;
@@ -14,12 +15,18 @@ export class GameDataService implements OnDestroy
 
   constructor(private http: HttpClient) {}
 
-  startPolling(uri: string): Observable<any> 
+  startPolling(uri: string, delay: number): Observable<any> 
   {
     this.uri = uri;
 
+    // Esegui immediatamente fetchGameData e aggiorna il BehaviorSubject
+    this.fetchGameData().subscribe(data => {
+      this.gameDataSubject.next(data);
+    });
+
+    // Inizia il polling regolare con intervalli di 5 secondi
     if (!this.subscription) 
-        this.subscription = interval(5000).pipe(
+        this.subscription = interval(delay).pipe(
         switchMap(() => this.fetchGameData())
         ).subscribe(data => 
         {

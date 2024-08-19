@@ -1,61 +1,44 @@
 <div class="baule-icon-bg"><img class="baule-icon" src="https://i.imgur.com/k8VYYOR.png" alt=""></div>    
 <div class="b3">
     <mat-grid-list cols="2" rowHeight="115px" class="inventory-equips">
-        <!-- MOCK GEAR INVENTORY -->
-        <mat-grid-tile class="inventory-equip">
-            
-        </mat-grid-tile>
-        <mat-grid-tile class="inventory-equip">
-            
-        </mat-grid-tile>
-        <mat-grid-tile class="inventory-equip">
-            
-        </mat-grid-tile>
-        <mat-grid-tile class="inventory-equip">
-            
-        </mat-grid-tile>
-        <mat-grid-tile class="inventory-equip">
-            
-        </mat-grid-tile>
-        <mat-grid-tile class="inventory-equip">
-            
-        </mat-grid-tile>
-        <mat-grid-tile class="inventory-equip">
-            
-        </mat-grid-tile>
-        <mat-grid-tile class="inventory-equip">
-            
-        </mat-grid-tile>
-        <mat-grid-tile class="inventory-equip">
-            
-        </mat-grid-tile>
-        <mat-grid-tile class="inventory-equip">
-            
-        </mat-grid-tile>
-        <mat-grid-tile class="inventory-equip">
-            
-        </mat-grid-tile>
-        <mat-grid-tile class="inventory-equip">
-            
-        </mat-grid-tile>
-        <mat-grid-tile class="inventory-equip">
-            
-        </mat-grid-tile>
-        <mat-grid-tile class="inventory-equip">
-            
-        </mat-grid-tile>
-            
+
+        @if (inventory)
+        {
+            <mat-grid-tile>
+                <a href="shop" class="plus-gear transition-all ease delay-100 duration-500   border-4 bg-transparent float-left border-black hover:border-amber-600 z-0  border-solid " >
+                    <div class="plus-gear-bg"></div>
+                </a>
+            </mat-grid-tile>
+        }
+
+        @for (gear of storageGears; track $index) 
+        {
+            <mat-grid-tile class="inventory-equip transition-all ease delay-100 duration-500  hover:scale-110 hover:border-6 border-4 bg-transparent h-25 float-left border-black hover:border-amber-600 z-0 hover:z-50 border-solid ">
+                <button (click)="callGearEvent(gear)" (mouseover)="callOverGear(gear)" (mouseout)="callUnoverGear()">
+                    <img [src]="gear.icon" style="transform: scale(0.8);">
+                </button>
+            </mat-grid-tile>
+        }
     </mat-grid-list>
 
     <mat-grid-list cols="3" rowHeight="115px" class="inventory-units">
-            @for (troop of storageTroops; track $index) 
-            {
-                <mat-grid-tile>
-                    <button (click)="callFatherEvent(troop)">
-                        <app-troop-card-idle [troop]="troop"></app-troop-card-idle>
-                    </button>
-                </mat-grid-tile> 
-            }
-    </mat-grid-list>
 
+        @if (inventory)
+        {
+            <mat-grid-tile>
+                <a href="shop" class="plus-troop transition-all ease delay-100 duration-500   border-4 bg-transparent h-25 float-left border-black hover:border-amber-600 z-0  border-solid " >
+                    <div class="plus-troop-bg"></div>
+                </a>
+            </mat-grid-tile>
+        }
+
+        @for (troop of storageTroops; track $index) 
+        {
+            <mat-grid-tile>
+                <button (click)="callTroopEvent(troop)">
+                    <app-troop-card-idle [troop]="troop"></app-troop-card-idle>
+                </button>
+            </mat-grid-tile> 
+        }
+    </mat-grid-list>
 </div>

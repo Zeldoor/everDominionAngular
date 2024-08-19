@@ -23,13 +23,13 @@ export class ShopService {
     return this.http.get<Gear[]>("/api/shop/gears");
   }
 
-  buyTroop(playerId: number, player: Player): Observable<Player>
+  buyTroop(troopId: number, player: Player): Observable<Player>
   {
-    return this.http.post<Player>(`/api/shop/troop/${playerId}`, player);
+    return this.http.post<Player>(`/api/shop/troop/${troopId}`, player);
   }
 
-  buyGear(): Observable<Gear[]>
+  buyGear(gearId: number, player: Player): Observable<Player>
   {
-    return this.http.get<Gear[]>("/api/shop/gear");
+    return this.http.post<Player>(`/api/shop/gear/${gearId}`, player);
   }
 }

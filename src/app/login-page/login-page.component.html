@@ -29,6 +29,10 @@
                         </p>
                 </div>
             </form>
+            <div class="error3 text-white" *ngIf="oldUserForm.getError('backendError')">
+                <img  src="https://i.imgur.com/eY2D0t3.png" alt="">
+                <h2 style="transform: translate(70px,-50px);">{{oldUserForm.getError('backendError')}}</h2>
+            </div>
         }
         @else 
         {
@@ -86,17 +90,20 @@
             <!-- ERROR USERNAME -->
             
             <div>
-                <div class="error2 text-white" *ngIf="newUserForm.get('username')?.getError('bannedWord')">
+                <div class="error2 text-white" *ngIf="newUserForm.get('username')?.getError('nickErr')">
                     <img class="" src="https://i.imgur.com/eY2D0t3.png" alt="">
-                    <h2 style="transform: translate(70px,-50px);"> {{newUserForm.get('username')?.getError('bannedWord')}} </h2>
+                    <h2 style="transform: translate(70px,-50px);"> {{newUserForm.get('username')?.getError('nickErr')}} </h2>
                 </div>
             </div>
             <!-- ERROR PSW -->
             <div>
-                <div class="error3 text-white" *ngIf="newUserForm.get('password')?.hasError && newUserForm.get('password')?.dirty">
-                    <img  src="https://i.imgur.com/eY2D0t3.png" alt="">
-                    <h2 style="transform: translate(70px, -60px); max-width: 320px;">{{newUserForm.get('password')?.getError('passwordErr')}} </h2>
+                @if(newUserForm.get('password')?.getError('passwordErr') && newUserForm.get('password')?.dirty)
+                {
+                <div class="error3 text-white">
+                    <img  src="https://i.imgur.com/eY2D0t3.png">
+                    <h2 style="transform: translate(70px, -60px); max-width: 320px;">{{newUserForm.get('password')?.getError('passwordErr')}}</h2>
                 </div>
+                }
             </div>
         </div>
     </div>

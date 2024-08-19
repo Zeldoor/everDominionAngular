@@ -6,6 +6,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { PlayerDetailComponent } from './player-detail/player-detail.component';
 import { LoggedGuardService } from './services/guards/logged-guard.service';
 import { ShopPageComponent } from './shop-page/shop-page.component';
+import { FriendlistComponent } from './friendlist/friendlist.component';
 
 export const routes: Routes = 
 [
@@ -14,7 +15,9 @@ export const routes: Routes =
     {path: "home", component: HomeComponent, canActivate: [LoggedGuardService]},
     {path: "player", component: PlayerDetailComponent, canActivate: [LoggedGuardService]},
     {path: 'fight/:id', component: FightPageComponent, canActivate: [LoggedGuardService]},
-    {path: "shop", component: ShopPageComponent},
+    {path: "shop", component: ShopPageComponent, canActivate: [LoggedGuardService]},
+    {path: "friendlist", component: FriendlistComponent, canActivate: [LoggedGuardService]},
+
     
-    {path: "geartest", component: GearCardComponent},
+    {path: "geartest", component: GearCardComponent, canActivate: [LoggedGuardService]},
 ];

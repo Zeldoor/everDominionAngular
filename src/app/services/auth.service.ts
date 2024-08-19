@@ -30,6 +30,7 @@ export class AuthService
   logout(): void
   {
     this.playerService.stopHeartbeat(parseInt(localStorage.getItem("id")!));
+    this.playerService.sendPlayerOffline(parseInt(localStorage.getItem("id")!));
     localStorage.clear();
   }
 
@@ -48,6 +49,6 @@ export class AuthService
 
   userHasRole(role: string): boolean
   {
-    return this.isLogged() && this.getUserRole() == role;
+    return this.isLogged() && this.getUserRole()?.toLocaleLowerCase() == role.toLowerCase();
   }
 }
