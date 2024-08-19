@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { PlayerService } from '../services/player.service';
 import { Fight } from '../model/Fight';
 import { FightLogComponent } from '../fight-log/fight-log.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-fight-page',
@@ -27,7 +27,7 @@ export class FightPageComponent
   playerHealthPos = 0;
   enemyHealthPos = 0;
   
-  constructor(private playerServ: PlayerService, private route: ActivatedRoute)
+  constructor(private playerServ: PlayerService, private route: ActivatedRoute, private router: Router)
   {
       this.playerServ.getOne(parseInt(localStorage.getItem("id")!)).subscribe(data => this.player = data);
   }
@@ -62,6 +62,7 @@ export class FightPageComponent
         {
           this.backendErr = err.error;
           alert(this.backendErr);
+          this.router.navigate(["home"])
         }
       }
     );
