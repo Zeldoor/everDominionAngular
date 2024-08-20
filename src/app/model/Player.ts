@@ -13,7 +13,7 @@ export interface Player
     gold: number;
     online: String;
     icon: String;
-    shield:String;
+    shield: String;
 
     activeGears: Gear[];
     storageGears: Gear[];
