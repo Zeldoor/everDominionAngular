@@ -19,7 +19,6 @@ export class NavbarComponent
   player!: Player;
   icon: String = 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png';
 
-
   constructor(public authService: AuthService, private stomp: StompService, private polling: GameDataService)
   {
     this.stomp.subscribe("/topic/players", message => 
