@@ -41,6 +41,18 @@ button, a, div
 {
     transform: translate(1350px, -305px) scale(0.1);
     position: fixed;
-    filter: brightness(0.2);
-    
+}
+.no_shield
+{
+    transform: translate(1350px, -305px) scale(0.1);
+    position: fixed;
+    filter: brightness(0.2) saturate(0);
+}
+
+.timer
+{
+    transform: scale(3);
+    background-color: red;
+    position: fixed;
+    transform: translate(1600px,-50px);
 }
