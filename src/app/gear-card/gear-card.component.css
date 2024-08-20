@@ -33,4 +33,5 @@
     color: rgb(255, 202, 141);  
     font-family: Georgia, 'Times New Roman', Times, serif ;
     padding-top: 3px;
+    max-width: 430px;
 }
