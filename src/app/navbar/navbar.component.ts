@@ -20,7 +20,7 @@ export class NavbarComponent
   player!: Player;
   icon: String = 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png';
   cleaned_shield: String="";
-  // shield_expire: Date = new Date(this.player.shield as string);
+  shield_expire: Date = new Date(this.player.shield.replace("T","") as string);
   // currentDate: Date = new Date();
   // shield_remaining_time: number = this.shield_expire.getTime() - this.currentDate.getTime();
 
