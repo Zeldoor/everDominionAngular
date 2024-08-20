@@ -36,3 +36,23 @@ button, a, div
     z-index: 100000;
     /* background-image: url(https://i.imgur.com/8hax0qg.png); */
 }
+
+.shield
+{
+    transform: translate(1350px, -305px) scale(0.1);
+    position: fixed;
+}
+.no_shield
+{
+    transform: translate(1350px, -305px) scale(0.1);
+    position: fixed;
+    filter: brightness(0.2) saturate(0);
+}
+
+.timer
+{
+    transform: scale(3);
+    background-color: red;
+    position: fixed;
+    transform: translate(1600px,-50px);
+}
