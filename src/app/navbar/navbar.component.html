@@ -90,7 +90,13 @@
 
 @if(shieldVisibility)
 {
-  <!-- <img src="https://i.imgur.com/Cut151A.png" *ngIf="this.player.hasShield" class="shield" alt="">
-  <img src="https://i.imgur.com/Cut151A.png" *ngIf="!this.player.hasShield" class="no_shield" alt=""> -->
-  <h2 class="timer">{{timeRemaining?.hours +" : "+ timeRemaining?.minutes + " : " + timeRemaining?.seconds}}</h2>
+  <div class="shield-bg">
+    <img src="https://i.imgur.com/Cut151A.png"  class="shield" alt="">
+    <h2 class="timer">{{timeRemaining?.hours +" : "+ timeRemaining?.minutes + " : " + timeRemaining?.seconds}}</h2>
+  </div>
+  <div class="popup-shield">
+    <h1 class="scritte-popup" style="padding-top: 10px;">Scudo attivo</h1>
+    <h2 class="scritte-popup">Mentre lo scudo è attivo non puoi essere attaccato.</h2>
+    <h2 class="scritte-popup">Attenzione! Attaccando un altro giocatore lo perderai!</h2>
+  </div>
 }
