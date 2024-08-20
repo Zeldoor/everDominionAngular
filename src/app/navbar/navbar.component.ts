@@ -19,35 +19,93 @@ export class NavbarComponent
 {
   player!: Player;
   icon: String = 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png';
-  cleaned_shield: String="";
-  shield_expire: Date = new Date(this.player.shield.replace("T","") as string);
-  // currentDate: Date = new Date();
-  // shield_remaining_time: number = this.shield_expire.getTime() - this.currentDate.getTime();
+  shieldVisibility: boolean =  false;
 
-  constructor(public authService: AuthService, private stomp: StompService, private polling: GameDataService)
+  timeRemaining: { hours: number, minutes: number, seconds: number } | null = null;
+  shield_expire!: Date; 
+  currentDate: Date = new Date();
+  private intervalId: any;
+
+  constructor(public authService: AuthService, private stomp: StompService, private polling: GameDataService){} 
+
+  ngOnInit(): void 
   {
-    this.stomp.subscribe("/topic/players", message => 
+    this.polling.startPolling(`/player/${parseInt(localStorage.getItem("id")!) ? parseInt(localStorage.getItem("id")!) : 0}`, 5000)
+    .subscribe(
       {
-        let playersData = JSON.parse(message) as Player[];
-        this.player = playersData ? playersData.filter(p => p.id == parseInt(localStorage.getItem("id")!)).at(0)! : this.player;
-        this.icon = this.player ? this.player.icon : 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png';
-      })
-    } 
+        next: data =>
+        {
+          this.player = data as Player ? data : this.player;
+          this.icon = this.player ? this.player.icon : 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png';
+
+          this.shield_expire = new Date(this.player.shield.split(".")[0] as string);
+        },
+        error: err =>
+        {
+          console.log("ERRORE")
+        }
+      }
+    )
+
+    // this.stomp.subscribe("/topic/players", message => 
+    //   {
+    //     let playersData = JSON.parse(message) as Player[];
+    //     this.player = playersData ? playersData.filter(p => p.id == parseInt(localStorage.getItem("id")!)).at(0)! : this.player;
+    //     this.icon = this.player ? this.player.icon : 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png';
+
+    //     this.shield_expire = new Date(this.player.shield.split(".")[0] as string);
+    //   })
+
+    this.updateTimeRemaining();
+
+    this.intervalId = setInterval(() => 
+    {
+      this.updateTimeRemaining();
+    }, 1000);
+  }
+
+  
+  ngOnDestroy(): void 
+  {
+    if (this.intervalId) 
+    {
+      clearInterval(this.intervalId);
+    }
+  }
+
+
     
   logout()
   {
     this.authService.logout();
   }
 
-  ngOnInit() {
-    if (this.player && this.player.shield) {
-      
-    } else {
-        console.error('Player or shield is not yet defined.');
+  private updateTimeRemaining(): void 
+  {
+    if (!this.shield_expire) 
+    {
+      this.shieldVisibility = false;
+      this.timeRemaining = { hours: 0, minutes: 0, seconds: 0 };
+      return;
     }
-}
-  // hasShield()
-  // {
-  //   this.player.shield.
-  // }
+
+    let currentDate = new Date();
+    let timeDiff = this.shield_expire.getTime() - currentDate.getTime();
+
+    if (timeDiff > 0) 
+    {
+      this.shieldVisibility = true;
+      let hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
+      let minutes = Math.floor((timeDiff / (1000 * 60)) % 60);
+      let seconds = Math.floor((timeDiff / 1000) % 60);
+
+      this.timeRemaining = { hours, minutes, seconds };
+    } 
+    else 
+    {
+      this.shieldVisibility = false;
+      this.timeRemaining = { hours: 0, minutes: 0, seconds: 0 };
+      clearInterval(this.intervalId);
+    }
+  }
 }

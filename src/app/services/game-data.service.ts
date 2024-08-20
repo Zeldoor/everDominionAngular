@@ -20,17 +20,33 @@ export class GameDataService
     this.uri = uri;
 
     // Esegui immediatamente fetchGameData e aggiorna il BehaviorSubject
-    this.fetchGameData().subscribe(data => {
-      this.gameDataSubject.next(data);
+    this.fetchGameData().subscribe(
+    
+    {
+      next: data => 
+      {
+        this.gameDataSubject.next(data);
+      },
+      error: err =>
+      {
+        console.log(err)
+      }
     });
 
     // Inizia il polling regolare con intervalli di 5 secondi
     if (!this.subscription) 
         this.subscription = interval(delay).pipe(
         switchMap(() => this.fetchGameData())
-        ).subscribe(data => 
+        ).subscribe(
         {
-          this.gameDataSubject.next(data);
+          next: data => 
+          {
+            this.gameDataSubject.next(data);
+          },
+          error: err =>
+          {
+            console.log(err)
+          }
         });
 
     return this.gameDataSubject.asObservable();
