@@ -19,7 +19,16 @@ export class LeaderboardPlayerCardComponent
 
   addFriend(id: number)
   {
-    this.playerServ.addFriend(id, parseInt(localStorage.getItem("id")!)).subscribe();
+    this.playerServ.addFriend(id, parseInt(localStorage.getItem("id")!)).subscribe(
+      {
+        next: data =>{},
+        error: err =>
+          { 
+            let backendError = err.error;
+            alert (backendError) 
+          }
+      }
+    );
   }
 
   checkIfNotFriend(): boolean
