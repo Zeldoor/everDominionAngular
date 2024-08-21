@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { PlayerService } from './services/player.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterOutlet } from '@angular/router';
@@ -17,11 +17,16 @@ export class AppComponent
 {
   title = 'EverDominion';
   player!: Player;
+  stomp: StompService;
 
   private playerId: number = parseInt(localStorage.getItem("id")!);
 
-  constructor(private playerService: PlayerService, private stomp: StompService, private http:HttpClient) 
+  constructor(private playerService: PlayerService, private injector: Injector, private http:HttpClient) 
   {
+    this.stomp = this.injector.get(StompService);
+
+    this.playerService.getOne(parseInt(localStorage.getItem("id")!)).subscribe(data => this.player = data);
+
     this.stomp.subscribe("/topic/players", message => 
       {
         let playersData = JSON.parse(message) as Player[];

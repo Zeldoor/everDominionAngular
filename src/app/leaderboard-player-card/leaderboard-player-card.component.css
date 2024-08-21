@@ -4,7 +4,6 @@
     height: 62px;
     margin-left: 10px;
     margin-right: 20px;
-    margin-top: 15px;
     background-image: url(https://i.imgur.com/GhF6XMf.png);
     background-repeat: no-repeat;
     overflow-x: visible;
@@ -13,6 +12,7 @@
 
 .scritte
 {
+    color: white;
     text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
     text-align: left;
     padding-left: 30px;
@@ -23,9 +23,40 @@
 
 .addFriend
 {
+    position: absolute;
     width: 20px;
     height: 20px;
-    transform: scale(1.1) translate(225px, -45px);
-    filter: brightness(0) invert(1);
+    transform: scale(1.8) translate(135px, -27px);
+    filter: contrast(1.5);
     z-index: 1000;
+}
+.popup
+{
+    position: fixed;
+    width: auto;
+    height: auto;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background: linear-gradient(to bottom, #444444, #303030);
+    border-radius: 20px;
+    border-style: double;
+    border-color: rgb(122, 73, 73);
+    border-width: 2px;
+    transform: translate(272px, -60px) scale(0.1);
+    visibility: hidden;
+    z-index: 9999;
+}
+
+.addFriend:hover ~ .popup
+{
+    
+    visibility: visible;
+    transform: translate(272px, -60px) scale(1);
+    transition-duration: 500ms;
+}
+.scritte-popup
+{
+    color: rgb(251 191 36);
+    text-shadow: 2px 2px 0 #000000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+    text-align: center;
 }

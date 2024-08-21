@@ -64,7 +64,6 @@
 
 .nome
 {
-    font-family: Georgia, 'Times New Roman', Times, serif ;
     color: rgb(251 191 36);
     padding-top: 10px;
     transform: translate(200px, 5px) scale(1.2);
@@ -79,7 +78,6 @@
 }
 .ruolo
 {
-    font-family: Georgia, 'Times New Roman', Times, serif ;
     padding-top: 0px;
     transform: translate(200px, 20px) scale(0.6);
     color: rgb(255, 219, 129);
@@ -87,7 +85,6 @@
 }
 .email
 {
-    font-family: Georgia, 'Times New Roman', Times, serif ;
     padding-top: 0px;
     transform: translate(160px, 30px) scale(0.6);
     color: rgb(255, 235, 184);
@@ -147,7 +144,6 @@
     position: fixed;
     transform: translate(180px,55px) scale(2);
     color: rgb(255, 235, 184);
-    font-family: Georgia, 'Times New Roman', Times, serif ;
 
 }
 .spada
@@ -167,7 +163,6 @@
     position: fixed;
     transform: translate(105px,125px) scale(2);
     color: rgb(255, 170, 155);
-    font-family: Georgia, 'Times New Roman', Times, serif ;
 }
 
 .maxdmg
@@ -175,7 +170,6 @@
     position: fixed;
     transform: translate(100px,160px) scale(2);
     color: rgb(255, 131, 109);
-    font-family: Georgia, 'Times New Roman', Times, serif ;
 }
 
 .vita
@@ -183,7 +177,6 @@
     position: fixed;
     transform: translate(250px,138px) scale(2);
     color: rgb(207, 253, 146);
-    font-family: Georgia, 'Times New Roman', Times, serif ;
 }
 
 .equip-equip

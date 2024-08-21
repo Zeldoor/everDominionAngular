@@ -1,13 +1,16 @@
 <div> 
-    <div class="card pt-1">
+    <div class="card">
         <button [routerLink]="['/fight', leadPlayer.id]">
-            <h1 class="scritte ombra text-amber-500 float-start" style="display: inline;"> 
-                {{leadPlayer.nick}} -- {{leadPlayer.gold}}
+            <h1 class="scritte ombra float-start" style="display: inline; transform: translate(0px, 5px);"> 
+                {{leadPlayer.nick}} -- {{powerCalculator()}}
             </h1>
         </button>
     </div>
-    @if(checkIfAlreadyFriend())
-    {
-        <button class="addFriend" (click)="addFriend(leadPlayer .id)"><img src="https://i.imgur.com/0blzH1i.png" alt=""></button>
-    }
+</div>
+@if(checkIfNotFriend())
+{
+    <button class="addFriend" (click)="addFriend(leadPlayer .id)"><img src="https://i.imgur.com/rg36R4Y.png" alt=""></button>
+}
+<div class="popup">
+    <h1 class="scritte-popup">Aggiungi amico</h1>
 </div>

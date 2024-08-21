@@ -5,4 +5,5 @@ export interface Gear
     description: String;
     price: number;
     icon: String;
+    tier: number;
 }

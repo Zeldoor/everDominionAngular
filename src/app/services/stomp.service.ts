@@ -3,7 +3,7 @@ import SockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'any'   // root injecta in app e ne crea uno che viene passato a tutti i comp || any lo injecta direttamente nel comp - uno nuovo per ogni comp
 })
 export class StompService {
   private socket: any;
@@ -17,9 +17,11 @@ export class StompService {
     this.socket = new SockJS('http://localhost:8080/websocket'); //mappatura in spring
     this.stompClient = Stomp.over(this.socket);
 
+    this.stompClient.debug = null;
+
     const _this = this;
     this.stompClient.connect({}, function (frame: any) {
-      console.log('Connected: ' + frame);
+      // console.log('Connected: ' + frame);
     }, function(error: any) {
       console.error('Error: ' + error);
     });

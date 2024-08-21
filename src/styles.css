@@ -1,18 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* @font-face {
-    font-family: "Dragonfire";
-    src: url(fonts\dragon-fire.regular.ttf);
-} */
+@font-face 
+{
+    font-family: "PixelifySans";
+    src: url('assets/fonts/static/PixelifySans-New.sfd');
+}
 
 html, body 
 { 
+    margin: 0; font-family: "PixelifySans";
     height: 100%;
 }
 
 body 
 {
-    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
     background-color: floralwhite;
     cursor: url('https://i.imgur.com/KUIo2VB.png'), auto;
 }
@@ -22,14 +26,5 @@ button, a, div
     cursor:  url('https://i.imgur.com/KUIo2VB.png'), auto;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

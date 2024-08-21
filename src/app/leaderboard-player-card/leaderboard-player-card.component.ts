@@ -14,16 +14,34 @@ export class LeaderboardPlayerCardComponent
 {
   playerServ = inject(PlayerService);
   @Input() leadPlayer!: Player;
-  @Input() playerId!: number;
+  playerId: number = parseInt(localStorage.getItem("id")!);
 
 
   addFriend(id: number)
   {
-    this.playerServ.addFriend(id, parseInt(localStorage.getItem("id")!)).subscribe();
+    this.playerServ.addFriend(id, parseInt(localStorage.getItem("id")!)).subscribe(
+      {
+        next: data =>{},
+        error: err =>
+          { 
+            let backendError = err.error;
+            alert (backendError) 
+          }
+      }
+    );
   }
 
-  checkIfAlreadyFriend(): boolean
+  checkIfNotFriend(): boolean
   {
+    for(let friend of this.leadPlayer.friends)
+      if(friend.id == this.playerId)
+        return false;
+
     return true;
+  }
+
+  powerCalculator(): number
+  {
+    return this.leadPlayer.playerHealth + ((this.leadPlayer.playerMinDmg+this.leadPlayer.playerMaxDmg)/2);
   }
 }
