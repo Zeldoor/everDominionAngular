@@ -1,7 +1,7 @@
 .container
 {
     position: fixed;
-    transform: translate(200px);
+    transform: translate(200px, 3px) scale(0.99);
     width: 1800px;
     height: 700px;
 }
