@@ -102,8 +102,38 @@
 
   .unfriend
   {
-    position: fixed;
-    transform: translate(610px,-740px) scale(0.27);
+    position:  fixed;
+    transform: translate(640px,-717px) scale(0.27);
     filter: hue-rotate(155deg) saturate(2) contrast(2) brightness(0.8);
     z-index: 20;
   }
+  .popup
+{
+    position: fixed;
+    width: auto;
+    height: auto;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background: linear-gradient(to bottom, #444444, #303030);
+    border-radius: 20px;
+    border-style: double;
+    border-color: rgb(122, 73, 73);
+    border-width: 2px;
+    transform: translate(662px, -60px) scale(1);
+    visibility: hidden ;
+    z-index: 9999;
+}
+
+.test:hover .popup
+{
+    
+    visibility: visible;
+    transform: translate(662px, -60px) scale(1);
+    transition-duration: 500ms;
+}
+.scritte-popup
+{
+    color: rgb(251 191 36);
+    text-shadow: 2px 2px 0 #000000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+    text-align: center;
+}

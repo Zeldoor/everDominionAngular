@@ -66,9 +66,10 @@ button, a, div
 
 .popup-shield
 {
-    position: relative;
+    position: absolute;
     width: 400px;
-    height: 100px;
+    height: auto;
+    padding-bottom: 10px;
     background: linear-gradient(to bottom, #444444, #303030);
     border-radius: 20px;
     border-style: double;
@@ -76,6 +77,7 @@ button, a, div
     border-width: 2px;
     transform: translate(1510px, -111px) scale(0.1);
     visibility: hidden;
+    z-index: 999;
 }
 
 .shield-bg:hover ~ .popup-shield
@@ -83,10 +85,12 @@ button, a, div
     visibility: visible;
     transform: translate(1510px, -58px) scale(1);
     transition-duration: 500ms;
+    z-index: 9999;
 }
 .scritte-popup
 {
     color: rgb(251 191 36);
     text-shadow: 2px 2px 0 #000000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
     text-align: center;
+    z-index: 999;
 }
