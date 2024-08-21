@@ -35,6 +35,8 @@ export class FriendlistComponent {
     this.playerServ.getOne(parseInt(localStorage.getItem("id")!)).subscribe(
       data =>
       {
+        this.friends = [];
+
         this.player = data;
         this.getFriends();
       }

@@ -21,7 +21,7 @@
     <div class="friendlist">
         <div class="friendContainer">
             <mat-grid-list cols="1" rowHeight="115px">
-                @for (friend of friends; track player.id) 
+                @for (friend of friends; track friend.id) 
                 {
                     <mat-grid-tile>
                         <app-friend-card [friend]="filterFriend(friend.id)"></app-friend-card>

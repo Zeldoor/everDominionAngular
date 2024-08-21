@@ -14,6 +14,7 @@ export interface Player
     online: String;
     icon: String;
     shield:String;
+    hasShield: Boolean;
 
     activeGears: Gear[];
     storageGears: Gear[];

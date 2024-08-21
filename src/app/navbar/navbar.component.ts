@@ -17,8 +17,7 @@ import { CommonModule } from '@angular/common';
 })
 export class NavbarComponent 
 {
-  player!: Player;
-  icon: String = 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png';
+  @Input() player!: Player;
   shieldVisibility: boolean =  false;
 
   timeRemaining: { hours: number, minutes: number, seconds: number } | null = null;
@@ -30,22 +29,23 @@ export class NavbarComponent
 
   ngOnInit(): void 
   {
-    this.polling.startPolling(`/player/${parseInt(localStorage.getItem("id")!) ? parseInt(localStorage.getItem("id")!) : 0}`, 5000)
-    .subscribe(
-      {
-        next: data =>
-        {
-          this.player = data as Player ? data : this.player;
-          this.icon = this.player ? this.player.icon : 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png';
+    // this.polling.startPolling(`/player/${this.player.id || 0}`, 5000)
+    // .subscribe(
+    //   {
+    //     next: data =>
+    //     {
+    //       this.player = data as Player ? data : this.player;
+    //       this.icon = this.player ? this.player.icon : 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png';
 
-          this.shield_expire = new Date(this.player.shield.split(".")[0] as string);
-        },
-        error: err =>
-        {
-          console.log("ERRORE")
-        }
-      }
-    )
+    //       this.shield_expire = new Date(this.player.shield.split(".")[0] as string);
+    //     },
+    //     error: err =>
+    //     {
+    //       console.log("ERRORE")
+    //     }
+    //   }
+    // )
+    
 
     // this.stomp.subscribe("/topic/players", message => 
     //   {

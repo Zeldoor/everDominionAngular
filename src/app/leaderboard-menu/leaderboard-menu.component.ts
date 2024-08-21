@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { Player } from '../model/Player';
 import { PlayerService } from '../services/player.service';
 import { Subscription } from 'rxjs';
@@ -14,18 +14,22 @@ import { LeaderboardPlayerCardComponent } from "../leaderboard-player-card/leade
 })
 export class LeaderboardMenuComponent 
 {
-  private dataSubscription!: Subscription;
+  stomp: StompService;
   players: Player[] = [];
   playerId: number = parseInt(localStorage.getItem("id")!);
   
-  constructor(private playerServ: PlayerService, private stomp: StompService)
+  constructor(private playerServ: PlayerService, private injector: Injector)
   {
+    this.stomp = this.injector.get(StompService);
+
+
     this.playerServ.getPlayersNoShield().subscribe(data => this.players = data.filter(p => p.id != parseInt(localStorage.getItem("id")!)));
 
     this.stomp.subscribe("/topic/lead", message => 
       {
+        console.log("LEAD")
         let playersData = JSON.parse(message) as Player[];
-        this.players = playersData ? playersData.filter(p => p.id != parseInt(localStorage.getItem("id")!)) : this.players;
+        this.players = playersData ? playersData.filter(p => p.id != parseInt(localStorage.getItem("id")!)  && !p.hasShield) : this.players;
       })
   }
 

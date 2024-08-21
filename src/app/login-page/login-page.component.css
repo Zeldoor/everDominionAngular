@@ -27,13 +27,11 @@ button, a, div
 .ombra
 {
     text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
-    font-family: Georgia, 'Times New Roman', Times, serif ;
 }
 
 .scritte
 {
     text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
-    font-family: Georgia, 'Times New Roman', Times, serif ;
     color: rgb(251 191 36);
 }
 

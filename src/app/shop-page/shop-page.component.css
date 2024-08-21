@@ -137,7 +137,6 @@
 {
     transform: translate(-150px,55px) scale(1.5);
     color: rgb(255, 235, 184);
-    font-family: Georgia, 'Times New Roman', Times, serif ;
 }
 .bottoneBuyGear
 {
@@ -163,5 +162,4 @@
 {
     transform: translate(-21px,55px) scale(1.5);
     color: rgb(255, 235, 184);
-    font-family: Georgia, 'Times New Roman', Times, serif ;
 }
