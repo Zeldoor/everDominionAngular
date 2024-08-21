@@ -30,3 +30,33 @@
     filter: contrast(1.5);
     z-index: 1000;
 }
+.popup
+{
+    position: fixed;
+    width: auto;
+    height: auto;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background: linear-gradient(to bottom, #444444, #303030);
+    border-radius: 20px;
+    border-style: double;
+    border-color: rgb(122, 73, 73);
+    border-width: 2px;
+    transform: translate(272px, -60px) scale(0.1);
+    visibility: hidden;
+    z-index: 9999;
+}
+
+.addFriend:hover ~ .popup
+{
+    
+    visibility: visible;
+    transform: translate(272px, -60px) scale(1);
+    transition-duration: 500ms;
+}
+.scritte-popup
+{
+    color: rgb(251 191 36);
+    text-shadow: 2px 2px 0 #000000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+    text-align: center;
+}
