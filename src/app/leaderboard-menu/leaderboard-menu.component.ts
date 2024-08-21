@@ -27,25 +27,8 @@ export class LeaderboardMenuComponent
 
     this.stomp.subscribe("/topic/lead", message => 
       {
-        console.log("LEAD")
         let playersData = JSON.parse(message) as Player[];
         this.players = playersData ? playersData.filter(p => p.id != parseInt(localStorage.getItem("id")!)  && !p.hasShield) : this.players;
       })
   }
-
-  // ngOnInit() 
-  // {
-    // this.dataSubscription = this.gameDataService.startPolling('player')
-    //   .subscribe(data => 
-    //   {
-    //     let playersData = data as Player[];
-    //     this.players = playersData ? playersData.filter(p => p.id != parseInt(localStorage.getItem("id")!)) : this.players;
-    //   });
-  // }
-
-  // ngOnDestroy() 
-  // {
-  //   if (this.dataSubscription) 
-  //     this.dataSubscription.unsubscribe();
-  // }
 }
