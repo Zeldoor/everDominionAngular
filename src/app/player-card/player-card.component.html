@@ -15,12 +15,13 @@
             
                     <!-- nick -->
             <div class="bg-[url(https://i.imgur.com/Qxom8K0.png)] bg-no-repeat bg-cover w-80   z-10  " style="transform: translateX(-35px); min-height: 4.0625rem;" >
-                    <a class="nome text-4xl font mb-3 font-extrabold text-amber-400 text-center">
+                    <a class="nome text-4xl font mb-3 font-extrabold text-center" style="color: white">
                     <h1 style="padding-top: 10px">{{player.nick}}</h1>
                 </a>
                 <!-- icon -->
-            <img src="https://i.imgur.com/S4Vs91H.png" 
-            class="rounded-full  h-14 w-14 float-right transition-all ease delay-100 duration-150 hover:-translate-y-0.5 hover:scale-110 z-50" style="transform: translate(50px, -43px); border-color: darkgoldenrod; border-width: 3px; border-style: groove;" >
+            <img [src]="player.icon" 
+            class="rounded-full  h-14 w-14 float-right transition-all ease delay-100 duration-150 hover:-translate-y-0.5 hover:scale-110 z-50" 
+            style="transform: translate(50px, -43px); border-color: darkgoldenrod; border-width: 3px; border-style: groove;" >
             </div>
             
         </div>

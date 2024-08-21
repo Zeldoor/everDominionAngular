@@ -70,7 +70,8 @@
                 <span class="sr-only">Open user menu</span>
                 @if (authService.isLogged()) 
                 {
-                  <img class="eddai meow rounded-full" style="width: 60px;height: 60px; transform: translate(0px,2px);" [src]="player?.icon || 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png'">
+                  <img class="eddai meow rounded-full" style="width: 60px;height: 60px; transform: translate(0px,2px);" 
+                  [src]="player?.icon || 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png'">
                 }
               </button>
             </div>

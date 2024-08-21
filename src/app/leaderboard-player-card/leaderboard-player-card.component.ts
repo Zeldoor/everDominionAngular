@@ -39,4 +39,9 @@ export class LeaderboardPlayerCardComponent
 
     return true;
   }
+
+  powerCalculator(): number
+  {
+    return this.leadPlayer.playerHealth + ((this.leadPlayer.playerMinDmg+this.leadPlayer.playerMaxDmg)/2);
+  }
 }

@@ -21,41 +21,19 @@ export class NavbarComponent
   shieldVisibility: boolean =  false;
 
   timeRemaining: { hours: number, minutes: number, seconds: number } | null = null;
-  shield_expire!: Date; 
-  currentDate: Date = new Date();
   private intervalId: any;
 
-  constructor(public authService: AuthService, private stomp: StompService, private polling: GameDataService){} 
+  constructor(public authService: AuthService, private stomp: StompService, private polling: GameDataService){}
+  
+
+  logout()
+  {
+    this.authService.logout();
+  }
+
 
   ngOnInit(): void 
   {
-    // this.polling.startPolling(`/player/${this.player.id || 0}`, 5000)
-    // .subscribe(
-    //   {
-    //     next: data =>
-    //     {
-    //       this.player = data as Player ? data : this.player;
-    //       this.icon = this.player ? this.player.icon : 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png';
-
-    //       this.shield_expire = new Date(this.player.shield.split(".")[0] as string);
-    //     },
-    //     error: err =>
-    //     {
-    //       console.log("ERRORE")
-    //     }
-    //   }
-    // )
-    
-
-    // this.stomp.subscribe("/topic/players", message => 
-    //   {
-    //     let playersData = JSON.parse(message) as Player[];
-    //     this.player = playersData ? playersData.filter(p => p.id == parseInt(localStorage.getItem("id")!)).at(0)! : this.player;
-    //     this.icon = this.player ? this.player.icon : 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png';
-
-    //     this.shield_expire = new Date(this.player.shield.split(".")[0] as string);
-    //   })
-
     this.updateTimeRemaining();
 
     this.intervalId = setInterval(() => 
@@ -68,32 +46,28 @@ export class NavbarComponent
   ngOnDestroy(): void 
   {
     if (this.intervalId) 
-    {
       clearInterval(this.intervalId);
-    }
   }
-
-
     
-  logout()
-  {
-    this.authService.logout();
-  }
 
   private updateTimeRemaining(): void 
   {
-    if (!this.shield_expire) 
+    let shieldTime: Date | null = this.player ? new Date(this.player.shield.split(".")[0] as string) : null;
+
+    if (!shieldTime) 
     {
+      console.log("1")
       this.shieldVisibility = false;
       this.timeRemaining = { hours: 0, minutes: 0, seconds: 0 };
       return;
     }
 
     let currentDate = new Date();
-    let timeDiff = this.shield_expire.getTime() - currentDate.getTime();
+    let timeDiff = shieldTime.getTime() - currentDate.getTime();
 
     if (timeDiff > 0) 
     {
+      console.log("2")
       this.shieldVisibility = true;
       let hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
       let minutes = Math.floor((timeDiff / (1000 * 60)) % 60);
@@ -103,6 +77,7 @@ export class NavbarComponent
     } 
     else 
     {
+      console.log(timeDiff)
       this.shieldVisibility = false;
       this.timeRemaining = { hours: 0, minutes: 0, seconds: 0 };
       clearInterval(this.intervalId);

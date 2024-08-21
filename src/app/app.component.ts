@@ -29,7 +29,6 @@ export class AppComponent
 
     this.stomp.subscribe("/topic/players", message => 
       {
-        console.log("PLAYERS");
         let playersData = JSON.parse(message) as Player[];
         this.player = playersData ? playersData.filter(p => p.id == parseInt(localStorage.getItem("id")!)).at(0)! : this.player;
       })
