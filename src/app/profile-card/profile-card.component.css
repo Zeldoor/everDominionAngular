@@ -96,7 +96,7 @@
     position: fixed;
     min-width: 200px;
     max-width: 200px;
-    color: rgb(251 191 36);
+    color:  #FFD33B;
     padding-top: 10px;
     transform: translate(230px, 10px) scale(0.85);
     text-align: center;
@@ -104,10 +104,9 @@
 .ruolo
 {
     position: fixed;
-    transform: translate(285px, 70px) scale(0.6);
-    color: rgb(255, 219, 129);
+    transform: translate(285px, 80px) scale(0.7);
+    color: rgb(255, 255, 255);
     text-align: center;
-    
 }
 .email
 {
@@ -115,7 +114,7 @@
     min-width: 370px;
     max-width: 370px;
     transform: translate(140px, 120px) scale(0.6);
-    color: rgb(255, 235, 184);
+    color: rgb(255, 255, 255);
     text-align: center;
 }
 

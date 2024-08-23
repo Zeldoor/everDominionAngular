@@ -11,7 +11,7 @@
         <div class="b2">
             
             <mat-grid-list class="equip-equip-container" cols="1" rowHeight="9.9rem">
-                @for (gearInShop of gearsInShop; track $index) 
+                @for (gearInShop of gearsInShop; track gearInShop) 
                 {
                     <mat-grid-tile class="">
                         <div class="inventory-equip border-black border-solid border-4 transition-all ease delay-100 duration-500  hover:scale-110
@@ -19,9 +19,16 @@
                             <img  [src]="gearInShop.icon" style="transform: scale(1) translate(-13px,12px);"
                              (mouseover)="mouseOveredGear(gearInShop)" (mouseout)="mouseUnoverGear()">
                         </div>
-                        <button class="bottoneBuyGear"></button>
+                        @if(playerHasGear(gearInShop))
+                        {
+                            <button (click)="upgradeGear(gearInShop.id)" class="bottoneBuyGear"></button>
+                        }
+                        @else 
+                        {
+                            <button (click)="buyGear(gearInShop.id)" class="bottoneBuyGear"></button>
+                        }
                         <img class="goldCostGear" src="https://i.imgur.com/pdcKGOO.png" alt="">
-                        <h2 class="goldCostNumberGear"> {{gearInShop.price}} </h2>
+                        <h2 class="goldCostNumberGear"> {{playerHasGear(gearInShop) ? playerHasGear(gearInShop) : gearInShop.price}} </h2>
                     </mat-grid-tile>
                 }
             </mat-grid-list>
@@ -31,24 +38,25 @@
                 <mat-grid-list class="equip-unita" cols="2" rowHeight="9.9rem">
                     @for (troopInShop of troopsInShop; track troopInShop.id) 
                     {
-                    <mat-grid-tile>
-                        <div class="truppe">
-                            <app-troop-card-idle [troopInShop]="troopInShop"></app-troop-card-idle>
-                            <button class="bottoneBuy" (click)="buyTroop(troopInShop.id)" ></button>
-                        </div>
-                        <img class="goldCost" src="https://i.imgur.com/pdcKGOO.png" alt="">
-                        <h2 class="goldCostNumber"> {{troopInShop.price}} </h2>
-                    </mat-grid-tile>
-                }
+                        <mat-grid-tile>
+                            <div class="truppe">
+                                <app-troop-card-idle [troopInShop]="troopInShop"></app-troop-card-idle>
+                                <button class="bottoneBuy" (click)="buyTroop(troopInShop.id)" ></button>
+                            </div>
+                            <img class="goldCost" src="https://i.imgur.com/pdcKGOO.png" alt="">
+                            <h2 class="goldCostNumber"> {{troopInShop.price}} </h2>
+                        </mat-grid-tile>
+                    }
             </mat-grid-list>
             <div class="shop-icon-bg"><img class="shop-icon" src="https://i.imgur.com/VhuikVs.png" alt=""></div>
             
         </div>
     </div>
     <app-inventory-card
-    [inventory]="false" 
-    [storageTroops]="storageTroops" 
+        [inventory]="false" 
+        [storageTroops]="storageTroops" 
         [storageGears]="storageGears"
+        [activeGears]="player.activeGears"
         (customOverMouse)="mouseOveredGear($event)"
         (customUnoverMouse)="mouseUnoverGear()"></app-inventory-card>
     </div>

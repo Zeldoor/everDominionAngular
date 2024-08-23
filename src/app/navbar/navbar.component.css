@@ -2,17 +2,52 @@
 .eddai
 {
     background-image:"https://i.imgur.com/Nt1kyYc.png" ;
-    /* style="background-image: https://i.imgur.com/Nt1kyYc.png;" */
 }
 
-.scritte
+.scritte 
 {
-    padding-top: 15px;
     text-align: center;
     text-shadow: white;
     color: white;
-    font-size: large;
+    font-size: larger;
     font-weight: 800;
+    transition: font-size 0.3s ease; /* Aggiunta per una transizione fluida */
+}
+
+.logout:hover 
+{
+    color: #fa4242;
+    font-size: x-large; /* Aumenta la dimensione del testo al passaggio del mouse */
+}
+
+.home:hover 
+{
+    color: #61ffbd;
+    font-size: x-large; /* Aumenta la dimensione del testo al passaggio del mouse */
+}
+
+.friend:hover 
+{
+    color: #56b843;
+    font-size: x-large; /* Aumenta la dimensione del testo al passaggio del mouse */
+}
+
+.shop:hover 
+{
+    color: #FFD33B;
+    font-size: x-large; /* Aumenta la dimensione del testo al passaggio del mouse */
+}
+
+.player:hover 
+{
+    color: #c061ff;
+    font-size: x-large; /* Aumenta la dimensione del testo al passaggio del mouse */
+}
+
+.aboutus:hover 
+{
+    color: #5871ff;
+    font-size: x-large; /* Aumenta la dimensione del testo al passaggio del mouse */
 }
 
 .icona-immagine
@@ -34,7 +69,6 @@ button, a, div
     width: auto;
      height: 80px;
     z-index: 100000;
-    /* background-image: url(https://i.imgur.com/8hax0qg.png); */
 }
 
 .shield-bg
