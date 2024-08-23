@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TroopMenuComponent } from './troop-menu.component';
+import { PvePlayerCardComponent } from './pve-player-card.component';
 
-describe('TroopMenuComponent', () => {
-  let component: TroopMenuComponent;
-  let fixture: ComponentFixture<TroopMenuComponent>;
+describe('PvePlayerCardComponent', () => {
+  let component: PvePlayerCardComponent;
+  let fixture: ComponentFixture<PvePlayerCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TroopMenuComponent]
+      imports: [PvePlayerCardComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TroopMenuComponent);
+    fixture = TestBed.createComponent(PvePlayerCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

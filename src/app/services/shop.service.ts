@@ -32,4 +32,9 @@ export class ShopService {
   {
     return this.http.post<Player>(`/api/shop/gear/${gearId}`, player);
   }
+
+  upgradeGear(gearId: number, player: Player): Observable<Player>
+  {
+    return this.http.post<Player>(`/api/shop/upgrade/${gearId}`, player);
+  }
 }

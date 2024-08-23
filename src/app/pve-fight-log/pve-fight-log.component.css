@@ -102,7 +102,6 @@
 
 .reg-bat
 {
-    color: #FFD33B;
     position: absolute;
     width: 1000px;
     transform: translate(0px, -163px);
@@ -112,6 +111,7 @@
     text-shadow: black;
     text-align: center;
     --tw-text-opacity: 1;
+    color: #FFD33B;
 }
 
 .ombra

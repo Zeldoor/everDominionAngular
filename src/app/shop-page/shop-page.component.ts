@@ -31,6 +31,7 @@ export class ShopPageComponent {
   gearsInShop: Gear[] = [];
   storageTroops: Troop[] = [];
   storageGears: Gear[] = [];
+  backendErr: String = "";
 
 
   
@@ -53,20 +54,48 @@ export class ShopPageComponent {
   buyTroop(troopId: number): void
   {
     this.shopServ.buyTroop(troopId, this.player).subscribe(
-      data =>
       {
-        this.player = data;
-        this.storageTroops = this.player.storageTroops.reverse();
+        next: data =>
+        {
+          this.player = data;
+          this.storageTroops = this.player.storageTroops.reverse();
+        },
+        error: err =>
+        {
+          this.popUp(err)
+        }
       });
   }
 
   buyGear(gearId: number): void
   {
     this.shopServ.buyGear(gearId, this.player).subscribe(
-      data =>
       {
-        this.player = data;
-        this.storageGears = this.player.storageGears.reverse();
+        next: data =>
+        {
+          this.player = data;
+          this.storageGears = this.player.storageGears.reverse();
+        },
+        error: err =>
+        {
+          this.popUp(err)
+        }
+      });
+  }
+
+  upgradeGear(gearId: number): void
+  {
+    this.shopServ.upgradeGear(gearId, this.player).subscribe(
+      {
+        next: data =>
+        {
+          this.player = data;
+          this.storageGears = this.player.storageGears.reverse();
+        },
+        error: err =>
+        {
+          this.popUp(err)
+        }
       });
   }
 
@@ -75,8 +104,33 @@ export class ShopPageComponent {
     return this.overedGear = gear;
   }
 
-  mouseUnoverGear()
+  mouseUnoverGear(): void
   {
     this.overedGear = null;
+  }
+
+  playerHasGear(gearInShop: Gear): boolean | number
+  {
+    if(this.player.activeGears)
+      for(let gear of this.player.activeGears)
+      {
+        if(gear.id == gearInShop.id)
+          return gear.price*(gear.tier+1)
+      }
+
+    if(this.player.storageGears)
+      for(let gear of this.player.storageGears)
+      {
+        if(gear.id == gearInShop.id)
+          return gear.price*(gear.tier+1)
+      }
+
+    return false;
+  }
+
+  popUp(err: any): void
+  {
+    this.backendErr = err.error;
+    alert(this.backendErr);
   }
 }

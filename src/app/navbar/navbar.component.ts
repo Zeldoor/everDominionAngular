@@ -56,7 +56,6 @@ export class NavbarComponent
 
     if (!shieldTime) 
     {
-      console.log("1")
       this.shieldVisibility = false;
       this.timeRemaining = { hours: 0, minutes: 0, seconds: 0 };
       return;
@@ -67,7 +66,6 @@ export class NavbarComponent
 
     if (timeDiff > 0) 
     {
-      console.log("2")
       this.shieldVisibility = true;
       let hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
       let minutes = Math.floor((timeDiff / (1000 * 60)) % 60);
@@ -77,7 +75,6 @@ export class NavbarComponent
     } 
     else 
     {
-      console.log(timeDiff)
       this.shieldVisibility = false;
       this.timeRemaining = { hours: 0, minutes: 0, seconds: 0 };
       clearInterval(this.intervalId);

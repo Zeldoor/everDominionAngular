@@ -20,6 +20,7 @@ export class InventoryCardComponent
 
   @Input() storageTroops!: Troop[];
   @Input() storageGears!: Gear[];
+  @Input() activeGears!: Gear[];
   @Input() inventory!: boolean;
 
   @Output() switchTroopEvent: EventEmitter<Troop> = new EventEmitter<Troop>();
