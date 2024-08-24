@@ -21,17 +21,18 @@
     <div class="friendlist">
         <div class="friendContainer">
             <mat-grid-list cols="1" rowHeight="115px">
-                @for (friend of friends; track friend.id) 
+                @if(this.friends)
                 {
-                    <mat-grid-tile>
-                        <app-friend-card [friend]="filterFriend(friend.id)"></app-friend-card>
-                    </mat-grid-tile>
+                    @for (friend of friends; track friend.id) 
+                    {
+                        <mat-grid-tile>
+                            <app-friend-card [friend]="filterFriend(friend.id)"></app-friend-card>
+                        </mat-grid-tile>
+                    }
                 }
             </mat-grid-list>
         </div>
     </div>
-
-    <!-- BACKGROUND PERGAMENA -->
     <div class="pergamena">
     </div>
     <div class="friendlistBg"></div>

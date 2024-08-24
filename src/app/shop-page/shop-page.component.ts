@@ -31,6 +31,7 @@ export class ShopPageComponent {
   gearsInShop: Gear[] = [];
   storageTroops: Troop[] = [];
   storageGears: Gear[] = [];
+  activeGears: Gear[] = [];
   backendErr: String = "";
 
 
@@ -46,7 +47,8 @@ export class ShopPageComponent {
       {
         this.player = data;
         this.storageTroops = this.player.storageTroops.reverse();
-        this.storageGears = this.player.storageGears.reverse();
+        this.storageGears = this.player.storageGears;
+        this.activeGears = this.player.activeGears;
       }
     );
   }
@@ -74,7 +76,8 @@ export class ShopPageComponent {
         next: data =>
         {
           this.player = data;
-          this.storageGears = this.player.storageGears.reverse();
+          this.storageGears = this.player.storageGears;
+          this.activeGears = this.player.activeGears;
         },
         error: err =>
         {
@@ -90,7 +93,8 @@ export class ShopPageComponent {
         next: data =>
         {
           this.player = data;
-          this.storageGears = this.player.storageGears.reverse();
+          this.storageGears = this.player.storageGears;
+          this.activeGears = this.player.activeGears;
         },
         error: err =>
         {
@@ -109,20 +113,26 @@ export class ShopPageComponent {
     this.overedGear = null;
   }
 
-  playerHasGear(gearInShop: Gear): boolean | number
+  playerHasGear(gearInShop: Gear): boolean | number | null
   {
     if(this.player.activeGears)
       for(let gear of this.player.activeGears)
       {
+        if(gear.id == gearInShop.id && gear.tier == 3)
+          return null;
+
         if(gear.id == gearInShop.id)
-          return gear.price*(gear.tier+1)
+          return gear.price*(gear.tier+1);
       }
 
     if(this.player.storageGears)
       for(let gear of this.player.storageGears)
       {
+        if(gear.id == gearInShop.id && gear.tier == 3)
+          return null;
+
         if(gear.id == gearInShop.id)
-          return gear.price*(gear.tier+1)
+          return gear.price*(gear.tier+1);
       }
 
     return false;

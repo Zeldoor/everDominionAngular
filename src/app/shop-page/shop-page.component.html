@@ -14,21 +14,28 @@
                 @for (gearInShop of gearsInShop; track gearInShop) 
                 {
                     <mat-grid-tile class="">
-                        <div class="inventory-equip border-black border-solid border-4 transition-all ease delay-100 duration-500  hover:scale-110
+                        <div class="inventory-equip border-black border-solid border-4 transition-all ease delay-100 duration-500 hover:scale-110
                              hover:border-6 bg-transparent h-25 float-left hover:border-amber-600 z-0 hover:z-50">
                             <img  [src]="gearInShop.icon" style="transform: scale(1) translate(-13px,12px);"
                              (mouseover)="mouseOveredGear(gearInShop)" (mouseout)="mouseUnoverGear()">
                         </div>
-                        @if(playerHasGear(gearInShop))
+                        @if(playerHasGear(gearInShop) == null)
                         {
-                            <button (click)="upgradeGear(gearInShop.id)" class="bottoneBuyGear"></button>
+                            <h2 class="goldCostNumberGear pl-8">Max Tier</h2>
                         }
-                        @else 
+                        @else
                         {
-                            <button (click)="buyGear(gearInShop.id)" class="bottoneBuyGear"></button>
+                            @if(playerHasGear(gearInShop))
+                            {
+                                <button (click)="upgradeGear(gearInShop.id)" class="bottoneBuyGear"></button>
+                            }
+                            @else 
+                            {
+                                <button (click)="buyGear(gearInShop.id)" class="bottoneBuyGear"></button>
+                            }
+                            <img class="goldCostGear" src="https://i.imgur.com/pdcKGOO.png" alt="">
+                            <h2 class="goldCostNumberGear"> {{playerHasGear(gearInShop) ? playerHasGear(gearInShop) : gearInShop.price}} </h2>
                         }
-                        <img class="goldCostGear" src="https://i.imgur.com/pdcKGOO.png" alt="">
-                        <h2 class="goldCostNumberGear"> {{playerHasGear(gearInShop) ? playerHasGear(gearInShop) : gearInShop.price}} </h2>
                     </mat-grid-tile>
                 }
             </mat-grid-list>
@@ -56,7 +63,7 @@
         [inventory]="false" 
         [storageTroops]="storageTroops" 
         [storageGears]="storageGears"
-        [activeGears]="player.activeGears"
+        [activeGears]="activeGears"
         (customOverMouse)="mouseOveredGear($event)"
         (customUnoverMouse)="mouseUnoverGear()"></app-inventory-card>
     </div>

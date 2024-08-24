@@ -52,19 +52,24 @@ export class PlayerService
     return false;
   }
 
+  getFriends(playerId:number): Observable<Player[]>
+  {
+    return this.http.get<Player[]>(`/api/player/${playerId}/friends`);
+  }
+
   addFriend(id:number, playerId:number): Observable<Player>
   {
     return this.http.post<Player>(`/api/player/add/${id}`, playerId);
   }
 
+  removeFriend(id:number, playerId:number): Observable<Player>
+  {
+    return this.http.post<Player>(`/api/player/remove/${id}`, playerId);
+  }
+
   getOnlineFriends(playerId: number): Observable<Player[]> 
   {
     return this.http.get<Player[]>(`api/player/${playerId}/online-friends`);
-  }
-
-  getAllFriends(playerId: number): Observable<Player[]> 
-  {
-    return this.http.get<Player[]>(`$api/player/${playerId}/friends`);
   }
 
   sendHeartbeat(playerId: number): Observable<void> 

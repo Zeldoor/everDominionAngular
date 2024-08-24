@@ -45,13 +45,33 @@ export class FriendlistComponent {
 
   getFriends() 
   {
-    this.dataSubscription = this.gameDataService.startPolling('player', 2000)
+    this.dataSubscription = this.gameDataService.startPolling('player', 1000)
     .subscribe(data => 
     {
-      this.friends = []
-      let playersData = data as Player[];
-      let players = playersData ? playersData.filter(p => p.id != parseInt(localStorage.getItem("id")!)) : this.friends;
-      this.player.friends.forEach(f => {players.filter(p => p.id == f.id).at(0) ? this.friends.push(players.filter(p => p.id == f.id).at(0)!) : null})
+      // this.friends = []
+      // let playersData = data as Player[];
+      // this.player = playersData.filter(p => p.id == parseInt(localStorage.getItem("id")!)).at(0)!;
+      // let players = playersData ? playersData.filter(p => p.id != parseInt(localStorage.getItem("id")!)) : this.friends;
+      // this.player.friends.forEach(f => {players.filter(p => p.id == f.id).at(0) ? this.friends.push(players.filter(p => p.id == f.id).at(0)!) : null})
+
+        let playersData: Player[] = data as Player[];
+
+        // Trova il player corrente
+        this.player = playersData.find(p => p.id === parseInt(localStorage.getItem("id")!))!;
+
+        // Reset della lista degli amici
+        this.friends = [];
+
+        if (this.player && this.player.friends)
+        {
+            // Crea una mappa per accesso rapido ai player
+            let playersMap = new Map(playersData.map(p => [p.id, p]));
+
+            // Filtra gli amici presenti nella lista dei player
+            this.friends = this.player.friends
+                .map(f => playersMap.get(f.id))
+                .filter(friend => friend !== undefined) as Player[];
+        }
     });
   }
 

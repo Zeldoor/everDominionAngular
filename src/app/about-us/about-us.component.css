@@ -30,5 +30,9 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ombra per risaltare il riquadro */
     border-radius: 10px; /* Angoli arrotondati */
     text-align: center; /* Giustifica il testo */
-    color: black; /* Colore del testo */
+}
+
+.pve
+{
+    color:forestgreen;
 }
