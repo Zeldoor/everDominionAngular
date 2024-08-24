@@ -47,13 +47,34 @@ export class TroopCardComponent
         return 'url("https://i.imgur.com/QxuxL0Y.png")';
 
       case "tnt":
-        return 'url("https://i.imgur.com/QxuxL0Y.png")';
+        return 'url("https://i.imgur.com/VnNak17.png")';
         
         case "torch":
-        return 'url("https://i.imgur.com/JKzHY0e.png")';
+        return 'url("https://i.imgur.com/VnNak17.png")';
 
       default:
         return 'url("https://i.imgur.com/JKzHY0e.png")';
     }
   }
+
+  // setFilter() : String
+  // {
+  //   switch(this.troop.className.toLowerCase())
+  //   {
+  //     case "knight":
+  //       return '';
+
+  //     case "archer":
+  //       return '';
+
+  //     case "tnt":
+  //       return 'grayscale(70%) contrast(150%) brightness(80%) sepia(30%) hue-rotate(-10deg)';
+        
+  //       case "torch":
+  //       return 'grayscale(70%) contrast(150%) brightness(80%) sepia(30%) hue-rotate(-10deg)';
+
+  //     default:
+  //       return '';
+  //   }
+  // }
 }

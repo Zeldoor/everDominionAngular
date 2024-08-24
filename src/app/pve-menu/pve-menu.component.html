@@ -1,31 +1,61 @@
 <div class="container">
-    <mat-grid-list cols="5" rowHeight="130px">
-        @for (pvePlayer of pvePlayers; track pvePlayer.id) 
-        {
-            <button [routerLink]="['/pveFight', pvePlayer.id]">
-                <mat-grid-tile colspan="1" class="info" style="background-color: #B3B2B1;">
-                    <img [src]="pvePlayer.icon" style="transform: scale(0.75);">
-                </mat-grid-tile>
-                <mat-grid-tile colspan="1" class="info">
-                <div>
+    <div  style="max-height: 587px; overflow-y: scroll;scrollbar-width: none; transform: translate(0px,10px);">
+        <!-- <mat-grid-list cols="5" rowHeight="130px" style="margin-top: 10px; max-height: 588px; overflow-y: scroll; scrollbar-width: none;"> -->
+            @for (pvePlayer of pvePlayers; track pvePlayer.id) 
+            {
+                <!-- <div>
+                <img src="https://i.imgur.com/DXvWXU8.png" alt="">
+                <button [routerLink]="['/pveFight', pvePlayer.id]" class="pve-card">
+                    <mat-grid-tile colspan="1" class="info" style="background-color: #B3B2B1; border-radius: 9990px; max-width: 130px; transform: translate(20px);">
+                        <img [src]="pvePlayer.icon" style="transform: scale(1);">
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="1" class="info">
+                        <div>
                             <h1>{{pvePlayer.nick}}</h1>
                             <h2>{{pvePlayer.pveMinDmg}} - {{pvePlayer.pveMaxDmg}}</h2>
                             <h2>{{pvePlayer.pveHealth}}</h2>
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile  colspan="2" class="description card">
+                        <p>{{pvePlayer.description}}</p>
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="1" class="reward card">
+                        <div>
+                            <h1>REWARD</h1>
+                            <p>{{pvePlayer.gold}}
+                                <img class="img-gold" src="https://i.imgur.com/pdcKGOO.png" alt="">
+                            </p>
+                        </div>
+                    </mat-grid-tile>
+                </button>
+            </div> -->
+
+            
+            <div style="min-height: 130px;max-height: 130px; max-width: 840px; transform: translate(50px, 20px); margin-top: 20px; background-image: url(https://i.imgur.com/DXvWXU8.png); background-repeat: no-repeat;">
+                <button [routerLink]="['/pveFight', pvePlayer.id]" style="z-index: 999; max-height: 130px;">
+                    
+                    <img [src]="pvePlayer.icon" class="pve-icon">
+                    <div class="pve-scritte1">
+                        <img src="https://i.imgur.com/cQVZaD9.png" alt="" style="transform: translate(-15px,82px) scale(0.6); z-index: 1;">
+                        <h1 class="nome-pve">{{pvePlayer.nick}}</h1>
+                        <h2 style="transform: translate(-225px,-40px) scale(1.3); color: rgb(170, 30, 30);">{{pvePlayer.pveMinDmg}} - {{pvePlayer.pveMaxDmg}}</h2> 
+                        <h2 style="transform: translate(-225px,-35px) scale(1.3); color: rgb(169, 250, 64);">{{pvePlayer.pveHealth}}</h2>
                     </div>
-                </mat-grid-tile>
-                <mat-grid-tile  colspan="2" class="description card">
-                    <p>{{pvePlayer.description}}</p>
-                </mat-grid-tile>
-                <mat-grid-tile colspan="1" class="reward card">
+                    <div class="pve-scritte2">
+                        <p>{{pvePlayer.description}}</p>
+                    </div>
                     <div>
-                        <h1>REWARD</h1>
-                        <p>{{pvePlayer.gold}}
+                        <h1 class="reward">REWARD</h1>
+                        <p class="reward" style="transform: translate(360px, -80px);">{{pvePlayer.gold}}
                             <img class="img-gold" src="https://i.imgur.com/pdcKGOO.png" alt="">
                         </p>
                     </div>
-                </mat-grid-tile>
-            </button>
+                </button>
+                
+            </div>
+            
         }
-    </mat-grid-list>
+    </div>
+    <!-- </mat-grid-list> -->
 </div>
 

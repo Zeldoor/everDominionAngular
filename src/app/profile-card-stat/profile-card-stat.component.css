@@ -127,7 +127,7 @@
     height: 325px;
     border-style: solid;
     border-top-width: 5px ;
-    border-color: rgb(114, 68, 23);
+    border-color: rgb(82, 41, 8);
 }
 
 .ombra
@@ -155,11 +155,11 @@
 .fine-stamina
 {
     position: fixed ;
-    width: 314px;
+    width: 329px;
     height: 235px;
     border-style: solid;
     border-top-width: 5px ;
-    border-color: rgb(114, 68, 23);
+    border-color: rgb(82, 41, 8);
 }
 
 .img-gold

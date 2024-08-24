@@ -88,27 +88,23 @@
 
 .popup
 {
+    color: azure;
     position: fixed;
-    width: 400px;
-    height: auto;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    background: linear-gradient(to bottom, #444444, #303030);
+    background-color: rgba(7, 7, 6, 0.8);
+    pointer-events: none;
     border-radius: 20px;
-    border-style: double;
-    border-color: rgb(122, 73, 73);
-    border-width: 2px;
-    transform: translate(-487px, -643px) scale(0.1);
+    z-index: 1000;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(255, 202, 141); 
+    overflow-y: hidden;
     visibility: hidden;
-    z-index: 9999;
+    scrollbar-width: none;
 }
 
 .titolo:hover ~ .popup
 {
-    
     visibility: visible;
-    transform: translate(-487px, -643px)  scale(1);
-    transition-duration: 500ms;
 }
 .scritte-popup
 {
