@@ -31,4 +31,14 @@ export class LeaderboardMenuComponent
         this.players = playersData ? playersData.filter(p => p.id != parseInt(localStorage.getItem("id")!)  && !p.hasShield) : this.players;
       })
   }
+
+  // leaderboardPlayers(): Player[]
+  // {
+  //   let orderedPlayer: Player[];
+
+  //   for(let p of this.players)
+
+    
+  //   return 
+  // }
 }
