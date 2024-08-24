@@ -18,17 +18,38 @@
     width: 1500px;
     height: 910px;  
 }
-
+.container-testo
+{
+    /* background-image: url(https://i.imgur.com/QK0wRDW.png); */
+    background-repeat: no-repeat;
+    min-height: 830px;
+    max-height: 600px;
+    transform: translate(10px,50px) scale(0.95);
+    
+}
 .testo 
 {
     padding: 2rem;
     font-size: larger;
     width: 75%; /* Larghezza del riquadro rispetto alla pergamena */
     height: 100%; /* Altezza del riquadro rispetto alla pergamena */
-    background-color: rgba(255, 255, 255, 0.8); /* Sfondo bianco semi-trasparente */
     overflow-y: auto; /* Aggiunge lo scroll se il testo è troppo lungo */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ombra per risaltare il riquadro */
     border-radius: 10px; /* Angoli arrotondati */
     text-align: center; /* Giustifica il testo */
-    color: black; /* Colore del testo */
+    transform: translate(10px);
+    color: rgb(0, 0, 0);
+    font-weight: 900;
+    font-style: italic;
+    
+}
+
+.titolo
+{
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
+}
+
+.logo
+{
+    position: fixed;
+    transform: translate(0px, 24px) scale(1);
 }

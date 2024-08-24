@@ -121,12 +121,12 @@
 .statistiche-player-box
 {
     position: fixed ;
-    transform: translate(20px, 160px);
-    width: 314px;
+    transform: translate(10px, 160px);
+    width: 329px;
     height: 325px;
     border-style: solid;
     border-top-width: 5px ;
-    border-color: rgb(114, 68, 23);
+    border-color: rgb(82, 41, 8);
 }
 
 .ombra

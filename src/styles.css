@@ -21,9 +21,9 @@ body
     cursor: url('https://i.imgur.com/KUIo2VB.png'), auto;
 }
 
-button, a, div
+button:hover
 {
-    cursor:  url('https://i.imgur.com/KUIo2VB.png'), auto;
+    cursor: url('https://i.imgur.com/cqSi9l3.png'), pointer;
 }
 
 
