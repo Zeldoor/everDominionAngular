@@ -29,7 +29,8 @@ export function profanityFilter(): ValidatorFn
             "pene",
             "fascista",
             "fascismo",
-            "sigma"
+            "sigma",
+            "nazi"
         ];
 
         let username = control.value;
