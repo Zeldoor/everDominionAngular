@@ -168,11 +168,11 @@
     transform: translate(50px,-10px);
 }
 
-.gold{
+.gold
+{
     position: fixed;
     transform: translate(180px,55px) scale(2);
     color: rgb(255, 235, 184);
-
 }
 .spada
 {
@@ -196,7 +196,7 @@
 .maxdmg
 {
     position: fixed;
-    transform: translate(100px,160px) scale(2);
+    transform: translate(105px,160px) scale(2);
     color: rgb(255, 131, 109);
 }
 
@@ -207,112 +207,30 @@
     color: rgb(207, 253, 146);
 }
 
-.equip-equip
-{
-    background-color: rgb(36, 36, 36);
-    width: 100px;
-    height: 100px;
-    border-radius: 100px;
-    border-width: 3px;
-    border-color: rgb(179, 127, 60);
-    margin-top: 50px;
-    margin-left: 45px;
-}
-
-.equip-equip-container
-{
-    width: 175px;
-    height: 470px;
-    margin-left: 10px;
-}
-
-.equip-unita
+.extravita
 {
     position: fixed;
-    transform: translate(155px, -510px);
-    border-left: rgb(82, 41, 8);
-    border-style: solid;
-    border-left-width: 4px;
-    width: 475px;
-    height: 500px;
-    margin-left: 25px;
-}   
+    transform: translate(250px,195px) scale(1.5);
+    color: rgb(207, 253, 146);
+}
 
-.inventory-equips
+.extramindmg
 {
     position: fixed;
-    width: 300px;
-    height: 225px;
-    max-height: 225px;
-    margin-left: -15px;
-    margin-top: -35px;
-    margin-top: -35px;
-    transform: translate(0px,47px);
-    overflow-y: scroll;
-    scrollbar-width: none;
-    
+    transform: translate(80px,195px) scale(1.5);
+    color: rgb(255, 170, 155);
 }
 
-.inventory-equip
-{
-    background-color: rgb(36, 36, 36);
-    width: 100px;
-    max-width: 100px;
-    height: 100px;
-    max-height: 100px;
-    border-radius: 100px;
-    border-width: 3px;
-    border-color: rgb(179, 127, 60);
-    padding-left: 25px;
-    transform: translate(50px,0px);
-}
-
-.inventory-units
+.extramaxdmg
 {
     position: fixed;
-    width: 700px;
-    height: 225px;
-    max-height: 225px;
-    margin: 10px;
-    transform: translate(300px,2px);
-    border-left: rgb(82, 41, 8);
-    border-style: solid;
-    border-left-width: 4px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    scrollbar-width: none;
-    background-repeat: no-repeat;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    transform: translate(115px,195px) scale(1.5);
+    color: rgb(255, 131, 109);
 }
 
-.spade-icon-bg
+.extragold
 {
     position: fixed;
-    background-image: url(https://i.imgur.com/uHrN03f.png);
-    height: 4rem ;
-    width: 4rem;
-    transform: translate(1409px, 80px) scale(1.05);
-    z-index: 500;
-    background-repeat: no-repeat ;
-}
-
-.spade-icon
-{
-    transform: translate(-3px, -6px) scale(0.50);
-}
-
-.baule-icon-bg
-{
-    position: fixed;
-    background-image: url(https://i.imgur.com/uHrN03f.png);
-    height: 4rem ;
-    width: 4rem;
-    transform: translate(1407px, 545px) scale(1.08);
-    z-index: 500;
-    background-repeat: no-repeat ;
-}
-
-.baule-icon{
-    transform: translate(-3px, -2px) scale(0.58);
+    transform: translate(250px,55px) scale(1.5);
+    color: rgb(255, 235, 184);
 }

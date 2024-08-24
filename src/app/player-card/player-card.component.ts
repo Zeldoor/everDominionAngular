@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { TroopCardComponent } from '../troop-card/troop-card.component';
 import { FightPageComponent } from '../fight-page/fight-page.component';
+import { Gear } from '../model/Gear';
 
 @Component({
   selector: 'app-player-card',
@@ -19,5 +20,16 @@ export class PlayerCardComponent
   setCombatIcon(state: boolean):String
   {
     return state ? "https://i.imgur.com/vigJPAb.png" : "https://imgs.search.brave.com/u3ADKELIckQYTkzD6r6AYzjhWvJhDYWJ2P9nJDktNfM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG40/Lmljb25maW5kZXIu/Y29tL2RhdGEvaWNv/bnMvZmxhdC1kZXNp/Z24tc2VjdXJpdHkt/c2V0LW9uZS8yNC9z/aGllbGQtZ3JheS1j/b250b3VyLTEyOC5w/bmc"
+  }
+
+  checkGear(name: String): Gear | null
+  {
+    let gear = null;
+
+    for(let g of this.player.activeGears)
+      if(g.name.toLowerCase() == name.toLowerCase())
+        gear = g;
+    
+    return gear;
   }
 }

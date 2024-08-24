@@ -7,7 +7,7 @@
              style=" border-width: 5px; border-color: #07031b; border-radius: 30px; border-style: solid;">
         <div class="py-4 px-8 bg-[url(https://i.imgur.com/UjN01WZ.png)] bg-repeat min-h-20" style="border-bottom-width: 3px; border-bottom-color: goldenrod;">
             <div class="bg-[url(https://i.imgur.com/Qxom8K0.png)] bg-no-repeat bg-cover w-80   z-10  " style="transform: translateX(-25px) scaleX(1.2); min-height: 4.0625rem;" >
-                    <a class="nome text-4xl font mb-3 font-extrabold text-center" style="color: white">
+                    <a class="ombra text-4xl font mb-3 font-extrabold text-center" style="color: white">
                     <h1 style="padding-top: 10px; transform: scaleX(0.9);">{{player.nick.toLocaleUpperCase()}}</h1>
                 </a>
             </div>
@@ -28,7 +28,7 @@
                 
                 <mat-grid-tile colspan="1" rowspan="1">
                     <h4 style="transform: translate(0px,5px);"> 
-                        <i class="nome" style="color: rgb(170, 30, 30);">{{player.playerMinDmg}}-{{player.playerMaxDmg}}</i> 
+                        <i class="ombra" style="color: rgb(170, 30, 30);">{{player.playerMinDmg}}-{{player.playerMaxDmg}}</i> 
                     </h4>  
                 </mat-grid-tile>
                 
@@ -42,12 +42,24 @@
                 </mat-grid-tile>
                 
                 <mat-grid-tile colspan="1" rowspan="1">
-                    <h4 style="transform: translate(-10px,2px);"> 
-                        <i class="nome" style="color: rgb(31, 170, 84);">{{player.playerHealth}}</i>
+                    <h4 style="transform: translate(-10px,0px);"> 
+                        <i class="ombra" style="color: rgb(169, 250, 64);">{{player.playerHealth}}</i>
                     </h4> 
                 </mat-grid-tile>
             </mat-grid-list>
         </div>
+        @if (checkGear("piuma"))
+        {
+            <h2 class="ombra extramindmg">{{"+"+checkGear("piuma")?.tier!*2}}</h2>
+        }
+        @if (checkGear("pugnale"))
+        {
+            <h2 class="ombra extramaxdmg">{{"+"+checkGear("pugnale")?.tier!*4}}</h2>
+        }
+        @if (checkGear("anello"))
+        {
+            <h2 class="ombra extravita">{{"+"+checkGear("anello")?.tier!*10}}</h2>
+        }
 
         <div>
             <mat-grid-list cols="2" rowHeight="7rem">
