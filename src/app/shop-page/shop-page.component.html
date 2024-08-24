@@ -21,20 +21,23 @@
                         </div>
                         @if(playerHasGear(gearInShop) == null)
                         {
-                            <h2 class="goldCostNumberGear pl-8">Max Tier</h2>
+                            <h2 class="maxtier">Max Tier</h2>
                         }
                         @else
                         {
                             @if(playerHasGear(gearInShop))
                             {
-                                <button (click)="upgradeGear(gearInShop.id)" class="bottoneBuyGear"></button>
+                                <button (click)="upgradeGear(gearInShop.id)" class="bottoneBuyGear">
+                                    <h2 class="goldCostNumberGear"> {{playerHasGear(gearInShop) ? playerHasGear(gearInShop) : gearInShop.price}} </h2>
+                                </button>
                             }
                             @else 
                             {
-                                <button (click)="buyGear(gearInShop.id)" class="bottoneBuyGear"></button>
+                                <button (click)="buyGear(gearInShop.id)" class="bottoneBuyGear">
+                                    <h2 class="goldCostNumberGear"> {{playerHasGear(gearInShop) ? playerHasGear(gearInShop) : gearInShop.price}} </h2>
+                                </button>
                             }
-                            <img class="goldCostGear" src="https://i.imgur.com/pdcKGOO.png" alt="">
-                            <h2 class="goldCostNumberGear"> {{playerHasGear(gearInShop) ? playerHasGear(gearInShop) : gearInShop.price}} </h2>
+                            <!-- <img class="goldCostGear" src="https://i.imgur.com/pdcKGOO.png" alt=""> -->
                         }
                     </mat-grid-tile>
                 }
@@ -48,10 +51,11 @@
                         <mat-grid-tile>
                             <div class="truppe">
                                 <app-troop-card-idle [troopInShop]="troopInShop"></app-troop-card-idle>
-                                <button class="bottoneBuy" (click)="buyTroop(troopInShop.id)" ></button>
+                                <button class="bottoneBuy" (click)="buyTroop(troopInShop.id)" >
+                                    <h2 class="goldCostNumber"> {{troopInShop.price}} </h2>
+                                </button>
                             </div>
-                            <img class="goldCost" src="https://i.imgur.com/pdcKGOO.png" alt="">
-                            <h2 class="goldCostNumber"> {{troopInShop.price}} </h2>
+                            <!-- <img class="goldCost" src="https://i.imgur.com/pdcKGOO.png" alt=""> -->
                         </mat-grid-tile>
                     }
             </mat-grid-list>

@@ -13,7 +13,6 @@ export function profanityFilter(): ValidatorFn
             "dio",
             "stupido",
             "cretino",
-            "imbecille",
             "merda",
             "cacca",
             "porco",
@@ -24,6 +23,13 @@ export function profanityFilter(): ValidatorFn
             "madonna",
             "brutto",
             "fallito",
+            "tette",
+            "culo",
+            "cazzo",
+            "pene",
+            "fascista",
+            "fascismo",
+            "sigma"
         ];
 
         let username = control.value;
