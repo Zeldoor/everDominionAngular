@@ -1,7 +1,7 @@
 <div class="container">
     <!-- <div  style="max-height: 587px; overflow-y: scroll;scrollbar-width: none; transform: translate(0px,10px);"> -->
         <!-- <mat-grid-list cols="5" rowHeight="130px" style="margin-top: 10px; max-height: 588px; overflow-y: scroll; scrollbar-width: none;"> -->
-        <mat-grid-list cols="1" rowHeight="587px" style="max-height: 587px; overflow-y: scroll;scrollbar-width: none; transform: translate(0px,10px); border: solid;">
+        <mat-grid-list cols="1" rowHeight="587px" style="max-height: 587px; overflow-y: scroll;scrollbar-width: none; transform: translate(0px,10px);">
         @for (pvePlayer of pvePlayers; track pvePlayer.id) 
             {
                 <!-- <div>
@@ -45,9 +45,9 @@
                     <div class="pve-scritte2">
                         <p>{{pvePlayer.description}}</p>
                     </div>
-                    <div>
+                    <div style="transform: translate(0px,-200px);">
                         <h1 class="reward">REWARD</h1>
-                        <p class="reward" style="transform: translate(360px, -80px);">{{pvePlayer.gold}}
+                        <p class="reward" style="transform: translate(360px, 120px);">{{pvePlayer.gold}}
                             <img class="img-gold" src="https://i.imgur.com/pdcKGOO.png" alt="">
                         </p>
                     </div>
