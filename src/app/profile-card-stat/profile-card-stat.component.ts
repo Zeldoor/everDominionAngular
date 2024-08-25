@@ -13,6 +13,7 @@ import { Gear } from '../model/Gear';
 export class ProfileCardStatComponent 
 {
   @Input() player!: Player;
+  @Input() other!: boolean;
 
   checkGear(name: String): Gear | null
   {

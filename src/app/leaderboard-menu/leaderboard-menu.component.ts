@@ -29,10 +29,10 @@ export class LeaderboardMenuComponent
 
     this.playerServ.getPlayersNoShield().subscribe(data => this.players = data);
 
-    this.stomp.subscribe("/topic/lead", message => 
+    this.stomp.subscribe("/topic/players", message => 
       {
         let playersData = JSON.parse(message) as Player[];
-        this.players = playersData ? playersData.filter(p => !p.hasShield) : this.players;
+        this.players = playersData;
       })
   }
 
