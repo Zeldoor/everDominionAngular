@@ -106,3 +106,26 @@ button
      z-index: 9999;
       color: rgb(255, 255, 255);
 }
+
+.ribbon-pve
+{
+    position: fixed;
+    transform: translate(260px,25px) ;
+    z-index: 999;
+    
+}
+
+.campagna
+{
+    position: fixed;
+    transform: translate(400px,25px);
+    text-align: left;
+    text-shadow: 2px 2px 0 #000000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+    font-weight: 800;
+    color: #FFD33B;
+    font-size: xx-large;
+    font-size: 200%;
+    text-align: center;
+    z-index: 9999;
+
+}

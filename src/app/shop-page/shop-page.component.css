@@ -131,7 +131,8 @@
 }
 .goldCostNumber
 {
-    transform: translate(0px,-8px) scale(1.5);
+    transform: translate(40px,-8px) scale(1.5);
+    max-width: 80px;
     color: rgb(255, 235, 184);
     z-index: 9999;
     text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
@@ -164,8 +165,9 @@
 }
 .goldCostNumberGear
 {
-    transform: translate(0px,-8px) scale(1.5);
+    transform: translate(40px,-8px) scale(1.5);
     color: rgb(255, 235, 184);
+    max-width: 80px;
     text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
 }
 .bottoneBuyGear:active .goldCostNumberGear
