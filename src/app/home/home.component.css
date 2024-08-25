@@ -25,9 +25,11 @@ margin-left: 5%;
 }
 
 
-.leaderboard-container {
-    margin-left: 18%;
+.leaderboard-container 
+{
+    margin-left: 23%;
     width: 30%;
+    transform: scale(1.08);
 }
 
 .troop-menu-container {

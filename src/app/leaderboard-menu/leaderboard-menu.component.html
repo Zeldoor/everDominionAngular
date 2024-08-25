@@ -4,9 +4,9 @@
 <div class="leaderboard">
     <div>
         <div class="leaderboard-list">
-            @for (leadPlayer of players; track leadPlayer.id) 
+            @for (leadPlayer of sortByPower(); track leadPlayer.id) 
             {
-                <app-leaderboard-player-card [leadPlayer]="leadPlayer"></app-leaderboard-player-card>
+                <app-leaderboard-player-card [power]="powerCalculator(leadPlayer)" [leadPlayer]="leadPlayer"></app-leaderboard-player-card>
             }
         </div>
     </div>

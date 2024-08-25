@@ -1,9 +1,9 @@
 <div> 
     <div class="card">
-        <button [routerLink]="['/fight', leadPlayer.id]">
+        <button (click)="interact()">
             <img style="transform: translate(5px) scale(0.7);" src="https://i.imgur.com/VlJDHT9.png" alt="">
             <h1 class="scritte ombra float-start" style="display: inline; transform: translate(20px, -43px); color: rgb(255, 174, 0);"> 
-                {{powerCalculator()}}
+                {{power}}
             </h1>
             <h1 class="scritte ombra float-start" style="display: inline; transform: translate(0px, -43px);">
                 {{leadPlayer.nick}}    

@@ -13,6 +13,7 @@ import { Friend } from '../model/Friend';
 import { StompService } from '../services/stomp.service';
 import { CommonModule } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-friendlist',
@@ -28,6 +29,15 @@ export class FriendlistComponent {
   friends: Player[] = [];
   dataSubscription!: Subscription;
 
+  criteria!: any;
+
+  form = new FormGroup(
+    {
+      nick: new FormControl("")
+    }
+  )
+
+
   constructor(private webStorage: LocalStorageService, private playerServ:PlayerService, private stomp: StompService, private gameDataService:GameDataService)
   {
     this.user = this.webStorage.getItem("user");
@@ -42,6 +52,7 @@ export class FriendlistComponent {
       }
     );
   }
+
 
   getFriends() 
   {
@@ -79,6 +90,14 @@ export class FriendlistComponent {
   filterFriend(id:number):Player
   {
     return this.friends.filter(f => f.id == id).at(0)!;
+  }
+
+  filterCriteria(): Player[]
+  {
+    if(this.criteria && this.criteria != "")
+      return this.friends.filter(f => f.nick.includes(this.criteria));
+
+    return this.friends;
   }
 
   

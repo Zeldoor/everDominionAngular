@@ -1,5 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Player } from '../model/Player';
 import { PlayerService } from '../services/player.service';
 
@@ -12,9 +12,14 @@ import { PlayerService } from '../services/player.service';
 })
 export class LeaderboardPlayerCardComponent 
 {
-  playerServ = inject(PlayerService);
+  router: Router = inject(Router)
+
   @Input() leadPlayer!: Player;
+  @Input() power!: number;
+
+  playerServ = inject(PlayerService);
   playerId: number = parseInt(localStorage.getItem("id")!);
+  
 
 
   addFriend(id: number)
@@ -40,8 +45,11 @@ export class LeaderboardPlayerCardComponent
     return true;
   }
 
-  powerCalculator(): number
+  interact()
   {
-    return Math.floor(this.leadPlayer.playerHealth + ((this.leadPlayer.playerMinDmg + this.leadPlayer.playerMaxDmg) / 2));
+    if(this.leadPlayer.id == parseInt(localStorage.getItem("id")!))
+      this.router.navigate(["player"])
+    else
+      this.router.navigate(["fight", this.leadPlayer.id])
   }
 }
