@@ -129,3 +129,15 @@ button
     z-index: 9999;
 
 }
+
+.spada
+{
+position: fixed;
+transform: translate(130px,-113px) scale(0.4);
+}
+
+.cuore
+{
+    position: fixed;
+    transform: translate(140px,-64px) scale(0.7);
+}
