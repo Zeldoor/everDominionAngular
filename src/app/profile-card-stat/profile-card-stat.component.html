@@ -1,5 +1,9 @@
 @if(other)
 {
+    <!-- BOTTONI FIGHT - ADD /REMOVE -->
+}
+@else 
+{
     <mat-grid-list cols="3" rowHeight="90px" class="stamina">
         @if (player.stamina>=1) {
         <mat-grid-tile>
@@ -32,10 +36,6 @@
             </mat-grid-tile>
         }
     </mat-grid-list>
-}
-@else 
-{
-    
 }
 <div class="fine-stamina">
         <img class="img-gold" src="https://i.imgur.com/pdcKGOO.png" alt="">

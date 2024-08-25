@@ -20,7 +20,15 @@ export class LeaderboardPlayerCardComponent
   playerServ = inject(PlayerService);
   playerId: number = parseInt(localStorage.getItem("id")!);
   
+  powerAdjuster(): number
+  {
+    if(this.power <= 9)
+      return 1;
+    if(this.power <= 99)
+      return 2;
 
+    return 3;
+  }
 
   addFriend(id: number)
   {

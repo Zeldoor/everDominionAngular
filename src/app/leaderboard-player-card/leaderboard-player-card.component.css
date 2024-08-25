@@ -113,9 +113,13 @@
     visibility: visible;
     animation: dropdown 0.5s ease forwards;
 }
-.banner .popup-player.hide {
-    /* animation: dropup 0.3s ease forwards;
-    visibility: hidden; */
+
+.banner ~ .popup-player.hide
+{
+    transform: translate(7px,-25px);
+    position: relative;
+    visibility: visible;
+    animation: dropup 0.5s ease forwards;
 }
 
 .popup-player:hover
@@ -141,10 +145,10 @@
 @keyframes dropup {
     0% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(7px,-25px) scaleY(1);
     }
     100% {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translate(7px, -100px) scaleY(0);
     }
 }

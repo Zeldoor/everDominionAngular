@@ -4,11 +4,22 @@
             <img [src]="leadPlayer.icon" class="bg_icona" 
             style="border-radius: 9999px; min-height: 65px; min-width: 65px; "
             alt="icona">
-            <img style="transform: translate(260px,5px) scale(0.7);" src="https://i.imgur.com/VlJDHT9.png" alt="">
-            <h1 class="scritte ombra float-start" style="display: inline; transform: translate(180px, -38px); color: rgb(255, 174, 0);"> 
-                {{power}}
+            <img style="transform: translate(267px,5px) scale(0.7);" src="https://i.imgur.com/VlJDHT9.png" alt="">
+            <h1 class="scritte ombra float-start" style="position: fixed; display: inline; transform: translate(30px, -38px); color: rgb(255, 174, 0);">
+                @if(powerAdjuster() == 1)
+                {
+                    &nbsp;&nbsp;&nbsp;&nbsp;{{power}} 
+                }
+                @if(powerAdjuster() == 2)
+                {
+                    &nbsp;&nbsp;{{power}}
+                }
+                @if(powerAdjuster() == 3)
+                {
+                    {{power}}
+                }
             </h1>
-            <h1 class="scritte ombra float-start" style="display: inline; transform: translate(-30px, -38px); font-size: 150%;">
+            <h1 class="scritte ombra float-start" style="position: fixed; display: inline; transform: translate(-125px, -38px); font-size: 150%;">
                 {{leadPlayer.nick.toUpperCase()}}    
             </h1>
         </div>
@@ -25,7 +36,6 @@
         <span class="scritte-popup" style="color: rgb(255, 170, 155);">{{leadPlayer.playerMinDmg}} - </span> <span class="scritte-popup" style="color: rgb(255, 131, 109);"> {{leadPlayer.playerMaxDmg}} </span> 
         <h1 class="scritte-popup" style="color: rgb(207, 253, 146);">{{leadPlayer.playerHealth}}</h1>
     </div>
-
 
     <!-- FIGHT BUTTON -->
      @if (!leadPlayer.hasShield) 
