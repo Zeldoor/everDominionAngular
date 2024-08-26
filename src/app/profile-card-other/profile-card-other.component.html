@@ -1,9 +1,9 @@
-@if (player) 
+@if (targetPlayer) 
 {
     <div class="b1">
         <!-- IMG -->
         <button class="bottone_icona rounded-full transition-all ease delay-100 duration-150 hover:-translate-y-0.5 hover:scale-110 z-50">
-            <img [src]="player.icon" class="bg_icona" 
+            <img [src]="targetPlayer.icon" class="bg_icona" 
             style="border-radius: 9999px; min-height: 65px; min-width: 65px; "
             alt="icona">
         </button>
@@ -14,7 +14,7 @@
             
             <!-- DATI USER DX -->
             <a class="scatola ombra text-4xl font mb-3 font-extrabold text-center fixed" >
-                <h1 class="nome">{{player.nick.toLowerCase()}}</h1>
+                <h1 class="nome">{{targetPlayer.nick.toLowerCase()}}</h1>
                 <!-- <h2 class="ruolo">{{user.role}}</h2>
                 <h2 class="email">{{user.email.toLocaleLowerCase()}}</h2> -->
             </a>
