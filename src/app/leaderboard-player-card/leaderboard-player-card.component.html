@@ -4,6 +4,11 @@
             <img [src]="leadPlayer.icon" class="bg_icona" 
             style="border-radius: 9999px; min-height: 65px; min-width: 65px; "
             alt="icona">
+            @if (leadPlayer.hasShield) 
+            {
+                <img src="https://i.imgur.com/Cut151A.png" 
+                    style="position: fixed;transform: translate(-165px,-105px) scale(0.1);">
+            }
             <img style="transform: translate(267px,5px) scale(0.7);" src="https://i.imgur.com/VlJDHT9.png" alt="">
             <h1 class="scritte ombra float-start" style="position: fixed; display: inline; transform: translate(30px, -38px); color: rgb(255, 174, 0);">
                 @if(powerAdjuster() == 1)
@@ -38,17 +43,24 @@
     </div>
 
     <!-- FIGHT BUTTON -->
-     @if (!leadPlayer.hasShield) 
-     {
-        <button style="transform: scale(0.8) translate(215px,130px); position: fixed;">
-            <img src="https://i.imgur.com/tepODep.png" alt="">
-            <h1 class="testo" style="transform: translate(0px,-50px);">ATTACCA</h1>
-        </button>
+    @if (leadPlayer.id!=playerId) 
+    {
+        @if (!leadPlayer.hasShield) 
+        {
+            <button (click)="interact()" style="transform: scale(0.8) translate(215px,130px); position: fixed;">
+                <img src="https://i.imgur.com/tepODep.png" alt="">
+                <h1 class="testo" style="transform: translate(0px,-50px);">ATTACCA</h1>
+            </button>
+        }
+        @else 
+        {
+            <img src="https://i.imgur.com/tepODep.png" alt=""  style="position: fixed;transform: scale(0.8) translate(215px,130px); filter: grayscale(30%) brightness(70%); ">
+            <img src="https://i.imgur.com/Cut151A.png"  class="shield" alt="" style="position: fixed; transform: translate(85px,-50px) scale(0.12);">
+        }
     }
     @else 
     {
-        <img src="https://i.imgur.com/tepODep.png" alt=""  style="position: fixed;transform: scale(0.8) translate(215px,130px); filter: grayscale(30%) brightness(70%); ">
-        <img src="https://i.imgur.com/Cut151A.png"  class="shield" alt="" style="position: fixed; transform: translate(85px,-50px) scale(0.12);">
+
     }
 
     <!-- OTHER PROFILE BUTTON -->

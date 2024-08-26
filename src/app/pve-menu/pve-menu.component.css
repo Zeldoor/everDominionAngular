@@ -76,15 +76,16 @@ button
     text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
     z-index: 1000;
     max-height: 124px;
+    transform: translate(20px);
 }
 .pve-scritte2
 {
     position: fixed;
     min-height: 123px;
     max-height: 100px;
-    min-width: 450px;
-    max-width: 450px;
-    transform: translate(250px, -115px);
+    min-width: 425px;
+    max-width: 425px;
+    transform: translate(275px, -115px);
     color: #d4d4d4;
     text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
     text-align: center;
@@ -101,7 +102,7 @@ button
 }
 .nome-pve
 {
-    transform: translate(38px,45px) scale(1.4);
+    transform: translate(18px,45px) scale(1.4);
     max-width: 100px;
      z-index: 9999;
       color: rgb(255, 255, 255);
@@ -133,11 +134,11 @@ button
 .spada
 {
 position: fixed;
-transform: translate(130px,-113px) scale(0.4);
+transform: translate(130px,-130px) scale(0.4);
 }
 
 .cuore
 {
     position: fixed;
-    transform: translate(140px,-64px) scale(0.7);
+    transform: translate(140px,-70px) scale(0.7);
 }
