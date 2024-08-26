@@ -114,4 +114,26 @@ export class FightPageComponent
         }, index * 1500); // 1000 ms = 1 secondo
     });
   }
+
+
+
+// const socket = new SockJS('/ws');
+// const stompClient = Stomp.over(socket);
+
+// stompClient.connect({}, function (frame) 
+// {
+//     console.log('Connected: ' + frame);
+
+//     stompClient.subscribe('/queue/combat-result/' + playerId, 
+//     function (message) 
+//     {
+//         const fightResult = JSON.parse(message.body);
+//         showFightResultNotification(fightResult);
+//     });
+// });
+
+// function showFightResultNotification(fightResult) {
+//     // Logica per mostrare la notifica e il risultato del combattimento
+//     alert("Sei stato attaccato! Risultato: " + fightResult.outcome);
+// }
 }
