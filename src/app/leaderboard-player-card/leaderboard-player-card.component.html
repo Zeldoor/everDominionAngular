@@ -1,5 +1,5 @@
 <div class="banner" style="margin-top: 20px; transform: translate(8px); z-index: 10;"> 
-    <button (click)="interact()" style="max-width: 325px; transform: translate(25px,10px);">
+    <button id="popup-switch" (click)="toggle()" style="max-width: 325px; transform: translate(25px,10px);">
         <div class="card">
             <img [src]="leadPlayer.icon" class="bg_icona" 
             style="border-radius: 9999px; min-height: 65px; min-width: 65px; "
@@ -28,7 +28,7 @@
 <div class="popup">
     <h1 class="scritte-popup">Aggiungi amico</h1>
 </div>
-<div class="popup-player transition-all ease delay-100 duration-500" >
+<div id="popup" class="popup-player transition-all ease delay-100 duration-500" [class]="visibility()" >
     <img src="https://i.imgur.com/j6Uu4u5.png" alt="" style="position: fixed;transform: translate(165px,-15px) scale(0.85);">
     <div style="position: fixed; font-size: 200%; transform: translate(50px,50px);">
         <img src="https://i.imgur.com/SrkMwdB.png" class="spada size-14 mt-2 mr-0.5" alt="">

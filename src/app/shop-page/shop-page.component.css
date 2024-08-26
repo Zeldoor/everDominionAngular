@@ -140,7 +140,7 @@
 
 .bottoneBuy:active .goldCostNumber
 {
-    transform: translate(0px,-8px) scale(1.5);
+    transform: translate(40px,-8px) scale(1.5);
     color: rgb(116, 107, 86);
 }
 
@@ -172,7 +172,7 @@
 }
 .bottoneBuyGear:active .goldCostNumberGear
 {
-    transform: translate(0px,-8px) scale(1.5);
+    transform: translate(40px,-8px) scale(1.5);
     color: rgb(116, 107, 86);
 }
 .maxtier

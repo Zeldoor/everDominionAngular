@@ -19,7 +19,26 @@ export class LeaderboardPlayerCardComponent
 
   playerServ = inject(PlayerService);
   playerId: number = parseInt(localStorage.getItem("id")!);
+
+  popup : String = "";
   
+
+
+
+  toggle()
+  {
+    if(this.popup=="")
+      this.popup="visibility";
+    else
+      this.popup="";
+  }
+
+  visibility(): String
+  {
+
+    return this.popup;
+  }
+
   powerAdjuster(): number
   {
     if(this.power <= 9)
