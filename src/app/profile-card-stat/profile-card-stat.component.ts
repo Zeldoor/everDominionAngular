@@ -55,10 +55,10 @@ export class ProfileCardStatComponent implements OnInit
 
   interact()
   {
-    if(this.player.id == parseInt(localStorage.getItem("id")!))
+    if(this.targetPlayer.id == parseInt(localStorage.getItem("id")!))
       this.router.navigate(["player"])
     else
-      this.router.navigate(["fight", this.player.id])
+      this.router.navigate(["fight", this.targetPlayer.id])
   }
 
 
