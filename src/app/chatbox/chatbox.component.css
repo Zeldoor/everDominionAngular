@@ -1,0 +1,70 @@
+.testo
+{
+    text-shadow: 2px 2px 0 #000000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+    text-align: center;
+    color: rgb(255, 202, 141); 
+}
+.chat-bottone
+{
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    background-color: rgb(49, 49, 49);
+    border-top-left-radius: 20px;
+    border-style: solid;
+    border-top-width: 2px;
+    border-left-width: 2px;
+    border-color: rgb(255, 202, 141); 
+    transform: translate(1820px,786px);
+
+}
+
+.chatbox
+{
+    position: fixed;
+    width: 500px;
+    height: 600px;
+    background-color: rgba(36, 36, 36, 0.911);
+    border: solid 3px rgb(255, 202, 141);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    transform: translate(1420px,186px);
+    
+    visibility: hidden;
+}
+.visibility
+{
+    visibility: visible;
+}
+.chat-form
+{
+    position: fixed;
+    margin-left: 25px;
+    height: 40px;
+    width: 400px;
+    transform: translate(0px,530px);
+    border-radius: 20px;
+    background-color: rgb(112, 112, 112);
+}
+
+.submit {
+    background-color: #000000; /* Green background */
+    color: white; /* White text */
+    padding: 15px 30px; /* Padding for size */
+    border: none; /* No border */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    cursor: pointer; /* Pointer cursor on hover */
+    position: relative; /* For positioning pseudo-elements */
+    clip-path: polygon(
+        0% 0%,
+        85% 0%,
+        100% 50%,
+        85% 100%,
+        0% 100%
+    ); /* Arrow shape */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+.submit::before {
+}

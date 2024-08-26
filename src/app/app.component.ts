@@ -8,10 +8,11 @@ import { HttpClient } from '@angular/common/http';
 import { GearCardComponent } from "./gear-card/gear-card.component";
 import { NotifyComponent } from "./notify/notify.component";
 import { Notify } from './model/Notify';
+import { ChatboxComponent } from "./chatbox/chatbox.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavbarComponent, RouterOutlet, GearCardComponent, NotifyComponent],
+  imports: [NavbarComponent, RouterOutlet, GearCardComponent, NotifyComponent, ChatboxComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
