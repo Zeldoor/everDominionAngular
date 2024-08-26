@@ -27,12 +27,12 @@ export class LeaderboardMenuComponent
     this.stomp = this.injector.get(StompService);
 
 
-    this.playerServ.getPlayersNoShield().subscribe(data => this.players = data.filter(p => p.id != parseInt(localStorage.getItem("id")!)));
+    this.playerServ.getPlayersNoShield().subscribe(data => this.players = data);
 
-    this.stomp.subscribe("/topic/lead", message => 
+    this.stomp.subscribe("/topic/players", message => 
       {
         let playersData = JSON.parse(message) as Player[];
-        this.players = playersData ? playersData.filter(p => p.id != parseInt(localStorage.getItem("id")!)  && !p.hasShield) : this.players;
+        this.players = playersData;
       })
   }
 
@@ -41,5 +41,15 @@ export class LeaderboardMenuComponent
   {
     this.mouseX = event.clientX+5;
     this.mouseY = event.clientY+5;
+  }
+
+  sortByPower(): Player[]
+  {
+      return this.players.sort((a, b) => this.powerCalculator(b) - this.powerCalculator(a));
+  }
+
+  powerCalculator(player: Player): number
+  {
+    return Math.floor(player.playerHealth + ((player.playerMinDmg + player.playerMaxDmg) / 2));
   }
 }

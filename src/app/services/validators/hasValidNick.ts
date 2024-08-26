@@ -4,7 +4,10 @@ export function profanityFilter(): ValidatorFn
 {
     return (control: AbstractControl): { [key: string]: any } | null => 
     {
-        let bannedWords = [
+        let bannedWords = 
+        [
+            "nigg",
+            "negro",
             "scemo",
             "gay",
             "idiota",
@@ -18,11 +21,10 @@ export function profanityFilter(): ValidatorFn
             "porco",
             "frocio",
             "lesbica",
-            "cattivo",
-            "deforme",
             "madonna",
             "brutto",
             "fallito",
+            "figa",
             "tette",
             "culo",
             "cazzo",
@@ -30,7 +32,9 @@ export function profanityFilter(): ValidatorFn
             "fascista",
             "fascismo",
             "sigma",
-            "nazi"
+            "nazi",
+            "mmmmmm",
+            "vagina",
         ];
 
         let username = control.value;

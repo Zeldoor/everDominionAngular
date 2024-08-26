@@ -143,4 +143,13 @@ export class ShopPageComponent {
     this.backendErr = err.error;
     alert(this.backendErr);
   }
+
+  buyStamina()
+  {
+    this.shopServ.buyStamina(this.player.id).subscribe(
+    {
+      next: data => { this.player.stamina++ },
+      error: err => { this.popUp(err) }
+    })
+  }
 }

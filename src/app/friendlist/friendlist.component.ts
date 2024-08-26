@@ -1,18 +1,16 @@
-import { Component } from '@angular/core';
-import { PlayerCardComponent } from '../player-card/player-card.component';
-import { TroopCardComponent } from "../troop-card/troop-card.component";
-import { User } from '../model/User';
-import { Player } from '../model/Player';
-import { LocalStorageService } from '../services/local-storage.service';
-import { PlayerService } from '../services/player.service';
-import { ProfileCardComponent } from '../profile-card/profile-card.component';
+import { FormControl, FormGroup } from "@angular/forms";
+import { Player } from "../model/Player";
+import { LocalStorageService } from "../services/local-storage.service";
+import { PlayerService } from "../services/player.service";
+import { StompService } from "../services/stomp.service";
+import { Subscription } from "rxjs";
+import { User } from "../model/User";
+import { CommonModule } from "@angular/common";
+import { Component } from "@angular/core";
+import { MatGridListModule } from "@angular/material/grid-list";
 import { FriendCardComponent } from "../friend-card/friend-card.component";
-import { GameDataService } from '../services/game-data.service';
-import { Subscription } from 'rxjs';
-import { Friend } from '../model/Friend';
-import { StompService } from '../services/stomp.service';
-import { CommonModule } from '@angular/common';
-import { MatGridListModule } from '@angular/material/grid-list';
+import { ProfileCardComponent } from "../profile-card/profile-card.component";
+import { TroopCardComponent } from "../troop-card/troop-card.component";
 
 @Component({
   selector: 'app-friendlist',
@@ -26,65 +24,69 @@ export class FriendlistComponent {
   user!: User;
   player!: Player;
   friends: Player[] = [];
+  filteredFriends: Player[] = []; // Inizializza la lista filtrata con la lista completa
   dataSubscription!: Subscription;
+  criteria!: any;
+  firstTime: boolean = true;
 
-  constructor(private webStorage: LocalStorageService, private playerServ:PlayerService, private stomp: StompService, private gameDataService:GameDataService)
+  form = new FormGroup({
+    email: new FormControl("")
+  });
+
+  constructor(private webStorage: LocalStorageService, private playerServ: PlayerService, private stomp: StompService) 
   {
     this.user = this.webStorage.getItem("user");
-    
-    this.playerServ.getOne(parseInt(localStorage.getItem("id")!)).subscribe(
-      data =>
-      {
-        this.friends = [];
 
-        this.player = data;
-        this.getFriends();
-      }
-    );
-  }
-
-  getFriends() 
-  {
-    this.dataSubscription = this.gameDataService.startPolling('player', 1000)
-    .subscribe(data => 
+    this.playerServ.getOne(parseInt(localStorage.getItem("id")!)).subscribe(data => 
     {
-      // this.friends = []
-      // let playersData = data as Player[];
-      // this.player = playersData.filter(p => p.id == parseInt(localStorage.getItem("id")!)).at(0)!;
-      // let players = playersData ? playersData.filter(p => p.id != parseInt(localStorage.getItem("id")!)) : this.friends;
-      // this.player.friends.forEach(f => {players.filter(p => p.id == f.id).at(0) ? this.friends.push(players.filter(p => p.id == f.id).at(0)!) : null})
+      this.player = data;
+    });
 
-        let playersData: Player[] = data as Player[];
+    this.stomp.subscribe("/topic/players", message => 
+    {
+      let playersData: Player[] = JSON.parse(message) as Player[];
 
-        // Trova il player corrente
-        this.player = playersData.find(p => p.id === parseInt(localStorage.getItem("id")!))!;
+      if (this.player && this.player.friends) 
+      {
+        let playersMap = new Map(playersData.map(p => [p.id, p]));
 
-        // Reset della lista degli amici
-        this.friends = [];
+        this.friends = this.player.friends
+          .map(f => playersMap.get(f.id))
+          .filter(friend => friend !== undefined) as Player[];
 
-        if (this.player && this.player.friends)
+        if(this.firstTime)
         {
-            // Crea una mappa per accesso rapido ai player
-            let playersMap = new Map(playersData.map(p => [p.id, p]));
-
-            // Filtra gli amici presenti nella lista dei player
-            this.friends = this.player.friends
-                .map(f => playersMap.get(f.id))
-                .filter(friend => friend !== undefined) as Player[];
+          this.filteredFriends = this.friends;
+          this.firstTime = false;
         }
+      }
     });
   }
 
-
-  filterFriend(id:number):Player
+  filterCriteria(): void 
   {
-    return this.friends.filter(f => f.id == id).at(0)!;
+    let inputElement = document.getElementById('searchbar') as HTMLInputElement;
+    let searchValue = inputElement.value;
+
+    if (searchValue && searchValue.trim() !== "") 
+    {
+      this.filteredFriends = this.friends.filter(f => 
+        f.nick.toLowerCase().includes(searchValue.toLowerCase())
+      );
+    } 
+    else 
+    {
+      this.filteredFriends = this.friends;
+    }
   }
 
-  
-  ngOnDestroy() 
-  {
-    if (this.dataSubscription) 
+  filterFriend(id: number): Player {
+    return this.filteredFriends.find(f => f.id === id)!;
+  }
+
+  ngOnDestroy() {
+    if (this.dataSubscription) {
       this.dataSubscription.unsubscribe();
+    }
   }
 }

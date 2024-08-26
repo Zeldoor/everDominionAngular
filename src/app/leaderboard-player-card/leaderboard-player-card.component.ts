@@ -1,5 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Player } from '../model/Player';
 import { PlayerService } from '../services/player.service';
 
@@ -12,21 +12,53 @@ import { PlayerService } from '../services/player.service';
 })
 export class LeaderboardPlayerCardComponent 
 {
+  router: Router = inject(Router)
   playerServ = inject(PlayerService);
+
   @Input() leadPlayer!: Player;
+  @Input() power!: number;
+
   playerId: number = parseInt(localStorage.getItem("id")!);
 
+  popup : String = "";
+  
 
-  addFriend(id: number)
+
+
+  toggle()
   {
-    this.playerServ.addFriend(id, parseInt(localStorage.getItem("id")!)).subscribe(
+    if(this.popup=="")
+      this.popup="visibility";
+    else
+      this.popup="";
+  }
+
+  visibility(): String
+  {
+
+    return this.popup;
+  }
+
+  powerAdjuster(): number
+  {
+    if(this.power <= 9)
+      return 1;
+    if(this.power <= 99)
+      return 2;
+
+    return 3;
+  }
+
+  addFriend()
+  {
+    this.playerServ.addFriend(this.leadPlayer.id, parseInt(localStorage.getItem("id")!)).subscribe(
       {
         next: data =>{},
         error: err =>
-          { 
-            let backendError = err.error;
-            alert (backendError) 
-          }
+        { 
+          let backendError = err.error;
+          alert (backendError) 
+        }
       }
     );
   }
@@ -40,8 +72,37 @@ export class LeaderboardPlayerCardComponent
     return true;
   }
 
-  powerCalculator(): number
+  interact()
   {
-    return Math.floor(this.leadPlayer.playerHealth + ((this.leadPlayer.playerMinDmg + this.leadPlayer.playerMaxDmg) / 2));
+    if(this.leadPlayer.id == parseInt(localStorage.getItem("id")!))
+      this.router.navigate(["player"])
+    else
+      this.router.navigate(["fight", this.leadPlayer.id])
+  }
+
+  removeFriend()
+  {
+    this.playerServ.removeFriend(this.leadPlayer.id, parseInt(localStorage.getItem("id")!)).subscribe(
+      {
+        next: data =>
+        {
+          console.log("Rimosso id: "+this.leadPlayer.id)
+        },
+        error: err =>
+        {
+          let backendError = err.error;
+          alert (backendError)
+        }
+      }
+    ) 
+  }
+
+  playerProfile()
+  {
+    
+    if(this.leadPlayer.id == parseInt(localStorage.getItem("id")!))
+      this.router.navigate(["player"])
+    else
+      this.router.navigate(['inspect', this.leadPlayer.id])
   }
 }

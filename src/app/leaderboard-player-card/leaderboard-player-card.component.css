@@ -1,10 +1,9 @@
 .card
 {
     width: 360px;
-    height: 62px;
-    margin-left: 10px;
-    margin-right: 20px;
-    background-image: url(https://i.imgur.com/GhF6XMf.png);
+    max-width: 330px;
+    height: 65px;
+    background-image: url(https://i.imgur.com/bINv05N.png);
     background-repeat: no-repeat;
     overflow-x: visible;
     overflow-y: hidden;
@@ -21,15 +20,6 @@
     font-weight: 800;
 }
 
-.addFriend
-{
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    transform: scale(1.8) translate(135px, -27px);
-    filter: contrast(1.5);
-    z-index: 1000;
-}
 .popup
 {
     position: fixed;
@@ -59,4 +49,102 @@
     color: rgb(251 191 36);
     text-shadow: 2px 2px 0 #000000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
     text-align: center;
+}
+
+.bg_icona
+{
+    position: fixed;
+    
+    border-radius: 9999px;
+    min-height: 65px;
+    max-height: 65px;
+    min-width: 65px;
+    max-width: 65px;
+    transform: translate(-12px,0px) scale(1.15);
+    border-color: #B65757;
+    border-width: 4px;
+    border-style: inherit;
+}
+
+.testo
+{
+    font-style: italic;
+    color: rgb(201, 189, 136);
+    text-shadow: 2px 2px 0 #000000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+}
+
+.popup-player
+{
+    position: fixed;
+    visibility: hidden;
+    height: 200px;
+    width: 370px;
+    transform: translate(10px,-25px) scale(0);
+    z-index: -5;
+    border: solid 3px black;
+    border-radius: 10px;
+    background-image: url(https://i.imgur.com/uwJVsg5.png);
+    opacity: 0;
+    /* transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; */
+}
+.visibility
+{
+    transform: translate(7px,-25px);
+    position: relative;
+    visibility: visible;
+    animation: dropdown 0.5s ease forwards;
+}
+.addFriend
+{
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    transform: translate(290px, 51px);
+    z-index: 1000;
+}
+.spada
+{
+    position: fixed;
+    transform: translate(-50px,-12px) scale(0.7);
+}
+.cuore
+{
+    position: fixed;
+    transform: translate(-37px,58px) scale(1);
+}
+
+/* .banner:hover ~ .popup-player
+{
+    transform: translate(7px,-25px);
+    position: relative;
+    visibility: visible;
+    animation: dropdown 0.5s ease forwards;
+}
+
+.banner ~ .popup-player.hide
+{
+    transform: translate(7px,-25px);
+    position: relative;
+    visibility: visible;
+    animation: dropup 0.5s ease forwards;
+}
+
+.popup-player:hover
+{
+    position: relative;
+    visibility: visible;
+    opacity: 1;
+    transform: translate(7px,-25px);
+} */
+
+
+@keyframes dropdown {
+    0% {
+        opacity: 0;
+        transform: translate(7px, -100px) scaleY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(7px,-25px) scaleY(1);
+    }
 }

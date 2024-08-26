@@ -37,4 +37,10 @@ export class ShopService {
   {
     return this.http.post<Player>(`/api/shop/upgrade/${gearId}`, player);
   }
+
+  buyStamina(playerId: number): Observable<Player>
+  {
+    console.log(playerId)
+    return this.http.post<Player>(`/api/shop/${playerId}/stamina`, {});
+  }
 }
