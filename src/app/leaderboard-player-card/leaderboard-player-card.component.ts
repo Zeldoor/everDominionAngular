@@ -13,11 +13,11 @@ import { PlayerService } from '../services/player.service';
 export class LeaderboardPlayerCardComponent 
 {
   router: Router = inject(Router)
+  playerServ = inject(PlayerService);
 
   @Input() leadPlayer!: Player;
   @Input() power!: number;
 
-  playerServ = inject(PlayerService);
   playerId: number = parseInt(localStorage.getItem("id")!);
 
   popup : String = "";
@@ -49,16 +49,16 @@ export class LeaderboardPlayerCardComponent
     return 3;
   }
 
-  addFriend(id: number)
+  addFriend()
   {
-    this.playerServ.addFriend(id, parseInt(localStorage.getItem("id")!)).subscribe(
+    this.playerServ.addFriend(this.leadPlayer.id, parseInt(localStorage.getItem("id")!)).subscribe(
       {
         next: data =>{},
         error: err =>
-          { 
-            let backendError = err.error;
-            alert (backendError) 
-          }
+        { 
+          let backendError = err.error;
+          alert (backendError) 
+        }
       }
     );
   }
@@ -78,5 +78,27 @@ export class LeaderboardPlayerCardComponent
       this.router.navigate(["player"])
     else
       this.router.navigate(["fight", this.leadPlayer.id])
+  }
+
+  removeFriend()
+  {
+    this.playerServ.removeFriend(this.leadPlayer.id, parseInt(localStorage.getItem("id")!)).subscribe(
+      {
+        next: data =>
+        {
+          console.log("Rimosso id: "+this.leadPlayer.id)
+        },
+        error: err =>
+        {
+          let backendError = err.error;
+          alert (backendError)
+        }
+      }
+    ) 
+  }
+
+  playerProfile()
+  {
+    this.router.navigate(['inspect', this.leadPlayer.id])
   }
 }
