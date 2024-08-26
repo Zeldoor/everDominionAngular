@@ -26,7 +26,6 @@ export class LeaderboardMenuComponent
   {
     this.stomp = this.injector.get(StompService);
 
-
     this.playerServ.getPlayersNoShield().subscribe(data => this.players = data);
 
     this.stomp.subscribe("/topic/players", message => 

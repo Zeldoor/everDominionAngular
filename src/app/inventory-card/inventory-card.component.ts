@@ -25,7 +25,6 @@ export class InventoryCardComponent
 
   @Output() switchTroopEvent: EventEmitter<Troop> = new EventEmitter<Troop>();
   @Output() switchGearEvent: EventEmitter<Gear> = new EventEmitter<Gear>();
-
   @Output() customOverMouse: EventEmitter<Gear> = new EventEmitter<Gear>();
   @Output() customUnoverMouse: EventEmitter<void> = new EventEmitter();
 

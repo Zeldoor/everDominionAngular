@@ -7,6 +7,7 @@ import { PlayerService } from '../services/player.service';
 import { StompService } from '../services/stomp.service';
 import { GameDataService } from '../services/game-data.service';
 import { CommonModule } from '@angular/common';
+import { Notify } from '../model/Notify';
 
 @Component({
   selector: 'app-navbar',
@@ -18,19 +19,19 @@ import { CommonModule } from '@angular/common';
 export class NavbarComponent 
 {
   @Input() player!: Player;
+  @Input() notify!: Notify;
+  
+  oldNotify!: Notify;
   shieldVisibility: boolean =  false;
-
   timeRemaining: { hours: number, minutes: number, seconds: number } | null = null;
   private intervalId: any;
 
-  constructor(public authService: AuthService, private stomp: StompService, private polling: GameDataService){}
-  
+  constructor(public authService: AuthService){}
 
   logout()
   {
     this.authService.logout();
   }
-
 
   ngOnInit(): void 
   {

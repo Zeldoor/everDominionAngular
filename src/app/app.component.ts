@@ -7,6 +7,7 @@ import { Player } from './model/Player';
 import { HttpClient } from '@angular/common/http';
 import { GearCardComponent } from "./gear-card/gear-card.component";
 import { NotifyComponent } from "./notify/notify.component";
+import { Notify } from './model/Notify';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -19,6 +20,7 @@ export class AppComponent
   title = 'EverDominion';
   player!: Player;
   stomp: StompService;
+  notify!: Notify;
 
   private playerId: number = parseInt(localStorage.getItem("id")!);
 
@@ -32,6 +34,13 @@ export class AppComponent
       {
         let playersData = JSON.parse(message) as Player[];
         this.player = playersData ? playersData.filter(p => p.id == parseInt(localStorage.getItem("id")!)).at(0)! : this.player;
+      })
+
+
+    this.stomp.subscribe(`/topic/notify/${parseInt(localStorage.getItem("id")!)}`, message => 
+      {
+        let notify = JSON.parse(message) as Notify;
+        this.notify = notify;
       })
   }
 
