@@ -15,13 +15,18 @@ html, body
     height: 100%;
 }
 
-body 
+body
 {
     background-color: floralwhite;
     cursor: url('https://i.imgur.com/KUIo2VB.png'), auto;
 }
 
 button:hover
+{
+    cursor: url('https://i.imgur.com/KebHP4t.png'), pointer;
+}
+
+a:hover
 {
     cursor: url('https://i.imgur.com/KebHP4t.png'), pointer;
 }
