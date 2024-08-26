@@ -20,13 +20,31 @@ export class NavbarComponent
 {
   @Input() player!: Player;
   @Input() notify!: Notify;
-  
-  oldNotify!: Notify;
+
+  oldNotify!: Notify[];
   shieldVisibility: boolean =  false;
   timeRemaining: { hours: number, minutes: number, seconds: number } | null = null;
   private intervalId: any;
 
   constructor(public authService: AuthService){}
+
+  checkNewNotify()
+  {
+    for(let note of this.oldNotify)
+      if(note === this.notify)
+      {
+
+      }
+      else
+      {
+        this.newNotify()
+        this.oldNotify.push(this.notify);
+      }
+  }
+
+  newNotify()
+  {
+  }
 
   logout()
   {
