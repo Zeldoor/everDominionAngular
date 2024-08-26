@@ -5,32 +5,38 @@
 @else 
 {
     <mat-grid-list cols="3" rowHeight="90px" class="stamina">
-        @if (player.stamina>=1) {
-        <mat-grid-tile>
-            <img class="stamina-icon" src="https://i.imgur.com/ZYi4hIb.png" alt="">
-        </mat-grid-tile>
+        @if (player.stamina>=1) 
+        {
+            <mat-grid-tile>
+                <img class="stamina-icon" src="https://i.imgur.com/ZYi4hIb.png" alt="">
+            </mat-grid-tile>
         }
-        @else {
+        @else 
+        {
             <mat-grid-tile>
                 <img class="stamina-icon-bw" src="https://i.imgur.com/6EAhrvU.png" alt="">
             </mat-grid-tile>
         }
-        @if (player.stamina>=2) {
+        @if (player.stamina>=2) 
+        {
             <mat-grid-tile>
                 <img class="stamina-icon" src="https://i.imgur.com/ZYi4hIb.png" alt="">
             </mat-grid-tile>
-            }
-        @else {
+        }
+        @else 
+        {
             <mat-grid-tile>
                 <img class="stamina-icon-bw" src="https://i.imgur.com/6EAhrvU.png" alt="">
             </mat-grid-tile>
-            }
-        @if (player.stamina==3) {
+        }
+        @if (player.stamina>=3) 
+        {
             <mat-grid-tile>
                 <img class="stamina-icon" src="https://i.imgur.com/ZYi4hIb.png" alt="">
             </mat-grid-tile>
-            }
-        @else {
+        }
+        @else 
+        {
             <mat-grid-tile>
                 <img class="stamina-icon-bw" src="https://i.imgur.com/6EAhrvU.png" alt="">
             </mat-grid-tile>

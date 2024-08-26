@@ -4,13 +4,30 @@
         <div class="pergamena">
         
         <app-profile-card [player]="player"></app-profile-card>
-
         
         
         <!-- SEZIONE UNITA' ED EQUIP EQUIPAGGIATI -->
         <div class="b2">
             
             <mat-grid-list class="equip-equip-container" cols="1" rowHeight="9.9rem">
+                <mat-grid-tile class="">
+                    <div class="inventory-equip border-black border-solid border-4 transition-all ease delay-100 duration-500 hover:scale-110
+                         hover:border-6 bg-transparent h-25 float-left hover:border-amber-600 z-0 hover:z-50">
+                        <img  src="https://i.imgur.com/ZYi4hIb.png" style="transform: scale(2.3) translate(-7px,-2px);">
+                    </div>
+                    @if(player.stamina >= 3)
+                    {
+                        <div>
+                            <h2 class="goldCostNumberGear" style="text-align: center; transform: translate(0px, 50px) scale(1.5);" >Max</h2>
+                        </div>
+                    }
+                    @else
+                    {
+                        <button (click)="buyStamina()" class="bottoneBuyGear">
+                            <h2 class="goldCostNumberGear">{{player.stamina >= 3 ? "Max Stamina" : 20}}</h2>
+                        </button>
+                    }
+                </mat-grid-tile>
                 @for (gearInShop of gearsInShop; track gearInShop) 
                 {
                     <mat-grid-tile class="">
