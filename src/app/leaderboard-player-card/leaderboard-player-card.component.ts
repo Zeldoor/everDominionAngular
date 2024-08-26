@@ -99,6 +99,10 @@ export class LeaderboardPlayerCardComponent
 
   playerProfile()
   {
-    this.router.navigate(['inspect', this.leadPlayer.id])
+    
+    if(this.leadPlayer.id == parseInt(localStorage.getItem("id")!))
+      this.router.navigate(["player"])
+    else
+      this.router.navigate(['inspect', this.leadPlayer.id])
   }
 }

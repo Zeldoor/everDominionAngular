@@ -1,6 +1,35 @@
 @if(other)
 {
     <!-- BOTTONI FIGHT - ADD /REMOVE -->
+    <div style="min-height: 80px; max-height: 80px;">
+    
+        @if (  !player.hasShield) 
+        {
+            <button (click)="interact()" style="transform: scale(0.8) translate(215px,20px);">
+                <img src="https://i.imgur.com/tepODep.png" alt="">
+                <h1 class="testo" style="transform: translate(0px,-50px);">ATTACCA</h1>
+            </button>
+        }
+        @else 
+        {
+            <img src="https://i.imgur.com/tepODep.png" alt=""  style="position: fixed;transform: scale(0.8) translate(25px,12px); filter: grayscale(30%) brightness(70%); ">
+            <img src="https://i.imgur.com/Cut151A.png"  class="shield" alt="" style="position: fixed; transform: translate(-50px,-128px) scale(0.12);">
+        }
+        @if (checkIfFriend()) 
+        {
+            <button class="addFriend" (click)="addFriend()">
+                <img src="https://i.imgur.com/TpRfPaN.png" alt="" style="transform: scale(1) translate(220px,8px);">
+                <img src="https://i.imgur.com/rg36R4Y.png" alt="" style="z-index: 10; transform: translate(175px,-90px) scale(0.25);">
+            </button>
+        }
+        @else 
+        {
+            <button class="addFriend" (click)="removeFriend()">
+                <img src="https://i.imgur.com/nR89baH.png" alt="" style="transform: scale(1) translate(210px,9px);">
+                <img src="https://i.imgur.com/kLFjvIQ.png" alt="" style="z-index: 10; transform: translate(173px,-97px) scale(0.25);filter: hue-rotate(155deg) saturate(2) contrast(2) brightness(0.8);">
+            </button>
+        }
+    </div>
 }
 @else 
 {
