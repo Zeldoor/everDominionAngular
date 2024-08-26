@@ -15,24 +15,26 @@ import { StompService } from '../services/stomp.service';
 })
 export class ProfileCardStatComponent implements OnInit
 {
-  stomp: StompService;
-  @Input() targetPlayer!: Player;
-  @Input() other!: boolean;
   router: Router = inject(Router)
-  player!: Player;
+
+  @Input() other!: boolean;
+  @Input() targetPlayer!: Player;
+  @Input() player!: Player;
+
+  // stomp: StompService;
   friendBoolean: boolean = true;
   
   constructor(private playerServ: PlayerService, private injector: Injector)
   {
-    this.stomp = this.injector.get(StompService);
+    // this.playerServ.getOne(parseInt(localStorage.getItem("id")!)).subscribe(data => this.player = data);
+    
+    // this.stomp = this.injector.get(StompService);
 
-    this.playerServ.getOne(parseInt(localStorage.getItem("id")!)).subscribe(data => this.player = data);
-
-    this.stomp.subscribe("/topic/players", message => 
-      {
-        let playersData = JSON.parse(message) as Player[];
-        this.player = playersData.filter(f => f.id == this.player.id).at(0)!;
-      })
+    // this.stomp.subscribe("/topic/players", message => 
+    //   {
+    //     let playersData = JSON.parse(message) as Player[];
+    //     this.player = playersData.filter(f => f.id == this.player.id).at(0)!;
+    //   })
   }
 
   ngOnInit()
@@ -60,16 +62,14 @@ export class ProfileCardStatComponent implements OnInit
   }
 
 
-  checkIfFriend(): boolean
+  checkIfFriend(): void
   {
     for(let friend of this.player.friends)
-      if(friend.id != this.targetPlayer.id)
-        return false;
+      if(friend.id == this.targetPlayer.id)
+        this.friendBoolean = true;
       
-    return true
+    this.friendBoolean = false;
   }
-
-
 
   addFriend()
   {
@@ -77,7 +77,7 @@ export class ProfileCardStatComponent implements OnInit
       {
         next: data =>
         {
-          this.friendBoolean=true
+          this.friendBoolean=false;
         },
         error: err =>
         { 
@@ -87,6 +87,7 @@ export class ProfileCardStatComponent implements OnInit
       }
     );
   }
+
   removeFriend()
   {
     this.playerServ.removeFriend(this.player.id, parseInt(localStorage.getItem("id")!)).subscribe(
@@ -94,7 +95,7 @@ export class ProfileCardStatComponent implements OnInit
         next: data =>
         {
           console.log("Rimosso id: "+this.player.id);
-          this.friendBoolean=false;
+          this.friendBoolean = true;
         },
         error: err =>
         {

@@ -17,12 +17,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProfileCardOtherComponent 
 {
+  targetPlayer!: Player;
   player!: Player;
-
 
   constructor(private playerServ:PlayerService, private route:ActivatedRoute)
   {
     console.log(this.route.snapshot.paramMap.get('id')!)
-    this.playerServ.getOne(parseInt(this.route.snapshot.paramMap.get('id')!)).subscribe(data => this.player = data);
+    this.playerServ.getOne(parseInt(this.route.snapshot.paramMap.get('id')!)).subscribe(data => this.targetPlayer = data);
+    this.playerServ.getOne(parseInt(localStorage.getItem('id')!)).subscribe(data => this.player = data);
   }
 }
