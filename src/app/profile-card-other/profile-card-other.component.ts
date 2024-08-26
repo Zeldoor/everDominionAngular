@@ -3,10 +3,10 @@ import { MatGridListModule, MatGridTile } from '@angular/material/grid-list';
 import { TroopCardComponent } from '../troop-card/troop-card.component';
 import { User } from '../model/User';
 import { Player } from '../model/Player';
-import { LocalStorageService } from '../services/local-storage.service';
 import { PlayerService } from '../services/player.service';
 import { ProfileCardStatComponent } from "../profile-card-stat/profile-card-stat.component";
 import { ProfileCardIconComponent } from "../profile-card-icon/profile-card-icon.component";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile-card',
@@ -15,27 +15,14 @@ import { ProfileCardIconComponent } from "../profile-card-icon/profile-card-icon
   templateUrl: './profile-card-other.component.html',
   styleUrl: './profile-card-other.component.css'
 })
-export class ProfileCardComponentOther 
+export class ProfileCardOtherComponent 
 {
-  user!: User;
-  changeIcon: boolean = false;
-  @Input() player!: Player;
+  player!: Player;
 
 
-  constructor(private webStorage: LocalStorageService, private playerServ:PlayerService)
+  constructor(private playerServ:PlayerService, private route:ActivatedRoute)
   {
-    this.user = this.webStorage.getItem("user");
-  }
-
-  swapIcon(newIcon: String): void
-  { 
-    this.player.icon = newIcon;
-    this.playerServ.switchIcon(this.player.id, newIcon).subscribe();
-    this.changeIconView()
-  }
-
-  changeIconView()
-  {
-    this.changeIcon = !this.changeIcon;
+    console.log(this.route.snapshot.paramMap.get('id')!)
+    this.playerServ.getOne(parseInt(this.route.snapshot.paramMap.get('id')!)).subscribe(data => this.player = data);
   }
 }
