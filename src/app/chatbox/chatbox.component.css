@@ -15,7 +15,7 @@
     border-top-width: 2px;
     border-left-width: 2px;
     border-color: rgb(255, 202, 141); 
-    transform: translate(1820px,786px);
+    transform: translate(1820px,763px);
     z-index: 9999;
 
 }
@@ -29,7 +29,7 @@
     border: solid 3px rgb(255, 202, 141);
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    transform: translate(1420px,227px);
+    transform: translate(1420px,203px);
     
     visibility: hidden;
 }
@@ -54,4 +54,83 @@
     border-radius: 20px;
     background-color: transparent;
     padding-left: 10px;
+    padding-right: 10px;
+}
+.message-box
+{
+    position: fixed;
+    display: flex;
+    flex-direction: column-reverse;
+    width: 500px;
+    max-width: 500px;
+    height: 535px;
+    border-bottom: solid 2px rgb(31, 24, 18);
+    max-height: 540px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+}
+.messaggio
+{
+    width: 400px;
+    min-width: 400px;
+    height: auto;
+    min-height: 40px;
+    background-color: rgba(82, 67, 67, 0.842);
+    border-radius: 999px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.messaggio-user
+{
+    align-self: flex-end;
+    width: 400px;
+    min-width: 400px;
+    height: auto;
+    min-height: 40px;
+    background-color: rgba(82, 67, 67, 0.842);
+    border-radius: 999px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.testo-messaggio
+{
+    display: block;
+    word-wrap: break-word;
+    margin-left: 50px;
+    margin-right: 10px;
+    padding-top: 22px;
+    /* transform: translate(0px, 18px); */
+    max-width: 380px;
+    color: rgb(255, 240, 174);
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
+    text-align: left;
+}
+
+.icona-messaggio
+{
+    position: fixed;
+    
+    border-radius: 9999px;
+    min-height: 45px;
+    max-height: 45px;
+    min-width: 45px;
+    max-width: 45px;
+    border-color: #B65757;
+    border-width: 4px;
+    border-style: inherit;
+    transform: translate(0px,0px);
+    
+}
+
+.nick-messaggio
+{
+    position: fixed;
+    transform: translate(50px);
+    color: rgb(245, 158, 124);
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
+    text-align: left;
 }
