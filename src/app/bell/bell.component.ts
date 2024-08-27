@@ -1,5 +1,4 @@
 import { Component, Injector } from '@angular/core';
-import { StompService } from '../services/stomp.service';
 import { Notify } from '../model/Notify';
 import SockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
