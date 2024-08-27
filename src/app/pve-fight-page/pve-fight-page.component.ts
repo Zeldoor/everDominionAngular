@@ -24,7 +24,7 @@ export class PveFightPageComponent
   fightRes !: Fight;
   results: string[] = [];
   buttonOn = true;
-  backendErr!: String;
+  backendErr!: string;
 
   playerHealthPos = 0;
   pveHealthPos = 0;

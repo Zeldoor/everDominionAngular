@@ -82,7 +82,7 @@ export class PlayerService
     this.http.post(`api/player/${playerId}/offline`, {}, {responseType: "text"}).subscribe();
   }
 
-  switchIcon(playerId: number, newIcon: String): Observable<Player>  
+  switchIcon(playerId: number, newIcon: string): Observable<Player>  
   {
     return this.http.post<Player>(`api/player/${playerId}/icon`, newIcon);
   }

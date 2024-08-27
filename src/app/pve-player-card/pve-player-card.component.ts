@@ -15,6 +15,6 @@ export class PvePlayerCardComponent
 {
   @Input() pvePlayer !: PvePlayer;
 
-  filtro : String = "filter: grayscale(70%) contrast(150%) brightness(80%) sepia(30%) hue-rotate(-10deg);"
+  filtro : string = "filter: grayscale(70%) contrast(150%) brightness(80%) sepia(30%) hue-rotate(-10deg);"
   constructor(){}
 }

@@ -22,7 +22,7 @@ export class FightPageComponent
   enemy!: Player;
   results: string[] = [];
   buttonOn = true;
-  backendErr!: String;
+  backendErr!: string;
 
   playerHealthPos = 0;
   enemyHealthPos = 0;

@@ -1,9 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { User } from '../model/User';
 import { Player } from '../model/Player';
-import { LocalStorageService } from '../services/local-storage.service';
 import { PlayerService } from '../services/player.service';
-import { Friend } from '../model/Friend';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 @Component({
@@ -16,7 +13,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 export class FriendCardComponent 
 {
   @Input() friend!: Player;
-  backendError: String = "";
+  backendError: string = "";
 
   constructor(private playerServ: PlayerService){}
 
@@ -41,6 +38,4 @@ export class FriendCardComponent
       }
     )
   }
-
-
 }

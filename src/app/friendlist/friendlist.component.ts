@@ -6,7 +6,7 @@ import { StompService } from "../services/stomp.service";
 import { Subscription } from "rxjs";
 import { User } from "../model/User";
 import { CommonModule } from "@angular/common";
-import { Component } from "@angular/core";
+import { Component, Injector } from "@angular/core";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { FriendCardComponent } from "../friend-card/friend-card.component";
 import { ProfileCardComponent } from "../profile-card/profile-card.component";
@@ -28,14 +28,17 @@ export class FriendlistComponent {
   dataSubscription!: Subscription;
   criteria!: any;
   firstTime: boolean = true;
+  stomp: StompService;
 
   form = new FormGroup({
     email: new FormControl("")
   });
 
-  constructor(private webStorage: LocalStorageService, private playerServ: PlayerService, private stomp: StompService) 
+  constructor(private webStorage: LocalStorageService, private playerServ: PlayerService, private injector: Injector) 
   {
     this.user = this.webStorage.getItem("user");
+    this.stomp = this.injector.get(StompService)
+
 
     this.playerServ.getOne(parseInt(localStorage.getItem("id")!)).subscribe(data => 
     {
@@ -44,22 +47,17 @@ export class FriendlistComponent {
 
     this.stomp.subscribe("/topic/players", message => 
     {
+      console.log("SONO NELLA LISTA AMICI")
       let playersData: Player[] = JSON.parse(message) as Player[];
 
-      if (this.player && this.player.friends) 
-      {
-        let playersMap = new Map(playersData.map(p => [p.id, p]));
+      let playersMap = new Map(playersData.map(p => [p.id, p]));
 
-        this.friends = this.player.friends
-          .map(f => playersMap.get(f.id))
-          .filter(friend => friend !== undefined) as Player[];
+      this.friends = this.player.friends
+        .map(f => playersMap.get(f.id))
+        .filter(friend => friend !== undefined && friend.id != parseInt(localStorage.getItem("id")!)) as Player[];
 
-        if(this.firstTime)
-        {
-          this.filteredFriends = this.friends;
-          this.firstTime = false;
-        }
-      }
+      this.filteredFriends = this.friends;
+      this.firstTime = false;
     });
   }
 

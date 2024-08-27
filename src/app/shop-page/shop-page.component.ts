@@ -32,7 +32,7 @@ export class ShopPageComponent {
   storageTroops: Troop[] = [];
   storageGears: Gear[] = [];
   activeGears: Gear[] = [];
-  backendErr: String = "";
+  backendErr: string = "";
 
 
   
@@ -148,8 +148,17 @@ export class ShopPageComponent {
   {
     this.shopServ.buyStamina(this.player.id).subscribe(
     {
-      next: data => { this.player.stamina++ },
-      error: err => { this.popUp(err) }
+      next: data => 
+      {
+        this.player.stamina++
+        this.player.gold -= 20;
+      },
+      error: err => 
+      {
+        this.popUp(err);
+      }
     })
+
+    console.log("VENGO PRIMA")
   }
 }

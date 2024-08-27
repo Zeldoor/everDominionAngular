@@ -17,6 +17,7 @@ export class LeaderboardMenuComponent
 {
   stomp: StompService;
   players: Player[] = [];
+  sortedPlayers!: Player[];
   playerId: number = parseInt(localStorage.getItem("id")!);
 
   mouseX: number = 0;
@@ -32,6 +33,8 @@ export class LeaderboardMenuComponent
       {
         let playersData = JSON.parse(message) as Player[];
         this.players = playersData;
+
+        this.sortByPower(this.players);
       })
   }
 
@@ -42,9 +45,9 @@ export class LeaderboardMenuComponent
     this.mouseY = event.clientY+5;
   }
 
-  sortByPower(): Player[]
+  sortByPower(players: Player[]): void
   {
-      return this.players.sort((a, b) => this.powerCalculator(b) - this.powerCalculator(a));
+    this.sortedPlayers = this.players.sort((a, b) => this.powerCalculator(b) - this.powerCalculator(a));
   }
 
   powerCalculator(player: Player): number

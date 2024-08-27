@@ -6,4 +6,5 @@ export interface Notify
     defender: Player;
     result: string;
     date: Date;
+    read: boolean;
 }

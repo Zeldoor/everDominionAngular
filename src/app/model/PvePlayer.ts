@@ -3,13 +3,13 @@ import { Troop } from "./Troop";
 export interface PvePlayer
 {
     id:number;
-    nick: String;
+    nick: string;
     gold: number;
-    icon: String;
+    icon: string;
     pveMinDmg: number;
     pveMaxDmg: number;
     pveHealth: number;
-    description: String;
+    description: string;
 
     pveTroops: Troop[];
 }

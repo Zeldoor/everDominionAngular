@@ -20,7 +20,7 @@ export class LeaderboardPlayerCardComponent
 
   playerId: number = parseInt(localStorage.getItem("id")!);
 
-  popup : String = "";
+  popup : string = "";
   
 
 
@@ -33,7 +33,7 @@ export class LeaderboardPlayerCardComponent
       this.popup="";
   }
 
-  visibility(): String
+  visibility(): string
   {
 
     return this.popup;

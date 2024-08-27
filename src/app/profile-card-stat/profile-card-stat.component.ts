@@ -31,7 +31,7 @@ export class ProfileCardStatComponent implements OnInit
     this.checkIfFriend();
   }
 
-  checkGear(name: String): Gear | null
+  checkGear(name: string): Gear | null
   {
     let gear = null;
 

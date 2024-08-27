@@ -1,9 +1,9 @@
 export interface Friend
 {
     id: number;
-    nick: String;
+    nick: string;
     stamina: number;
     gold: number;
-    online: String;
-    icon: String;
+    online: string;
+    icon: string;
 }

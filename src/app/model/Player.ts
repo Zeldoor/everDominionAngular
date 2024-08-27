@@ -5,15 +5,15 @@ import { Troop } from "./Troop";
 export interface Player
 {
     id:number;
-    nick: String;
+    nick: string;
     playerMinDmg: number;
     playerMaxDmg: number;
     playerHealth: number;
     stamina: number;
     gold: number;
-    online: String;
-    icon: String;
-    shield:String;
+    online: string;
+    icon: string;
+    shield: string;
     hasShield: Boolean;
 
     activeGears: Gear[];

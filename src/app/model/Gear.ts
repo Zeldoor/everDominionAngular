@@ -1,9 +1,9 @@
 export interface Gear
 {
     id: number;
-    name: String;
-    description: String;
+    name: string;
+    description: string;
     price: number;
-    icon: String;
+    icon: string;
     tier: number;
 }

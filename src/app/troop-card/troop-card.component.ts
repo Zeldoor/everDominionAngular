@@ -15,7 +15,7 @@ export class TroopCardComponent
   @Input() troop!:Troop;
   
 
-  setSprite(): String
+  setSprite(): string
   {
     switch(this.troop.className.toLowerCase())
     {
@@ -36,7 +36,7 @@ export class TroopCardComponent
     }
   }
 
-  setBackground(): String
+  setBackground(): string
   {
     switch(this.troop.className.toLowerCase())
     {
@@ -57,7 +57,7 @@ export class TroopCardComponent
     }
   }
 
-  // setFilter() : String
+  // setFilter() : string
   // {
   //   switch(this.troop.className.toLowerCase())
   //   {
