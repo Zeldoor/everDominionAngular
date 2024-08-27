@@ -5,7 +5,7 @@
         @if (inventory)
         {
             <mat-grid-tile>
-                <a href="shop" class="plus-gear transition-all ease delay-100 duration-500   border-4 bg-transparent float-left border-black hover:border-amber-600 z-0  border-solid " >
+                <a [routerLink]="['shop']" class="plus-gear transition-all ease delay-100 duration-500   border-4 bg-transparent float-left border-black hover:border-amber-600 z-0  border-solid " >
                     <div class="plus-gear-bg"></div>
                 </a>
             </mat-grid-tile>
@@ -37,7 +37,7 @@
         @if (inventory)
         {
             <mat-grid-tile>
-                <a href="shop" class="plus-troop transition-all ease delay-100 duration-500   border-4 bg-transparent h-25 float-left border-black hover:border-amber-600 z-0  border-solid " >
+                <a [routerLink]="['shop']" class="plus-troop transition-all ease delay-100 duration-500   border-4 bg-transparent h-25 float-left border-black hover:border-amber-600 z-0  border-solid " >
                     <div class="plus-troop-bg"></div>
                 </a>
             </mat-grid-tile>

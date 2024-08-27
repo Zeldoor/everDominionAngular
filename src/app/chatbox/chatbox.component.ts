@@ -7,12 +7,12 @@ import { Component } from '@angular/core';
   templateUrl: './chatbox.component.html',
   styleUrl: './chatbox.component.css'
 })
-export class ChatboxComponent {
-
+export class ChatboxComponent 
+{
   popup : String = "";
-  messages : String[] = 
+  messages : String[] = [];
   
-  toggle()
+  toggle(): void
   {
     if(this.popup=="")
       this.popup="visibility";
@@ -22,7 +22,6 @@ export class ChatboxComponent {
 
   visibility(): String
   {
-
     return this.popup;
   }
 

@@ -43,11 +43,11 @@
               <!-- Right-aligned navigation -->
               @if (authService.isLogged()) 
               {
-                <a href="login" (click)="logout()"  class="scritte logout rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Logout</a>
+                <a [routerLink]="['login']" (click)="logout()"  class="scritte logout rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Logout</a>
               }
-              <a href="aboutus" class="scritte aboutus rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">About Us</a>
-              <a href="friendlist" class="scritte friend rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white" aria-current="page">Friends</a>
-              <a href="shop" class="scritte shop rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white">Shop</a>
+              <a [routerLink]="['aboutus']" class="scritte aboutus rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">About Us</a>
+              <a [routerLink]="['friendlist']" class="scritte friend rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white" aria-current="page">Friends</a>
+              <a [routerLink]="['shop']" class="scritte shop rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white">Shop</a>
               <a [routerLink]="['player']" class="scritte player rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Profile</a>
               <a [routerLink]="['home']" class="scritte home rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white" aria-current="page">Home</a>
               <button (click)="openNotifications()" [matBadge]="notifications.length > 0 ? notifications.length : 0 " matBadgeOverlap="true" matBadgeSize="large"
