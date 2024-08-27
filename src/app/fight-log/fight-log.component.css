@@ -120,3 +120,13 @@
 {
     text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
 }
+
+.danni
+{
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    background-color: red;
+    transform: translate(-365px,-150px);
+    z-index: 9999;
+}
