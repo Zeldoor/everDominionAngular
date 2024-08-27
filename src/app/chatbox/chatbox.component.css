@@ -1,0 +1,57 @@
+.testo
+{
+    text-shadow: 2px 2px 0 #000000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+    text-align: center;
+    color: rgb(255, 202, 141); 
+}
+.chat-bottone
+{
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    background-color: rgb(49, 49, 49);
+    border-top-left-radius: 20px;
+    border-style: solid;
+    border-top-width: 2px;
+    border-left-width: 2px;
+    border-color: rgb(255, 202, 141); 
+    transform: translate(1820px,786px);
+    z-index: 9999;
+
+}
+
+.chatbox
+{
+    position: fixed;
+    width: 500px;
+    height: 600px;
+    background-color: rgba(36, 36, 36, 0.911);
+    border: solid 3px rgb(255, 202, 141);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    transform: translate(1420px,227px);
+    
+    visibility: hidden;
+}
+.visibility
+{
+    visibility: visible;
+}
+.chat-form
+{
+    position: fixed;
+    margin-left: 10px;
+    height: 40px;
+    width: 380px;
+    transform: translate(0px,545px);
+    border-radius: 20px;
+    background-color: rgb(112, 112, 112);
+}
+.input-form
+{
+    height: 40px;
+    width: 380px;
+    border-radius: 20px;
+    background-color: transparent;
+    padding-left: 10px;
+}

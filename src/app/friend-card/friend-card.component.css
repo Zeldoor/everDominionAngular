@@ -95,6 +95,11 @@
   filter: hue-rotate(155deg) saturate(2) contrast(2) brightness(0.8);
   z-index: 20;
 }
+.rimuoviamico:active
+{
+  margin-top: 5px;
+  filter: grayscale(30%) brightness(70%);
+}
 .popup
 {
   position: fixed;
