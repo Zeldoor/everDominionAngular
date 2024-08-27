@@ -62,15 +62,15 @@ export class ChatboxComponent {
     return this.popup;
   }
 
-  alignMessages() : string
+  alignMessages(chatId:number) : string
   {
-    if (this.chats.length==15) 
+    if (chatId==this.player.id) 
     {
-      return "messaggio"
+      return "messaggio-user"
     }
     else
     {
-      return "messaggio-user"
+      return "messaggio"
     }
   }
 
