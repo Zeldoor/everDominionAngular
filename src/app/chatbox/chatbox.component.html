@@ -1,9 +1,15 @@
 <button class="chat-bottone" (click)="toggle()"> <h1 class="testo">Open Chat</h1></button>
 <div class="chatbox" [class]="visibility()">
 
+    <div>
+        @for (message of messages; track $index) {
+            
+        }
+    </div>
 
-    <form class="chat-form" action=""></form>
-    <button class="submit"></button>
+    <form class="chat-form" action="">
+        <input type="text" class="input-form">
+    </form>
 
 
 

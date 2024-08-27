@@ -10,7 +10,8 @@ import { Component } from '@angular/core';
 export class ChatboxComponent {
 
   popup : String = "";
-
+  messages : String[] = 
+  
   toggle()
   {
     if(this.popup=="")
