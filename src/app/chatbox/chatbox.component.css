@@ -32,7 +32,6 @@
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     transform: translate(1420px,195px);
-    
     visibility: hidden;
 }
 .visibility
@@ -69,6 +68,7 @@
     max-height: 540px;
     padding-top: 10px;
     padding-bottom: 10px;
+    overflow-y: scroll;
     scrollbar-width: none;
 }
 .messaggio
@@ -104,7 +104,7 @@
     margin-left: 50px;
     margin-right: 10px;
     padding-top: 22px;
-    /* transform: translate(0px, 18px); */
+    transform: translate(0px, -23px);
     max-width: 380px;
     color: rgb(255, 240, 174);
     text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
@@ -113,7 +113,7 @@
 
 .icona-messaggio
 {
-    position: fixed;
+    position: relative;
     
     border-radius: 9999px;
     min-height: 45px;
@@ -129,7 +129,7 @@
 
 .nick-messaggio
 {
-    position: fixed;
+    position: relative;
     transform: translate(50px);
     color: rgb(245, 158, 124);
     text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
