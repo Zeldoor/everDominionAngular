@@ -5,18 +5,19 @@ import { Chat } from '../model/Chat';
 import { PlayerService } from '../services/player.service';
 import SockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @Component({
   selector: 'app-chatbox',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, MatGridListModule],
   templateUrl: './chatbox.component.html',
   styleUrl: './chatbox.component.css'
 })
 export class ChatboxComponent {
 
   @Input() player!: Player;
-  popup : string = "";
+  popup : string = "visibility";
   chats : Chat[]=[];
 
   constructor(private playerServ: PlayerService)
@@ -51,7 +52,10 @@ export class ChatboxComponent {
   toggle()
   {
     if(this.popup=="")
-      this.popup="visibility";
+      {
+        this.popup="visibility";
+        console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa".length)
+      }
     else
       this.popup="";
   }

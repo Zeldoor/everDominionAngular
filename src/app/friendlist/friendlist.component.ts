@@ -47,7 +47,6 @@ export class FriendlistComponent {
 
     this.stomp.subscribe("/topic/players", message => 
     {
-      console.log("SONO NELLA LISTA AMICI")
       let playersData: Player[] = JSON.parse(message) as Player[];
 
       let playersMap = new Map(playersData.map(p => [p.id, p]));
