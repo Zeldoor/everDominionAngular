@@ -2,20 +2,18 @@
 <div class="chatbox" [class]="visibility()">
 
     <div class="message-box">
-        @for (message of messages; track $index) 
+        @for (chat of chats; track $index) 
         {
                 <div  [class]="alignMessages()">
-                    <img class="icona-messaggio" src="https://i.imgur.com/Zt90JBD.png" alt="icona">
-                    <h2 class="nick-messaggio">    Phirus      </h2>
-                   <h2 class="testo-messaggio">    {{message}}  </h2>
+                    <img class="icona-messaggio" [src]="chat.player.icon" alt="icona">
+                    <h2 class="nick-messaggio">{{chat.player.nick}}</h2>
+                   <h2 class="testo-messaggio">{{chat.message}}</h2>
                 </div>
         }
     </div>
 
-    <form class="chat-form" action="">
-        <input type="text" class="input-form">
+    <form [formGroup]="chatForm" class="chat-form" (ngSubmit)="sendMessage()">
+        <input type="text" class="input-form" formControlName="message">
     </form>
-
-
 
 </div>

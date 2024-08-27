@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Fight } from '../model/Fight';
 import { Player } from '../model/Player';
 import { interval, Observable, Subscription } from 'rxjs';
+import { Chat } from '../model/Chat';
 
 @Injectable({
   providedIn: 'root'
@@ -107,5 +108,10 @@ export class PlayerService
   getPlayersNoShield(): Observable<Player[]>
   {
     return this.http.get<Player[]>(`api/player/noShield`);
+  }
+
+  sendMessage(chat: Chat): void
+  {
+    this.http.post(`api/chat`, chat).subscribe();
   }
 }
