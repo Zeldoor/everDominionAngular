@@ -17,7 +17,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 export class ChatboxComponent {
 
   @Input() player!: Player;
-  popup : string = "visibility";
+  popup : string = "";
   chats : Chat[]=[];
 
   constructor(private playerServ: PlayerService)
@@ -54,7 +54,6 @@ export class ChatboxComponent {
     if(this.popup=="")
       {
         this.popup="visibility";
-        console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa".length)
       }
     else
       this.popup="";
