@@ -6,18 +6,20 @@ import { PlayerService } from '../services/player.service';
 import SockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { isValidMessage } from '../services/validators/isValidMessage';
+import { ChatboxCardComponent } from "../chatbox-card/chatbox-card.component";
 
 @Component({
   selector: 'app-chatbox',
   standalone: true,
-  imports: [ReactiveFormsModule, MatGridListModule],
+  imports: [ReactiveFormsModule, MatGridListModule, ChatboxCardComponent],
   templateUrl: './chatbox.component.html',
   styleUrl: './chatbox.component.css'
 })
 export class ChatboxComponent {
 
   @Input() player!: Player;
-  popup : string = "";
+  popup : string = "visibility";
   chats : Chat[]=[];
 
   constructor(private playerServ: PlayerService)
@@ -65,22 +67,7 @@ export class ChatboxComponent {
     return this.popup;
   }
 
-  alignMessages(chatId:number) : string
-  {
-    if (chatId==this.player.id) 
-    {
-      return "messaggio-user"
-    }
-    else
-    {
-      return "messaggio"
-    }
-  }
-
-
   /////STOMPO
-
-
 
   private socket: any;
   private stompClient: any;

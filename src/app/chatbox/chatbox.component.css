@@ -13,11 +13,12 @@
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     border-style: solid;
-    border-top-width: 2px;
-    border-left-width: 2px;
-    border-bottom-width: 2px;
+    border-top-width: 3px;
+    border-left-width: 3px;
+    border-bottom-width: 3px;
+    border-right-width: 3px;
     border-color: rgb(255, 202, 141); 
-    transform: translate(1820px,743px);
+    transform: translate(1819px,743px);
     z-index: 9999;
 
 }
@@ -87,22 +88,6 @@
     scrollbar-width: none;
 }
 
-.borde
-{
-    border: #000, solid, 2px;
-}
-
-.test
-{
-    width: 400px;
-    min-width: 400px;
-    height: auto;
-    min-height: 45px;
-    background-color: rgba(136, 67, 67, 0.842);
-    border-radius: 999px;
-    border: #000, solid, 2px;
-}
-
 
 .messaggio
 {
@@ -162,7 +147,7 @@
 
 .icona-messaggio
 {
-    position: relative;
+    position: fixed;
     
     border-radius: 9999px;
     min-height: 45px;
@@ -178,7 +163,7 @@
 
 .nick-messaggio
 {
-    position: relative;
+    position: fixed;
     transform: translate(50px ,-45px);
     color: rgb(245, 158, 124);
     text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;

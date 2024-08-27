@@ -5,30 +5,9 @@
     <div class="message-box">
         @for (chat of chats; track $index) 
         {
-            <div [class]="alignMessages(chat.player.id)">
-                <img class="icona-messaggio" [src]="chat.player.icon" alt="icona">
-                <h2 class="nick-messaggio">{{chat.player.nick}}</h2>
-                <h2 class="testo-messaggio">{{chat.message}}</h2>
-            </div>
+           <app-chatbox-card style="margin-top: 10px;" [chat]="chat" ></app-chatbox-card>
         }
     </div>
-
-    <!-- <mat-grid-list cols="7" rowHeight="115px" class="grid-list">
-        @for (chat of chats; track $index) 
-        {
-            <div class="test"  >
-                <mat-grid-tile [colspan]="1">
-                    <img class="icona-messaggio borde" [src]="chat.player.icon">
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="4">
-                    <h2 class="nick-messaggio borde">{{chat.player.nick}}</h2>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="2">
-                    <h2 class="testo-messaggio borde">{{chat.message}}</h2>
-                </mat-grid-tile>
-            </div>
-        }
-    </mat-grid-list> -->
 
     <form [formGroup]="chatForm" class="chat-form" (ngSubmit)="sendMessage()">
         <input type="text" class="input-form" formControlName="message">
