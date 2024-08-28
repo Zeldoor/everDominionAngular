@@ -23,6 +23,10 @@ export class FightPageComponent
   results: string[] = [];
   buttonOn = true;
   backendErr!: string;
+  playerDamageReceived!:number;
+  enemyDamageReceived!:number;
+  playerDamageVisibility:string = "hidden";
+  enemyDamageVisibility:string = "hidden";
 
   playerHealthPos = 0;
   enemyHealthPos = 0;
@@ -81,16 +85,25 @@ export class FightPageComponent
     }, this.fightRes.results.length * 1500); // 1000 ms = 1 secondo
   }
 
-  // setSwordVisibility(damage: number)
-  // {
-  //   "visibile"
-  //   damege
-
-  //   setTimeout( () =>
-  //   {
-  //     "hidden"
-  //   }),800
-  // }
+  setPlayerDamageVisibility(): void {
+    // Set visibility to "visible"
+    this.playerDamageVisibility = "visible";
+    
+    // After 1500ms, set it back to "hidden"
+    setTimeout(() => {
+      this.playerDamageVisibility = "hidden";
+    }, 1000);
+  }
+  setEnemyDamageVisibility():void
+  {
+    
+    this.enemyDamageVisibility = "visible";
+    
+    // After 1500ms, set it back to "hidden"
+    setTimeout(() => {
+      this.enemyDamageVisibility = "hidden";
+    }, 1000);
+  }
 
   cycleFightMessage()
   {
@@ -105,16 +118,24 @@ export class FightPageComponent
             switch (result.split(" ")[0]) 
             {
               case this.player.nick:
+                this.enemyDamageReceived = this.enemy.playerHealth;
 
                 this.enemy.playerHealth = this.fightRes.enemyHealth[this.enemyHealthPos] < 0 ? 0 : this.fightRes.enemyHealth[this.enemyHealthPos];
 
+                this.enemyDamageReceived -= this.enemy.playerHealth;
+                this.setEnemyDamageVisibility();
+                console.log("FATTI:"+this.enemyDamageReceived);
                 this.enemyHealthPos++
                 break;
 
               case this.enemy.nick:
+                this.playerDamageReceived=this.player.playerHealth;
 
                 this.player.playerHealth = this.fightRes.playerHealth[this.playerHealthPos] < 0 ? 0 : this.fightRes.playerHealth[this.playerHealthPos];
 
+                this.playerDamageReceived-=this.player.playerHealth;
+                this.setPlayerDamageVisibility();
+                console.log("SUBITI:"+this.playerDamageReceived);
                 this.playerHealthPos++
                 break;
             
@@ -123,6 +144,9 @@ export class FightPageComponent
             }
         }, index * 1500); // 1000 ms = 1 secondo
     });
+    this.enemyDamageReceived=0;
+    this.playerDamageReceived=0;
+
   }
 
 

@@ -90,7 +90,7 @@
     color: rgb(235, 170, 50);
     text-shadow: 2px 2px 0 #000000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
     z-index: 999;
-    max-width: 75px;
+    max-width: 100px;
 }
 
 .popup-shield
@@ -101,9 +101,9 @@
     padding-bottom: 10px;
     border-radius: 20px;
     border-style: double;
+    border-width: 2px;
     border-color: rgb(255, 202, 141);
     background-color: rgba(7, 7, 6, 0.8);
-    border-width: 2px;
     transform: translate(0px, -111px) scale(0.1);
     visibility: hidden;
     z-index: 999;
