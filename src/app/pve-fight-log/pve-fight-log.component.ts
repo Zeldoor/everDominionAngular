@@ -13,12 +13,13 @@ export class PveFightLogComponent
   @Input() results !: string[];
   @Input() player!: Player;
   @Output() fightStart : EventEmitter<void> = new EventEmitter;
-
+  buttonVisibility: string = "visible";
   constructor(){}
 
   fightButtonClicked(): void
   {
       this.fightStart.emit();
+      this.buttonVisibility="hidden";
   }
 
   messageAlign(message: string) : string

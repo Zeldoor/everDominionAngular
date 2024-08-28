@@ -14,7 +14,7 @@ export class FightLogComponent
   @Input() results !: string[];
   @Input() player!: Player;
   @Output() fightStart : EventEmitter<void> = new EventEmitter;
-  
+  buttonVisibility: string = "visible";
   // resultsNumbers : string[]=Array.from(this.results).filter(char => !isNaN(Number(char)) && char.trim() !== '');
   
 
@@ -26,6 +26,7 @@ export class FightLogComponent
   fightButtonClicked(): void
   {
       this.fightStart.emit();
+      this.buttonVisibility="hidden";
   }
 
   messageAlign(message: string) : string

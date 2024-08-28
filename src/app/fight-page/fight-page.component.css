@@ -1,8 +1,8 @@
 .playerDamageReceived
 {
     position: fixed;
-    max-width: 150px;
-    max-height: 100px;
+    max-width: 130px;
+    max-height: 60px;
     transform: translate(575px,250px);
     border-color: rgb(255, 202, 141);
     background-color: rgba(7, 7, 6, 0.8);
@@ -16,8 +16,8 @@
 .enemyDamageReceived
 {
     position: fixed;
-    max-width: 150px;
-    max-height: 100px;
+    max-width: 130px;
+    max-height: 60px;
     transform: translate(1240px,254px);
     border-color: rgb(255, 202, 141);
     background-color: rgba(7, 7, 6, 0.8);

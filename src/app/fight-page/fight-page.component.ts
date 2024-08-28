@@ -34,15 +34,15 @@ export class FightPageComponent
   constructor(private playerServ: PlayerService, private route: ActivatedRoute, private router: Router)
   {
       this.playerServ.getOne(parseInt(localStorage.getItem("id")!)).subscribe(data => this.player = data);
-  }
-
-  ngOnInit(): void 
-  {
-    this.route.paramMap.subscribe(
-      params => 
-      {
-        this.playerServ.getOne(parseInt(params.get('id')!)).subscribe(data => this.enemy = data);
-      });
+    }
+    
+    ngOnInit(): void 
+    {
+      this.route.paramMap.subscribe(
+        params => 
+          {
+            this.playerServ.getOne(parseInt(params.get('id')!)).subscribe(data => this.enemy = data);
+          });
   }
 
   beginFight()
@@ -112,30 +112,33 @@ export class FightPageComponent
         setTimeout(() => 
         {
           this.results.unshift(result);
-          
 
           if(result.includes("danni"))
             switch (result.split(" ")[0]) 
             {
               case this.player.nick:
+
                 this.enemyDamageReceived = this.enemy.playerHealth;
 
                 this.enemy.playerHealth = this.fightRes.enemyHealth[this.enemyHealthPos] < 0 ? 0 : this.fightRes.enemyHealth[this.enemyHealthPos];
 
                 this.enemyDamageReceived -= this.enemy.playerHealth;
+
                 this.setEnemyDamageVisibility();
-                console.log("FATTI:"+this.enemyDamageReceived);
+
                 this.enemyHealthPos++
                 break;
 
               case this.enemy.nick:
+
                 this.playerDamageReceived=this.player.playerHealth;
 
                 this.player.playerHealth = this.fightRes.playerHealth[this.playerHealthPos] < 0 ? 0 : this.fightRes.playerHealth[this.playerHealthPos];
 
                 this.playerDamageReceived-=this.player.playerHealth;
+
                 this.setPlayerDamageVisibility();
-                console.log("SUBITI:"+this.playerDamageReceived);
+
                 this.playerHealthPos++
                 break;
             

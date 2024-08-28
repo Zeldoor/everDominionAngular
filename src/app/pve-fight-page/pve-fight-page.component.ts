@@ -25,6 +25,10 @@ export class PveFightPageComponent
   results: string[] = [];
   buttonOn = true;
   backendErr!: string;
+  playerDamageVisibility:string = "hidden";
+  enemyDamageVisibility:string = "hidden";
+  playerDamageReceived!:number;
+  enemyDamageReceived!:number;
 
   playerHealthPos = 0;
   pveHealthPos = 0;
@@ -84,6 +88,25 @@ export class PveFightPageComponent
     }, this.fightRes.results.length * 1500); // 1000 ms = 1 secondo
   }
 
+  setPlayerDamageVisibility(): void {
+    // Set visibility to "visible"
+    this.playerDamageVisibility = "visible";
+    
+    // After 1500ms, set it back to "hidden"
+    setTimeout(() => {
+      this.playerDamageVisibility = "hidden";
+    }, 1000);
+  }
+  setEnemyDamageVisibility():void
+  {
+    
+    this.enemyDamageVisibility = "visible";
+    
+    // After 1500ms, set it back to "hidden"
+    setTimeout(() => {
+      this.enemyDamageVisibility = "hidden";
+    }, 1000);
+  }
   cycleFightMessage()
   {
     this.fightRes.results.forEach((result, index) => 
@@ -98,15 +121,29 @@ export class PveFightPageComponent
             {
               case this.player.nick:
 
+                this.enemyDamageReceived = this.pvePlayer.pveHealth;
+              
                 this.pvePlayer.pveHealth = this.fightRes.enemyHealth[this.pveHealthPos] < 0 ? 0 : this.fightRes.enemyHealth[this.pveHealthPos];
-                this.pveHealthPos++
+
+                this.enemyDamageReceived -= this.pvePlayer.pveHealth;
+
+                this.pveHealthPos++;
+
+                this.setEnemyDamageVisibility();
                 
                 break;
 
               case this.pvePlayer.nick:
 
+                this.playerDamageReceived=this.player.playerHealth;
+
                 this.player.playerHealth = this.fightRes.playerHealth[this.playerHealthPos] < 0 ? 0 : this.fightRes.playerHealth[this.playerHealthPos];
-                this.playerHealthPos++
+
+                this.playerDamageReceived-=this.player.playerHealth;
+
+                this.playerHealthPos++;
+
+                this.setPlayerDamageVisibility();
 
                 break;
             
