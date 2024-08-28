@@ -29,36 +29,36 @@
           </button>
         </div>
         <div class="flex flex-1 items-center justify-between">
-          <div class="flex items-center">
-            <button [routerLink]="['home']">
-              <img class="logo" src="https://i.imgur.com/qVzSN1P.png"  alt="Ever Dominion">
-            </button>
-          </div>
           <div class="flex flex-1 justify-between items-center" style="margin-left: 25px;">
-            <div class="flex space-x-4">
-              <!-- Left-aligned navigation -->
-              
-            </div>
-            <div class="flex space-x-4" style="margin-top: 7px;">
+            <div class="flex space-x-4" style="margin-top: 7px; margin-left: -80px;">
               <!-- Right-aligned navigation -->
+              <button (click)="openNotifications()" [matBadge]="notifications.length > 0 ? notifications.length : 0 " matBadgeOverlap="true" matBadgeSize="large"
+                style="width: 30px; height: 30px;background-color: rgb(68, 68, 68);  border-radius: 9999px; border: solid 1px white; margin-right: -15px; margin-top: 4px; transform: scale(1.5); margin-left: 30px;">
+                <img src="https://i.imgur.com/sDdgXFQ.png" alt="" style="transform:translate(0px,-2px) scale(0.6) ;">
+              </button>
+              <a [routerLink]="['home']" class="scritte home rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white" aria-current="page" style="padding-left: 50px;">Home</a>
+              <a [routerLink]="['shop']" class="scritte shop rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white">Shop</a>
+              <a [routerLink]="['player']" class="scritte player rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Profile</a>
+              <a [routerLink]="['friendlist']" class="scritte friend rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white" aria-current="page">Friends</a>
+              <a [routerLink]="['aboutus']" class="scritte aboutus rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">About Us</a>
               @if (authService.isLogged()) 
               {
                 <a [routerLink]="['login']" (click)="logout()"  class="scritte logout rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Logout</a>
               }
-              <a [routerLink]="['aboutus']" class="scritte aboutus rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">About Us</a>
-              <a [routerLink]="['friendlist']" class="scritte friend rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white" aria-current="page">Friends</a>
-              <a [routerLink]="['shop']" class="scritte shop rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white">Shop</a>
-              <a [routerLink]="['player']" class="scritte player rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Profile</a>
-              <a [routerLink]="['home']" class="scritte home rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white" aria-current="page">Home</a>
-              <button (click)="openNotifications()" [matBadge]="notifications.length > 0 ? notifications.length : 0 " matBadgeOverlap="true" matBadgeSize="large"
-                      style="width: 30px; height: 30px;background-color: rgb(68, 68, 68);  border-radius: 9999px; border: solid 1px white; margin-right: -15px; margin-top: 4px; transform: scale(1.5);">
-                  <img src="https://i.imgur.com/sDdgXFQ.png" alt="" style="transform:translate(0px,-2px) scale(0.6) ;">
-              </button>
               <!-- Additional right-aligned icons -->
+            </div>
+            <div class="flex space-x-4">
+              <!-- Left-aligned navigation -->
+              <div class="flex items-center">
+                <button [routerLink]="['home']" style="transform: translate(250px);">
+                  <img class="logo" src="https://i.imgur.com/qVzSN1P.png"  alt="Ever Dominion">
+                </button>
+              </div>
+              
             </div>
           </div>
         </div>
-        <div class="fixed inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0" style="margin-top: 5px;">
+        <div class="fixed inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0" style="margin-top: 5px; transform: translate(-1300px);">
           <div class="relative ml-3">
             <div>
                 <button type="button" [routerLink]="['/player']"  

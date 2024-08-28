@@ -15,7 +15,7 @@ export class FightLogComponent
   @Input() player!: Player;
   @Output() fightStart : EventEmitter<void> = new EventEmitter;
   
-  resultsNumbers : string[]=Array.from(this.results).filter(char => !isNaN(Number(char)) && char.trim() !== '');
+  // resultsNumbers : string[]=Array.from(this.results).filter(char => !isNaN(Number(char)) && char.trim() !== '');
   
 
 
