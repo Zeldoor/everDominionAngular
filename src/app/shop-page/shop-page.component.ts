@@ -161,4 +161,9 @@ export class ShopPageComponent {
 
     console.log("VENGO PRIMA")
   }
+
+  sellTroop(troop: Troop)
+  {
+    this.shopServ.sellTroop(troop);
+  }
 }

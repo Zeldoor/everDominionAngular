@@ -25,10 +25,7 @@ export class NavbarComponent
   timeRemaining: { hours: number, minutes: number, seconds: number } | null = null;
   private intervalId: any;
 
-  constructor(public authService: AuthService,private injector: Injector) 
-  {
-    
-  }
+  constructor(public authService: AuthService,private injector: Injector){}
 
   ngOnInit(): void 
   {

@@ -7,9 +7,9 @@ import { AuthService } from '../auth.service';
 })
 export class LoggedGuardService implements CanActivate
 {
-  constructor(private service:AuthService, private router: Router) { }
+  constructor(private service:AuthService, private router: Router){}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> 
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult>
   {
     if(this.service.isLogged())
       return true;

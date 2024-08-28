@@ -43,4 +43,9 @@ export class ShopService {
     console.log(playerId)
     return this.http.post<Player>(`/api/shop/${playerId}/stamina`, {});
   }
+
+  sellTroop(troop: Troop): void
+  {
+    this.http.post(`/api/shop/sell`, troop).subscribe();
+  }
 }

@@ -8,6 +8,7 @@ import { hasValidPassword } from '../services/validators/hasValidPassword';
 import { CommonModule } from '@angular/common';
 import { profanityFilter } from '../services/validators/hasValidNick';
 import { PlayerService } from '../services/player.service';
+import { hasValidEmail } from '../services/validators/hasValidEmail';
 
 @Component({
   selector: 'app-login-page',
@@ -44,7 +45,7 @@ export class LoginPageComponent
 
   newUserForm = new FormGroup(
     {
-      email: new FormControl("", [Validators.required]),
+      email: new FormControl("", [Validators.required, hasValidEmail()]),
       username: new FormControl("", [Validators.required, profanityFilter()]),
       password: new FormControl("", [Validators.required, hasValidPassword()]),
     }

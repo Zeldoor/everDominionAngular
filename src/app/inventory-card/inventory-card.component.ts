@@ -6,6 +6,8 @@ import { Gear } from '../model/Gear';
 import { GearCardComponent } from "../gear-card/gear-card.component";
 import {MatIconModule} from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
+import { PlayerService } from '../services/player.service';
+import { Player } from '../model/Player';
 
 @Component({
   selector: 'app-inventory-card',
@@ -16,9 +18,6 @@ import { RouterLink } from '@angular/router';
 })
 export class InventoryCardComponent 
 {
-  constructor(){}
-
-
   @Input() storageTroops!: Troop[];
   @Input() storageGears!: Gear[];
   @Input() activeGears!: Gear[];
@@ -28,6 +27,7 @@ export class InventoryCardComponent
   @Output() switchGearEvent: EventEmitter<Gear> = new EventEmitter<Gear>();
   @Output() customOverMouse: EventEmitter<Gear> = new EventEmitter<Gear>();
   @Output() customUnoverMouse: EventEmitter<void> = new EventEmitter();
+  @Output() customSellTroop: EventEmitter<Troop> = new EventEmitter();
 
 
   callTroopEvent(troop: Troop)
@@ -48,5 +48,10 @@ export class InventoryCardComponent
   callUnoverGear()
   {
     this.customOverMouse.emit();
+  }
+  
+  sellTroop(troop: Troop)
+  {
+    this.customSellTroop.emit(troop);
   }
 }
