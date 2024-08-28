@@ -39,17 +39,21 @@
               <!-- Left-aligned navigation -->
               
             </div>
-            <div class="flex space-x-4">
+            <div class="flex space-x-4" style="margin-top: 7px;">
               <!-- Right-aligned navigation -->
               @if (authService.isLogged()) 
               {
-                <a href="login" (click)="logout()"  class="scritte logout rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Logout</a>
+                <a [routerLink]="['login']" (click)="logout()"  class="scritte logout rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Logout</a>
               }
-              <a href="aboutus" class="scritte aboutus rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">About Us</a>
-              <a href="friendlist" class="scritte friend rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white" aria-current="page">Friends</a>
-              <a href="shop" class="scritte shop rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white">Shop</a>
-              <a href="player" class="scritte player rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Profile</a>
-              <a href="home" class="scritte home rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white" aria-current="page">Home</a>
+              <a [routerLink]="['aboutus']" class="scritte aboutus rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">About Us</a>
+              <a [routerLink]="['friendlist']" class="scritte friend rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white" aria-current="page">Friends</a>
+              <a [routerLink]="['shop']" class="scritte shop rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white">Shop</a>
+              <a [routerLink]="['player']" class="scritte player rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Profile</a>
+              <a [routerLink]="['home']" class="scritte home rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white" aria-current="page">Home</a>
+              <button (click)="openNotifications()" [matBadge]="notifications.length > 0 ? notifications.length : 0 " matBadgeOverlap="true" matBadgeSize="large"
+                      style="width: 30px; height: 30px;background-color: rgb(68, 68, 68);  border-radius: 9999px; border: solid 1px white; margin-right: -15px; margin-top: 4px; transform: scale(1.5);">
+                  <img src="https://i.imgur.com/sDdgXFQ.png" alt="" style="transform:translate(0px,-2px) scale(0.6) ;">
+              </button>
               <!-- Additional right-aligned icons -->
             </div>
           </div>
@@ -83,3 +87,4 @@
       </div>
     }
 </nav>
+<app-bell></app-bell>

@@ -86,7 +86,7 @@ button
     min-width: 425px;
     max-width: 425px;
     transform: translate(275px, -115px);
-    color: #d4d4d4;
+    color: #ffffff;
     text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
     text-align: center;
     font-weight: 600;
@@ -111,7 +111,7 @@ button
 .ribbon-pve
 {
     position: fixed;
-    transform: translate(260px,25px) ;
+    transform: translate(260px,-50px) ;
     z-index: 999;
     
 }
@@ -119,7 +119,7 @@ button
 .campagna
 {
     position: fixed;
-    transform: translate(400px,25px);
+    transform: translate(400px,-50px);
     text-align: left;
     text-shadow: 2px 2px 0 #000000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
     font-weight: 800;
@@ -141,4 +141,34 @@ transform: translate(130px,-130px) scale(0.4);
 {
     position: fixed;
     transform: translate(140px,-70px) scale(0.7);
+}
+
+.popup
+{
+    color: azure;
+    position: fixed;
+    background-color: rgba(7, 7, 6, 0.8);
+    pointer-events: none;
+    border-radius: 20px;
+    padding: 10px;
+    z-index: 1000;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(255, 202, 141); 
+    overflow-y: hidden;
+    visibility: hidden;
+    scrollbar-width: none;
+    transform: translate(0px,-5px);
+}
+
+.campagna:hover ~ .popup
+{
+    visibility: visible;
+    z-index: 9999;
+}
+.scritte-popup
+{
+    text-shadow: 2px 2px 0 #000000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+    text-align: center;
+    color: rgb(255, 202, 141);  
 }

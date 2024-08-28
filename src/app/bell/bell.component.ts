@@ -1,18 +1,34 @@
-import { Injectable } from '@angular/core';
+import { Component, Injector } from '@angular/core';
+import { Notify } from '../model/Notify';
 import SockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
 
-@Injectable({
-  providedIn: 'any'   // root injecta in app e ne crea uno che viene passato a tutti i comp || any lo injecta direttamente nel comp - uno nuovo per ogni comp
+@Component({
+  selector: 'app-bell',
+  standalone: true,
+  imports: [],
+  templateUrl: './bell.component.html',
+  styleUrl: './bell.component.css'
 })
-export class StompService 
+export class BellComponent 
 {
+  notifications: Notify[] = [];
+
+  constructor(private injector: Injector)
+  {
+    this.initializeWebSocketConnection();
+
+    this.subscribe(`/topic/notify/${parseInt(localStorage.getItem("id")!)}`, message => 
+      {
+        console.log("SONO NELLA NAVBAR")
+        let notify = JSON.parse(message) as Notify;
+        this.notifications.push(notify);
+      })
+  }
+
   private socket: any;
   private stompClient: any;
 
-  constructor() {
-    this.initializeWebSocketConnection();
-  }
 
   initializeWebSocketConnection(): void {
     this.socket = new SockJS('http://localhost:8080/websocket'); //mappatura in spring

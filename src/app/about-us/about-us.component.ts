@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class AboutUsComponent 
 {
-  // formattedDescription(): String
+  // formattedDescription(): string
   // {
   //   return this.description.replace(/\/n/g, '<br>');
   // }                     

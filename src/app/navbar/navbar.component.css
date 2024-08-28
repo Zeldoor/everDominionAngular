@@ -57,11 +57,6 @@
     border-radius: 9999px;
 }
 
-button, a, div
-{
-    cursor:  url('https://i.imgur.com/KUIo2VB.png'), auto;
-}
-
 .logo
 {
     transform: translate(-40px,5px) scale(1.1);

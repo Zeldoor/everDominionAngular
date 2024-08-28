@@ -1,38 +1,41 @@
-import { Component, Input } from '@angular/core';
+import { Component, Injector, Input } from '@angular/core';
 import { Player } from '../model/Player';
-import { LocalStorageService } from '../services/local-storage.service';
 import { AuthService } from '../services/auth.service';
-import { Router, RouterModule } from '@angular/router';
-import { PlayerService } from '../services/player.service';
-import { StompService } from '../services/stomp.service';
-import { GameDataService } from '../services/game-data.service';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Notify } from '../model/Notify';
+import {MatBadgeModule} from '@angular/material/badge';
+import { StompService } from '../services/stomp.service';
+import { BellComponent } from "../bell/bell.component";
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, MatBadgeModule, BellComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent 
 {
   @Input() player!: Player;
-  shieldVisibility: boolean =  false;
+  @Input() notifications!: Notify[];
 
+  stomp!: StompService;
+  shieldVisibility: boolean = false;
   timeRemaining: { hours: number, minutes: number, seconds: number } | null = null;
   private intervalId: any;
 
-  constructor(public authService: AuthService, private stomp: StompService, private polling: GameDataService){}
-  
-
-  logout()
+  constructor(public authService: AuthService,private injector: Injector) 
   {
-    this.authService.logout();
+    
   }
 
-
   ngOnInit(): void 
+  {
+    this.startTimer();
+  }
+
+  startTimer()
   {
     this.updateTimeRemaining();
 
@@ -42,19 +45,38 @@ export class NavbarComponent
     }, 1000);
   }
 
+  openNotifications(): void
+  {
+    this.markAllAsRead();
+  }
+
+  get unreadCount() 
+  {
+    return this.notifications.filter(n => !n.read).length;
+  }
+
+  markAllAsRead(): void
+  {
+    this.notifications.map(n => n.read=true);
+  }
+
+  logout(): void
+  {
+    this.authService.logout();
+  }
   
   ngOnDestroy(): void 
   {
     if (this.intervalId) 
       clearInterval(this.intervalId);
   }
-    
 
-  private updateTimeRemaining(): void 
+
+  updateTimeRemaining(): void 
   {
     let shieldTime: Date | null = this.player ? new Date(this.player.shield.split(".")[0] as string) : null;
 
-    if (!shieldTime) 
+    if(!shieldTime)
     {
       this.shieldVisibility = false;
       this.timeRemaining = { hours: 0, minutes: 0, seconds: 0 };
@@ -64,7 +86,7 @@ export class NavbarComponent
     let currentDate = new Date();
     let timeDiff = shieldTime.getTime() - currentDate.getTime();
 
-    if (timeDiff > 0) 
+    if(timeDiff > 0) 
     {
       this.shieldVisibility = true;
       let hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);

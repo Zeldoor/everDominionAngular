@@ -20,19 +20,38 @@
     font-weight: 800;
 }
 
+
 .popup
 {
     position: fixed;
+    padding: 10px;
     width: auto;
     height: auto;
     padding-bottom: 10px;
     padding-top: 10px;
     background: linear-gradient(to bottom, #444444, #303030);
     border-radius: 20px;
-    border-style: double;
-    border-color: rgb(122, 73, 73);
-    border-width: 2px;
-    transform: translate(272px, -60px) scale(0.1);
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(255, 202, 141); 
+    transform: translate(175px, 70px) scale(1);
+    visibility: hidden;
+    z-index: 9999;
+}
+.popup-profilo
+{
+    position: fixed;
+    padding: 10px;
+    width: auto;
+    height: auto;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background: linear-gradient(to bottom, #444444, #303030);
+    border-radius: 20px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(255, 202, 141); 
+    transform: translate(170px, 70px) scale(1);
     visibility: hidden;
     z-index: 9999;
 }
@@ -41,14 +60,28 @@
 {
     
     visibility: visible;
-    transform: translate(272px, -60px) scale(1);
+    transform: translate(175px, 80px) scale(1);
+    transition-duration: 500ms;
+}
+.removeFriend:hover ~ .popup
+{
+    
+    visibility: visible;
+    transform: translate(175px, 80px) scale(1);
+    transition-duration: 500ms;
+}
+.profiloGiocatore:hover ~ .popup-profilo
+{
+    
+    visibility: visible;
+    transform: translate(170px, 80px) scale(1);
     transition-duration: 500ms;
 }
 .scritte-popup
 {
-    color: rgb(251 191 36);
     text-shadow: 2px 2px 0 #000000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
     text-align: center;
+    color: rgb(255, 202, 141); 
 }
 
 .bg_icona
@@ -102,6 +135,35 @@
     transform: translate(290px, 51px);
     z-index: 1000;
 }
+.addFriend:active
+{
+    margin-top: 5px;
+    filter: grayscale(30%) brightness(70%);
+}
+.profiloGiocatore:active
+{
+    margin-top: 5px;
+    filter: grayscale(30%) brightness(70%);
+}
+.fightButton:active
+{
+    margin-top: 5px;
+    filter: grayscale(30%) brightness(70%);
+}
+.removeFriend
+{
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    transform: translate(290px, 51px);
+    z-index: 1000;
+}
+.removeFriend:active
+{
+    margin-top: 5px;
+    filter: grayscale(30%) brightness(70%);
+}
+
 .spada
 {
     position: fixed;

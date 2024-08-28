@@ -17,15 +17,12 @@ export class LeaderboardMenuComponent
 {
   stomp: StompService;
   players: Player[] = [];
+  sortedPlayers!: Player[];
   playerId: number = parseInt(localStorage.getItem("id")!);
 
-  mouseX: number = 0;
-  mouseY: number = 0;
-  
   constructor(private playerServ: PlayerService, private injector: Injector)
   {
     this.stomp = this.injector.get(StompService);
-
 
     this.playerServ.getPlayersNoShield().subscribe(data => this.players = data);
 
@@ -33,19 +30,15 @@ export class LeaderboardMenuComponent
       {
         let playersData = JSON.parse(message) as Player[];
         this.players = playersData;
+
+        this.sortByPower(this.players);
       })
   }
 
-  @HostListener('window:mousemove', ['$event'])
-  onMouseMove(event: MouseEvent): void 
-  {
-    this.mouseX = event.clientX+5;
-    this.mouseY = event.clientY+5;
-  }
 
-  sortByPower(): Player[]
+  sortByPower(players: Player[]): void
   {
-      return this.players.sort((a, b) => this.powerCalculator(b) - this.powerCalculator(a));
+    this.sortedPlayers = this.players.sort((a, b) => this.powerCalculator(b) - this.powerCalculator(a));
   }
 
   powerCalculator(player: Player): number

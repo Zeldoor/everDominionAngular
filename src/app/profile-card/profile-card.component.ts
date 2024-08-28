@@ -27,8 +27,8 @@ export class ProfileCardComponent
     this.user = this.webStorage.getItem("user");
   }
 
-  swapIcon(newIcon: String): void
-  { 
+  swapIcon(newIcon: string): void
+  {
     this.player.icon = newIcon;
     this.playerServ.switchIcon(this.player.id, newIcon).subscribe();
     this.changeIconView()

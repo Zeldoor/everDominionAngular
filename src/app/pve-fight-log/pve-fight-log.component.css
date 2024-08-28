@@ -79,8 +79,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgb(255, 35, 6);
-    text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+    font-style: italic;
+    color: rgb(201, 189, 136);
+    text-shadow: 2px 2px 0 #000000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+    font-size: 125%;
 }
 
 .bottone:hover {

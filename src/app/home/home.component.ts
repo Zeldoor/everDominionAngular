@@ -16,6 +16,4 @@ import { PveMenuComponent } from "../pve-menu/pve-menu.component";
 })
 export class HomeComponent 
 {
-
-  
 }

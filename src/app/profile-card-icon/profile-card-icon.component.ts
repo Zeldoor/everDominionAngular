@@ -10,8 +10,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 })
 export class ProfileCardIconComponent 
 {
-  icons: String[] = [];
-  @Output() swapIconEmitter: EventEmitter<String> = new EventEmitter<String>();
+  icons: string[] = [];
+  @Output() swapIconEmitter: EventEmitter<string> = new EventEmitter<string>();
 
   constructor()
   {
@@ -23,7 +23,7 @@ export class ProfileCardIconComponent
     this.icons.push("https://i.imgur.com/a3cD05e.png")
   }
 
-  callFatherEvent(newIcon: String)
+  callFatherEvent(newIcon: string)
   {
     this.swapIconEmitter.emit(newIcon)
   }

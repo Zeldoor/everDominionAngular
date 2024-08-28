@@ -1,4 +1,4 @@
-import { Component, Injector } from '@angular/core';
+import { Component, Injector, ViewChild } from '@angular/core';
 import { PlayerService } from './services/player.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterOutlet } from '@angular/router';
@@ -7,10 +7,12 @@ import { Player } from './model/Player';
 import { HttpClient } from '@angular/common/http';
 import { GearCardComponent } from "./gear-card/gear-card.component";
 import { NotifyComponent } from "./notify/notify.component";
+import { Notify } from './model/Notify';
+import { ChatboxComponent } from "./chatbox/chatbox.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavbarComponent, RouterOutlet, GearCardComponent, NotifyComponent],
+  imports: [NavbarComponent, RouterOutlet, GearCardComponent, NotifyComponent, ChatboxComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -19,8 +21,11 @@ export class AppComponent
   title = 'EverDominion';
   player!: Player;
   stomp: StompService;
+  notifications: Notify[] = [];
+  lastShield!: string;
 
   private playerId: number = parseInt(localStorage.getItem("id")!);
+  @ViewChild(NavbarComponent) navbar!: NavbarComponent;
 
   constructor(private playerService: PlayerService, private injector: Injector, private http:HttpClient) 
   {
@@ -28,11 +33,21 @@ export class AppComponent
 
     this.playerService.getOne(parseInt(localStorage.getItem("id")!)).subscribe(data => this.player = data);
 
-    this.stomp.subscribe("/topic/players", message => 
+    this.stomp.subscribe("/topic/players", message =>
+    {
+      let playersData = JSON.parse(message) as Player[];
+      this.player = playersData ? playersData.filter(p => p.id == parseInt(localStorage.getItem("id")!)).at(0)! : this.player;
+     
+      if(this.lastShield == null)
+        this.lastShield =  this.player.shield
+
+      if(this.lastShield  != this.player.shield)
       {
-        let playersData = JSON.parse(message) as Player[];
-        this.player = playersData ? playersData.filter(p => p.id == parseInt(localStorage.getItem("id")!)).at(0)! : this.player;
-      })
+        this.lastShield = this.player.shield;
+        this.navbar.startTimer();
+      }
+
+    });
   }
 
   ngOnInit(): void 

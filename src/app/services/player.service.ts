@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Fight } from '../model/Fight';
 import { Player } from '../model/Player';
 import { interval, Observable, Subscription } from 'rxjs';
+import { Chat } from '../model/Chat';
 
 @Injectable({
   providedIn: 'root'
@@ -82,7 +83,7 @@ export class PlayerService
     this.http.post(`api/player/${playerId}/offline`, {}, {responseType: "text"}).subscribe();
   }
 
-  switchIcon(playerId: number, newIcon: String): Observable<Player>  
+  switchIcon(playerId: number, newIcon: string): Observable<Player>  
   {
     return this.http.post<Player>(`api/player/${playerId}/icon`, newIcon);
   }
@@ -107,5 +108,10 @@ export class PlayerService
   getPlayersNoShield(): Observable<Player[]>
   {
     return this.http.get<Player[]>(`api/player/noShield`);
+  }
+
+  sendMessage(chat: Chat): void
+  {
+    this.http.post(`api/chat`, chat).subscribe();
   }
 }
