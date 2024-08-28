@@ -9,11 +9,15 @@ import { Player } from '../model/Player';
   templateUrl: './fight-log.component.html',
   styleUrl: './fight-log.component.css'
 })
-export class FightLogComponent 
+export class FightLogComponent
 {
   @Input() results !: string[];
   @Input() player!: Player;
   @Output() fightStart : EventEmitter<void> = new EventEmitter;
+  
+  // resultsNumbers : string[]=Array.from(this.results).filter(char => !isNaN(Number(char)) && char.trim() !== '');
+  
+
 
   constructor()
   {
