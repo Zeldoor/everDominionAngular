@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { PlayerCardComponent } from '../player-card/player-card.component';
 import { Player } from '../model/Player';
@@ -26,7 +26,7 @@ export class FightPageComponent
 
   playerHealthPos = 0;
   enemyHealthPos = 0;
-  
+
   constructor(private playerServ: PlayerService, private route: ActivatedRoute, private router: Router)
   {
       this.playerServ.getOne(parseInt(localStorage.getItem("id")!)).subscribe(data => this.player = data);
@@ -81,6 +81,17 @@ export class FightPageComponent
     }, this.fightRes.results.length * 1500); // 1000 ms = 1 secondo
   }
 
+  // setSwordVisibility(damage: number)
+  // {
+  //   "visibile"
+  //   damege
+
+  //   setTimeout( () =>
+  //   {
+  //     "hidden"
+  //   }),800
+  // }
+
   cycleFightMessage()
   {
     this.fightRes.results.forEach((result, index) => 
@@ -98,14 +109,13 @@ export class FightPageComponent
                 this.enemy.playerHealth = this.fightRes.enemyHealth[this.enemyHealthPos] < 0 ? 0 : this.fightRes.enemyHealth[this.enemyHealthPos];
 
                 this.enemyHealthPos++
-                
                 break;
 
               case this.enemy.nick:
 
                 this.player.playerHealth = this.fightRes.playerHealth[this.playerHealthPos] < 0 ? 0 : this.fightRes.playerHealth[this.playerHealthPos];
-                this.playerHealthPos++
 
+                this.playerHealthPos++
                 break;
             
               default:

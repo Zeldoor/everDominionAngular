@@ -1,10 +1,10 @@
 <div class="scatola">
-            <app-player-card [player]="player" 
-                            style="position: fixed; transform: translate(200px,50px);"></app-player-card>
+    <app-player-card [player]="player" 
+                    style="position: fixed; transform: translate(200px,50px);"></app-player-card>
 
-            <app-fight-log [results]="results" [player]="player" (fightStart)="beginFight()"
-                            style="position: fixed; transform: translate(1000px,380px);"></app-fight-log>
+    <app-fight-log [results]="results" [player]="player" (fightStart)="beginFight()"
+                    style="position: fixed; transform: translate(1000px,380px);"></app-fight-log>
 
-                <app-player-card [player]="enemy"
-                            style="position: fixed; transform: translate(1410px,50px);"></app-player-card>
+    <app-player-card [player]="enemy"
+                style="position: fixed; transform: translate(1410px,50px);"></app-player-card>
 </div>
