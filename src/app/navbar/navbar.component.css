@@ -86,11 +86,11 @@
 {
     position: relative;
     /* transform: translate(105px,21px) scale(1.5); */
-    transform: translate(130px,-205px) scale(1.5);
+    transform: translate(120px,-205px) scale(1.5);
     color: rgb(235, 170, 50);
     text-shadow: 2px 2px 0 #000000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
     z-index: 999;
-    max-width: 70px;
+    max-width: 75px;
 }
 
 .popup-shield
