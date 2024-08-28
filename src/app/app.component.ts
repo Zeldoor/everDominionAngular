@@ -9,10 +9,11 @@ import { GearCardComponent } from "./gear-card/gear-card.component";
 import { NotifyComponent } from "./notify/notify.component";
 import { Notify } from './model/Notify';
 import { ChatboxComponent } from "./chatbox/chatbox.component";
+import { FightResultComponent } from "./fight-result/fight-result.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavbarComponent, RouterOutlet, GearCardComponent, NotifyComponent, ChatboxComponent],
+  imports: [NavbarComponent, RouterOutlet, GearCardComponent, NotifyComponent, ChatboxComponent, FightResultComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
