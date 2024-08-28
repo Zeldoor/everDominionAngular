@@ -32,7 +32,7 @@
         }
     </mat-grid-list>
 
-    <mat-grid-list cols="3" rowHeight="115px" class="inventory-units">
+    <mat-grid-list cols="3" rowHeight="155px" class="inventory-units">
 
         @if (inventory)
         {
@@ -49,6 +49,12 @@
                 <button (click)="callTroopEvent(troop)">
                     <app-troop-card-idle [troop]="troop"></app-troop-card-idle>
                 </button>
+                @if (!inventory) 
+                {
+                    <button class="bottoneBuy">
+                        <h2 class="goldCostNumber" > 333 </h2>
+                    </button>
+                }
             </mat-grid-tile> 
         }
     </mat-grid-list>
