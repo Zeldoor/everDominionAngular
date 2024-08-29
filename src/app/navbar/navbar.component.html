@@ -38,10 +38,10 @@
                 <app-bell></app-bell>
               }
               <a [routerLink]="['home']" class="scritte home rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white" aria-current="page" style="padding-left: 50px;">Home</a>
-              <a [routerLink]="['shop']" class="scritte shop rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white">Shop</a>
-              <a [routerLink]="['player']" class="scritte player rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Profile</a>
-              <a [routerLink]="['friendlist']" class="scritte friend rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white" aria-current="page">Friends</a>
-              <a [routerLink]="['aboutus']" class="scritte aboutus rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">About Us</a>
+              <a [routerLink]="['shop']" class="scritte shop rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white">Negozio</a>
+              <a [routerLink]="['player']" class="scritte player rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Profilo</a>
+              <a [routerLink]="['friendlist']" class="scritte friend rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white" aria-current="page">Amici</a>
+              <a [routerLink]="['aboutus']" class="scritte aboutus rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Info</a>
               @if (authService.isLogged()) 
               {
                 <a [routerLink]="['login']" (click)="logout()"  class="scritte logout rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Logout</a>
