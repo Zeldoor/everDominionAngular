@@ -14,6 +14,7 @@ import { PveMenuComponent } from "../pve-menu/pve-menu.component";
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent 
+export class HomeComponent
 {
+  
 }

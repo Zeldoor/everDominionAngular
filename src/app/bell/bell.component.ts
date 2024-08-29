@@ -19,23 +19,17 @@ export class BellComponent
   notifications: Notify[] = [];
   popup: string = "hidden"
 
-  constructor(private injector: Injector, private router: Router)
+  constructor()
   {
     this.initializeWebSocketConnection();
 
     this.subscribe(`/topic/notify/${parseInt(localStorage.getItem("id")!)}`, message => 
-      {
-        let notify = JSON.parse(message) as Notify;
-        this.notifications.push(notify);
-        this.notifications.reverse();
-      });
+    {
+      let notify = JSON.parse(message) as Notify;
+      this.notifications.push(notify);
+      this.notifications.reverse();
+    });
   }
-
-  // avangeButton(playerId: number)
-  // {
-  //   this.router.navigate(['fight/'+playerId]);
-  // }
-
 
   toggleButton(): void
   {
