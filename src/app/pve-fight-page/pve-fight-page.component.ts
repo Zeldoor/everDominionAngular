@@ -9,11 +9,12 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { PlayerCardComponent } from '../player-card/player-card.component';
 import { PveFightLogComponent } from "../pve-fight-log/pve-fight-log.component";
 import { PvePlayerCardComponent } from "../pve-player-card/pve-player-card.component";
+import { FightResultComponent } from "../fight-result/fight-result.component";
 
 @Component({
   selector: 'app-pve-fight-page',
   standalone: true,
-  imports: [MatGridListModule, PlayerCardComponent, PveFightLogComponent, PvePlayerCardComponent],
+  imports: [MatGridListModule, PlayerCardComponent, PveFightLogComponent, PvePlayerCardComponent, FightResultComponent],
   templateUrl: './pve-fight-page.component.html',
   styleUrl: './pve-fight-page.component.css'
 })
@@ -29,7 +30,7 @@ export class PveFightPageComponent
   enemyDamageVisibility:string = "hidden";
   playerDamageReceived!:number;
   enemyDamageReceived!:number;
-
+  visibility:boolean=false;
   playerHealthPos = 0;
   pveHealthPos = 0;
   
@@ -107,50 +108,65 @@ export class PveFightPageComponent
       this.enemyDamageVisibility = "hidden";
     }, 1000);
   }
-  cycleFightMessage()
+cycleFightMessage()
+{
+  this.fightRes.results.forEach((result, index) => 
   {
-    this.fightRes.results.forEach((result, index) => 
-    {
-        setTimeout(() => 
-        {
-          this.results.unshift(result);
-          
+      setTimeout(() => 
+      {
+        this.results.unshift(result);
+        
 
-          if(result.includes("danni"))
-            switch (result.split(" ")[0]) 
-            {
-              case this.player.nick:
+        if(result.includes("danni"))
+          switch (result.split(" ")[0]) 
+          {
+            case this.player.nick:
 
-                this.enemyDamageReceived = this.pvePlayer.pveHealth;
-              
-                this.pvePlayer.pveHealth = this.fightRes.enemyHealth[this.pveHealthPos] < 0 ? 0 : this.fightRes.enemyHealth[this.pveHealthPos];
-
-                this.enemyDamageReceived -= this.pvePlayer.pveHealth;
-
-                this.pveHealthPos++;
-
-                this.setEnemyDamageVisibility();
-                
-                break;
-
-              case this.pvePlayer.nick:
-
-                this.playerDamageReceived=this.player.playerHealth;
-
-                this.player.playerHealth = this.fightRes.playerHealth[this.playerHealthPos] < 0 ? 0 : this.fightRes.playerHealth[this.playerHealthPos];
-
-                this.playerDamageReceived-=this.player.playerHealth;
-
-                this.playerHealthPos++;
-
-                this.setPlayerDamageVisibility();
-
-                break;
+              this.enemyDamageReceived = this.pvePlayer.pveHealth;
             
-              default:
-                break;
+              this.pvePlayer.pveHealth = this.fightRes.enemyHealth[this.pveHealthPos] < 0 ? 0 : this.fightRes.enemyHealth[this.pveHealthPos];
+
+              this.enemyDamageReceived -= this.pvePlayer.pveHealth;
+
+              this.pveHealthPos++;
+
+              this.setEnemyDamageVisibility();
+              
+              break;
+
+            case this.pvePlayer.nick:
+
+              this.playerDamageReceived=this.player.playerHealth;
+
+              this.player.playerHealth = this.fightRes.playerHealth[this.playerHealthPos] < 0 ? 0 : this.fightRes.playerHealth[this.playerHealthPos];
+
+              this.playerDamageReceived-=this.player.playerHealth;
+
+              this.playerHealthPos++;
+
+              this.setPlayerDamageVisibility();
+
+              break;
+          
+            default:
+              break;
+          }
+          if(this.fightRes.results[index].includes("PERSO"))
+            {
+              this.callEndScreen(2000)
             }
-        }, index * 1500); // 1000 ms = 1 secondo
-    });
-  }
+      }, index * 1500); // 1000 ms = 1 secondo
+  });
+}
+callEndScreen(index :number) : void
+{
+  setTimeout(() => 
+    {
+      this.visibility=true;
+    },index
+  )
+}
+
+
+
 }
