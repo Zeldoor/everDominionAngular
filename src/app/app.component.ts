@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Injector, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, Injector, ViewChild } from '@angular/core';
 import { PlayerService } from './services/player.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterOutlet } from '@angular/router';
@@ -16,27 +16,13 @@ import { BellComponent } from "./bell/bell.component";
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements AfterViewInit 
+export class AppComponent
 {
-
-  @ViewChild('backgroundAudio', { static: false }) backgroundAudio!: ElementRef<HTMLAudioElement>;
-
-  ngAfterViewInit() 
-  {
-    // Prova a riprodurre l'audio dopo l'interazione dell'utente
-    document.addEventListener('click', () => {
-      this.backgroundAudio.nativeElement.play();
-    });
-
-    // Imposta il volume e prova a riprodurre l'audio immediatamente
-    this.backgroundAudio.nativeElement.volume = 0.5;  // Imposta il volume al 50%
-  }
-
-
   title = 'EverDominion';
   player!: Player;
   stomp: StompService;
   lastShield!: string;
+  audio: any = new Audio("https://audio.jukehost.co.uk/r3beBJdru2r5fpbF12JOHcajjKH0unf1");
 
   private playerId: number = parseInt(localStorage.getItem("id")!);
   @ViewChild(NavbarComponent) navbar!: NavbarComponent;
@@ -60,8 +46,22 @@ export class AppComponent implements AfterViewInit
         this.lastShield = this.player.shield;
         this.navbar.startTimer();
       }
-
     });
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void 
+  {
+    this.audioPlay()
+  }
+
+  audioPlay()
+  {
+    if(this.audio.currentTime == 0)
+    {
+      this.audio.volume = 0.01;
+      this.audio.play();
+    }
   }
 
   ngOnInit(): void 

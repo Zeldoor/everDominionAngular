@@ -25,6 +25,7 @@ export class NavbarComponent
   private intervalId: any;
 
   constructor(public authService: AuthService,private injector: Injector){}
+  
 
   ngOnInit(): void 
   {
