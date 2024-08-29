@@ -149,9 +149,8 @@ cycleFightMessage()
             default:
               break;
           }
-          console.log(this.fightRes.results[index])
           if(this.fightRes.results[index].includes("PERSO"))
-          { console.log("weoweoweo")
+          {
             this.callEndScreen(2000)
           }
 

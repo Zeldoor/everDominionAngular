@@ -1,4 +1,9 @@
 <div class="scatola">
+    @if (visibility) 
+    {
+        <app-fight-result
+        style="position: fixed; transform: translate(0px,6px); z-index: 9999;" [victory]="fightRes.victory"></app-fight-result>
+    }
     <app-player-card [player]="player" 
                     style="position: fixed; transform: translate(180px,50px);"></app-player-card>
 
