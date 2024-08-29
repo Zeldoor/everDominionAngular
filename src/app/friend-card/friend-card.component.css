@@ -34,26 +34,27 @@
 }
 .spada
 {
-    transform: translate(160px,-45px) scale(0.2);
+    transform: translate(145px,-45px) scale(0.15);
     z-index: 20;
 }
 .dmg
 {
     position: fixed;
-    transform: translate(305px, 45px) scale(1.7);
+    transform: translate(295px, 50px) scale(1.7);
     z-index: 900;
-    
+    font-size: 80%;
 }
 .cuore
 {
-    transform: translate(236px,-307px) scale(0.11);
+    transform: translate(236px,-307px) scale(0.09);
     z-index: 20;
 }
 .vita
 {
     position: fixed;
-    transform: translate(455px, 45px) scale(1.7);
+    transform: translate(455px, 50px) scale(1.7);
     z-index: 900;
+    font-size: 80%;
 }
 .status
 {
