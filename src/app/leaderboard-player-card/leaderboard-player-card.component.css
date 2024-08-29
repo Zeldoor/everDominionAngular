@@ -82,6 +82,7 @@
     text-shadow: 2px 2px 0 #000000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
     text-align: center;
     color: rgb(255, 202, 141); 
+    font-size: 70%;
 }
 
 .bg_icona

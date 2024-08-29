@@ -5,9 +5,10 @@
             <img [src]="setSprite()" 
             class="image rounded-full h-24 w-24 float-left">
         <!-- text -->
-        <div class=" numeri float-right mt-9 mr-2" style="font-weight: 600;"> {{troop.minDamage+"-"+troop.maxDamage}}
+        <div class=" numeri float-right mt-9 mr-2" style="font-weight: 600; font-size: 80%;"> {{troop.minDamage+"-"+troop.maxDamage}}
             <br class="numeri" style="background-color: transparent;color: black;font-weight: bold;font-size: 16px;"> 
-            {{troop.health}}
+            <h2 style="transform: translate(0px,7px);">{{troop.health}}</h2>
+            
         </div>
         <!-- imgs -->
         <div class=" float-right">
