@@ -2,8 +2,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 1920px;
+    height: 825px;
     background-color: rgba(0, 0, 0, 0.7); /* Colore semi-trasparente */
     display: flex;
     justify-content: center;
@@ -16,11 +16,14 @@
     width: 80%;
     max-width: 600px;
     padding: 20px;
-    background-color: #DDDDA1;
+    background-color: #dddda1cc;
     border-radius: 10px;
+    border: solid 10px #3a3a2acc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    position: relative;
+    position: relative; 
+    transform: translate(20px);
+    background-image: url(https://i.imgur.com/Clz9zqQ.png);
   }
 
    /* Testo del messaggio */
@@ -39,6 +42,7 @@
     width: 100%;
     height: auto;
     border-radius: 10px;
+    transform: scale(0.7) translate(0px,-50px);
   }
   
   /* Contenitore della ricompensa */
@@ -47,6 +51,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+    transform: translate(0px,-100px);
   }
   
   /* Immagine della ricompensa */
@@ -54,13 +59,36 @@
     width: auto; /* Modifica la dimensione secondo le tue preferenze */
     height: auto;
     margin-right: 10px;
+    transform: translate(0px,-10px);
   }
   
   /* Testo della ricompensa */
   .reward-text {
     font-size: 35px; /* Modifica la dimensione del testo secondo le tue preferenze */
     font-weight: bold;
+    transform: translate(30px);
   }
-  
+  .login-button
+{
+  position: fixed;
+    background-image: url(https://i.imgur.com/5ORdA0r.png);
+    background-repeat: no-repeat;
+    height: 55px;
+    width: 200px;
+    transform: translate(0px,80px) scale(1.2);
+    font-size: x-large;
+    padding-right: 8px;
+    padding-bottom: 5px;
+}
+.scritte
+{
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
+    color: rgb(251 191 36);
+}
+.login-button:active
+{
+    margin-top: 5px;
+    filter: grayscale(30%) brightness(70%);
+}
 
   

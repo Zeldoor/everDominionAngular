@@ -7,11 +7,12 @@ import { PlayerService } from '../services/player.service';
 import { Fight } from '../model/Fight';
 import { FightLogComponent } from '../fight-log/fight-log.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FightResultComponent } from "../fight-result/fight-result.component";
 
 @Component({
   selector: 'app-fight-page',
   standalone: true,
-  imports: [MatGridListModule, PlayerCardComponent, CommonModule, FightLogComponent],
+  imports: [MatGridListModule, PlayerCardComponent, CommonModule, FightLogComponent, FightResultComponent],
   templateUrl: './fight-page.component.html',
   styleUrl: './fight-page.component.css'
 })
@@ -27,6 +28,9 @@ export class FightPageComponent
   enemyDamageReceived!:number;
   playerDamageVisibility:string = "hidden";
   enemyDamageVisibility:string = "hidden";
+  visibility:boolean=false;
+
+  
 
   playerHealthPos = 0;
   enemyHealthPos = 0;
@@ -47,7 +51,7 @@ export class FightPageComponent
 
   beginFight()
   {
-    let fight: Fight = {attacker: this.player, defender: this.enemy, results: [], playerHealth: [], enemyHealth: []};
+    let fight: Fight = {attacker: this.player, defender: this.enemy, results: [], playerHealth: [], enemyHealth: [], victory:false};
 
     this.playerServ.fight(fight).subscribe(
       {
@@ -105,53 +109,73 @@ export class FightPageComponent
     }, 1000);
   }
 
-  cycleFightMessage()
+cycleFightMessage()
+{
+  this.fightRes.results.forEach((result, index) => 
   {
-    this.fightRes.results.forEach((result, index) => 
-    {
-        setTimeout(() => 
-        {
-          this.results.unshift(result);
+    setTimeout(() => 
+      {
+        this.results.unshift(result);
 
-          if(result.includes("danni"))
-            switch (result.split(" ")[0]) 
-            {
-              case this.player.nick:
+        if(result.includes("danni"))
+          switch (result.split(" ")[0]) 
+          {
+            case this.player.nick:
 
-                this.enemyDamageReceived = this.enemy.playerHealth;
+              this.enemyDamageReceived = this.enemy.playerHealth;
 
-                this.enemy.playerHealth = this.fightRes.enemyHealth[this.enemyHealthPos] < 0 ? 0 : this.fightRes.enemyHealth[this.enemyHealthPos];
+              this.enemy.playerHealth = this.fightRes.enemyHealth[this.enemyHealthPos] < 0 ? 0 : this.fightRes.enemyHealth[this.enemyHealthPos];
 
-                this.enemyDamageReceived -= this.enemy.playerHealth;
+              this.enemyDamageReceived -= this.enemy.playerHealth;
 
-                this.setEnemyDamageVisibility();
+              this.setEnemyDamageVisibility();
 
-                this.enemyHealthPos++
-                break;
+              this.enemyHealthPos++
+              break;
 
-              case this.enemy.nick:
+            case this.enemy.nick:
 
-                this.playerDamageReceived=this.player.playerHealth;
+              this.playerDamageReceived=this.player.playerHealth;
 
-                this.player.playerHealth = this.fightRes.playerHealth[this.playerHealthPos] < 0 ? 0 : this.fightRes.playerHealth[this.playerHealthPos];
+              this.player.playerHealth = this.fightRes.playerHealth[this.playerHealthPos] < 0 ? 0 : this.fightRes.playerHealth[this.playerHealthPos];
 
-                this.playerDamageReceived-=this.player.playerHealth;
+              this.playerDamageReceived-=this.player.playerHealth;
 
-                this.setPlayerDamageVisibility();
+              this.setPlayerDamageVisibility();
 
-                this.playerHealthPos++
-                break;
-            
-              default:
-                break;
-            }
-        }, index * 1500); // 1000 ms = 1 secondo
-    });
+              this.playerHealthPos++
+              break;
+          
+            default:
+              break;
+          }
+          console.log(this.fightRes.results[index])
+          if(this.fightRes.results[index].includes("PERSO"))
+          { console.log("weoweoweo")
+            this.callEndScreen(2000)
+          }
+
+      }, index * 1500); // 1000 ms = 1 secondo
+
+
     this.enemyDamageReceived=0;
     this.playerDamageReceived=0;
 
+  })
+}
+
+callEndScreen(index :number) : void
+  {
+    setTimeout(() => 
+      {
+        this.visibility=true;
+      },index
+    )
   }
 
+
+
+}
 
 
 // const socket = new SockJS('/ws');
@@ -173,4 +197,3 @@ export class FightPageComponent
 //     // Logica per mostrare la notifica e il risultato del combattimento
 //     alert("Sei stato attaccato! Risultato: " + fightResult.outcome);
 // }
-}

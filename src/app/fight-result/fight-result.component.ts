@@ -1,15 +1,25 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-fight-result',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './fight-result.component.html',
   styleUrl: './fight-result.component.css'
 })
 export class FightResultComponent 
 {
   @Input() result!: {win: boolean, gold: number};
-
+  @Input() victory!:boolean;
+  router: Router = inject(Router)
   
+  
+
+  homeButton()
+  {
+    
+      this.router.navigate(["home"])
+  }
+
 }

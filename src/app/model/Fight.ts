@@ -7,4 +7,5 @@ export interface Fight
     results: string[];
     playerHealth: number[];
     enemyHealth: number[];
+    victory:boolean;
 }
