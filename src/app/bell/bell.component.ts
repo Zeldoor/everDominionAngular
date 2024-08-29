@@ -4,6 +4,7 @@ import SockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
 import {MatBadgeModule} from '@angular/material/badge';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,17 +16,10 @@ import { CommonModule } from '@angular/common';
 })
 export class BellComponent 
 {
-  @Input() notifications: Notify[] = [];
-  popup: string = "visible"
-  test: string = "notifica";
+  notifications: Notify[] = [];
+  popup: string = "hidden"
 
-  notifiche = [
-    { nick: 'User1', testo: 'mmmmmmmm ti ha attaccato, hai perso 300 oro' },
-    { nick: 'User2', testo: 'Nuova notifica da User2' },
-    { nick: 'User3', testo: 'Nuova notifica da User3' }
-  ];
-
-  constructor(private injector: Injector)
+  constructor(private injector: Injector, private router: Router)
   {
     this.initializeWebSocketConnection();
 
@@ -33,9 +27,15 @@ export class BellComponent
       {
         let notify = JSON.parse(message) as Notify;
         this.notifications.push(notify);
-        this.test = notify.result;
+        this.notifications.reverse();
       });
   }
+
+  // avangeButton(playerId: number)
+  // {
+  //   this.router.navigate(['fight/'+playerId]);
+  // }
+
 
   toggleButton(): void
   {
@@ -43,7 +43,7 @@ export class BellComponent
     this.markAllAsRead();
   }
 
-  get unreadCount() 
+  unreadCount() 
   {
     return this.notifications.filter(n => !n.read).length;
   }

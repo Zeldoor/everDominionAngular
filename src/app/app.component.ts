@@ -22,7 +22,6 @@ export class AppComponent
   title = 'EverDominion';
   player!: Player;
   stomp: StompService;
-  notifications: Notify[] = [];
   lastShield!: string;
 
   private playerId: number = parseInt(localStorage.getItem("id")!);

@@ -33,7 +33,10 @@
           <div class="flex flex-1 justify-between items-center" style="margin-left: 25px;">
             <div class="flex space-x-4" style="margin-top: 7px; margin-left: -80px;">
               <!-- Right-aligned navigation -->
-              <app-bell [notifications]="notifications"></app-bell>
+              @if (authService.isLogged()) 
+              {
+                <app-bell></app-bell>
+              }
               <a [routerLink]="['home']" class="scritte home rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white" aria-current="page" style="padding-left: 50px;">Home</a>
               <a [routerLink]="['shop']" class="scritte shop rounded-md px-3 py-2 text-sm font-medium text-gray-300  hover:text-white">Shop</a>
               <a [routerLink]="['player']" class="scritte player rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Profile</a>

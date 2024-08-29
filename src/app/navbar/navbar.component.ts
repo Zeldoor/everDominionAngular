@@ -18,7 +18,6 @@ import { BellComponent } from "../bell/bell.component";
 export class NavbarComponent 
 {
   @Input() player!: Player;
-  @Input() notifications!: Notify[];
 
   stomp!: StompService;
   shieldVisibility: boolean = false;
