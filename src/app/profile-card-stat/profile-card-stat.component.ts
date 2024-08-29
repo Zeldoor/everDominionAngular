@@ -53,11 +53,14 @@ export class ProfileCardStatComponent implements OnInit
 
   checkIfFriend(): void
   {
-    for(let friend of this.youPlayer.friends)
-      if(friend.id == this.player.id)
-        this.friendBoolean = true;
+    if(this.youPlayer)
+    {
+      for(let friend of this.youPlayer.friends)
+        if(friend.id == this.player.id)
+          this.friendBoolean = true;
       
-    this.friendBoolean = false;
+      this.friendBoolean = false;
+    }
   }
 
   addFriend()

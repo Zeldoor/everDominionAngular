@@ -353,7 +353,7 @@
 .bottoneBuy:active
 {
     background-image: url(https://i.imgur.com/7JWxpKy.png);
-    transform: translate(10px, 8px);
+    transform: translate(0px, 85px);
 }
 .goldCost
 {

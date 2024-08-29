@@ -44,8 +44,10 @@ export class ShopService {
     return this.http.post<Player>(`/api/shop/${playerId}/stamina`, {});
   }
 
-  sellTroop(troop: Troop): void
+  sellTroop(troopId: number): Observable<Player>
   {
-    this.http.post(`/api/shop/sell`, troop).subscribe();
+    let playerId: number = parseInt(localStorage.getItem("id")!)
+
+    return this.http.post<Player>(`/api/shop/sell/${troopId}`, playerId);
   }
 }

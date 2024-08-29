@@ -11,7 +11,7 @@ import { BellComponent } from "../bell/bell.component";
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule, CommonModule, MatBadgeModule, BellComponent],
+  imports: [RouterModule, MatBadgeModule, BellComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
@@ -40,21 +40,6 @@ export class NavbarComponent
     {
       this.updateTimeRemaining();
     }, 1000);
-  }
-
-  openNotifications(): void
-  {
-    this.markAllAsRead();
-  }
-
-  get unreadCount() 
-  {
-    return this.notifications.filter(n => !n.read).length;
-  }
-
-  markAllAsRead(): void
-  {
-    this.notifications.map(n => n.read=true);
   }
 
   logout(): void

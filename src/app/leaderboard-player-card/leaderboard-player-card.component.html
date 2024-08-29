@@ -9,17 +9,21 @@
                 <img src="https://i.imgur.com/Cut151A.png" 
                     style="position: fixed;transform: translate(-165px,-105px) scale(0.1);">
             }
-            <img style="transform: translate(267px,5px) scale(0.7);" src="https://i.imgur.com/VlJDHT9.png" alt="">
+            <img style="transform: translate(279px,5px) scale(0.7);" src="https://i.imgur.com/VlJDHT9.png" alt="">
             <h1 class="scritte ombra float-start" style="position: fixed; display: inline; transform: translate(30px, -38px); color: rgb(255, 174, 0);">
                 @if(powerAdjuster() == 1)
                 {
-                    &nbsp;&nbsp;&nbsp;&nbsp;{{power}} 
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{power}} 
                 }
                 @if(powerAdjuster() == 2)
                 {
-                    &nbsp;&nbsp;{{power}}
+                    &nbsp;&nbsp;&nbsp;&nbsp;{{power}}
                 }
                 @if(powerAdjuster() == 3)
+                {
+                    &nbsp;&nbsp;{{power}}
+                }
+                @if(powerAdjuster() == 4)
                 {
                     {{power}}
                 }

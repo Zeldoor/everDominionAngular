@@ -51,8 +51,8 @@
                 </button>
                 @if (!inventory) 
                 {
-                    <button class="bottoneBuy">
-                        <h2 class="goldCostNumber" > 333 </h2>
+                    <button (click)="sellTroop(troop.id)" class="bottoneBuy">
+                        <h2 class="goldCostNumber" >{{troopPrice(troop)}}</h2>
                     </button>
                 }
             </mat-grid-tile> 

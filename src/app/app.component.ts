@@ -6,14 +6,14 @@ import { StompService } from './services/stomp.service';
 import { Player } from './model/Player';
 import { HttpClient } from '@angular/common/http';
 import { GearCardComponent } from "./gear-card/gear-card.component";
-import { NotifyComponent } from "./notify/notify.component";
 import { Notify } from './model/Notify';
 import { ChatboxComponent } from "./chatbox/chatbox.component";
 import { FightResultComponent } from "./fight-result/fight-result.component";
+import { BellComponent } from "./bell/bell.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavbarComponent, RouterOutlet, GearCardComponent, NotifyComponent, ChatboxComponent, FightResultComponent],
+  imports: [NavbarComponent, RouterOutlet, GearCardComponent, ChatboxComponent, FightResultComponent, BellComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

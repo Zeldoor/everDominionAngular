@@ -158,12 +158,23 @@ export class ShopPageComponent {
         this.popUp(err);
       }
     })
-
-    console.log("VENGO PRIMA")
   }
 
-  sellTroop(troop: Troop)
+  sellTroop(troopId: number)
   {
-    this.shopServ.sellTroop(troop);
+    this.shopServ.sellTroop(troopId).subscribe(
+      {
+        next: data =>
+        {
+          this.player = data;
+          this.storageTroops = this.player.storageTroops;
+        },
+        error: err =>
+        {
+          let backendErr = err.error;
+          alert(backendErr);
+        }
+      }
+    );
   }
 }

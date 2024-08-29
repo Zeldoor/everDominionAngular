@@ -27,7 +27,7 @@ export class InventoryCardComponent
   @Output() switchGearEvent: EventEmitter<Gear> = new EventEmitter<Gear>();
   @Output() customOverMouse: EventEmitter<Gear> = new EventEmitter<Gear>();
   @Output() customUnoverMouse: EventEmitter<void> = new EventEmitter();
-  @Output() customSellTroop: EventEmitter<Troop> = new EventEmitter();
+  @Output() customSellTroop: EventEmitter<number> = new EventEmitter();
 
 
   callTroopEvent(troop: Troop)
@@ -50,8 +50,13 @@ export class InventoryCardComponent
     this.customOverMouse.emit();
   }
   
-  sellTroop(troop: Troop)
+  sellTroop(troopId: number)
   {
-    this.customSellTroop.emit(troop);
+    this.customSellTroop.emit(troopId);
+  }
+
+  troopPrice(troop: Troop)
+  {
+    return Math.floor(troop.price/3)
   }
 }

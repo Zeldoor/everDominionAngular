@@ -40,7 +40,6 @@ export class LoginPageComponent
     this.loginState ? this.newUserForm.get('email')?.setValue("") : this.newUserForm.get('email')?.setValue(null)
     this.loginState ? this.newUserForm.get('username')?.setValue("") : this.newUserForm.get('username')?.setValue(null)
     this.loginState ? this.newUserForm.get('password')?.setValue("") : this.newUserForm.get('password')?.setValue(null)
-
   }
 
   newUserForm = new FormGroup(
@@ -82,7 +81,8 @@ export class LoginPageComponent
           this.playerService.sendHeartbeat(data.playerDto.id).subscribe();
           this.playerService.startHeartbeat();
 
-          this.router.navigate(["home"])
+          this.router.navigate(["home"]);
+          window.location.reload();
         },
         error: err=>
         {
