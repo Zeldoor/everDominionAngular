@@ -10,16 +10,13 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class FightResultComponent 
 {
-  @Input() result!: {win: boolean, gold: number};
+  @Input() gold!: number;
   @Input() victory!:boolean;
   router: Router = inject(Router)
   
-  
-
   homeButton()
   {
-    
-      this.router.navigate(["home"])
+    this.router.navigate(["home"])
   }
 
 }
