@@ -4,7 +4,7 @@
             <img class="ribbon-login" src="https://i.imgur.com/HVdsWFS.png" alt="">
             <img class="bg-form" src="https://i.imgur.com/b1VcdV1.png" alt="">
             <form class="form_pos flex w-[30rem] flex-col space-y-10" [formGroup]="oldUserForm">
-                <div class="scritte text-center text-4xl font-medium" style="transform: translate(0px,-30px);">
+                <div class=" scritte text-center text-4xl font-medium" style="transform: translate(0px,-30px);">
                     Login
                 </div>
                 <!--  USERNAME -->
@@ -45,7 +45,7 @@
                 <!-- EMAIL -->
 
                 <div class="form-input w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
-                    <input type="email" placeholder="Email" style="text-align: center;font-style: italic;" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="email" required>
+                    <input type="email" placeholder="example@email.com" style="text-align: center;font-style: italic;" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="email" required>
                 </div>
 
 
@@ -81,9 +81,13 @@
         <div>
             <!-- ERROR BACKEND -->
         
-            <div class="error1 text-white" *ngIf="newUserForm.getError('backendError') || newUserForm.hasError('emailErr')">
+            <div class="error1 text-white" *ngIf="newUserForm.getError('backendError') ">
                 <img  src="https://i.imgur.com/eY2D0t3.png" alt="">
-                <h2 style="transform: translate(70px,-50px);">{{newUserForm.getError('backendError') || newUserForm.getError('emailErr')}}</h2>
+                <h2 style="transform: translate(70px,-50px);">{{newUserForm.getError('backendError')}}</h2>
+            </div>
+            <div class="error1 text-white" *ngIf="newUserForm.hasError('emailErr')">
+                <img  src="https://i.imgur.com/eY2D0t3.png" alt="">
+                <h2 style="transform: translate(70px,-50px);">{{newUserForm.getError('emailErr')}}</h2>
             </div>
         
             <!-- ERROR USERNAME -->
