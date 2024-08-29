@@ -121,7 +121,7 @@
     align-self: flex-end;
     width: 400px;
     min-width: 400px;
-    height: auto;
+    height: max-content;
     min-height: 45px;
     background-color: rgba(158, 138, 72, 0.842);
     border-radius: 999px;
@@ -133,8 +133,10 @@
 
 .testo-messaggio
 {
+    position: relative;
     display: block;
     word-wrap: break-word;
+    box-sizing: border-box;
     margin-left: 50px;
     margin-right: 10px;
     padding-top: 22px;
@@ -142,7 +144,6 @@
     max-width: 380px;
     color: rgb(255, 240, 174);
     text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000;
-    text-align: left;
 }
 
 .icona-messaggio
@@ -157,7 +158,6 @@
     border-color: #B65757;
     border-width: 4px;
     border-style: inherit;
-    transform: translate(0px,0px);
     
 }
 

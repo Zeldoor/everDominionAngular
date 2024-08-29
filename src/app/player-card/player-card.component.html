@@ -28,7 +28,7 @@
                 
                 <mat-grid-tile colspan="1" rowspan="1">
                     <h4 style="transform: translate(0px,5px);"> 
-                        <i class="ombra" style="color: rgb(170, 30, 30);">{{player.playerMinDmg}}-{{player.playerMaxDmg}}</i> 
+                        <i class="ombra" style="color: rgb(255, 170, 155);font-size: 70%;">{{player.playerMinDmg}}-{{player.playerMaxDmg}}</i> 
                     </h4>  
                 </mat-grid-tile>
                 
@@ -43,7 +43,7 @@
                 
                 <mat-grid-tile colspan="1" rowspan="1">
                     <h4 style="transform: translate(-10px,0px);"> 
-                        <i class="ombra" style="color: rgb(169, 250, 64);">{{player.playerHealth}}</i>
+                        <i class="ombra" style="color: rgb(169, 250, 64);font-size: 70%;">{{player.playerHealth}}</i>
                     </h4> 
                 </mat-grid-tile>
                 <!-- <mat-progress-bar style="max-width: 90px; transform: translate(260px, 70px);" mode="determinate" [value]="lifePercentage()"></mat-progress-bar> -->
@@ -57,9 +57,9 @@
         {
             <h2 class="ombra extramaxdmg">{{"+"+checkGear("pugnale")?.tier!*4}}</h2>
         }
-        @if (checkGear("anello"))
+        @if (checkGear("formaggio"))
         {
-            <h2 class="ombra extravita">{{"+"+checkGear("anello")?.tier!*10}}</h2>
+            <h2 class="ombra extravita">{{"+"+checkGear("formaggio")?.tier!*10}}</h2>
         }
 
         <div>

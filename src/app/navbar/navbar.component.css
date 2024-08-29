@@ -70,8 +70,8 @@
     width: 230px;
     height: 68px;
     border-radius: 999px;
-    background: linear-gradient(to bottom, #2e2e2e, #1a1a1a);
-    transform: translate(1600px, -62px);
+    background: linear-gradient(to bottom, #2e2e2ebd, #1a1a1ab0);
+    transform: translate(-10px, -60px) scale(0.7);
     border-style: double;
     border-color: rgb(122, 73, 73);
     border-width: 2px;
@@ -86,10 +86,11 @@
 {
     position: relative;
     /* transform: translate(105px,21px) scale(1.5); */
-    transform: translate(150px,-205px) scale(1.5);
+    transform: translate(120px,-205px) scale(1.5);
     color: rgb(235, 170, 50);
     text-shadow: 2px 2px 0 #000000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
     z-index: 999;
+    max-width: 100px;
 }
 
 .popup-shield
@@ -98,12 +99,12 @@
     width: 400px;
     height: auto;
     padding-bottom: 10px;
-    background: linear-gradient(to bottom, #444444, #303030);
     border-radius: 20px;
     border-style: double;
-    border-color: rgb(122, 73, 73);
     border-width: 2px;
-    transform: translate(1510px, -111px) scale(0.1);
+    border-color: rgb(255, 202, 141);
+    background-color: rgba(7, 7, 6, 0.8);
+    transform: translate(0px, -111px) scale(0.1);
     visibility: hidden;
     z-index: 999;
 }
@@ -111,14 +112,13 @@
 .shield-bg:hover ~ .popup-shield
 {
     visibility: visible;
-    transform: translate(1510px, -58px) scale(1);
+    transform: translate(0px, -58px) scale(1);
     transition-duration: 500ms;
     z-index: 9999;
 }
 .scritte-popup
 {
-    color: rgb(251 191 36);
     text-shadow: 2px 2px 0 #000000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
     text-align: center;
-    z-index: 999;
+    color: rgb(255, 202, 141);  
 }

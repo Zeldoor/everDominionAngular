@@ -43,4 +43,11 @@ export class ShopService {
     console.log(playerId)
     return this.http.post<Player>(`/api/shop/${playerId}/stamina`, {});
   }
+
+  sellTroop(troopId: number): Observable<Player>
+  {
+    let playerId: number = parseInt(localStorage.getItem("id")!)
+
+    return this.http.post<Player>(`/api/shop/sell/${troopId}`, playerId);
+  }
 }

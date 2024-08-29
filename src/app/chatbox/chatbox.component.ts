@@ -19,7 +19,7 @@ import { ChatboxCardComponent } from "../chatbox-card/chatbox-card.component";
 export class ChatboxComponent {
 
   @Input() player!: Player;
-  popup : string = "visibility";
+  popup : string = "";
   chats : Chat[]=[];
 
   constructor(private playerServ: PlayerService)
@@ -27,9 +27,9 @@ export class ChatboxComponent {
     this.initializeWebSocketConnection();
 
     this.subscribe(`/topic/chat`, message => 
-      {
-        this.chats = JSON.parse(message) as Chat[];
-      })
+    {
+      this.chats = JSON.parse(message) as Chat[];
+    });
   }
 
   chatForm = new FormGroup(

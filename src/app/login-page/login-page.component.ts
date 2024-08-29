@@ -8,6 +8,7 @@ import { hasValidPassword } from '../services/validators/hasValidPassword';
 import { CommonModule } from '@angular/common';
 import { profanityFilter } from '../services/validators/hasValidNick';
 import { PlayerService } from '../services/player.service';
+import { hasValidEmail } from '../services/validators/hasValidEmail';
 
 @Component({
   selector: 'app-login-page',
@@ -39,12 +40,11 @@ export class LoginPageComponent
     this.loginState ? this.newUserForm.get('email')?.setValue("") : this.newUserForm.get('email')?.setValue(null)
     this.loginState ? this.newUserForm.get('username')?.setValue("") : this.newUserForm.get('username')?.setValue(null)
     this.loginState ? this.newUserForm.get('password')?.setValue("") : this.newUserForm.get('password')?.setValue(null)
-
   }
 
   newUserForm = new FormGroup(
     {
-      email: new FormControl("", [Validators.required]),
+      email: new FormControl("", [Validators.required, hasValidEmail()]),
       username: new FormControl("", [Validators.required, profanityFilter()]),
       password: new FormControl("", [Validators.required, hasValidPassword()]),
     }
@@ -81,7 +81,8 @@ export class LoginPageComponent
           this.playerService.sendHeartbeat(data.playerDto.id).subscribe();
           this.playerService.startHeartbeat();
 
-          this.router.navigate(["home"])
+          this.router.navigate(["home"]);
+          window.location.reload();
         },
         error: err=>
         {

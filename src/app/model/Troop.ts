@@ -6,4 +6,5 @@ export interface Troop
     maxDamage: number;
     health: number;
     playerId: number;
+    price: number;
 }

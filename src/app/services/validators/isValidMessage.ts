@@ -42,12 +42,12 @@ export function isValidMessage(): ValidatorFn
         if (!message) return null;
 
         if (message.length > 33) 
-            return { nickErr: "Messaggio troppo lungo" };
+            return { messageErr: "Messaggio troppo lungo" };
 
         let alphanumericRegex = /^[a-zA-Z0-9]+$/;
 
         if (!alphanumericRegex.test(message))
-            return { nickErr: "Caratteri speciali non permessi" };
+            return { messageErr: "Caratteri speciali non permessi" };
         
 
         for (let word of bannedWords) 

@@ -45,8 +45,10 @@ export class LeaderboardPlayerCardComponent
       return 1;
     if(this.power <= 99)
       return 2;
+    if(this.power <= 999)
+      return 3;
 
-    return 3;
+    return 4;
   }
 
   addFriend()

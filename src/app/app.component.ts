@@ -1,4 +1,4 @@
-import { Component, Injector, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, Injector, ViewChild } from '@angular/core';
 import { PlayerService } from './services/player.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterOutlet } from '@angular/router';
@@ -6,13 +6,13 @@ import { StompService } from './services/stomp.service';
 import { Player } from './model/Player';
 import { HttpClient } from '@angular/common/http';
 import { GearCardComponent } from "./gear-card/gear-card.component";
-import { NotifyComponent } from "./notify/notify.component";
-import { Notify } from './model/Notify';
 import { ChatboxComponent } from "./chatbox/chatbox.component";
+import { FightResultComponent } from "./fight-result/fight-result.component";
+import { BellComponent } from "./bell/bell.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavbarComponent, RouterOutlet, GearCardComponent, NotifyComponent, ChatboxComponent],
+  imports: [NavbarComponent, RouterOutlet, GearCardComponent, ChatboxComponent, FightResultComponent, BellComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -21,8 +21,8 @@ export class AppComponent
   title = 'EverDominion';
   player!: Player;
   stomp: StompService;
-  notifications: Notify[] = [];
   lastShield!: string;
+  audio: any = new Audio("https://audio.jukehost.co.uk/r3beBJdru2r5fpbF12JOHcajjKH0unf1");
 
   private playerId: number = parseInt(localStorage.getItem("id")!);
   @ViewChild(NavbarComponent) navbar!: NavbarComponent;
@@ -46,8 +46,22 @@ export class AppComponent
         this.lastShield = this.player.shield;
         this.navbar.startTimer();
       }
-
     });
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void 
+  {
+    this.audioPlay()
+  }
+
+  audioPlay()
+  {
+    if(this.audio.currentTime == 0)
+    {
+      this.audio.volume = 0.01;
+      this.audio.play();
+    }
   }
 
   ngOnInit(): void 

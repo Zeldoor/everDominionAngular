@@ -102,7 +102,7 @@
     overflow-y: hidden;
     visibility: hidden;
     scrollbar-width: none;
-    transform: translate(0px,70px);
+    transform: translate(0px,75px);
 }
 
 .titolo:hover ~ .popup

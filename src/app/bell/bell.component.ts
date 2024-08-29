@@ -1,30 +1,59 @@
-import { Component, Injector } from '@angular/core';
+import { Component, Injector, Input } from '@angular/core';
 import { Notify } from '../model/Notify';
 import SockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
+import {MatBadgeModule} from '@angular/material/badge';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-bell',
   standalone: true,
-  imports: [],
+  imports: [MatBadgeModule, CommonModule],
   templateUrl: './bell.component.html',
   styleUrl: './bell.component.css'
 })
 export class BellComponent 
 {
   notifications: Notify[] = [];
+  popup: string = "hidden"
 
-  constructor(private injector: Injector)
+  constructor(private injector: Injector, private router: Router)
   {
     this.initializeWebSocketConnection();
 
     this.subscribe(`/topic/notify/${parseInt(localStorage.getItem("id")!)}`, message => 
       {
-        console.log("SONO NELLA NAVBAR")
         let notify = JSON.parse(message) as Notify;
         this.notifications.push(notify);
-      })
+        this.notifications.reverse();
+      });
   }
+
+  // avangeButton(playerId: number)
+  // {
+  //   this.router.navigate(['fight/'+playerId]);
+  // }
+
+
+  toggleButton(): void
+  {
+    this.popup = this.popup == "hidden" ? "visible" : "hidden";
+    this.markAllAsRead();
+  }
+
+  unreadCount() 
+  {
+    return this.notifications.filter(n => !n.read).length;
+  }
+
+  markAllAsRead(): void
+  {
+    this.notifications.map(n => n.read=true);
+  }
+
+  /////////////////////////////STOMP
 
   private socket: any;
   private stompClient: any;

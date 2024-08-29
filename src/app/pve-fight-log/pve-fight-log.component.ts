@@ -13,12 +13,24 @@ export class PveFightLogComponent
   @Input() results !: string[];
   @Input() player!: Player;
   @Output() fightStart : EventEmitter<void> = new EventEmitter;
-
+  buttonVisibility: string = "visible";
   constructor(){}
 
   fightButtonClicked(): void
   {
-      this.fightStart.emit();
+    let now: Date = new Date();
+    now.setSeconds(now.getSeconds() - 10);
+
+    if(new Date(localStorage.getItem("time")!) > now)
+    {
+      alert("Aspetta il tempo di attesa prima di riattaccare");
+      return;
+    }
+
+    localStorage.setItem("time", new Date().toISOString())
+
+    this.fightStart.emit();
+    this.buttonVisibility="hidden";
   }
 
   messageAlign(message: string) : string

@@ -86,7 +86,8 @@
         [storageGears]="storageGears"
         [activeGears]="activeGears"
         (customOverMouse)="mouseOveredGear($event)"
-        (customUnoverMouse)="mouseUnoverGear()"></app-inventory-card>
+        (customUnoverMouse)="mouseUnoverGear()"
+        (customSellTroop)="sellTroop($event)"></app-inventory-card>
     </div>
     <app-gear-card [style.visibility]="overedGear ? 'visible' : 'hidden'" [gear]="overedGear!"></app-gear-card>
 </body>
