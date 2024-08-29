@@ -5,7 +5,7 @@ import { TroopCardIdleComponent } from '../troop-card-idle/troop-card-idle.compo
 import { Gear } from '../model/Gear';
 import { GearCardComponent } from "../gear-card/gear-card.component";
 import {MatIconModule} from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
+import { Route, Router, RouterLink } from '@angular/router';
 import { PlayerService } from '../services/player.service';
 import { Player } from '../model/Player';
 
@@ -29,6 +29,10 @@ export class InventoryCardComponent
   @Output() customUnoverMouse: EventEmitter<void> = new EventEmitter();
   @Output() customSellTroop: EventEmitter<number> = new EventEmitter();
 
+  constructor(private router:Router)
+  {
+
+  }
 
   callTroopEvent(troop: Troop)
   {
@@ -58,5 +62,10 @@ export class InventoryCardComponent
   troopPrice(troop: Troop)
   {
     return Math.floor(troop.price/3)
+  }
+
+
+  goToShop():void{
+    this.router.navigate(['shop']);
   }
 }

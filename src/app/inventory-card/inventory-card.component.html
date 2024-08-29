@@ -5,9 +5,9 @@
         @if (inventory)
         {
             <mat-grid-tile>
-                <a [routerLink]="['shop']" class="plus-gear transition-all ease delay-100 duration-500   border-4 bg-transparent float-left border-black hover:border-amber-600 z-0  border-solid " >
+                <button (click)="goToShop()" class="plus-gear transition-all ease delay-100 duration-500   border-4 bg-transparent float-left border-black hover:border-amber-600 z-0  border-solid " >
                     <div class="plus-gear-bg"></div>
-                </a>
+                </button>
             </mat-grid-tile>
         }
         @else 
@@ -37,7 +37,7 @@
         @if (inventory)
         {
             <mat-grid-tile>
-                <a [routerLink]="['shop']" class="plus-troop transition-all ease delay-100 duration-500   border-4 bg-transparent h-25 float-left border-black hover:border-amber-600 z-0  border-solid " >
+                <a (click)="goToShop()" class="plus-troop transition-all ease delay-100 duration-500   border-4 bg-transparent h-25 float-left border-black hover:border-amber-600 z-0  border-solid " >
                     <div class="plus-troop-bg"></div>
                 </a>
             </mat-grid-tile>
