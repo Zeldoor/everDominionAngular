@@ -26,13 +26,15 @@ export class PveFightPageComponent
   results: string[] = [];
   buttonOn = true;
   backendErr!: string;
+
+  playerHealthPos = 0;
+  pveHealthPos = 0;
   playerDamageVisibility:string = "hidden";
   enemyDamageVisibility:string = "hidden";
   playerDamageReceived!:number;
   enemyDamageReceived!:number;
-  visibility:boolean=false;
-  playerHealthPos = 0;
-  pveHealthPos = 0;
+
+  endVisibility:boolean=false;
   
 
 
@@ -44,10 +46,10 @@ export class PveFightPageComponent
   ngOnInit(): void 
   {
     this.route.paramMap.subscribe(
-      params => 
-      {
-        this.pveServe.getOnePve(parseInt(params.get('id')!)).subscribe(data => this.pvePlayer = data);
-      });
+    params => 
+    {
+      this.pveServe.getOnePve(parseInt(params.get('id')!)).subscribe(data => this.pvePlayer = data);
+    });
   }
 
 
@@ -98,6 +100,7 @@ export class PveFightPageComponent
       this.playerDamageVisibility = "hidden";
     }, 1000);
   }
+
   setEnemyDamageVisibility():void
   {
     
@@ -108,64 +111,70 @@ export class PveFightPageComponent
       this.enemyDamageVisibility = "hidden";
     }, 1000);
   }
-cycleFightMessage()
-{
-  this.fightRes.results.forEach((result, index) => 
+
+  cycleFightMessage()
   {
-      setTimeout(() => 
-      {
-        this.results.unshift(result);
-        
-
-        if(result.includes("danni"))
-          switch (result.split(" ")[0]) 
-          {
-            case this.player.nick:
-
-              this.enemyDamageReceived = this.pvePlayer.pveHealth;
-            
-              this.pvePlayer.pveHealth = this.fightRes.enemyHealth[this.pveHealthPos] < 0 ? 0 : this.fightRes.enemyHealth[this.pveHealthPos];
-
-              this.enemyDamageReceived -= this.pvePlayer.pveHealth;
-
-              this.pveHealthPos++;
-
-              this.setEnemyDamageVisibility();
-              
-              break;
-
-            case this.pvePlayer.nick:
-
-              this.playerDamageReceived=this.player.playerHealth;
-
-              this.player.playerHealth = this.fightRes.playerHealth[this.playerHealthPos] < 0 ? 0 : this.fightRes.playerHealth[this.playerHealthPos];
-
-              this.playerDamageReceived-=this.player.playerHealth;
-
-              this.playerHealthPos++;
-
-              this.setPlayerDamageVisibility();
-
-              break;
+    this.fightRes.results.forEach((result, index) => 
+    {
+        setTimeout(() => 
+        {
+          this.results.unshift(result);
           
-            default:
-              break;
-          }
-          if(this.fightRes.results[index].includes("PERSO"))
+
+          if(result.includes("danni"))
+            switch (result.split(" ")[0]) 
+            {
+              case this.player.nick:
+
+                this.enemyDamageReceived = this.pvePlayer.pveHealth;
+              
+                this.pvePlayer.pveHealth = this.fightRes.enemyHealth[this.pveHealthPos] < 0 ? 0 : this.fightRes.enemyHealth[this.pveHealthPos];
+
+                this.enemyDamageReceived -= this.pvePlayer.pveHealth;
+
+                this.pveHealthPos++;
+
+                this.setEnemyDamageVisibility();
+                
+                break;
+
+              case this.pvePlayer.nick:
+
+                this.playerDamageReceived=this.player.playerHealth;
+
+                this.player.playerHealth = this.fightRes.playerHealth[this.playerHealthPos] < 0 ? 0 : this.fightRes.playerHealth[this.playerHealthPos];
+
+                this.playerDamageReceived-=this.player.playerHealth;
+
+                this.playerHealthPos++;
+
+                this.setPlayerDamageVisibility();
+
+                break;
+            
+              default:
+                break;
+            }
+
+            console.log(this.fightRes.results[index])
+            if(this.fightRes.results[index].includes("PERSO") || this.fightRes.results[index].includes("VINTO"))
             {
               this.callEndScreen(2000)
             }
-      }, index * 1500); // 1000 ms = 1 secondo
-  });
-}
-callEndScreen(index :number) : void
-{
-  setTimeout(() => 
-    {
-      this.visibility=true;
-    },index
-  )
-}
+
+        }, index * 1500); // 1000 ms = 1 secondo
+    });
+
+  }
+
+  callEndScreen(index :number) : void
+  {
+    setTimeout(() => 
+      {
+        this.endVisibility=true;
+      },index
+    );
+  }
 
 
 

@@ -8,4 +8,5 @@ export interface Fight
     playerHealth: number[];
     enemyHealth: number[];
     victory:boolean;
+    gold: number;
 }

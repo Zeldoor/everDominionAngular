@@ -1,5 +1,6 @@
 import { Component, inject, Input } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { Fight } from '../model/Fight';
 
 @Component({
   selector: 'app-fight-result',
@@ -10,8 +11,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class FightResultComponent 
 {
-  @Input() gold!: number;
-  @Input() victory!:boolean;
+  @Input() fightRes!:Fight;
   router: Router = inject(Router)
   
   homeButton()

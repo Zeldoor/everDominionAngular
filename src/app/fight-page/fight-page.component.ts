@@ -51,7 +51,7 @@ export class FightPageComponent
 
   beginFight()
   {
-    let fight: Fight = {attacker: this.player, defender: this.enemy, results: [], playerHealth: [], enemyHealth: [], victory:false};
+    let fight: Fight = {attacker: this.player, defender: this.enemy, results: [], playerHealth: [], enemyHealth: [], victory:false, gold: 0};
 
     this.playerServ.fight(fight).subscribe(
       {
