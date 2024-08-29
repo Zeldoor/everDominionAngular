@@ -18,8 +18,19 @@ export class PveFightLogComponent
 
   fightButtonClicked(): void
   {
-      this.fightStart.emit();
-      this.buttonVisibility="hidden";
+    let now: Date = new Date();
+    now.setSeconds(now.getSeconds() - 10);
+
+    if(new Date(localStorage.getItem("time")!) > now)
+    {
+      alert("Aspetta il tempo di attesa prima di riattaccare");
+      return;
+    }
+
+    localStorage.setItem("time", new Date().toISOString())
+
+    this.fightStart.emit();
+    this.buttonVisibility="hidden";
   }
 
   messageAlign(message: string) : string
