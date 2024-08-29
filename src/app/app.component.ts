@@ -1,4 +1,4 @@
-import { Component, Injector, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injector, ViewChild } from '@angular/core';
 import { PlayerService } from './services/player.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterOutlet } from '@angular/router';
@@ -6,7 +6,6 @@ import { StompService } from './services/stomp.service';
 import { Player } from './model/Player';
 import { HttpClient } from '@angular/common/http';
 import { GearCardComponent } from "./gear-card/gear-card.component";
-import { Notify } from './model/Notify';
 import { ChatboxComponent } from "./chatbox/chatbox.component";
 import { FightResultComponent } from "./fight-result/fight-result.component";
 import { BellComponent } from "./bell/bell.component";
@@ -17,8 +16,23 @@ import { BellComponent } from "./bell/bell.component";
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent
+export class AppComponent implements AfterViewInit 
 {
+
+  @ViewChild('backgroundAudio', { static: false }) backgroundAudio!: ElementRef<HTMLAudioElement>;
+
+  ngAfterViewInit() 
+  {
+    // Prova a riprodurre l'audio dopo l'interazione dell'utente
+    document.addEventListener('click', () => {
+      this.backgroundAudio.nativeElement.play();
+    });
+
+    // Imposta il volume e prova a riprodurre l'audio immediatamente
+    this.backgroundAudio.nativeElement.volume = 0.5;  // Imposta il volume al 50%
+  }
+
+
   title = 'EverDominion';
   player!: Player;
   stomp: StompService;
