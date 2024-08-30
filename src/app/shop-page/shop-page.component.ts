@@ -89,18 +89,18 @@ export class ShopPageComponent {
   upgradeGear(gearId: number): void
   {
     this.shopServ.upgradeGear(gearId, this.player).subscribe(
+    {
+      next: data =>
       {
-        next: data =>
-        {
-          this.player = data;
-          this.storageGears = this.player.storageGears;
-          this.activeGears = this.player.activeGears;
-        },
-        error: err =>
-        {
-          this.popUp(err)
-        }
-      });
+        this.player = data;
+        this.storageGears = this.player.storageGears;
+        this.activeGears = this.player.activeGears;
+      },
+      error: err =>
+      {
+        this.popUp(err)
+      }
+    });
   }
 
   mouseOveredGear(gear: Gear): Gear

@@ -6,6 +6,7 @@ export function profanityFilter(): ValidatorFn
     {
         let bannedWords = 
         [
+            "cesare",
             "nigg",
             "negro",
             "scemo",
