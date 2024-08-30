@@ -85,9 +85,9 @@
                 <img  src="https://i.imgur.com/eY2D0t3.png" alt="">
                 <h2 style="transform: translate(70px,-50px);">{{newUserForm.getError('backendError')}}</h2>
             </div>
-            <div class="error1 text-white" *ngIf="newUserForm.hasError('emailErr')">
+            <div class="error1 text-white" *ngIf="newUserForm.get('email')?.getError('emailErr')">
                 <img  src="https://i.imgur.com/eY2D0t3.png" alt="">
-                <h2 style="transform: translate(70px,-50px);">{{newUserForm.getError('emailErr')}}</h2>
+                <h2 style="transform: translate(70px,-50px);">{{newUserForm.get('email')?.getError('emailErr')}}</h2>
             </div>
         
             <!-- ERROR USERNAME -->
