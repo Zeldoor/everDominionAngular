@@ -167,7 +167,7 @@ export class ShopPageComponent {
         next: data =>
         {
           this.player = data;
-          this.storageTroops = this.player.storageTroops;
+          this.storageTroops = this.player.storageTroops.reverse();
         },
         error: err =>
         {

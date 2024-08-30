@@ -11,6 +11,7 @@ import { MatGridListModule } from "@angular/material/grid-list";
 import { FriendCardComponent } from "../friend-card/friend-card.component";
 import { ProfileCardComponent } from "../profile-card/profile-card.component";
 import { TroopCardComponent } from "../troop-card/troop-card.component";
+import { GameDataService } from "../services/game-data.service";
 
 @Component({
   selector: 'app-friendlist',
@@ -27,18 +28,16 @@ export class FriendlistComponent {
   filteredFriends: Player[] = []; // Inizializza la lista filtrata con la lista completa
   dataSubscription!: Subscription;
   criteria!: any;
-  firstTime: boolean = true;
   stomp: StompService;
 
   form = new FormGroup({
     email: new FormControl("")
   });
 
-  constructor(private webStorage: LocalStorageService, private playerServ: PlayerService, private injector: Injector) 
+  constructor(private webStorage: LocalStorageService, private playerServ: PlayerService, private injector: Injector, private polling: GameDataService) 
   {
     this.user = this.webStorage.getItem("user");
     this.stomp = this.injector.get(StompService)
-
 
     this.playerServ.getOne(parseInt(localStorage.getItem("id")!)).subscribe(data => 
     {
@@ -47,16 +46,22 @@ export class FriendlistComponent {
 
     this.stomp.subscribe("/topic/players", message => 
     {
+      this.filteredFriends=[];
+      this.friends = [];
+
+      console.log("AMICI")
+
       let playersData: Player[] = JSON.parse(message) as Player[];
 
       let playersMap = new Map(playersData.map(p => [p.id, p]));
+
+      this.player = playersData.filter(f => f.id == parseInt(localStorage.getItem("id")!)).at(0)!;
 
       this.friends = this.player.friends
         .map(f => playersMap.get(f.id))
         .filter(friend => friend !== undefined && friend.id != parseInt(localStorage.getItem("id")!)) as Player[];
 
       this.filteredFriends = this.friends;
-      this.firstTime = false;
     });
   }
 

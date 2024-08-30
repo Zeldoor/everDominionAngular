@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Player } from '../model/Player';
 import { PlayerService } from '../services/player.service';
 import { MatGridListModule } from '@angular/material/grid-list';

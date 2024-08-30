@@ -45,7 +45,7 @@
                 <!-- EMAIL -->
 
                 <div class="form-input w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
-                    <input type="email" placeholder="example@email.com" style="text-align: center;font-style: italic;" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="email" required>
+                    <input type="email" placeholder="esempio@email.com" style="text-align: center;font-style: italic;" class="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" formControlName="email" required>
                 </div>
 
 
@@ -85,9 +85,9 @@
                 <img  src="https://i.imgur.com/eY2D0t3.png" alt="">
                 <h2 style="transform: translate(70px,-50px);">{{newUserForm.getError('backendError')}}</h2>
             </div>
-            <div class="error1 text-white" *ngIf="newUserForm.hasError('emailErr')">
+            <div class="error1 text-white" *ngIf="newUserForm.get('email')?.getError('emailErr')">
                 <img  src="https://i.imgur.com/eY2D0t3.png" alt="">
-                <h2 style="transform: translate(70px,-50px);">{{newUserForm.getError('emailErr')}}</h2>
+                <h2 style="transform: translate(70px,-50px);">{{newUserForm.get('email')?.getError('emailErr')}}</h2>
             </div>
         
             <!-- ERROR USERNAME -->

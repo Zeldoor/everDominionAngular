@@ -55,11 +55,12 @@ export class AppComponent
     this.audioPlay()
   }
 
-  audioPlay()
+  audioPlay() 
   {
-    if(this.audio.currentTime == 0)
+    if (this.audio.currentTime == 0) 
     {
       this.audio.volume = 0.01;
+      this.audio.loop = true;
       this.audio.play();
     }
   }
