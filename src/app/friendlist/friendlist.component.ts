@@ -24,8 +24,10 @@ export class FriendlistComponent {
 
   user!: User;
   player!: Player;
+
   friends: Player[] = [];
-  filteredFriends: Player[] = []; // Inizializza la lista filtrata con la lista completa
+  filteredFriends: Player[] = [];
+
   dataSubscription!: Subscription;
   criteria!: any;
   stomp: StompService;
@@ -46,10 +48,7 @@ export class FriendlistComponent {
 
     this.stomp.subscribe("/topic/players", message => 
     {
-      this.filteredFriends=[];
       this.friends = [];
-
-      console.log("AMICI")
 
       let playersData: Player[] = JSON.parse(message) as Player[];
 
@@ -58,10 +57,10 @@ export class FriendlistComponent {
       this.player = playersData.filter(f => f.id == parseInt(localStorage.getItem("id")!)).at(0)!;
 
       this.friends = this.player.friends
-        .map(f => playersMap.get(f.id))
-        .filter(friend => friend !== undefined && friend.id != parseInt(localStorage.getItem("id")!)) as Player[];
-
-      this.filteredFriends = this.friends;
+          .map(f => playersMap.get(f.id))
+          .filter(friend => friend !== undefined && friend.id != parseInt(localStorage.getItem("id")!)) as Player[];
+          
+      this.filterCriteria();
     });
   }
 
